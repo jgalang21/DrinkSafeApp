@@ -1,5 +1,6 @@
 package com.jorden.buttonpractice;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,8 +25,9 @@ Button b1, b2;
 
         b2.setOnClickListener(new View.OnClickListener(){
             @Override
-            publick void onClick(View view){
-                
+            public void onClick(View view){
+                Intent i = new Intent(MainActivity.this, HomeActivity.class);
+                startActivity(i);
             }
         });
     }
