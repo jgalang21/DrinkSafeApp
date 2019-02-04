@@ -63,7 +63,15 @@ public class Owners {
     @Column(name = "telephone")
     @NotFound(action = NotFoundAction.IGNORE)
     private String telephone;
-
+    public Owners()
+    {}
+    public Owners(String first_name, String last_name, String address, String telephone)
+    {
+    	this.firstName =first_name;
+    	this.lastName = last_name; 
+    	this.address = address; 
+    	this. telephone = telephone;
+    }
     public Integer getId() {
         return id;
     }
