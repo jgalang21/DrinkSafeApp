@@ -22,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -42,8 +43,9 @@ class OwnerController {
 
     private final Logger logger = LoggerFactory.getLogger(OwnerController.class);
 
-    @RequestMapping(method = RequestMethod.GET, path = "/owners/new")
-    public String saveOwner(Owners owner) {
+    @RequestMapping(method = RequestMethod.GET, path = "/owners/new/{fname}/{lname}/{address}/{telephone}")
+    public String saveOwner(@PathVariable("fname") String name,@PathVariable("lname") String lname,@PathVariable("address") String address,@PathVariable("telephone") String telephone){
+    	Owners owner = new Owners(name,lname,address,telephone);
         ownersRepository.save(owner);
         return "New Owner "+ owner.getFirstName() + " Saved";
     }
@@ -60,6 +62,12 @@ class OwnerController {
     public Optional<Owners> findOwnerById(@PathVariable("ownerId") int id) {
         logger.info("Entered into Controller Layer");
         Optional<Owners> results = ownersRepository.findById(id);
+        return results;
+    }
+    @RequestMapping(method = RequestMethod.GET, path = "/owners/lastname/{lname}")
+    public Optional<Owners> findOwnerByLastName(@PathVariable("lname") String lname) {
+        logger.info("Entered into Controller Layer");
+        Optional<Owners> results = ownersRepository.findByLastName(lname);
         return results;
     }
 
