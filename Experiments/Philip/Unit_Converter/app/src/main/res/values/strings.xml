@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Unit Converter</string>
+    <string name="button1">Length</string>
+    <string name="button2">Mass</string>
+    <string name="button3">Volume</string>
+    <string name="button4">Temperature</string>
+    <string name="textview_length">Length</string>
+    <string name="Convert_Button">Convert!</string>
+    <string-array name="length_array">
+        <item>Inch</item>
+        <item>Foot</item>
+        <item>Yard</item>
+        <item>Mile</item>
+        <item>Centimeter</item>
+        <item>Meter</item>
+        <item>Kilometer</item>
+    </string-array>
+</resources>
