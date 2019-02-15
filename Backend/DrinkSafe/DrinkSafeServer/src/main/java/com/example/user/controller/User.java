@@ -36,7 +36,6 @@ public class User{
 	}
 
 	public static void create(User newUser) {
-		// TODO Auto-generated method stub
 		
 	}
 

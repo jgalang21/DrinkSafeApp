@@ -1,6 +1,7 @@
 package com.example.user.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,14 +19,16 @@ public class UserService {
 	}
 
 	public List<User> getAll() {
-        //logger.info("Entered into Controller Layer");
-        List<User> results = UserRepository.findAll();
-        //logger.info("Number of Records Fetched:" + results.size());
+      
+        List<User> results = userRepository.findAll();
+       
         return results;
 	}
 
 	public User get(long id) {
-		// TODO Auto-generated method stub
+		userRepository.findById(id);
+		 
 		return null;
 	}
+	
 }
