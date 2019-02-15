@@ -10,7 +10,7 @@
         android:layout_width="194dp"
         android:layout_height="47dp"
         android:text="@string/hello_android_studio"
-        android:textsize="100dp"
+        android:textsize="100sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
