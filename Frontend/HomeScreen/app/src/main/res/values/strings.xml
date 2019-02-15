@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">DrinkSafe</string>
+    <string name="timer_t">Timer</string>
+    <string name="drink_summary_t">Drink Summary</string>
+    <string name="party_overview_t">Party Overview</string>
+    <string name="textview">TextView</string>
+    <string name="drink_sum_t">Drink Summary</string>
+</resources>
