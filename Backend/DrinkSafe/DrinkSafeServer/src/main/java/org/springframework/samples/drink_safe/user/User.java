@@ -40,15 +40,15 @@ public class User{
     
     @Column(name = "guest_status")
     @NotFound(action = NotFoundAction.IGNORE)
-	private int guest_status;
+	private int guestStatus;
 
-	public User(String username, String password, int height, int weight,int gender, int guest_status) {
+	public User(String username, String password, int height, int weight,int gender, int guestStatus) {
 		this.username = username;
 		this.password = password;
 		this.height=height;
 		this.weight=weight;
 		this.gender=gender;
-		this.guest_status=guest_status;
+		this.guestStatus=guestStatus;
 	}
 	public User()
 	{}
@@ -97,11 +97,11 @@ public class User{
 		this.gender = gender;
 	}
 
-	public int getGuest_status() {
-		return guest_status;
+	public int getGuestStatus() {
+		return guestStatus;
 	}
 
-	public void setGuest_status(int guest_status) {
-		this.guest_status = guest_status;
+	public void setGuestStatus(int guest_status) {
+		this.guestStatus = guest_status;
 	}
 }

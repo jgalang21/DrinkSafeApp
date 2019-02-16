@@ -37,14 +37,19 @@ import org.springframework.web.bind.annotation.RestController;
 		return x; 
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, path="/users/{userId}")
+	@RequestMapping(method = RequestMethod.GET, path="/users/find/un/{userId}")
 	public Optional<User> findUserbyID(@PathVariable("userId") String id) {
 		logger.info("Finding user: "+id);
         Optional<User> results = userRepo.findByUsername(id);
         return results;
 	}
 	
-
+	@RequestMapping(method = RequestMethod.GET, path="/users/find/gs/{guest_status}")
+	public List<User> findByGuest_Status(@PathVariable("guest_status") int guest_status) {
+		logger.info("Finding user: "+guest_status);
+        List<User> results = userRepo.findAllByGuestStatus(guest_status);
+        return results;
+	}
 	
 		
 	
