@@ -22,13 +22,13 @@ import org.springframework.web.bind.annotation.RestController;
 	UserRepository userRepo;
 	
 	
-	@RequestMapping(method = RequestMethod.POST, path= "/users/new")
+	@RequestMapping(method = RequestMethod.GET, path= "/users/new")
 	public String saveUser(User user) {
 		userRepo.save(user);
 		return user.getUsername() + "has been added!";
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, path= "/users/")
+	@RequestMapping(method = RequestMethod.GET, path= "/users")
 	public List<User> returnAllUsers(){
 		logger.info("Entered into Controller Layer");
 		List<User> x = userRepo.findAll();
@@ -36,7 +36,7 @@ import org.springframework.web.bind.annotation.RestController;
 		return x; 
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, path="users/find")
+	@RequestMapping(method = RequestMethod.GET, path="users/find")
 	public Optional<User> findUserbyID(@PathVariable("id") long id) {
 		logger.info("Entered into Controller Layer");
         Optional<User> results = userRepo.findById(id);
