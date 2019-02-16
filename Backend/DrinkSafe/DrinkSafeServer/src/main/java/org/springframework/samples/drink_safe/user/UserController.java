@@ -22,8 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 	UserRepository userRepo;
 	
 	
-	@RequestMapping(method = RequestMethod.GET, path= "/users/new")
-	public String saveUser(User user) {
+	@RequestMapping(method = RequestMethod.GET, path= "/owners/new/{username}/{password}/{height}/{weight}/{gender}/{gs}")
+	public String saveUser(@PathVariable("username") String username,@PathVariable("password") String password,@PathVariable("height") int height,@PathVariable("weight") int weight,@PathVariable("gender") int gender, @PathVariable("gs") int guest_status) {
+		User user = new User(username,password,height,weight,gender,guest_status);
 		userRepo.save(user);
 		return user.getUsername() + "has been added!";
 	}
@@ -36,12 +37,14 @@ import org.springframework.web.bind.annotation.RestController;
 		return x; 
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, path="users/find")
-	public Optional<User> findUserbyID(@PathVariable("id") long id) {
-		logger.info("Entered into Controller Layer");
-        Optional<User> results = userRepo.findById(id);
+	@RequestMapping(method = RequestMethod.GET, path="/users/{userId}")
+	public Optional<User> findUserbyID(@PathVariable("userId") String id) {
+		logger.info("Finding user: "+id);
+        Optional<User> results = userRepo.findByUsername(id);
         return results;
 	}
+	
+
 	
 		
 	
