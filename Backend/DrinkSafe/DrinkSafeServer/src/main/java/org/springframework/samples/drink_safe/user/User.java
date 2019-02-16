@@ -1,4 +1,4 @@
-package com.example.user.controller;
+package org.springframework.samples.drink_safe.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

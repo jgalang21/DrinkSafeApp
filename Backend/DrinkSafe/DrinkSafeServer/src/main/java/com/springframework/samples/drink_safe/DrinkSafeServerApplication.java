@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.springframework.samples.drink_safe;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
