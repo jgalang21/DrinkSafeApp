@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 	UserRepository userRepo;
 	
 	
-	@RequestMapping(method = RequestMethod.GET, path= "/owners/new/{username}/{password}/{height}/{weight}/{gender}/{gs}")
+	@RequestMapping(method = RequestMethod.GET, path= "/users/new/{username}/{password}/{height}/{weight}/{gender}/{gs}")
 	public String saveUser(@PathVariable("username") String username,@PathVariable("password") String password,@PathVariable("height") int height,@PathVariable("weight") int weight,@PathVariable("gender") int gender, @PathVariable("gs") int guest_status) {
 		User user = new User(username,password,height,weight,gender,guest_status);
 		userRepo.save(user);
