@@ -16,7 +16,6 @@ import lombok.Data;
 @Table(name = "User") // this tells the complier that this class is mapped to the table called "user" in the database
 public class User{
 	@Id
-	@GeneratedValue
     @Column(name = "username")
     @NotFound(action = NotFoundAction.IGNORE)
 	private String username;
