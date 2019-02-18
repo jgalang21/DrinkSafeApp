@@ -1,6 +1,5 @@
-package com.jorden.util;
+package com.jorden.net_utils;
 
-import com.android.volley.toolbox.Volley;
 import com.android.volley.toolbox.ImageLoader.ImageCache;
 
 import android.graphics.Bitmap;

@@ -1,6 +1,6 @@
 package com.jorden.app;
 
-import com.jorden.util.LruBitmapCache;
+import com.jorden.net_utils.LruBitmapCache;
 import android.app.Application;
 import android.text.TextUtils;
 
