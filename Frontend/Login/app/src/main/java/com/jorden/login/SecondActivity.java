@@ -21,18 +21,88 @@ import com.jorden.net_utils.Const;
 public class SecondActivity extends AppCompatActivity {
     private TextView textShown;
     private Button showText;
-    @Override
+/*    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+
         showText = (Button) findViewById(R.id.show_text);
         textShown = (TextView) findViewById(R.id.textToShow);
         showText.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SecondActivity.this,
-                        StringRequestActivity.class));
+                switch (view.getId()) {
+                    case R.id.show_text:
+                    startActivity(new Intent(SecondActivity.this,
+                            StringRequestActivity.class));
+                    break;
+                    default:break;
+                }
             }
-        });
+        });*/
+
+        private String TAG = SecondActivity.class.getSimpleName();
+        private Button btnStringReq;
+        private TextView msgResponse;
+        private ProgressDialog pDialog;
+
+        // This tag will be used to cancel the request
+        private String tag_string_req = "string_req";
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_second);
+
+            btnStringReq = (Button) findViewById(R.id.show_text);
+            msgResponse = (TextView) findViewById(R.id.textToShow);
+
+            pDialog = new ProgressDialog(this);
+            pDialog.setMessage("Loading...");
+            pDialog.setCancelable(false);
+
+            btnStringReq.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    makeStringReq();
+                }
+            });
+        }
+
+        private void showProgressDialog() {
+            if (!pDialog.isShowing())
+                pDialog.show();
+        }
+
+        private void hideProgressDialog() {
+            if (pDialog.isShowing())
+                pDialog.hide();
+        }
+
+        /**
+         * Making json object request
+         * */
+        private void makeStringReq() {
+            showProgressDialog();
+
+            StringRequest strReq = new StringRequest(Method.GET, Const.URL_STRING_REQ, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.d(TAG, response.toString());
+                    msgResponse.setText(response.toString());
+                    hideProgressDialog();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    VolleyLog.d(TAG, "Error: " + error.getMessage());
+                    hideProgressDialog();
+                }
+            });
+
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+
+        }
     }
-}
+
