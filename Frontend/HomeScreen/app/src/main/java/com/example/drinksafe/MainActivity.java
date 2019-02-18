@@ -10,6 +10,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
+import com.example.drinksafe.net_utils.Const;
+import com.example.drinksafe.app.AppController;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -69,6 +74,12 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+
+        NetworkImageView imgView = findViewById(R.id.img);
+
+        ImageLoader imageLoader = AppController.getInstance().getImageLoader();
+        // If you are using NetworkImageView
+        imgView.setImageUrl(Const.URL_Image, imageLoader);
     }
 
     @Override
