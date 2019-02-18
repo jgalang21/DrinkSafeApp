@@ -15,13 +15,13 @@ public class SecondActivity extends AppCompatActivity{
     private Button showText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        showText = (Button) findViewById(R.id.show_text);
-        textShown = (TextView) findViewById(R.id.textToShow);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        showText.setOnClickListener(new OnClickListener(){
+        showText = (Button) findViewById(R.id.show_text);
+        textShown = (TextView) findViewById(R.id.textToShow);
+        showText.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Intent intent = new Intent(SecondActivity.this, StringRequestActivity.class);
                 startActivity(intent);
             }
