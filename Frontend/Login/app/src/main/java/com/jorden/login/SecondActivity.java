@@ -116,27 +116,30 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     }*/
 
         private String TAG = SecondActivity.class.getSimpleName();
-        private Button btnJsonObj;
+        private Button /*btnJsonObj,*/ btnJsonArray;
         private TextView msgResponse;
         private ProgressDialog pDialog;
 
         // These tags will be used to cancel the requests
-        private String tag_json_obj = "jobj_req";
+        private String tag_json_obj = "jobj_req", tag_json_arry = "jarray_req";
 
         @Override
         protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        btnJsonObj = (Button) findViewById(R.id.show_text);
+        //btnJsonObj = (Button) findViewById(R.id.show_text);
+        btnJsonArray = (Button) findViewById(R.id.show_text);
         msgResponse = (TextView) findViewById(R.id.textToShow);
 
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Loading...");
         pDialog.setCancelable(false);
 
-        btnJsonObj.setOnClickListener(this);
-    }
+//        btnJsonObj.setOnClickListener(this);
+        btnJsonArray.setOnClickListener(this);
+
+        }
 
         private void showProgressDialog () {
         if (!pDialog.isShowing())
@@ -201,13 +204,30 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         // Cancelling request
         // ApplicationController.getInstance().getRequestQueue().cancelAll(tag_json_obj);
     }
-
+    private void makeJsonArryReq() {
+        showProgressDialog();
+        JsonArrayRequest req = new JsonArrayRequest(Const.URL_USER_INFO,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d(TAG, response.toString());
+                        msgResponse.setText(response.toString());
+                        hideProgressDialog();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                hideProgressDialog();
+            }
+        });
+    }
 
         @Override
         public void onClick (View v){
         switch (v.getId()) {
             case R.id.show_text:
-                makeJsonObjReq();
+                makeJsonArryReq();
                 break;
 
         }
