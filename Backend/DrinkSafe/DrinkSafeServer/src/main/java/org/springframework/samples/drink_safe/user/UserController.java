@@ -30,9 +30,9 @@ import org.springframework.web.bind.annotation.RestController;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path= "/users")
-	public List<User> returnAllUsers(){
+	public Iterable<User> returnAllUsers(){
 		logger.info("Entered into Controller Layer");
-		List<User> x = userRepo.findAll();
+		Iterable<User> x = userRepo.findAll();
 		logger.info("");
 		return x; 
 	}
