@@ -125,7 +125,7 @@ public class Length extends AppCompatActivity implements AdapterView.OnItemSelec
             case 2:
                 switch(out) {
                     case 0:
-                        result = x * 468;
+                        result = x * 36;
                         break;
                     case 1:
                         result = x * 3;
