@@ -18,9 +18,9 @@ public class UserService {
 		return newUser;
 	}
 
-	public List<User> getAll() {
+	public Iterable<User> getAll() {
       
-        List<User> results = userRepository.findAll();
+        Iterable<User> results = userRepository.findAll();
        
         return results;
 	}
