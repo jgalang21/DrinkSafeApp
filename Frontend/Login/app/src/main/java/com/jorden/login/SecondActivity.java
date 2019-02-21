@@ -206,7 +206,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     }
     private void makeJsonArryReq() {
         showProgressDialog();
-        JsonArrayRequest req = new JsonArrayRequest(Const.URL_USER_INFO,
+        JsonArrayRequest req = new JsonArrayRequest(Const.URL_USER_INFO/*URL_USER_INFO*/,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -218,9 +218,14 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.d(TAG, "Error: " + error.getMessage());
+                Log.d(TAG, error.getStackTrace() + "");
+                Log.d(TAG, error.getLocalizedMessage() + "");
                 hideProgressDialog();
             }
         });
+        AppController.getInstance().addToRequestQueue(req,
+                tag_json_arry);
+
     }
 
         @Override
