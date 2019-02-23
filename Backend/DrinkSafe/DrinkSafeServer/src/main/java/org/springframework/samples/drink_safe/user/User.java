@@ -1,15 +1,17 @@
 package org.springframework.samples.drink_safe.user;
+import org.springframework.samples.drink_safe.friend.*;
+
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
-
-import lombok.Data;
 
 
 @Entity // the @Entity annotation tells the complier that this is a Database mapped object
@@ -40,20 +42,32 @@ public class User{
     @Column(name = "guest_status")
     @NotFound(action = NotFoundAction.IGNORE)
 	private int guestStatus;
+    
+    
+    ArrayList<User> friends = new ArrayList<User>();
 
-	public User(String username, String password, int height, int weight,int gender, int guestStatus) {
+	public User(String username, String password, int height, int weight,int gender, int guestStatus, ArrayList<User> friends) {
 		this.username = username;
 		this.password = password;
 		this.height=height;
 		this.weight=weight;
 		this.gender=gender;
 		this.guestStatus=guestStatus;
+		this.friends = friends;
 	}
 	public User()
 	{}
 
 	public static void create(User newUser) {
 		
+	}
+	
+	public ArrayList<User> getFriends(){
+		return friends;
+	}
+	
+	public void addFriend(User name){
+		friends.add(name);
 	}
 
 	public String getUsername() {

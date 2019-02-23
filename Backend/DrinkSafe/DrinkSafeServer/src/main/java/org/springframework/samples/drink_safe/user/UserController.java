@@ -1,5 +1,6 @@
 package org.springframework.samples.drink_safe.user;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,9 +23,10 @@ import org.springframework.web.bind.annotation.RestController;
 	UserRepository userRepo;
 	
 	
-	@RequestMapping(method = RequestMethod.GET, path= "/users/new/{username}/{password}/{height}/{weight}/{gender}/{guestStatus}")
-	public String saveUser(@PathVariable("username") String username,@PathVariable("password") String password,@PathVariable("height") int height,@PathVariable("weight") int weight,@PathVariable("gender") int gender, @PathVariable("guestStatus") int guestStatus) {
-		User user = new User(username,password,height,weight,gender,guestStatus);
+	@RequestMapping(method = RequestMethod.GET, path= "/users/new/{username}/{password}/{height}/{weight}/{gender}/{guestStatus}/{friends}")
+	public String saveUser(@PathVariable("username") String username,@PathVariable("password") String password,@PathVariable("height") int height,@PathVariable("weight") int weight,@PathVariable("gender") int gender, @PathVariable("guestStatus") int guestStatus,
+			@PathVariable("friends") ArrayList<User> friends) {
+		User user = new User(username,password,height,weight,gender,guestStatus, friends);
 		userRepo.save(user);
 		return user.getUsername() + "has been added!";
 	}
@@ -51,7 +53,14 @@ import org.springframework.web.bind.annotation.RestController;
         return results;
 	}
 	
-		
+	
+	@RequestMapping(method = RequestMethod.GET, path="/users/find/un/{userId}/{friends}")
+	public Optional<User> getFriends(@PathVariable("userId") String id, @PathVariable("friends") ArrayList<User> friends) {
+		logger.info("Finding " + id + "\'s friends..");
+        Optional<User> results = userRepo.getFriends(id);
+        return results;
+	}
+	
 	
 	}
 

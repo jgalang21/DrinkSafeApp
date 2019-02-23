@@ -17,6 +17,9 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	List<User> findAllByGuestStatus(int guest_status);
 
 
+	Optional<User> getFriends(String id);
+
+
 
 
 }
