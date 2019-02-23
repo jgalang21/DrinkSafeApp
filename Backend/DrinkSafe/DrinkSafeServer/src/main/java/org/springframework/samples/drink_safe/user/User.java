@@ -1,10 +1,5 @@
 package org.springframework.samples.drink_safe.user;
-import org.springframework.samples.drink_safe.friend.*;
-
-import java.awt.List;
 import java.util.ArrayList;
-import java.util.HashMap;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
