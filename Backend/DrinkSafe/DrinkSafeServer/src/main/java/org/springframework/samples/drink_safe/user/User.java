@@ -66,6 +66,18 @@ public class User{
 		return friends;
 	}
 	
+	public int numFriends() {
+		return friends.size();
+	}
+	
+	public boolean checkFriendship(User name) {
+		if(friends.contains(name) && name.friends.contains(this)) {
+			return true;
+		}
+		return false;
+		
+	}
+	
 	public void addFriend(User name){
 		friends.add(name);
 	}

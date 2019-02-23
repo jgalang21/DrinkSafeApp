@@ -54,8 +54,8 @@ import org.springframework.web.bind.annotation.RestController;
 	}
 	
 	
-	@RequestMapping(method = RequestMethod.GET, path="/users/find/un/{userId}/{friends}")
-	public Optional<User> getFriends(@PathVariable("userId") String id, @PathVariable("friends") ArrayList<User> friends) {
+	@RequestMapping(method = RequestMethod.GET, path="/users/find/un/{userId}/friends")
+	public Optional<User> getFriends(@PathVariable("userId") String id) {
 		logger.info("Finding " + id + "\'s friends..");
         Optional<User> results = userRepo.getFriends(id);
         return results;
