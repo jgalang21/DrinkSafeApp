@@ -1,5 +1,8 @@
 package org.springframework.samples.drink_safe.user;
 
+import java.util.List;
+import org.springframework.samples.drink_safe.friend.*;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,6 +43,8 @@ public class User{
     @Column(name = "guest_status")
     @NotFound(action = NotFoundAction.IGNORE)
 	private int guestStatus;
+    
+    ArrayList<friend> friends_list = new ArrayList<friend>(); 
 
 	public User(String username, String password, int height, int weight,int gender, int guestStatus) {
 		this.username = username;
