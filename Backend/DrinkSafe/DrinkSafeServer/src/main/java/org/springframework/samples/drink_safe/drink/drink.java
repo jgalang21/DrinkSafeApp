@@ -1,4 +1,4 @@
-package org.springframework.samples.drink_safe.drink;
+package org.springframework.samples.drink_safe.Drink;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,8 +9,8 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 @Entity // the @Entity annotation tells the complier that this is a Database mapped object
-@Table(name = "drink")
-public class drink {
+@Table(name = "Drink")
+public class Drink {
 	
 	@Id
     @Column(name = "DrinkId")
@@ -27,7 +27,7 @@ public class drink {
 	private int volume;
     
     
-    public drink(String drinkid, int alcPercent,int volume) {
+    public Drink(String drinkid, int alcPercent,int volume) {
     	this.DrinkId = drinkid;
     	this.alcPercent = alcPercent;
     	this.volume = volume;
