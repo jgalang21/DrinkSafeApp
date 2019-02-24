@@ -1,22 +1,28 @@
 package org.springframework.samples.drink_safe.user;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import org.springframework.samples.drink_safe.friend.*;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
-import lombok.Data;
-
 
 @Entity // the @Entity annotation tells the complier that this is a Database mapped object
-@Table(name = "User") // this tells the complier that this class is mapped to the table called "user" in the database
+@Table(name = "user") // this tells the complier that this class is mapped to the table called "user" in the database
 public class User{
 	@Id
     @Column(name = "username")
@@ -43,8 +49,17 @@ public class User{
     @Column(name = "guest_status")
     @NotFound(action = NotFoundAction.IGNORE)
 	private int guestStatus;
+  
+    @ManyToMany
+    @JoinTable(name = "friend", 
+        joinColumns = @JoinColumn(name = "u1username"), 
+        inverseJoinColumns = @JoinColumn(name = "friend"))
+    protected List<User> friends = null;
+    @ManyToMany(mappedBy = "friends")
+    protected List<User> befriended = null;
+  
+
     
-    ArrayList<friend> friends_list = new ArrayList<friend>(); 
 
 	public User(String username, String password, int height, int weight,int gender, int guestStatus) {
 		this.username = username;
@@ -53,6 +68,8 @@ public class User{
 		this.weight=weight;
 		this.gender=gender;
 		this.guestStatus=guestStatus;
+		
+		
 	}
 	public User()
 	{}
@@ -60,7 +77,10 @@ public class User{
 	public static void create(User newUser) {
 		
 	}
-
+	
+	//deleted the check friends in user since that is already in friends 
+	
+	
 	public String getUsername() {
 		return username;
 	}
@@ -108,4 +128,39 @@ public class User{
 	public void setGuestStatus(int guest_status) {
 		this.guestStatus = guest_status;
 	}
+	public void setGender(int gender) {
+		this.gender = gender;
+	}
+	public List getFriends() {
+		return friends;
+	}
+	public void setFriends(List friends) {
+		this.friends = friends;
+	}
+	public List<User> getBefriended() {
+		return befriended;
+	}
+	public void setBefriended(List<User> befriended) {
+		this.befriended = befriended;
+	}
+	public String toString()
+	{
+		String friends_list="";
+		for(User i: friends)
+			friends_list+=i.getUsername()+", ";
+		String befriended_list="";
+		for(User i:befriended)
+			befriended_list+=i.getUsername() +", ";
+		String returner ="";
+		returner += "Username: " + getUsername()+"\n";
+		returner += "Password: " + getPassword()+"\n";
+		returner += "Height: " + getHeight()+"\n";
+		returner += "Weight: " + getWeight()+"\n";
+		returner += "Gender: " + getGender()+"\n";
+		returner += "Guest Status: " + getGuestStatus()+"\n";
+		returner += "Friends List: "+friends_list+ "\n";
+		returner += "Befriened List: "+befriended_list;
+		return returner;
+	}
+
 }
