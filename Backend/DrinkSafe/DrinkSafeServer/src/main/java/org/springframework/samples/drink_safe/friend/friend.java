@@ -12,41 +12,39 @@ import org.hibernate.annotations.NotFoundAction;
 @Table(name="friend")
 public class friend {
 	@Id
-    @Column(name = "u1username")
+    @Column(name = "sentfrom")
     @NotFound(action = NotFoundAction.IGNORE)
-	private String u1username;
+	private String sentfrom;
 	
     
-    @Column(name = "friend")
+    @Column(name = "sentto")
     @NotFound(action = NotFoundAction.IGNORE)
-	private String friend;
+	private String sentto;
     public friend()
     {
     	
     }
     public friend(String u1, String u2)
     {
-    	u1username=u1;
-    	friend=u2;
+    	sentfrom=u1;
+    	sentto=u2;
     }
 
-	public String getU1username() {
-		return u1username;
+
+	public static void create(friend new_rel) {
+		// TODO Auto-generated method stub
 	}
-
-
-	public void setU1username(String u1username) {
-		this.u1username = u1username;
+		
+	public String getSentfrom() {
+		return sentfrom;
 	}
-
-
-	public String getFriend() {
-		return friend;
+	public void setSentfrom(String sentfrom) {
+		this.sentfrom = sentfrom;
 	}
-
-
-	public void setFriend(String friend) {
-		this.friend = friend;
+	public String getSentto() {
+		return sentto;
 	}
-
+	public void setSentto(String sentto) {
+		this.sentto = sentto;
+	}
 }

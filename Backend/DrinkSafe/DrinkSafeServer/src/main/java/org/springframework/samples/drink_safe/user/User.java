@@ -52,11 +52,11 @@ public class User{
   
     @ManyToMany
     @JoinTable(name = "friend", 
-        joinColumns = @JoinColumn(name = "u1username"), 
-        inverseJoinColumns = @JoinColumn(name = "friend"))
-    protected List<User> friends = new ArrayList<User>();
+        joinColumns = @JoinColumn(name = "sentfrom"),
+    	inverseJoinColumns = @JoinColumn(name = "sentto"))
+    private Set<User> friends = new HashSet<User>();
     @ManyToMany(mappedBy = "friends")
-    protected List<User> befriended = new ArrayList<User>();
+    private Set<User> befriended = new HashSet<User>();
   
 
     
@@ -131,16 +131,16 @@ public class User{
 	public void setGender(int gender) {
 		this.gender = gender;
 	}
-	public List getFriends() {
+	public Set<User> getFriends() {
 		return friends;
 	}
-	public void setFriends(List friends) {
+	public void setFriends(Set<User> friends) {
 		this.friends = friends;
 	}
-	public List<User> getBefriended() {
+	public Set<User> getBefriended() {
 		return befriended;
 	}
-	public void setBefriended(List<User> befriended) {
+	public void setBefriended(Set<User> befriended) {
 		this.befriended = befriended;
 	}
 	public String toString()

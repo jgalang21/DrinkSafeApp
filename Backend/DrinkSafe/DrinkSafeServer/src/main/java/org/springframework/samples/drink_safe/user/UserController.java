@@ -73,8 +73,10 @@ import org.springframework.web.bind.annotation.RestController;
 	
 	@RequestMapping(method = RequestMethod.GET, path="/users/friend/addFriends/{user1Id}/{user2Id}")
 	public String addFriends(@PathVariable("user1Id") String user1,@PathVariable("user2Id") String user2) {
-		friend new_rel= new friend(user1,user2);
-		friendRepo.save(new_rel);
+		User u = userRepo.findByUsername(user1);
+		User u2 =userRepo.findByUsername(user2);
+		u.getFriends().add(u2);
+		userRepo.save(u);
 		return user1 + "is now friends with " + user2;
 	}	
 	
