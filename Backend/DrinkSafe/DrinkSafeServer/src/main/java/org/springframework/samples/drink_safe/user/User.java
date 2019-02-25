@@ -15,12 +15,13 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.springframework.samples.drink_safe.Drink.Drink;
-
+import org.springframework.samples.drink_safe.time.time;
 
 @Entity // the @Entity annotation tells the complier that this is a Database mapped object
 @Table(name = "user") // this tells the complier that this class is mapped to the table called "user" in the database
@@ -60,6 +61,7 @@ public class User{
     private Set<User> befriended = new HashSet<User>();
   
     
+
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
         name = "consume", 
@@ -67,6 +69,14 @@ public class User{
         inverseJoinColumns = { @JoinColumn(name = "did") }
     )
     Set<Drink> drinks = new HashSet<Drink>();
+
+    @OneToOne(cascade = { CascadeType.ALL })
+    @JoinTable(
+        name = "drink_time", 
+        joinColumns = { @JoinColumn(name = "dtusername") }, 
+        inverseJoinColumns = { @JoinColumn(name = "tid") }
+    )
+    time user_time; 
     
 
 	public User(String username, String password, int height, int weight,int gender, int guestStatus) {
@@ -169,6 +179,12 @@ public class User{
 		returner += "Friends List: "+friends_list+ "\n";
 		returner += "Befriened List: "+befriended_list;
 		return returner;
+	}
+	public time getUser_time() {
+		return user_time;
+	}
+	public void setUser_time(time user_time) {
+		this.user_time = user_time;
 	}
 
 }
