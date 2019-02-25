@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 	public String listAllDrinks(){
 		String temp = "";
 		logger.info("Entered into control layer (For drinks)");
-		Iterable<Drink> r = drinkRepo.findAllDrinks();
+		Iterable<Drink> r = drinkRepo.findAll();
 		for(Drink a : r)
 			temp += a + "\n";
 		return temp;

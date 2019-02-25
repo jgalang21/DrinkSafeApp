@@ -54,9 +54,9 @@ public class User{
     @JoinTable(name = "friend", 
         joinColumns = @JoinColumn(name = "u1username"), 
         inverseJoinColumns = @JoinColumn(name = "friend"))
-    protected List<User> friends = null;
+    protected List<User> friends = new ArrayList<User>();
     @ManyToMany(mappedBy = "friends")
-    protected List<User> befriended = null;
+    protected List<User> befriended = new ArrayList<User>();
   
 
     

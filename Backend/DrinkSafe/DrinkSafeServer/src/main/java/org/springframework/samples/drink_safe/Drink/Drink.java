@@ -2,6 +2,7 @@ package org.springframework.samples.drink_safe.Drink;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -15,7 +16,7 @@ public class Drink {
 	@Id
     @Column(name = "DrinkId")
     @NotFound(action = NotFoundAction.IGNORE)
-	private String DrinkId;
+	private String drinkId;
 	
     
     @Column(name = "alcPercent")
@@ -28,19 +29,19 @@ public class Drink {
     
     
     public Drink(String drinkid, int alcPercent,int volume) {
-    	this.DrinkId = drinkid;
+    	this.drinkId = drinkid;
     	this.alcPercent = alcPercent;
     	this.volume = volume;
     }
 
 
 	public String getDrinkId() {
-		return DrinkId;
+		return drinkId;
 	}
 
 
 	public void setDrinkId(String drinkId) {
-		DrinkId = drinkId;
+		this.drinkId = drinkId;
 	}
 
 
