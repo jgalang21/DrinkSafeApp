@@ -19,6 +19,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import org.springframework.samples.drink_safe.Drink.Drink;
 
 
 @Entity // the @Entity annotation tells the complier that this is a Database mapped object
@@ -58,7 +59,14 @@ public class User{
     @ManyToMany(mappedBy = "friends")
     private Set<User> befriended = new HashSet<User>();
   
-
+    
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+        name = "consume", 
+        joinColumns = { @JoinColumn(name = "cusername") }, 
+        inverseJoinColumns = { @JoinColumn(name = "did") }
+    )
+    Set<Drink> drinks = new HashSet<Drink>();
     
 
 	public User(String username, String password, int height, int weight,int gender, int guestStatus) {
