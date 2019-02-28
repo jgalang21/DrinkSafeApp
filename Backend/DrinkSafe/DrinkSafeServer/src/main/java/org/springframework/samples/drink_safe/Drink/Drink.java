@@ -1,20 +1,25 @@
 package org.springframework.samples.drink_safe.Drink;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import org.springframework.samples.drink_safe.user.User;
 
 @Entity // the @Entity annotation tells the complier that this is a Database mapped object
-@Table(name = "Drink")
+@Table(name = "drink")
 public class Drink {
 	
 	@Id
-    @Column(name = "DrinkId")
+    @Column(name = "drinkId") 
     @NotFound(action = NotFoundAction.IGNORE)
 	private String drinkId;
 	
@@ -64,7 +69,8 @@ public class Drink {
 		this.volume = volume;
 	}
     
-    
+	@ManyToMany(mappedBy="drinks")
+	private Set<User> befriended = new HashSet<User>();
 
     
    

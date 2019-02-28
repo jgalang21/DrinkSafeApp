@@ -13,9 +13,9 @@ import org.hibernate.annotations.NotFoundAction;
 public class consume {
 	
 	
-    @Column(name = "did")
+    @Column(name = "drinkId")
     @NotFound(action = NotFoundAction.IGNORE)
-	private String did;
+	private String drinkId;
 	
     
     @Column(name = "total_num")
@@ -31,17 +31,17 @@ public class consume {
     
     public consume(String did, String cusername, int total_num)
     {
-    	this.did=did;
+    	this.drinkId=did;
     	this.cusername=cusername;
     	this.total_num=total_num;
     }
 
-	public String getDid() {
-		return did;
+	public String getDrinkId() {
+		return drinkId;
 	}
 
-	public void setDid(String did) {
-		this.did = did;
+	public void setDrinkId(String did) {
+		this.drinkId = did;
 	}
 
 	public int getTotal_num() {

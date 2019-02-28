@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.drink_safe.Drink.Drink;
 import org.springframework.samples.drink_safe.friend.friend;
 import org.springframework.samples.drink_safe.friend.friendRepository;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -78,7 +79,10 @@ import org.springframework.web.bind.annotation.RestController;
 		u.getFriends().add(u2);
 		userRepo.save(u);
 		return user1 + "is now friends with " + user2;
-	}	
+	}
+	
+
+	
 	
 }
 

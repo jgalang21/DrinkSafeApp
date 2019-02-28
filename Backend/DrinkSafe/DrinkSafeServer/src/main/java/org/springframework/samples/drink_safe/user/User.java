@@ -61,14 +61,14 @@ public class User{
     private Set<User> befriended = new HashSet<User>();
   
     
-
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
         name = "consume", 
         joinColumns = { @JoinColumn(name = "cusername") }, 
-        inverseJoinColumns = { @JoinColumn(name = "did") }
+        inverseJoinColumns = { @JoinColumn(name = "drinkId") }
     )
     Set<Drink> drinks = new HashSet<Drink>();
+    
 
     @OneToOne(cascade = { CascadeType.ALL })
     @JoinTable(
@@ -186,5 +186,11 @@ public class User{
 	public void setUser_time(time user_time) {
 		this.user_time = user_time;
 	}
-
+	
+	public Set<Drink> getDrinks() {
+		return drinks;
+	}
+	public void setDrinks(Set<Drink> drinks) {
+		this.drinks = drinks;
+	}
 }

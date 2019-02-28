@@ -22,11 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 	{
 		Drink drink = new Drink(DrinkId, alcPercent, volume);
 		drinkRepo.save(drink);
-		return drink.getDrinkId() + " has been added. It contains " + alcPercent + " alcohol.";
+		return "added";
 	}
 	
 	
-	@RequestMapping(method = RequestMethod.GET, path ="/drink/")
+	@RequestMapping(method = RequestMethod.GET, path ="/drink")
 	public String listAllDrinks(){
 		String temp = "";
 		logger.info("Entered into control layer (For drinks)");
@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.RestController;
 			temp += a + "\n";
 		return temp;
 	}
-	
+	/*
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/drink/find/{DrinkId}")
 	public Drink findByDrinkID(@PathVariable("DrinkId") String DrinkId) {
@@ -45,7 +45,7 @@ import org.springframework.web.bind.annotation.RestController;
 		
 	}
 	
-	
+	*/
 	
 	}
 

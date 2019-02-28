@@ -10,7 +10,4 @@ public interface consumeRepository extends CrudRepository<consume, Long> {
 
 
 
-
-
-
 }

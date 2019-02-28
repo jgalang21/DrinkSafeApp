@@ -9,7 +9,7 @@ public interface DrinkRepository extends CrudRepository<Drink, Long> {
 
 
 
-	Drink findByDrinkId(String drinkId);
+	//Drink findByDrinkId(String drinkId);
 
 
 
