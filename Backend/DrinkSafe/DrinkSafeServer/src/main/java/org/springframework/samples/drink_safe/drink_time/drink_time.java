@@ -1,7 +1,5 @@
 package org.springframework.samples.drink_safe.drink_time;
 
-import java.util.HashMap;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
