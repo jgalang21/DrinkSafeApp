@@ -8,4 +8,12 @@
     <string name="quick_add_t">Quick Add</string>
     <string name="last_drink_t">Last Drink:</string>
     <string name="total_drinks_t">Total Drinks:</string>
+    <string name="profile_t">Profile</string>
+    <string name="profile_name_t">Name:</string>
+    <string name="profile_email_t">E-mail:</string>
+    <string name="profile_phone_t">Phone Number:</string>
+    <string name="profile_gender_t">Gender:</string>
+    <string name="profile_height_t">Height:</string>
+    <string name="profile_weight_t">Weight:</string>
+
 </resources>

@@ -1,5 +1,6 @@
 package com.example.drinksafe;
 
+import android.support.annotation.MainThread;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.content.Intent;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
@@ -63,8 +65,22 @@ public class MainActivity extends AppCompatActivity {
 
                         // Add code here to update the UI based on the item selected
                         // For example, swap UI fragments here
+                        Intent i;
+                        switch(menuItem.getItemId())
+                        {
+                            case R.id.nav_profile:
+                                i = new Intent(MainActivity.this, ProfileScreen.class);
+                                startActivity(i);
+                            case R.id.nav_drinks:
+                                i = new Intent(MainActivity.this, ProfileScreen.class);
+                                startActivity(i);
+                            case R.id.nav_party:
+                                i = new Intent(MainActivity.this, ProfileScreen.class);
+                                startActivity(i);
+                            default:
+                                return true;
+                        }
 
-                        return true;
                     }
                 });
 
