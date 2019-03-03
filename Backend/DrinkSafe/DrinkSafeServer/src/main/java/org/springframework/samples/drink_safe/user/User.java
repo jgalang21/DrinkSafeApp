@@ -1,6 +1,8 @@
 package org.springframework.samples.drink_safe.user;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -10,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -54,15 +58,10 @@ public class User{
     private Set<User> friends = new HashSet<User>();
     @ManyToMany(mappedBy = "friends")
     private Set<User> befriended = new HashSet<User>();
-  
     
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-        name = "consume", 
-        joinColumns = { @JoinColumn(name = "cusername") }, 
-        inverseJoinColumns = { @JoinColumn(name = "drinkId") }
-    )
-    Set<Drink> drinks = new HashSet<Drink>();
+    
+    @OneToMany(mappedBy = "user_td")
+    private Set<Drink> drinks = new HashSet<Drink>();
     
 
     @OneToOne(cascade = { CascadeType.ALL })
@@ -181,11 +180,12 @@ public class User{
 	public void setUser_time(time user_time) {
 		this.user_time = user_time;
 	}
-	
 	public Set<Drink> getDrinks() {
 		return drinks;
 	}
 	public void setDrinks(Set<Drink> drinks) {
 		this.drinks = drinks;
 	}
+	
+
 }

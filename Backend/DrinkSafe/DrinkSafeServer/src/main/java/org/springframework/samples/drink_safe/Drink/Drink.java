@@ -5,9 +5,12 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.NotFound;
@@ -31,6 +34,10 @@ public class Drink {
     @Column(name = "volume")
     @NotFound(action = NotFoundAction.IGNORE)
 	private int volume;
+    
+    @ManyToOne
+    @JoinColumn(name = "cusername",nullable =false)
+    private User user_td;
     
     
     public Drink(String drinkid, int alcPercent,int volume) {
@@ -71,6 +78,29 @@ public class Drink {
     
 	@ManyToMany(mappedBy="drinks")
 	private Set<User> befriended = new HashSet<User>();
+
+
+
+
+
+	public Set<User> getBefriended() {
+		return befriended;
+	}
+
+
+	public void setBefriended(Set<User> befriended) {
+		this.befriended = befriended;
+	}
+
+
+	public User getUser_td() {
+		return user_td;
+	}
+
+
+	public void setUser_td(User user_td) {
+		this.user_td = user_td;
+	}
 
     
    
