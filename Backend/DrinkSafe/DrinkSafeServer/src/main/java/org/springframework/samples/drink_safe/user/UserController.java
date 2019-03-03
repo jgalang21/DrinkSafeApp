@@ -65,12 +65,7 @@ import org.springframework.web.bind.annotation.RestController;
         return results;
 	}
 	
-	/*
-	@RequestMapping(method = RequestMethod.GET, path="/users/friend/getFriends/{userId}")
-	public String getFriends(@PathVariable("userId") String id) {
-		
-	}	
-	*/
+
 	
 	@RequestMapping(method = RequestMethod.GET, path="/users/friend/addFriends/{user1Id}/{user2Id}")
 	public String addFriends(@PathVariable("user1Id") String user1,@PathVariable("user2Id") String user2) {
@@ -82,6 +77,18 @@ import org.springframework.web.bind.annotation.RestController;
 	}
 	
 
+	@RequestMapping(method = RequestMethod.GET, path="/users/{username}/{drinkid}/{amount}")
+	public void giveDrink(@PathVariable("username") User username, @PathVariable("drinkid") Drink drinkid) {
+		
+		logger.info("Giving " + drinkid.getAlcpercent() + " percent" + drinkid.getDrinkid());
+		
+		//return null;
+		/*
+		 * logger.info(" user: "+guest_status); List<User> results =
+		 * userRepo.findAllByGuestStatus(guest_status); return results;
+		 */
+	}
+	
 	
 	
 }
