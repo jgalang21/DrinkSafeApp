@@ -60,8 +60,8 @@ public class User{
     private Set<User> befriended = new HashSet<User>();
     
     
-    @OneToMany(mappedBy = "user_td")
-    private Set<Drink> drinks = new HashSet<Drink>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Drink> drinks;
     
 
     @OneToOne(cascade = { CascadeType.ALL })
@@ -180,6 +180,7 @@ public class User{
 	public void setUser_time(time user_time) {
 		this.user_time = user_time;
 	}
+	
 	public Set<Drink> getDrinks() {
 		return drinks;
 	}

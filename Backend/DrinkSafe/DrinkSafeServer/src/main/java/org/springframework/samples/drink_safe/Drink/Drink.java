@@ -22,49 +22,34 @@ import org.springframework.samples.drink_safe.user.User;
 public class Drink {
 	
 	@Id
-    @Column(name = "drinkId") 
+    @Column(name = "drinkid") 
     @NotFound(action = NotFoundAction.IGNORE)
-	private String drinkId;
+	private String drinkid;
 	
     
-    @Column(name = "alcPercent")
+    @Column(name = "alcpercent")
     @NotFound(action = NotFoundAction.IGNORE)
-	private int alcPercent;
+	private int alcpercent;
     
     @Column(name = "volume")
     @NotFound(action = NotFoundAction.IGNORE)
 	private int volume;
     
-    @ManyToOne
-    @JoinColumn(name = "cusername",nullable =false)
-    private User user_td;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "fk_user",nullable =false)
+    private User user;
     
     
     public Drink(String drinkid, int alcPercent,int volume) {
-    	this.drinkId = drinkid;
-    	this.alcPercent = alcPercent;
+    	this.drinkid = drinkid;
+    	this.alcpercent = alcPercent;
     	this.volume = volume;
     }
 
 
-	public String getDrinkId() {
-		return drinkId;
-	}
 
 
-	public void setDrinkId(String drinkId) {
-		this.drinkId = drinkId;
-	}
 
-
-	public int getAlcPercent() {
-		return alcPercent;
-	}
-
-
-	public void setAlcPercent(int alcPercent) {
-		this.alcPercent = alcPercent;
-	}
 
 
 	public int getVolume() {
@@ -75,34 +60,50 @@ public class Drink {
 	public void setVolume(int volume) {
 		this.volume = volume;
 	}
-    
-	@ManyToMany(mappedBy="drinks")
-	private Set<User> befriended = new HashSet<User>();
 
-
-
-
-
-	public Set<User> getBefriended() {
-		return befriended;
+	public User getUser() {
+		return user;
 	}
 
 
-	public void setBefriended(Set<User> befriended) {
-		this.befriended = befriended;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 
-	public User getUser_td() {
-		return user_td;
+
+
+	public String getDrinkid() {
+		return drinkid;
 	}
 
 
-	public void setUser_td(User user_td) {
-		this.user_td = user_td;
+
+
+	public void setDrinkid(String drinkid) {
+		this.drinkid = drinkid;
 	}
 
-    
-   
+
+
+
+
+
+
+	public int getAlcpercent() {
+		return alcpercent;
+	}
+
+
+
+
+
+
+
+	public void setAlcpercent(int alcpercent) {
+		this.alcpercent = alcpercent;
+	}
+
+
 
 }
