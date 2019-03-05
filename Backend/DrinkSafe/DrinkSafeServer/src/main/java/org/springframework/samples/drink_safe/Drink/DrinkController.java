@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 	
 	
 	
-	@RequestMapping(method = RequestMethod.GET, path= "/drink/{DrinkId}/{alcPercent}/{volume}/{cusername}")
-	public String addDrink(@PathVariable("DrinkId") String DrinkId,@PathVariable("alcPercent") int alcPercent,@PathVariable("volume") int volume, @PathVariable("cusername") User cusername)
+	@RequestMapping(method = RequestMethod.GET, path= "/drink/{DrinkId}/{alcPercent}/{volume}/")
+	public String addDrink(@PathVariable("DrinkId") String DrinkId,@PathVariable("alcPercent") int alcPercent,@PathVariable("volume") int volume)
 	{
-		Drink drink = new Drink(DrinkId, alcPercent, volume, cusername);
+		Drink drink = new Drink(DrinkId, alcPercent, volume);
 		drinkRepo.save(drink);
 		return "added";
 	}
@@ -39,5 +39,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 	
 	}
+
+
+// PRIMARY KEY (`drinkId`),
+//CONSTRAINT `cusername` FOREIGN KEY (`cusername`) REFERENCES `user` (`username`) ON DELETE CASCADE ON UPDATE CASCADE);
 
 

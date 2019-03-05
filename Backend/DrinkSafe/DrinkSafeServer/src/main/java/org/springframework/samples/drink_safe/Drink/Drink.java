@@ -39,11 +39,15 @@ public class Drink {
 	@JoinColumn(name = "cusername", nullable = false)
 	private User user;
 
-	public Drink(String drinkid, int alcPercent, int volume, User user) {
+	
+	public Drink() {
+		
+	}
+	public Drink(String drinkid, int alcPercent, int volume) {
 		this.drinkid = drinkid;
 		this.alcpercent = alcPercent;
 		this.volume = volume;
-		this.user = user;
+		//this.user = user;
 	}
 
 	public int getVolume() {
