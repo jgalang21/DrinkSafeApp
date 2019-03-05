@@ -184,6 +184,9 @@ public class User{
 	public void setDrinks(Set<Drink> drinks) {
 		this.drinks = drinks;
 	}
+	public void giveDrink(Drink drink) {
+		drinks.add(drink);
+	}
 	
 	
 }

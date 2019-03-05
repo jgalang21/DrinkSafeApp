@@ -1,17 +1,11 @@
 package org.springframework.samples.drink_safe.user;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.drink_safe.Drink.Drink;
-import org.springframework.samples.drink_safe.friend.friend;
 import org.springframework.samples.drink_safe.friend.friendRepository;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 	
 	@Autowired
 	friendRepository friendRepo;
+	
+
 	
 	
 	
@@ -77,16 +73,17 @@ import org.springframework.web.bind.annotation.RestController;
 	}
 	
 
-	@RequestMapping(method = RequestMethod.GET, path="/users/{username}/{drinkid}/{amount}")
+	@RequestMapping(method = RequestMethod.GET, path="/users/new/{username}/{drinkid}/{amount}")
 	public void giveDrink(@PathVariable("username") User username, @PathVariable("drinkid") Drink drinkid) {
 		
-		logger.info("Giving " + drinkid.getAlcpercent() + " percent" + drinkid.getDrinkid());
+		logger.info(username.getUsername() + " drinks a " + drinkid.getDrinkid() + " with " +  drinkid.getAlcpercent() + "alcohol");
+		User found = userRepo.findByUsername(username.getUsername()); // find the user
+	
 		
-		//return null;
-		/*
-		 * logger.info(" user: "+guest_status); List<User> results =
-		 * userRepo.findAllByGuestStatus(guest_status); return results;
-		 */
+		found.giveDrink(drinkid);
+		logger.info("Drink successfully added!");
+		
+
 	}
 	
 	
