@@ -19,7 +19,6 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.jorden.app.AppController;
 import com.jorden.net_utils.Const;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -34,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText Password;
     private TextView Info;
     private Button Login;
+    private Button SignUp;
     private int counter = 5;
     private ProgressDialog pDialog;
     private String TAG = SecondActivity.class.getSimpleName();
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         Password = (EditText) findViewById(R.id.etpass);
         Info = (TextView) findViewById(R.id.tvInfo);
         Login = (Button) findViewById(R.id.btnLogin);
+        SignUp = (Button) findViewById(R.id.SignUpbtn);
 
         Info.setText("attempts left: 5");
         Login.setOnClickListener(new View.OnClickListener() {
@@ -121,9 +122,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("name", "Androidhive");
-                params.put("email", "abc@androidhive.info");
-                params.put("pass", "password123");
+                params.put("email", "admin");//Email.getText().toString());
+                params.put("pass", "password");//Password.getText().toString());
 
                 return params;
             }
@@ -134,11 +134,12 @@ public class MainActivity extends AppCompatActivity {
         AppController.getInstance().addToRequestQueue(jsonObjReq,
                 tag_json_obj);
 
-        // Cancelling request
+        // Cancelling reques
+        // t
         // ApplicationController.getInstance().getRequestQueue().cancelAll(tag_json_obj);
     }
 
-    private void makeJsonArryReq() {
+    private JsonArrayRequest makeJsonArryReq() {
         showProgressDialog();
         JsonArrayRequest req = new JsonArrayRequest(Const.URL_USER_INFO/*URL_USER_INFO*/,
                 new Response.Listener<JSONArray>() {
@@ -157,5 +158,6 @@ public class MainActivity extends AppCompatActivity {
                 hideProgressDialog();
             }
         });
+        return req;
     }
 }
