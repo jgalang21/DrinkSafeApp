@@ -2066,3 +2066,6 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'drink
 2019-03-03 14:19:36.658  INFO 5632 --- [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 47 ms
 2019-03-03 14:19:50.577  INFO 5632 --- [http-nio-8080-exec-3] o.s.s.drink_safe.user.UserController     : Entered into Controller Layer
 2019-03-03 14:19:50.652  INFO 5632 --- [http-nio-8080-exec-3] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2019-03-03 14:38:05.625  WARN 5632 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=17m8s877ms946µs26ns).
+2019-03-03 15:23:20.471  WARN 5632 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=42m44s858ms185µs30ns).
+2019-03-03 17:16:48.030  WARN 5632 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h41m27s386ms13µs387ns).
