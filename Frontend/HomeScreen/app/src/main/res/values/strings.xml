@@ -15,5 +15,6 @@
     <string name="profile_gender_t">Gender:</string>
     <string name="profile_height_t">Height:</string>
     <string name="profile_weight_t">Weight:</string>
-
+    <string name="edit_t">Edit</string>
+    <string name="save_t">Save</string>
 </resources>
