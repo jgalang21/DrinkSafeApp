@@ -36,18 +36,18 @@ public class Drink {
 	private int volume;
 
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "cusername", nullable = false)
-	private User user;
+	@JoinColumn(name = "fkuser", nullable = false)
+	private User fkuser;
 
 	
 	public Drink() {
 		
 	}
-	public Drink(String drinkid, int alcPercent, int volume) {
+	public Drink(String drinkid, int alcPercent, int volume, User fkuser) {
 		this.drinkid = drinkid;
 		this.alcpercent = alcPercent;
 		this.volume = volume;
-		//this.user = user;
+		this.fkuser=fkuser;
 	}
 
 	public int getVolume() {
@@ -59,11 +59,11 @@ public class Drink {
 	}
 
 	public User getUser() {
-		return user;
+		return fkuser;
 	}
 
 	public void setUser(User user) {
-		this.user = user;
+		this.fkuser = user;
 	}
 
 	public String getDrinkid() {

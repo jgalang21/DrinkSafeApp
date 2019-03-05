@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.drink_safe.user.User;
+import org.springframework.samples.drink_safe.user.UserRepository;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,12 +17,16 @@ import org.springframework.web.bind.annotation.RestController;
 	@Autowired
 	DrinkRepository drinkRepo;
 	
+	@Autowired
+	UserRepository userRepo;
 	
 	
-	@RequestMapping(method = RequestMethod.GET, path= "/drink/{DrinkId}/{alcPercent}/{volume}/")
-	public String addDrink(@PathVariable("DrinkId") String DrinkId,@PathVariable("alcPercent") int alcPercent,@PathVariable("volume") int volume)
+	
+	@RequestMapping(method = RequestMethod.GET, path= "/drink/{DrinkId}/{alcPercent}/{volume}/{fkuser}")
+	public String addDrink(@PathVariable("DrinkId") String DrinkId,@PathVariable("alcPercent") int alcPercent,@PathVariable("volume") int volume, @PathVariable("fkuser") String fkuser)
 	{
-		Drink drink = new Drink(DrinkId, alcPercent, volume);
+		User u = userRepo.findByUsername(fkuser);
+		Drink drink = new Drink(DrinkId, alcPercent, volume,u);
 		drinkRepo.save(drink);
 		return "added";
 	}

@@ -57,7 +57,7 @@ public class User{
     private Set<User> befriended = new HashSet<User>();
     
     
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "fkuser", cascade = CascadeType.ALL)
     private Set<Drink> drinks;
     
 
