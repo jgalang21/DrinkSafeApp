@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 	
 	
 	
-	@RequestMapping(method = RequestMethod.GET, path= "/drink/{DrinkId}/{alcPercent}/{volume}/{fkuser}")
+	@RequestMapping(method = RequestMethod.GET, path= "/drink/new/{DrinkId}/{alcPercent}/{volume}/{fkuser}")
 	public String addDrink(@PathVariable("DrinkId") String DrinkId,@PathVariable("alcPercent") int alcPercent,@PathVariable("volume") int volume, @PathVariable("fkuser") String fkuser)
 	{
 		User u = userRepo.findByUsername(fkuser);
