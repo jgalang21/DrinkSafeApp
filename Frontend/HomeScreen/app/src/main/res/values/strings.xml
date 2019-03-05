@@ -12,9 +12,40 @@
     <string name="profile_name_t">Name:</string>
     <string name="profile_email_t">E-mail:</string>
     <string name="profile_phone_t">Phone Number:</string>
-    <string name="profile_gender_t">Gender:</string>
+    <string name="profile_gender_t">Sex:</string>
     <string name="profile_height_t">Height:</string>
     <string name="profile_weight_t">Weight:</string>
     <string name="edit_t">Edit</string>
     <string name="save_t">Save</string>
+
+    <string-array name="sex_array">
+        <item>Female</item>
+        <item>Male</item>
+    </string-array>
+
+    <string-array name="height_feet_array">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+    <string-array name="height_inches_array">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+    </string-array>
 </resources>
