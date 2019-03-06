@@ -9,10 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import com.example.drinksafe.net_utils.Const;
+import com.example.drinksafe.app.AppController;
 
 public class ProfileScreen extends AppCompatActivity {
-    EditText name_box, phone_box, email_box;
-    Spinner sex_s, feet_s, inches_s, lbs_s;
+    private EditText name_box, phone_box, email_box;
+    private Spinner sex_s, feet_s, inches_s, lbs_s;
+    private String name, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,11 @@ public class ProfileScreen extends AppCompatActivity {
         name_box.setEnabled(false);
         phone_box.setEnabled(false);
         email_box.setEnabled(false);
+
+        sex_s = (Spinner) findViewById(R.id.sex_spin);
+        feet_s = (Spinner) findViewById(R.id.feet_spin);
+        inches_s = (Spinner) findViewById(R.id.incehs_spin);
+        //lbs_s = (Spinner) findViewById(R.id.spinner);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
@@ -45,10 +53,14 @@ public class ProfileScreen extends AppCompatActivity {
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         inches_s.setAdapter(adapter3);
 
-        ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this,
+        /*ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this,
                 R.array.height_feet_array, android.R.layout.simple_spinner_item);
         adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        lbs_s.setAdapter(adapter4);
+        lbs_s.setAdapter(adapter4);*/
+
+        sex_s.setEnabled(false);
+        feet_s.setEnabled(false);
+        inches_s.setEnabled(false);
 
         ImageButton b_back = findViewById(R.id.back_button);
         b_back.setOnClickListener(new View.OnClickListener() {
@@ -61,22 +73,28 @@ public class ProfileScreen extends AppCompatActivity {
 
         final Button b = findViewById(R.id.save_edit_button);
         b.setTag(1);
-        b.setText("@string/edit_t");
+        b.setText(R.string.edit_t);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final int status =(Integer) v.getTag();
                 if(status == 1) {
-                    b.setText("Save");
+                    b.setText(R.string.save_t);
                     name_box.setEnabled(true);
                     phone_box.setEnabled(true);
                     email_box.setEnabled(true);
+                    sex_s.setEnabled(true);
+                    feet_s.setEnabled(true);
+                    inches_s.setEnabled(true);
                     v.setTag(0);
                 } else {
-                    b.setText("Edit");
+                    b.setText(R.string.edit_t);
                     name_box.setEnabled(false);
                     phone_box.setEnabled(false);
                     email_box.setEnabled(false);
+                    sex_s.setEnabled(false);
+                    feet_s.setEnabled(false);
+                    inches_s.setEnabled(false);
                     v.setTag(1);
                 }
             }
