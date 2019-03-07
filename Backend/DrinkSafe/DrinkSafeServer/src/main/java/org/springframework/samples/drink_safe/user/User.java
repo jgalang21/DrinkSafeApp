@@ -58,7 +58,7 @@ public class User{
     
     
     @OneToMany(mappedBy = "fkuser", cascade = CascadeType.ALL)
-    private Set<Drink> drinks;
+    private Set<Drink> drinks= new HashSet<Drink>();
     
 
     @OneToOne(cascade = { CascadeType.ALL })
@@ -160,6 +160,14 @@ public class User{
 		String befriended_list="";
 		for(User i:befriended)
 			befriended_list+=i.getUsername() +", ";
+		String drink_list="";
+		for(Drink d: drinks)
+			drink_list+=d.getDrinkid() +", ";
+		String timer = "";
+		if(! (user_time == null))
+		{
+			timer+=(user_time.getTime_finish() -user_time.getTime_start());
+		}
 		String returner ="";
 		returner += "Username: " + getUsername()+"\n";
 		returner += "Password: " + getPassword()+"\n";
@@ -168,7 +176,9 @@ public class User{
 		returner += "Gender: " + getGender()+"\n";
 		returner += "Guest Status: " + getGuestStatus()+"\n";
 		returner += "Friends List: "+friends_list+ "\n";
-		returner += "Befriened List: "+befriended_list;
+		returner += "Befriened List: "+befriended_list+"\n";
+		returner += "Drink List: "+drink_list+"\n";
+		returner += "timer: "+timer;
 		return returner;
 	}
 	public time getUser_time() {
