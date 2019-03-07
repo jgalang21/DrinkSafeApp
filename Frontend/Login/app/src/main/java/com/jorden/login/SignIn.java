@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class MainActivity extends AppCompatActivity {
+public class SignIn extends AppCompatActivity {
 
     private TextView msgResponse;
     private EditText Email;
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SignUp.class);
+                Intent intent = new Intent(SignIn.this, SignUp.class);
                 startActivity(intent);
             }
         });
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void validate(String userEmail, String userPass) {
         if ((userEmail.equals("Admin")) && (userPass.equals("123Abc"))) {
-            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            Intent intent = new Intent(SignIn.this,  SecondActivity.class);
             startActivity(intent);
 
         } else {
@@ -153,7 +153,10 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray response) {
                         Log.d(TAG, response.toString());
-                        msgResponse.setText(response.toString());
+/*                        for(int i = 0;!response.isNull(i);i++) {
+                            JsonObjectRequest obj = response..getString("username");
+                        }*/
+                        //msgResponse.setText(response.toString());
                         hideProgressDialog();
                     }
                 }, new Response.ErrorListener() {
