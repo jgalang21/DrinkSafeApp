@@ -63,24 +63,14 @@
         app:layout_constraintTop_toBottomOf="@+id/name_edit_box" />
 
     <TextView
-        android:id="@+id/phone_num_t"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/profile_phone_t"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/email_t"
-        app:layout_constraintTop_toBottomOf="@+id/email_edit_box" />
-
-    <TextView
         android:id="@+id/gender_t"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:text="@string/profile_gender_t"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/phone_num_t"
-        app:layout_constraintTop_toBottomOf="@+id/phone_edit_box" />
+        app:layout_constraintStart_toStartOf="@+id/email_edit_box"
+        app:layout_constraintTop_toBottomOf="@+id/email_edit_box" />
 
     <TextView
         android:id="@+id/weight_t"
@@ -123,23 +113,12 @@
         app:layout_constraintStart_toStartOf="@+id/email_t"
         app:layout_constraintTop_toBottomOf="@+id/email_t" />
 
-    <EditText
-        android:id="@+id/phone_edit_box"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="phone"
-        app:layout_constraintStart_toStartOf="@+id/phone_num_t"
-        app:layout_constraintTop_toBottomOf="@+id/phone_num_t" />
-
     <Button
         android:id="@+id/save_edit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:layout_marginBottom="16dp"
-        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -187,5 +166,24 @@
         android:text="@string/feet_t"
         app:layout_constraintEnd_toStartOf="@+id/incehs_spin"
         app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+    <EditText
+        android:id="@+id/weight_edit_box"
+        android:layout_width="103dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toTopOf="@+id/weight_t" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/lbs_t"
+        app:layout_constraintBottom_toBottomOf="@+id/weight_edit_box"
+        app:layout_constraintEnd_toEndOf="@+id/textView3" />
 
 </android.support.constraint.ConstraintLayout>
