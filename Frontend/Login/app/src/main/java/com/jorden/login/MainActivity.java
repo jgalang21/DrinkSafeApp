@@ -58,6 +58,13 @@ public class MainActivity extends AppCompatActivity {
                 validate(Email.getText().toString(), Password.getText().toString());
             }
         });
+        SignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SignUp.class);
+                startActivity(intent);
+            }
+        });
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Loading...");
         pDialog.setCancelable(false);
