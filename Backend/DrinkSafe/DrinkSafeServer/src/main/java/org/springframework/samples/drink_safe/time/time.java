@@ -20,14 +20,16 @@ public class time {
     
     @Column(name = "time_start")
     @NotFound(action = NotFoundAction.IGNORE)
-	private int time_start;
+	private long time_start;
     
     @Column(name = "time_finish")
     @NotFound(action = NotFoundAction.IGNORE)
-	private int time_finish;
-    
-    
-    public time(int tid, int time_start,int time_finish) {
+	private long time_finish;
+    public time()
+    {
+    	
+    }
+    public time(int tid, long time_start,long time_finish) {
     	this.tid = tid;
     	this.time_start = time_start;
     	this.time_finish = time_finish;
@@ -44,22 +46,22 @@ public class time {
 	}
 
 
-	public int getTime_start() {
+	public long getTime_start() {
 		return time_start;
 	}
 
 
-	public void setTime_start(int time_start) {
+	public void setTime_start(long time_start) {
 		this.time_start = time_start;
 	}
 
 
-	public int getTime_finish() {
+	public long getTime_finish() {
 		return time_finish;
 	}
 
 
-	public void setTime_finish(int time_finish) {
+	public void setTime_finish(long time_finish) {
 		this.time_finish = time_finish;
 	}
     

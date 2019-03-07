@@ -1,5 +1,6 @@
 package org.springframework.samples.drink_safe.user;
 
+import java.time.LocalTime;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.drink_safe.Drink.Drink;
 import org.springframework.samples.drink_safe.friend.friendRepository;
+import org.springframework.samples.drink_safe.time.time;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -84,6 +86,14 @@ import org.springframework.web.bind.annotation.RestController;
 		logger.info("Drink successfully added!");
 		
 
+	}
+	@RequestMapping(method = RequestMethod.GET, path="/users/time/addTime/{user1Id}")
+	public String addTime(@PathVariable("user1Id") String user1) {
+		User u = userRepo.findByUsername(user1);
+		time t = new time(u.getUsername().hashCode(),System.nanoTime(),System.nanoTime()+1000);
+		u.setUser_time(t);
+		userRepo.save(u);
+		return user1 + "now has " + (t.getTime_finish() -t.getTime_start());
 	}
 	
 	
