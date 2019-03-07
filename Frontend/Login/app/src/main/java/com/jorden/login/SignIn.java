@@ -20,6 +20,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.jorden.app.AppController;
 import com.jorden.net_utils.Const;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -28,7 +29,8 @@ import java.util.Map;
 
 public class SignIn extends AppCompatActivity {
 
-    private TextView msgResponse;
+    private JSONArray msgResponseArr;
+    private JSONObject msgResponseObj;
     private EditText Email;
     private EditText Password;
     private TextView Info;
@@ -38,6 +40,9 @@ public class SignIn extends AppCompatActivity {
     private ProgressDialog pDialog;
     private String TAG = SecondActivity.class.getSimpleName();
     private String tag_json_obj = "jobj_req", tag_json_arry = "jarray_req";
+    private String passWd;
+    String in;
+    JSONObject reader;
 
 
     @Override
@@ -45,17 +50,27 @@ public class SignIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         Email = (EditText) findViewById(R.id.etemail);
         Password = (EditText) findViewById(R.id.etpass);
         Info = (TextView) findViewById(R.id.tvInfo);
         Login = (Button) findViewById(R.id.btnLogin);
         SignUp = (Button) findViewById(R.id.SignUpbtn);
+        try {
+            reader = new JSONObject(in);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         Info.setText("attempts left: 5");
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validate(Email.getText().toString(), Password.getText().toString());
+                try {
+                    validate(Email.getText().toString(), Password.getText().toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
         SignUp.setOnClickListener(new View.OnClickListener() {
@@ -70,8 +85,14 @@ public class SignIn extends AppCompatActivity {
         pDialog.setCancelable(false);
     }
 
-    private void validate(String userEmail, String userPass) {
-        if ((userEmail.equals("Admin")) && (userPass.equals("123Abc"))) {
+    private void validate(String userEmail, String userPass) throws JSONException {
+        if(userPass == ""||userPass == null) {
+            return;
+        }
+            JSONObject sys  = reader.getJSONObject(userEmail);
+            passWd = sys.getString("password");
+
+        if (((userEmail.equals("Admin")) && (userPass.equals("123Abc")))||passWd.equals(userPass)) {
             Intent intent = new Intent(SignIn.this,  SecondActivity.class);
             startActivity(intent);
 
@@ -104,7 +125,7 @@ public class SignIn extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.d(TAG, response.toString());
-                        msgResponse.setText(response.toString());
+                        msgResponseObj = response;
                         hideProgressDialog();
                     }
                 }, new Response.ErrorListener() {
@@ -129,8 +150,8 @@ public class SignIn extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("email", "admin");//Email.getText().toString());
-                params.put("pass", "password");//Password.getText().toString());
+                params.put("email", Email.getText().toString());
+                params.put("pass", Password.getText().toString());
 
                 return params;
             }
@@ -141,9 +162,6 @@ public class SignIn extends AppCompatActivity {
         AppController.getInstance().addToRequestQueue(jsonObjReq,
                 tag_json_obj);
 
-        // Cancelling reques
-        // t
-        // ApplicationController.getInstance().getRequestQueue().cancelAll(tag_json_obj);
     }
 
     private JsonArrayRequest makeJsonArryReq() {
@@ -153,10 +171,8 @@ public class SignIn extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray response) {
                         Log.d(TAG, response.toString());
-/*                        for(int i = 0;!response.isNull(i);i++) {
-                            JsonObjectRequest obj = response..getString("username");
-                        }*/
-                        //msgResponse.setText(response.toString());
+                            msgResponseArr = response;
+                            in = response.toString();
                         hideProgressDialog();
                     }
                 }, new Response.ErrorListener() {
