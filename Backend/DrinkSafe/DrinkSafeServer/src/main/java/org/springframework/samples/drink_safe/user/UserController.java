@@ -85,7 +85,6 @@ import org.springframework.web.bind.annotation.RestController;
 		found.giveDrink(drinkid);
 		logger.info("Drink successfully added!");
 		
-
 	}
 	@RequestMapping(method = RequestMethod.GET, path="/users/time/addTime/{user1Id}")
 	public String addTime(@PathVariable("user1Id") String user1) {
@@ -96,6 +95,7 @@ import org.springframework.web.bind.annotation.RestController;
 		return user1 + "now has " + (t.getTime_finish() -t.getTime_start());
 	}
 	
+
 	
 	
 }

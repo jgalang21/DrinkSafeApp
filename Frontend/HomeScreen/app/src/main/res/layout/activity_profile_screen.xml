@@ -96,11 +96,11 @@
         android:id="@+id/height_t"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="8dp"
         android:text="@string/profile_height_t"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/gender_t"
-        app:layout_constraintTop_toBottomOf="@+id/gender_t" />
+        app:layout_constraintTop_toBottomOf="@+id/sex_spin" />
 
     <EditText
         android:id="@+id/name_edit_box"
@@ -144,10 +144,48 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="342dp"
+        android:id="@+id/sex_spin"
+        android:layout_width="125dp"
+        android:layout_height="50dp"
+        android:popupBackground="?attr/colorButtonNormal"
+        app:layout_constraintEnd_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="@+id/gender_t" />
+
+    <Spinner
+        android:id="@+id/incehs_spin"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:popupBackground="?attr/colorButtonNormal"
+        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="@+id/feet_spin" />
+
+    <Spinner
+        android:id="@+id/feet_spin"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:popupBackground="?attr/colorButtonNormal"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/height_t" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="360dp" />
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/inch_t"
+        app:layout_constraintBottom_toBottomOf="@+id/incehs_spin"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/feet_t"
+        app:layout_constraintEnd_toStartOf="@+id/incehs_spin"
+        app:layout_constraintTop_toTopOf="@+id/textView3" />
 
 </android.support.constraint.ConstraintLayout>

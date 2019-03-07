@@ -28,9 +28,10 @@ CREATE TABLE `Drink` (
   `drinkId` varchar(100) NOT NULL,
   `alcPercent` int(20) DEFAULT NULL,
   `volume` int(20) DEFAULT NULL,
-  `cusername` varchar(100) NOT NULL
- );
-  
+  `fkuser` varchar(100) NOT NULL,
+  PRIMARY KEY (`drinkId`),
+  CONSTRAINT `fkuser` FOREIGN KEY (`fkuser`) REFERENCES `user` (`username`) ON DELETE CASCADE ON UPDATE CASCADE);
+
 CREATE TABLE `drink_time` (
   `tid` int(20) NOT NULL,
   `dtusername` varchar(100) NOT NULL,

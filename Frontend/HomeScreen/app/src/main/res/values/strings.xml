@@ -17,6 +17,8 @@
     <string name="profile_weight_t">Weight:</string>
     <string name="edit_t">Edit</string>
     <string name="save_t">Save</string>
+    <string name="feet_t">ft</string>
+    <string name="inch_t">in</string>
 
     <string-array name="sex_array">
         <item>Female</item>
