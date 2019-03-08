@@ -3,14 +3,29 @@ package com.example.drinksafe;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import com.example.drinksafe.net_utils.Const;
+import android.widget.Toast;
+
 import com.example.drinksafe.app.AppController;
+import com.example.drinksafe.net_utils.Const;
+
+import com.android.volley.Request.Method;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 public class ProfileScreen extends AppCompatActivity {
     private EditText name_box, weight_box, email_box;
@@ -18,6 +33,8 @@ public class ProfileScreen extends AppCompatActivity {
     private String name, email;
     private int weight, height, gender;
     private int[] height_arr = new int[2];
+
+    private static String TAG = ProfileScreen.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +79,7 @@ public class ProfileScreen extends AppCompatActivity {
         b_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ProfileScreen.this, MainActivity.class);
+                Intent i = new Intent(ProfileScreen.this, Home.class);
                 startActivity(i);
             }
         });
@@ -101,8 +118,52 @@ public class ProfileScreen extends AppCompatActivity {
         heightConv(this.height, this.height_arr, true);
     }
 
-    private void getInfo(String name, String email, int weight, int height, int gender) {
+    private void getInfo(String n, String e, int w, int h, int g) {
+        /*JsonObjectRequest jsonObjRew = new JsonObjectRequest(Response.Method.GET, Const.URL_USER_INFO,
+                null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
 
+            }
+        })*/
+
+        JsonArrayRequest req = new JsonArrayRequest(Const.URL_USER_INFO,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d(TAG, response.toString());
+
+                        try {
+                            // Parsing json array response
+                            // loop through each json object
+                            for (int i = 0; i < response.length(); i++) {
+
+                                JSONObject person = (JSONObject) response
+                                        .get(i);
+
+                                n = person.getString("name");
+                                email = person.getString("email");
+                                height = person.getString("email");
+                                weight = person.getString("email");
+                                gender = person.getString("email");
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(),
+                                    "Error: " + e.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                Toast.makeText(getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(req);
     }
 
     /**
