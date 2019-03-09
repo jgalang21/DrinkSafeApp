@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmlns:ui="http://www.eclipse.org/ui/2010/UIModel/application/ui" xmi:id="_CJ_HIEENEemp8dHXoTmFzQ" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_CJ_HIUENEemp8dHXoTmFzQ" bindingContexts="_CKAXgEENEemp8dHXoTmFzQ">
-  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;workbench>&#xA;&lt;mruList>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;UserController.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/UserController.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/UserController.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;User.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/User.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/User.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;UserRepository.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/UserRepository.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/UserRepository.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;calculationsController.java&quot; tooltip=&quot;DrinkSafeServer/src/test/java/org/springframework/samples/drink_safe/calculations/calculationsController.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/test/java/org/springframework/samples/drink_safe/calculations/calculationsController.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;drink_time.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/drink_time/drink_time.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/drink_time/drink_time.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;calculationsController.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/calculations/calculationsController.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/calculations/calculationsController.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;calculations.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/calculations/calculations.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/calculations/calculations.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;time.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/time/time.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/time/time.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;DrinkSafeServerApplication.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/DrinkSafeServerApplication.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/DrinkSafeServerApplication.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;timeController.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/time/timeController.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/time/timeController.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;DrinkController.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/Drink/DrinkController.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/Drink/DrinkController.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Drink.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/Drink/Drink.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/Drink/Drink.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;drink_timeController.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/drink_time/drink_timeController.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/drink_time/drink_timeController.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;timeRepository.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/time/timeRepository.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/time/timeRepository.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;DrinkRepository.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/Drink/DrinkRepository.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/Drink/DrinkRepository.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;UserService.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/UserService.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/UserService.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;friend.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/friend/friend.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/friend/friend.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.jdt.ui.ClassFileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.ClassFileEditor&quot; name=&quot;AbstractProcessorLight.class&quot; tooltip=&quot;org.apache.coyote.AbstractProcessorLight&quot;>&#xA;&lt;persistable org.eclipse.jdt.ui.ClassFileIdentifier=&quot;=DrinkSafeServer/\/Users\/Jeremy\/.m2\/repository\/org\/apache\/tomcat\/embed\/tomcat-embed-core\/8.5.28\/tomcat-embed-core-8.5.28.jar&amp;lt;org.apache.coyote(AbstractProcessorLight.class&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;friendRepository.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/friend/friendRepository.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/friend/friendRepository.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;SpringBootPropertyEditor&quot; name=&quot;application.properties&quot; tooltip=&quot;DrinkSafeServer/src/main/resources/application.properties&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/resources/application.properties&quot;/>&#xA;&lt;/file>&#xA;&lt;/mruList>&#xA;&lt;/workbench>"/>
+  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;workbench>&#xA;&lt;mruList>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;UserController.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/UserController.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/UserController.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;User.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/User.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/User.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;friendService.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/friend/friendService.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/friend/friendService.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;friend.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/friend/friend.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/friend/friend.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;friendRepository.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/friend/friendRepository.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/friend/friendRepository.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;UserRepository.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/UserRepository.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/UserRepository.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;DrinkSafeServerApplication.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/DrinkSafeServerApplication.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/DrinkSafeServerApplication.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;SpringBootPropertyEditor&quot; name=&quot;application.properties&quot; tooltip=&quot;DrinkSafeServer/src/main/resources/application.properties&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/resources/application.properties&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;calculationsController.java&quot; tooltip=&quot;DrinkSafeServer/src/test/java/org/springframework/samples/drink_safe/calculations/calculationsController.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/test/java/org/springframework/samples/drink_safe/calculations/calculationsController.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;drink_time.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/drink_time/drink_time.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/drink_time/drink_time.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;calculationsController.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/calculations/calculationsController.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/calculations/calculationsController.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;calculations.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/calculations/calculations.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/calculations/calculations.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;time.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/time/time.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/time/time.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;timeController.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/time/timeController.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/time/timeController.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;DrinkController.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/Drink/DrinkController.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/Drink/DrinkController.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Drink.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/Drink/Drink.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/Drink/Drink.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;drink_timeController.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/drink_time/drink_timeController.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/drink_time/drink_timeController.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;timeRepository.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/time/timeRepository.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/time/timeRepository.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;DrinkRepository.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/Drink/DrinkRepository.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/Drink/DrinkRepository.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;UserService.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/UserService.java&quot;>&#xA;&lt;persistable path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/UserService.java&quot;/>&#xA;&lt;/file>&#xA;&lt;/mruList>&#xA;&lt;/workbench>"/>
   <tags>ModelMigrationProcessor.001</tags>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <children xsi:type="basic:TrimmedWindow" xmi:id="_CJ_HIUENEemp8dHXoTmFzQ" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_CJ_HIkENEemp8dHXoTmFzQ" label="%trimmedwindow.label.eclipseSDK" x="192" y="69" width="1440" height="900">
@@ -209,82 +209,12 @@
       <tags>categoryTag:Help</tags>
     </sharedElements>
     <sharedElements xsi:type="advanced:Area" xmi:id="_CJ_ufkENEemp8dHXoTmFzQ" elementId="org.eclipse.ui.editorss" selectedElement="_CJ_uf0ENEemp8dHXoTmFzQ">
-      <children xsi:type="basic:PartStack" xmi:id="_CJ_uf0ENEemp8dHXoTmFzQ" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_CJ_uxkENEemp8dHXoTmFzQ">
+      <children xsi:type="basic:PartStack" xmi:id="_CJ_uf0ENEemp8dHXoTmFzQ" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_2TMKEEKSEemPeZAZ_-hBTw">
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
         <tags>active</tags>
-        <children xsi:type="basic:Part" xmi:id="_CJ_ugEENEemp8dHXoTmFzQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="DrinkSafeServerApplication.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;DrinkSafeServerApplication.java&quot; partName=&quot;DrinkSafeServerApplication.java&quot; title=&quot;DrinkSafeServerApplication.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/DrinkSafeServerApplication.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/DrinkSafeServerApplication.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;346&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
-          <tags>removeOnHide</tags>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_ugUENEemp8dHXoTmFzQ" elementId="#CompilationUnitEditorContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#CompilationUnitEditorContext</tags>
-            <tags>popup:org.eclipse.jdt.ui.CompilationUnitEditor.EditorContext</tags>
-            <tags>popup:#AbstractTextEditorContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_ugkENEemp8dHXoTmFzQ" elementId="#CompilationUnitRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#CompilationUnitRulerContext</tags>
-            <tags>popup:org.eclipse.jdt.ui.CompilationUnitEditor.RulerContext</tags>
-            <tags>popup:#AbstractTextEditorRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_ug0ENEemp8dHXoTmFzQ" elementId="#OverviewRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#OverviewRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_uhEENEemp8dHXoTmFzQ" elementId="#CompilationUnitEditorContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#CompilationUnitEditorContext</tags>
-            <tags>popup:org.eclipse.jdt.ui.CompilationUnitEditor.EditorContext</tags>
-            <tags>popup:#AbstractTextEditorContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_uhUENEemp8dHXoTmFzQ" elementId="#CompilationUnitRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#CompilationUnitRulerContext</tags>
-            <tags>popup:org.eclipse.jdt.ui.CompilationUnitEditor.RulerContext</tags>
-            <tags>popup:#AbstractTextEditorRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_uhkENEemp8dHXoTmFzQ" elementId="#OverviewRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#OverviewRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_uh0ENEemp8dHXoTmFzQ" elementId="#CompilationUnitEditorContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#CompilationUnitEditorContext</tags>
-            <tags>popup:org.eclipse.jdt.ui.CompilationUnitEditor.EditorContext</tags>
-            <tags>popup:#AbstractTextEditorContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_uiEENEemp8dHXoTmFzQ" elementId="#CompilationUnitRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#CompilationUnitRulerContext</tags>
-            <tags>popup:org.eclipse.jdt.ui.CompilationUnitEditor.RulerContext</tags>
-            <tags>popup:#AbstractTextEditorRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_uiUENEemp8dHXoTmFzQ" elementId="#OverviewRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#OverviewRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_uikENEemp8dHXoTmFzQ" elementId="#CompilationUnitEditorContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#CompilationUnitEditorContext</tags>
-            <tags>popup:org.eclipse.jdt.ui.CompilationUnitEditor.EditorContext</tags>
-            <tags>popup:#AbstractTextEditorContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_ui0ENEemp8dHXoTmFzQ" elementId="#CompilationUnitRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#CompilationUnitRulerContext</tags>
-            <tags>popup:org.eclipse.jdt.ui.CompilationUnitEditor.RulerContext</tags>
-            <tags>popup:#AbstractTextEditorRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_ujEENEemp8dHXoTmFzQ" elementId="#OverviewRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#OverviewRulerContext</tags>
-          </menus>
-        </children>
         <children xsi:type="basic:Part" xmi:id="_CJ_ujUENEemp8dHXoTmFzQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="friend.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;friend.java&quot; partName=&quot;friend.java&quot; title=&quot;friend.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/friend/friend.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/friend/friend.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;568&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;friend.java&quot; partName=&quot;friend.java&quot; title=&quot;friend.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/friend/friend.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/friend/friend.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;568&quot; selectionTopPixel=&quot;49&quot;/>&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           <tags>removeOnHide</tags>
@@ -591,61 +521,6 @@
             <tags>popup:#OverviewRulerContext</tags>
           </menus>
         </children>
-        <children xsi:type="basic:Part" xmi:id="_CJ_uxkENEemp8dHXoTmFzQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="UserController.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;UserController.java&quot; partName=&quot;UserController.java&quot; title=&quot;UserController.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/UserController.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/UserController.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;973&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
-          <tags>removeOnHide</tags>
-          <tags>active</tags>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_ux0ENEemp8dHXoTmFzQ" elementId="#CompilationUnitEditorContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#CompilationUnitEditorContext</tags>
-            <tags>popup:org.eclipse.jdt.ui.CompilationUnitEditor.EditorContext</tags>
-            <tags>popup:#AbstractTextEditorContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_uyEENEemp8dHXoTmFzQ" elementId="#CompilationUnitRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#CompilationUnitRulerContext</tags>
-            <tags>popup:org.eclipse.jdt.ui.CompilationUnitEditor.RulerContext</tags>
-            <tags>popup:#AbstractTextEditorRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_uyUENEemp8dHXoTmFzQ" elementId="#OverviewRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#OverviewRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_uykENEemp8dHXoTmFzQ" elementId="#CompilationUnitEditorContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#CompilationUnitEditorContext</tags>
-            <tags>popup:org.eclipse.jdt.ui.CompilationUnitEditor.EditorContext</tags>
-            <tags>popup:#AbstractTextEditorContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_uy0ENEemp8dHXoTmFzQ" elementId="#CompilationUnitRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#CompilationUnitRulerContext</tags>
-            <tags>popup:org.eclipse.jdt.ui.CompilationUnitEditor.RulerContext</tags>
-            <tags>popup:#AbstractTextEditorRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_uzEENEemp8dHXoTmFzQ" elementId="#OverviewRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#OverviewRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_uzUENEemp8dHXoTmFzQ" elementId="#CompilationUnitEditorContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#CompilationUnitEditorContext</tags>
-            <tags>popup:org.eclipse.jdt.ui.CompilationUnitEditor.EditorContext</tags>
-            <tags>popup:#AbstractTextEditorContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_uzkENEemp8dHXoTmFzQ" elementId="#CompilationUnitRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#CompilationUnitRulerContext</tags>
-            <tags>popup:org.eclipse.jdt.ui.CompilationUnitEditor.RulerContext</tags>
-            <tags>popup:#AbstractTextEditorRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_CJ_uz0ENEemp8dHXoTmFzQ" elementId="#OverviewRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#OverviewRulerContext</tags>
-          </menus>
-        </children>
         <children xsi:type="basic:Part" xmi:id="_CJ_u0EENEemp8dHXoTmFzQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="DrinkSafeServer/pom.xml" iconURI="platform:/plugin/org.eclipse.m2e.editor/icons/editor-pom.gif" closeable="true">
           <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.m2e.editor.MavenPomEditor&quot; name=&quot;pom.xml&quot; partName=&quot;DrinkSafeServer/pom.xml&quot; title=&quot;DrinkSafeServer/pom.xml&quot; tooltip=&quot;DrinkSafeServer/pom.xml&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DrinkSafeServer/pom.xml&quot;/>&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
@@ -731,7 +606,7 @@
           </menus>
         </children>
         <children xsi:type="basic:Part" xmi:id="_CJ_u30ENEemp8dHXoTmFzQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="application.properties" iconURI="platform:/plugin/org.springframework.tooling.boot.ls/icons/spring_obj.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;SpringBootPropertyEditor&quot; name=&quot;application.properties&quot; partName=&quot;application.properties&quot; title=&quot;application.properties&quot; tooltip=&quot;DrinkSafeServer/src/main/resources/application.properties&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DrinkSafeServer/src/main/resources/application.properties&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;737&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;SpringBootPropertyEditor&quot; name=&quot;application.properties&quot; partName=&quot;application.properties&quot; title=&quot;application.properties&quot; tooltip=&quot;DrinkSafeServer/src/main/resources/application.properties&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DrinkSafeServer/src/main/resources/application.properties&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;4&quot; selectionOffset=&quot;833&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>SpringBootPropertyEditor</tags>
           <tags>removeOnHide</tags>
@@ -921,7 +796,7 @@
           </menus>
         </children>
         <children xsi:type="basic:Part" xmi:id="_CJ_vAkENEemp8dHXoTmFzQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="User.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;User.java&quot; partName=&quot;User.java&quot; title=&quot;User.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/User.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/User.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;4592&quot; selectionTopPixel=&quot;382&quot;/>&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;User.java&quot; partName=&quot;User.java&quot; title=&quot;User.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/User.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/User.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;4767&quot; selectionTopPixel=&quot;2408&quot;/>&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           <tags>removeOnHide</tags>
@@ -1177,6 +1052,14 @@
             <tags>menuContribution:popup</tags>
             <tags>popup:#OverviewRulerContext</tags>
           </menus>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_2TMKEEKSEemPeZAZ_-hBTw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="UserController.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;UserController.java&quot; partName=&quot;UserController.java&quot; title=&quot;UserController.java&quot; tooltip=&quot;DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/UserController.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DrinkSafeServer/src/main/java/org/springframework/samples/drink_safe/user/UserController.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1922&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+          <tags>active</tags>
+          <tags>activeOnClose</tags>
         </children>
       </children>
     </sharedElements>
@@ -1601,40 +1484,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_CJ_wdkENEemp8dHXoTmFzQ" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CJ_wd0ENEemp8dHXoTmFzQ" elementId="new.group">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CJ_weEENEemp8dHXoTmFzQ" elementId="newWizardDropDown">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CJ_weUENEemp8dHXoTmFzQ" elementId="new.ext" visible="false">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CJ_wekENEemp8dHXoTmFzQ" elementId="save.group" visible="false">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CJ_we0ENEemp8dHXoTmFzQ" elementId="save">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CJ_wfEENEemp8dHXoTmFzQ" elementId="saveAll">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVQEENEemp8dHXoTmFzQ" elementId="save.ext" visible="false">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_CKAVQUENEemp8dHXoTmFzQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_CKBnCkENEemp8dHXoTmFzQ"/>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVQkENEemp8dHXoTmFzQ" elementId="print.ext" visible="false">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVQ0ENEemp8dHXoTmFzQ" elementId="build.group">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVREENEemp8dHXoTmFzQ" elementId="build.ext" visible="false">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVRUENEemp8dHXoTmFzQ" elementId="additions">
-          <tags>Opaque</tags>
-        </children>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_jngHAEKSEemPeZAZ_-hBTw" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_CKBnCkENEemp8dHXoTmFzQ"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_CKAVRkENEemp8dHXoTmFzQ" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -1642,15 +1492,6 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_CKAVSEENEemp8dHXoTmFzQ" elementId="org.eclipse.ui.workbench.edit" visible="false">
         <tags>Draggable</tags>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVSUENEemp8dHXoTmFzQ" elementId="edit.group">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVSkENEemp8dHXoTmFzQ" elementId="undo">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVS0ENEemp8dHXoTmFzQ" elementId="redo">
-          <tags>Opaque</tags>
-        </children>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_CKAVTEENEemp8dHXoTmFzQ" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -1658,51 +1499,12 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_CKAVc0ENEemp8dHXoTmFzQ" elementId="org.eclipse.debug.ui.launchActionSet">
         <tags>Draggable</tags>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVdEENEemp8dHXoTmFzQ" elementId="debug">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVdUENEemp8dHXoTmFzQ" elementId="org.eclipse.debug.internal.ui.actions.DebugDropDownAction">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVdkENEemp8dHXoTmFzQ" elementId="org.eclipse.debug.internal.ui.actions.RunDropDownAction">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVd0ENEemp8dHXoTmFzQ" elementId="org.eclipse.ui.externaltools.ExternalToolMenuDelegateToolbar">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVeEENEemp8dHXoTmFzQ" elementId="org.springsource.ide.eclipse.commons.launch.stop.action">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVeUENEemp8dHXoTmFzQ" elementId="org.springsource.ide.eclipse.commons.launch.relaunch.action">
-          <tags>Opaque</tags>
-        </children>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_CKAVekENEemp8dHXoTmFzQ" elementId="org.eclipse.jdt.ui.JavaElementCreationActionSet">
         <tags>Draggable</tags>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVe0ENEemp8dHXoTmFzQ" elementId="JavaWizards">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVfEENEemp8dHXoTmFzQ" elementId="org.eclipse.jdt.ui.actions.OpenProjectWizard" visible="false">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVfUENEemp8dHXoTmFzQ" elementId="org.eclipse.jdt.ui.actions.OpenPackageWizard">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVfkENEemp8dHXoTmFzQ" elementId="org.eclipse.jdt.ui.actions.NewTypeDropDown">
-          <tags>Opaque</tags>
-        </children>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_CKAVf0ENEemp8dHXoTmFzQ" elementId="org.eclipse.search.searchActionSet">
         <tags>Draggable</tags>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVgEENEemp8dHXoTmFzQ" elementId="Search">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVgUENEemp8dHXoTmFzQ" elementId="openType">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVgkENEemp8dHXoTmFzQ" elementId="org.eclipse.search.OpenSearchDialogPage">
-          <tags>Opaque</tags>
-        </children>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_CKAVg0ENEemp8dHXoTmFzQ" elementId="org.eclipse.ui.edit.text.actionSet.presentation">
         <tags>Draggable</tags>
@@ -1726,27 +1528,6 @@
           <persistedState key="IIdentifier" value="org.eclipse.ui.genericeditor/org.eclipse.ui.genericeditor.togglehighlight"/>
           <visibleWhen xsi:type="ui:CoreExpression" xmi:id="_CKAVjUENEemp8dHXoTmFzQ" coreExpressionId="programmatic.value"/>
         </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVjkENEemp8dHXoTmFzQ" elementId="Presentation">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVj0ENEemp8dHXoTmFzQ" elementId="org.eclipse.jdt.ui.edit.text.java.toggleBreadcrumb">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVkEENEemp8dHXoTmFzQ" elementId="org.eclipse.jdt.ui.edit.text.java.toggleMarkOccurrences">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVkUENEemp8dHXoTmFzQ" elementId="org.eclipse.ui.edit.text.toggleWordWrap">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVkkENEemp8dHXoTmFzQ" elementId="org.eclipse.ui.edit.text.toggleBlockSelectionMode">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVk0ENEemp8dHXoTmFzQ" elementId="org.eclipse.ui.edit.text.toggleShowWhitespaceCharacters">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVlEENEemp8dHXoTmFzQ" elementId="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly" visible="false">
-          <tags>Opaque</tags>
-        </children>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_CKAVlUENEemp8dHXoTmFzQ" elementId="group.nav" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -1754,31 +1535,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_CKAVl0ENEemp8dHXoTmFzQ" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVmEENEemp8dHXoTmFzQ" elementId="history.group">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVmUENEemp8dHXoTmFzQ" elementId="group.application" visible="false">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVmkENEemp8dHXoTmFzQ" elementId="backardHistory">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVm0ENEemp8dHXoTmFzQ" elementId="forwardHistory">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVnEENEemp8dHXoTmFzQ" elementId="pin.group">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_CKAVnUENEemp8dHXoTmFzQ" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_CKBmt0ENEemp8dHXoTmFzQ"/>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVnkENEemp8dHXoTmFzQ" elementId="org.eclipse.ui.edit.text.gotoNextAnnotation">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVn0ENEemp8dHXoTmFzQ" elementId="org.eclipse.ui.edit.text.gotoPreviousAnnotation">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVoEENEemp8dHXoTmFzQ" elementId="org.eclipse.ui.edit.text.gotoLastEditPosition">
-          <tags>Opaque</tags>
-        </children>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_jnijQEKSEemPeZAZ_-hBTw" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_CKBmt0ENEemp8dHXoTmFzQ"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_CKAVoUENEemp8dHXoTmFzQ" elementId="org.eclipse.m2e.editor.MavenPomEditor" visible="false">
         <tags>Draggable</tags>
@@ -1796,12 +1553,6 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_CKAVp0ENEemp8dHXoTmFzQ" elementId="org.eclipse.ui.workbench.help" visible="false">
         <tags>Draggable</tags>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVqEENEemp8dHXoTmFzQ" elementId="group.help">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_CKAVqUENEemp8dHXoTmFzQ" elementId="group.application" visible="false">
-          <tags>Opaque</tags>
-        </children>
       </children>
       <children xsi:type="menu:ToolControl" xmi:id="_CKAVqkENEemp8dHXoTmFzQ" elementId="PerspectiveSpacer" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
         <tags>stretch</tags>
@@ -2222,7 +1973,7 @@
       <tags>platform:cocoa</tags>
       <parameters xmi:id="_CKAWnEENEemp8dHXoTmFzQ" elementId="org.eclipse.ui.views.showView.viewId" name="org.eclipse.ui.views.showView.viewId" value="org.eclipse.ui.console.ConsoleView"/>
     </bindings>
-    <bindings xmi:id="_CKAWnUENEemp8dHXoTmFzQ" keySequence="COMMAND+CTRL+F" command="_CKCKiUENEemp8dHXoTmFzQ">
+    <bindings xmi:id="_jNZk8UKSEemPeZAZ_-hBTw" keySequence="COMMAND+CTRL+F" command="_CKCKiUENEemp8dHXoTmFzQ">
       <tags>deleted</tags>
     </bindings>
   </bindingTables>
@@ -2520,7 +2271,7 @@
     <bindings xmi:id="_CKAXU0ENEemp8dHXoTmFzQ" keySequence="CTRL+SHIFT+D" command="_CKBlqEENEemp8dHXoTmFzQ"/>
   </bindingTables>
   <bindingTables xmi:id="_CKAXVEENEemp8dHXoTmFzQ" contributorURI="platform:/fragment/org.eclipse.e4.ui.workbench.renderers.swt.cocoa" bindingContext="_CKA8eEENEemp8dHXoTmFzQ">
-    <bindings xmi:id="_CKAXVUENEemp8dHXoTmFzQ" keySequence="M1+W" command="_CKCKi0ENEemp8dHXoTmFzQ">
+    <bindings xmi:id="_jNaMAEKSEemPeZAZ_-hBTw" keySequence="M1+W" command="_CKCKi0ENEemp8dHXoTmFzQ">
       <tags>deleted</tags>
     </bindings>
   </bindingTables>
@@ -3084,6 +2835,23 @@
     <tags>View</tags>
     <tags>categoryTag:Other</tags>
   </descriptors>
+  <trimContributions xmi:id="_2r10UF9tEeO-yojH_y4TJA" elementId="org.eclipse.ui.ide.application.trimcontribution.QuickAccess" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" toBeRendered="false" parentId="org.eclipse.ui.main.toolbar" positionInParent="last">
+    <children xsi:type="menu:ToolControl" xmi:id="_76uUAF9tEeO-yojH_y4TJA" elementId="Spacer Glue" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
+      <tags>glue</tags>
+      <tags>move_after:PerspectiveSpacer</tags>
+      <tags>SHOW_RESTORE_MENU</tags>
+    </children>
+    <children xsi:type="menu:ToolControl" xmi:id="_8tJPcF9tEeO-yojH_y4TJA" elementId="SearchField" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.quickaccess.SearchField">
+      <tags>move_after:Spacer Glue</tags>
+      <tags>HIDEABLE</tags>
+      <tags>SHOW_RESTORE_MENU</tags>
+    </children>
+    <children xsi:type="menu:ToolControl" xmi:id="_9LgmcF9tEeO-yojH_y4TJA" elementId="Search-PS Glue" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
+      <tags>glue</tags>
+      <tags>move_after:SearchField</tags>
+      <tags>SHOW_RESTORE_MENU</tags>
+    </children>
+  </trimContributions>
   <commands xmi:id="_CKBkEEENEemp8dHXoTmFzQ" elementId="org.eclipse.ui.window.customizePerspective" contributorURI="platform:/plugin/org.eclipse.platform" commandName="Customize Perspective" description="Customize the current perspective"/>
   <commands xmi:id="_CKBkEUENEemp8dHXoTmFzQ" elementId="org.eclipse.jdt.ui.correction.inlineLocal.assist" commandName="Quick Assist - Inline local variable" description="Invokes quick assist and selects 'Inline local variable'" category="_CKCLM0ENEemp8dHXoTmFzQ"/>
   <commands xmi:id="_CKBkEkENEemp8dHXoTmFzQ" elementId="org.eclipse.ui.edit.text.select.pageUp" commandName="Select Page Up" description="Select to the top of the page" category="_CKCLGUENEemp8dHXoTmFzQ"/>
