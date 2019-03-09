@@ -30,13 +30,9 @@ import org.springframework.web.bind.annotation.RestController;
 	
 	
 	
-<<<<<<< HEAD
+
 	@RequestMapping(method = RequestMethod.GET, path= "/users/new/{username}/{name}/{password}/{height}/{weight}/{gender}/{guestStatus}")
 	public String saveUser(@PathVariable("username") String username,@PathVariable("name") String name,@PathVariable("password") String password,@PathVariable("height") int height,@PathVariable("weight") int weight,@PathVariable("gender") int gender, @PathVariable("guestStatus") int guestStatus)
-=======
-	@RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, path= "/users/new/{username}/{password}/{height}/{weight}/{gender}/{guestStatus}")
-	public String saveUser(@PathVariable("username") String username,@PathVariable("password") String password,@PathVariable("height") int height,@PathVariable("weight") int weight,@PathVariable("gender") int gender, @PathVariable("guestStatus") int guestStatus)
->>>>>>> 04079df36feedc29ff4bd6989812f6c74dfeef7b
 	{
 		User user = new User(username,name,password,height,weight,gender,guestStatus);
 		userRepo.save(user);
