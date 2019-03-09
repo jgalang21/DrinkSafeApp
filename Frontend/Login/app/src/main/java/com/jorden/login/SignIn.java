@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -23,14 +24,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class SignIn extends AppCompatActivity {
 
-    private JSONArray msgResponseArr;
-    private JSONObject msgResponseObj;
     private EditText Email;
     private EditText Password;
     private TextView Info;
@@ -38,11 +38,12 @@ public class SignIn extends AppCompatActivity {
     private Button SignUp;
     private int counter = 5;
     private ProgressDialog pDialog;
-    private String TAG = SecondActivity.class.getSimpleName();
+    private String TAG = SignIn.class.getSimpleName();
     private String tag_json_obj = "jobj_req", tag_json_arry = "jarray_req";
-    private String passWd;
-    String in;
-    JSONObject reader;
+    private ArrayList<String> passWd = new ArrayList<String>();
+    private ArrayList<String> UserEmail = new ArrayList<String>();
+    String storedPass = "";
+    private TextView msgResponse;
 
 
     @Override
@@ -50,26 +51,30 @@ public class SignIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         Email = (EditText) findViewById(R.id.etemail);
         Password = (EditText) findViewById(R.id.etpass);
         Info = (TextView) findViewById(R.id.tvInfo);
         Login = (Button) findViewById(R.id.btnLogin);
         SignUp = (Button) findViewById(R.id.SignUpbtn);
-        try {
-            reader = new JSONObject(in);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        msgResponse = (TextView) findViewById(R.id.textToShow);
+
 
         Info.setText("attempts left: 5");
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
+                   // makeJsonArrayReq();
+                    //reader = new JSONObject(in);
+                    System.err.println("makeJsonArryReq");
                     validate(Email.getText().toString(), Password.getText().toString());
+                    System.err.println("Finish validate");
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    System.out.print("on click catch");
+                }
+                catch (Exception e){
+                    System.err.println("Hard Fail");
+                    System.err.println("FAILED: " + e);
                 }
             }
         });
@@ -85,14 +90,20 @@ public class SignIn extends AppCompatActivity {
         pDialog.setCancelable(false);
     }
 
-    private void validate(String userEmail, String userPass) throws JSONException {
+    private void validate(String uEmail, String userPass) throws JSONException {
         if(userPass == ""||userPass == null) {
             return;
         }
-            JSONObject sys  = reader.getJSONObject(userEmail);
-            passWd = sys.getString("password");
-
-        if (((userEmail.equals("Admin")) && (userPass.equals("123Abc")))||passWd.equals(userPass)) {
+            //JSONObject sys  = reader.getJSONObject(userEmail);
+            //passWd = sys.getString("password");
+        System.err.println("username: ");
+        for(int i = 0; i< UserEmail.size();i++){
+            if(UserEmail.get(i).equals(uEmail)){
+                storedPass = passWd.get(i);
+                break;
+            }
+        }
+        if (((uEmail.equals("Admin")) && (userPass.equals("123Abc")))/*||passWd.equals(userPass)*/) {
             Intent intent = new Intent(SignIn.this,  SecondActivity.class);
             startActivity(intent);
 
@@ -125,7 +136,7 @@ public class SignIn extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.d(TAG, response.toString());
-                        msgResponseObj = response;
+                        hideProgressDialog();
                         hideProgressDialog();
                     }
                 }, new Response.ErrorListener() {
@@ -164,15 +175,35 @@ public class SignIn extends AppCompatActivity {
 
     }
 
-    private JsonArrayRequest makeJsonArryReq() {
+    private void makeJsonArrayReq() {
         showProgressDialog();
+        System.err.println("TEEEESSSSSSSTTTTTTTT");
         JsonArrayRequest req = new JsonArrayRequest(Const.URL_USER_INFO/*URL_USER_INFO*/,
-                new Response.Listener<JSONArray>() {
+             new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        Log.d(TAG, response.toString());
-                            msgResponseArr = response;
-                            in = response.toString();
+                        System.err.println("in onResponse");
+                        try{
+                        for (int i = 0; i < response.length(); i++) {
+
+                            JSONObject person = (JSONObject) response
+                                    .get(i);
+                            //JSONObject userName = person.getJSONObject("UserName");
+                            System.err.print("This: " + person);
+                            passWd.add(person.getString("Password"));
+                            UserEmail.add(person.getString("Username"));
+                            //System.err.print("Username: " + userName.toString());
+                        }
+
+                        }
+                        catch(JSONException e) {
+                                System.err.print("in makejsonarrReq");
+                                e.printStackTrace();
+                                Toast.makeText(getApplicationContext(),
+                                        "Error: " + e.getMessage(),
+                                        Toast.LENGTH_LONG).show();
+
+                            }
                         hideProgressDialog();
                     }
                 }, new Response.ErrorListener() {
@@ -184,6 +215,10 @@ public class SignIn extends AppCompatActivity {
                 hideProgressDialog();
             }
         });
-        return req;
+        System.err.println("before Request");
+        AppController.getInstance().addToRequestQueue(req);
+        System.err.println("Request to queue added");
+
+
     }
 }

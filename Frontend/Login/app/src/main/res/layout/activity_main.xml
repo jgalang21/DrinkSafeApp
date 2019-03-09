@@ -87,4 +87,16 @@
         app:layout_constraintTop_toBottomOf="@+id/etpass"
         app:layout_constraintVertical_bias="0.081" />
 
+    <TextView
+        android:id="@+id/msgResponse"
+        android:layout_width="122dp"
+        android:layout_height="104dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvInfo" />
+
 </android.support.constraint.ConstraintLayout>
