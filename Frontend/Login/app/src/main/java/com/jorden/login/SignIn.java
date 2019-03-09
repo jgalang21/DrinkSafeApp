@@ -64,9 +64,9 @@ public class SignIn extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                   // makeJsonArrayReq();
+                    makeJsonArrayReq();
                     //reader = new JSONObject(in);
-                    System.err.println("makeJsonArryReq");
+                    System.err.println("makeJsonArrayReq");
                     validate(Email.getText().toString(), Password.getText().toString());
                     System.err.println("Finish validate");
                 } catch (JSONException e) {
@@ -103,7 +103,7 @@ public class SignIn extends AppCompatActivity {
                 break;
             }
         }
-        if (((uEmail.equals("Admin")) && (userPass.equals("123Abc")))/*||passWd.equals(userPass)*/) {
+        if (((uEmail.equals("Admin")) && (userPass.equals("123Abc")))||passWd.equals(userPass)) {
             Intent intent = new Intent(SignIn.this,  SecondActivity.class);
             startActivity(intent);
 
@@ -111,6 +111,7 @@ public class SignIn extends AppCompatActivity {
             counter--;
             Info.setText("Attempts left: " + String.valueOf(counter));
             if (counter == 0) {
+
                 counter = 0;
                 Login.setEnabled(false);
             }
@@ -190,8 +191,8 @@ public class SignIn extends AppCompatActivity {
                                     .get(i);
                             //JSONObject userName = person.getJSONObject("UserName");
                             System.err.print("This: " + person);
-                            passWd.add(person.getString("Password"));
-                            UserEmail.add(person.getString("Username"));
+                            passWd.add(person.getString("password"));
+                            UserEmail.add(person.getString("username"));
                             //System.err.print("Username: " + userName.toString());
                         }
 

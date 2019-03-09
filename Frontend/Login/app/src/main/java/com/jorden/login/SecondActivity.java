@@ -127,6 +127,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        System.err.print("responded");
                         Log.d(TAG, response.toString());
                         msgResponse.setText(response.toString());
                         hideProgressDialog();
