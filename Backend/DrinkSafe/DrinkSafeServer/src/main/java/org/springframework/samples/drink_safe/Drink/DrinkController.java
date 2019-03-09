@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.RestController;
 		userRepo.save(u);
 		Drink drink = new Drink(DrinkId, alcPercent, volume,u);
 		drinkRepo.save(drink);
-		logger.info(fkuser + "had added" +DrinkId + "as a drink");
+		logger.info(fkuser + " had added " +DrinkId + " as a drink");
 	}
 	
 

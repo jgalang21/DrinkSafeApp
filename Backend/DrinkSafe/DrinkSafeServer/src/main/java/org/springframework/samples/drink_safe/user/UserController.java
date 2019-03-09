@@ -66,7 +66,7 @@ import org.springframework.web.bind.annotation.RestController;
 		User u2 =userRepo.findByUsername(user2);
 		u.toModifyFriends().add(u2);
 		userRepo.save(u);
-		logger.info(u.getUsername()+ "has added" + u2.getUsername() + "as a friend");
+		logger.info(u.getUsername()+ " has added " + u2.getUsername() + " as a friend");
 	}
 	
 /*

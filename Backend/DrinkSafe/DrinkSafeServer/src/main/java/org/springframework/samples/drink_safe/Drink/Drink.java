@@ -51,8 +51,8 @@ public class Drink {
 	public void setVolume(int volume) {
 		this.volume = volume;
 	}
-	public User getFkuser() {
-		return fkuser;
+	public String getFkuser() {
+		return fkuser.getUsername();
 	}
 	public void setFkuser(User fkuser) {
 		this.fkuser = fkuser;
@@ -78,7 +78,7 @@ public class Drink {
 		returner += "Drink = "+ getDrinkid();
 		returner += " Alcohol Percent = "+getAlcpercent();
 		returner += " Volume = " + getVolume();
-		returner += " User = " + getFkuser().getUsername();
+		returner += " User = " + getFkuser();
 		return returner;
 	}
 

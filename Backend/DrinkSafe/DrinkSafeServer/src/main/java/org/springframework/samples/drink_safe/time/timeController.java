@@ -19,7 +19,7 @@ public class timeController {
 	
 	@RequestMapping(method = RequestMethod.GET, path ="/time")
 	public List<time> listAllTime(){
-		logger.info("Entered into control layer (For time)");
+		logger.info("listing user times");
 		List<time> r = (List<time>) timeRepo.findAll();
 		return r;
 	}

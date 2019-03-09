@@ -81,8 +81,8 @@ public class time {
 		return returner;
 		
 	}
-	public User getUser() {
-		return user;
+	public String getUser() {
+		return user.getUsername();
 	}
 	public void setUser(User user) {
 		this.user = user;

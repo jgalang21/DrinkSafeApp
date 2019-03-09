@@ -172,6 +172,32 @@ public class User{
 	{
 		return befriended;
 	}
+	public time getUser_time() {
+		return user_time;
+	}
+	public void setUser_time(time user_time) {
+		this.user_time = user_time;
+	}
+	
+	public String getDrinks() {
+		String returner ="";
+		for(Drink d: drinks)
+			returner+=d.getDrinkid() + " ";
+		return returner;
+	}
+	public void setDrinks(Set<Drink> drinks) {
+		this.drinks = drinks;
+	}
+	public void giveDrink(Drink drink) {
+		drinks.add(drink);
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	public String toString()
 	{
 		String friends_list="";
@@ -202,28 +228,4 @@ public class User{
 		returner += "timer: "+timer;
 		return returner;
 	}
-	public time getUser_time() {
-		return user_time;
-	}
-	public void setUser_time(time user_time) {
-		this.user_time = user_time;
-	}
-	
-	public Set<Drink> getDrinks() {
-		return drinks;
-	}
-	public void setDrinks(Set<Drink> drinks) {
-		this.drinks = drinks;
-	}
-	public void giveDrink(Drink drink) {
-		drinks.add(drink);
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	
 }
