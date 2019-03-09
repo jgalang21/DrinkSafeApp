@@ -4,6 +4,7 @@ use `drink_safe`;
 
 CREATE TABLE `user` (
   `username` varchar(100) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
   `password` varchar(20) DEFAULT NULL,
   `height` int(4) DEFAULT NULL,
   `weight` int(5) DEFAULT NULL,
@@ -20,18 +21,19 @@ CREATE TABLE `friend`(
  
 CREATE TABLE `time` (
   `tid` int(10) NOT NULL,
-  `time_start` int(20) DEFAULT NULL,
-  `time_finish` int(20) DEFAULT NULL,
+  `time_start` bigint DEFAULT NULL,
+  `time_finish` bigint DEFAULT NULL,
   PRIMARY KEY (`tid`));
   
 CREATE TABLE `Drink` (
-  `drinkId` varchar(100) NOT NULL,
-  `alcPercent` int(20) DEFAULT NULL,
+  `drinkid` varchar(100) NOT NULL,
+  `alcpercent` int(20) DEFAULT NULL,
   `volume` int(20) DEFAULT NULL,
   `fkuser` varchar(100) NOT NULL,
-  PRIMARY KEY (`drinkId`),
+  PRIMARY KEY (`drinkid`),
   CONSTRAINT `fkuser` FOREIGN KEY (`fkuser`) REFERENCES `user` (`username`) ON DELETE CASCADE ON UPDATE CASCADE);
-
+  
+  
 CREATE TABLE `drink_time` (
   `tid` int(20) NOT NULL,
   `dtusername` varchar(100) NOT NULL,

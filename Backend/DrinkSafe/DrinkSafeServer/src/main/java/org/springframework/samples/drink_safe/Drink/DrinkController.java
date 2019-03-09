@@ -1,5 +1,7 @@
 package org.springframework.samples.drink_safe.Drink;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 	
 	
 	@RequestMapping(method = RequestMethod.GET, path= "/drink/new/{DrinkId}/{alcPercent}/{volume}/{fkuser}")
-	public String addDrink(@PathVariable("DrinkId") String DrinkId,@PathVariable("alcPercent") int alcPercent,@PathVariable("volume") int volume, @PathVariable("fkuser") String fkuser)
+	public void addDrink(@PathVariable("DrinkId") String DrinkId,@PathVariable("alcPercent") int alcPercent,@PathVariable("volume") int volume, @PathVariable("fkuser") String fkuser)
 	{
 		long x = System.nanoTime();
 		User u = userRepo.findByUsername(fkuser);
@@ -33,20 +35,19 @@ import org.springframework.web.bind.annotation.RestController;
 		userRepo.save(u);
 		Drink drink = new Drink(DrinkId, alcPercent, volume,u);
 		drinkRepo.save(drink);
-		return "added";
+		logger.info(fkuser + "had added" +DrinkId + "as a drink");
 	}
 	
 
 	
 	
 	@RequestMapping(method = RequestMethod.GET, path ="/drink")
-	public String listAllDrinks(){
-		String temp = "";
+	public List<Drink> listAllDrinks(){
 		logger.info("Entered into control layer (For drinks)");
-		Iterable<Drink> r = drinkRepo.findAll();
-		for(Drink a : r)
-			temp += a + "\n";
-		return temp;
+		List<Drink> r = (List<Drink>) drinkRepo.findAll();
+		logger.info("displaying all drinks");
+		return r;
+		
 	}
 
 	
