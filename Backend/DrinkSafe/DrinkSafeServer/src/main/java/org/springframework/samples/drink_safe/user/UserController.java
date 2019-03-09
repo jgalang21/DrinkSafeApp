@@ -30,10 +30,10 @@ import org.springframework.web.bind.annotation.RestController;
 	
 	
 	
-	@RequestMapping(method = RequestMethod.GET, path= "/users/new/{username}/{password}/{height}/{weight}/{gender}/{guestStatus}")
-	public String saveUser(@PathVariable("username") String username,@PathVariable("password") String password,@PathVariable("height") int height,@PathVariable("weight") int weight,@PathVariable("gender") int gender, @PathVariable("guestStatus") int guestStatus)
+	@RequestMapping(method = RequestMethod.GET, path= "/users/new/{username}/{name}/{password}/{height}/{weight}/{gender}/{guestStatus}")
+	public String saveUser(@PathVariable("username") String username,@PathVariable("name") String name,@PathVariable("password") String password,@PathVariable("height") int height,@PathVariable("weight") int weight,@PathVariable("gender") int gender, @PathVariable("guestStatus") int guestStatus)
 	{
-		User user = new User(username,password,height,weight,gender,guestStatus);
+		User user = new User(username,name,password,height,weight,gender,guestStatus);
 		userRepo.save(user);
 		return user.getUsername() + "has been added!";
 	}
@@ -86,16 +86,6 @@ import org.springframework.web.bind.annotation.RestController;
 		logger.info("Drink successfully added!");
 		
 	}
-	@RequestMapping(method = RequestMethod.GET, path="/users/time/addTime/{user1Id}")
-	public String addTime(@PathVariable("user1Id") String user1) {
-		User u = userRepo.findByUsername(user1);
-		time t = new time(u.getUsername().hashCode(),System.nanoTime(),System.nanoTime()+1000);
-		u.setUser_time(t);
-		userRepo.save(u);
-		return user1 + "now has " + (t.getTime_finish() -t.getTime_start());
-	}
-	
-
 	
 	
 }

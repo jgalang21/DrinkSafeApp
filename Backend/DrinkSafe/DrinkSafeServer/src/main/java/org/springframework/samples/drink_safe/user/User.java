@@ -27,6 +27,10 @@ public class User{
     @NotFound(action = NotFoundAction.IGNORE)
 	private String username;
 	
+    @Column(name = "name")
+    @NotFound(action = NotFoundAction.IGNORE)
+	private String name;
+	
     @Column(name = "password")
     @NotFound(action = NotFoundAction.IGNORE)
 	private String password;
@@ -70,8 +74,9 @@ public class User{
     time user_time; 
     
 
-	public User(String username, String password, int height, int weight,int gender, int guestStatus) {
+	public User(String username, String name, String password, int height, int weight,int gender, int guestStatus) {
 		this.username = username;
+		this.name = name;
 		this.password = password;
 		this.height=height;
 		this.weight=weight;
@@ -170,6 +175,7 @@ public class User{
 		}
 		String returner ="";
 		returner += "Username: " + getUsername()+"\n";
+		returner += "Name: " + getName() + "\n";
 		returner += "Password: " + getPassword()+"\n";
 		returner += "Height: " + getHeight()+"\n";
 		returner += "Weight: " + getWeight()+"\n";
@@ -196,6 +202,12 @@ public class User{
 	}
 	public void giveDrink(Drink drink) {
 		drinks.add(drink);
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

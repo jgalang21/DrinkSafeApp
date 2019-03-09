@@ -1,3 +1,4 @@
+/*
 package org.springframework.samples.drink_safe.calculations;
 
 import javax.persistence.Column;
@@ -42,3 +43,4 @@ public class calculations {
 
 
 }
+*/
