@@ -15,6 +15,7 @@ import org.springframework.samples.drink_safe.user.User;
 @Table(name = "calculations")
 public class calculations {
 
+	
 	@Column(name = "user")
 	@NotFound(action = NotFoundAction.IGNORE)
 	private User username;

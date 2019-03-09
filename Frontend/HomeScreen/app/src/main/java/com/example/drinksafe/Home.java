@@ -1,6 +1,5 @@
 package com.example.drinksafe;
 
-import android.support.annotation.MainThread;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,7 +17,7 @@ import com.example.drinksafe.net_utils.Const;
 import com.example.drinksafe.app.AppController;
 
 
-public class MainActivity extends AppCompatActivity {
+public class Home extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
 
@@ -69,13 +68,13 @@ public class MainActivity extends AppCompatActivity {
                         switch(menuItem.getItemId())
                         {
                             case R.id.nav_profile:
-                                i = new Intent(MainActivity.this, ProfileScreen.class);
+                                i = new Intent(Home.this, ProfileScreen.class);
                                 startActivity(i);
                             case R.id.nav_drinks:
-                                i = new Intent(MainActivity.this, ProfileScreen.class);
+                                i = new Intent(Home.this, ProfileScreen.class);
                                 startActivity(i);
                             case R.id.nav_party:
-                                i = new Intent(MainActivity.this, ProfileScreen.class);
+                                i = new Intent(Home.this, ProfileScreen.class);
                                 startActivity(i);
                             default:
                                 return true;
