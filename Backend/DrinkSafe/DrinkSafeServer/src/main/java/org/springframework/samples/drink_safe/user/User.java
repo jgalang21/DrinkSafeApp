@@ -1,6 +1,7 @@
 package org.springframework.samples.drink_safe.user;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -145,17 +146,32 @@ public class User{
 	public void setGender(int gender) {
 		this.gender = gender;
 	}
-	public Set<User> getFriends() {
-		return friends;
+	public String getFriends() {
+		String returner ="";
+		for(User u: friends)
+			returner+=u.getName() + ",";
+		return returner;
+			
 	}
 	public void setFriends(Set<User> friends) {
 		this.friends = friends;
 	}
-	public Set<User> getBefriended() {
-		return befriended;
+	public Set<User> toModifyFriends()
+	{
+		return friends;
+	}
+	public String getBefriended() {
+		String returner ="";
+		for(User u: befriended)
+			returner+=u.getName();
+		return returner;
 	}
 	public void setBefriended(Set<User> befriended) {
 		this.befriended = befriended;
+	}
+	public Set<User> toModifyBefriended()
+	{
+		return befriended;
 	}
 	public String toString()
 	{

@@ -40,13 +40,11 @@ import org.springframework.web.bind.annotation.RestController;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path= "/users")
-	public String returnAllUsers(){
-		String returner="";
+	public List<User> returnAllUsers(){
 		logger.info("Entered into Controller Layer");
-		Iterable<User> x = userRepo.findAll();
-		for(User a:x)
-			returner+=a +"\n";
-		return returner;
+        List<User> results = (List<User>) userRepo.findAll();
+        logger.info("Number of Records Fetched:" + results.size());
+        return results;
 		
 	}
 	
@@ -70,7 +68,7 @@ import org.springframework.web.bind.annotation.RestController;
 	public String addFriends(@PathVariable("user1Id") String user1,@PathVariable("user2Id") String user2) {
 		User u = userRepo.findByUsername(user1);
 		User u2 =userRepo.findByUsername(user2);
-		u.getFriends().add(u2);
+		u.toModifyFriends().add(u2);
 		userRepo.save(u);
 		return user1 + "is now friends with " + user2;
 	}
