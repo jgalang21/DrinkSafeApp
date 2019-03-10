@@ -51,6 +51,15 @@ public class User{
     @Column(name = "guest_status")
     @NotFound(action = NotFoundAction.IGNORE)
 	private int guestStatus;
+    
+    @ManyToMany
+    @JoinTable(name = "group", 
+        joinColumns = @JoinColumn(name = "gm"),
+    	inverseJoinColumns = @JoinColumn(name = "m"))
+    private Set<User> groupedinviter = new HashSet<User>();
+    @ManyToMany(mappedBy = "groupedinviter")
+    private Set<User> groupedinvitee = new HashSet<User>();
+   
   
     @ManyToMany
     @JoinTable(name = "friend", 
@@ -72,6 +81,10 @@ public class User{
         inverseJoinColumns = { @JoinColumn(name = "tid") }
     )
     time user_time; 
+    
+    
+    
+
     
 
 	public User(String username, String name, String password, int height, int weight,int gender, int guestStatus) {
@@ -228,4 +241,17 @@ public class User{
 		returner += "timer: "+timer;
 		return returner;
 	}
+	public Set<User> getGroupedinviter() {
+		return groupedinviter;
+	}
+	public void setGroupedinviter(Set<User> groupedinviter) {
+		this.groupedinviter = groupedinviter;
+	}
+	public Set<User> getGroupedinvitee() {
+		return groupedinvitee;
+	}
+	public void setGroupedinvitee(Set<User> groupedinvitee) {
+		this.groupedinvitee = groupedinvitee;
+	}
+
 }

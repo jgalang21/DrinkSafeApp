@@ -39,7 +39,7 @@ import org.springframework.web.bind.annotation.RestController;
 	public List<User> returnAllUsers(){
 		logger.info("Displaying all users");
         List<User> results = (List<User>) userRepo.findAll();
-        logger.info("Number of usrs:" + results.size());
+        logger.info("Number of users:"  + results.size());
         return results;
 		
 	}
@@ -69,7 +69,17 @@ import org.springframework.web.bind.annotation.RestController;
 		logger.info(u.getUsername()+ " has added " + u2.getUsername() + " as a friend");
 	}
 	
-/*
+/*	
+	@RequestMapping(method = RequestMethod.GET, path="/users/friend/addGroup/{user1Id}/{user2Id}")
+	public void addGroup(@PathVariable("user1Id") String user1,@PathVariable("user2Id") String user2) {
+		User u = userRepo.findByUsername(user1);
+		User u2 =userRepo.findByUsername(user2);
+		u.toModifyGIR().add(u2);
+		userRepo.save(u);
+		logger.info(u.getUsername()+ " has added " + u2.getUsername() + " into their group");
+	}
+	
+
 	@RequestMapping(method = RequestMethod.GET, path="/users/new/{username}/{drinkid}/{amount}")
 	public void giveDrink(@PathVariable("username") User username, @PathVariable("drinkid") Drink drinkid) {
 		

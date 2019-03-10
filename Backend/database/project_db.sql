@@ -18,6 +18,12 @@ CREATE TABLE `friend`(
    CONSTRAINT `sentfrom` FOREIGN KEY (`sentfrom`) REFERENCES `user` (`username`) ON DELETE CASCADE ON UPDATE CASCADE,
    CONSTRAINT `sentto` FOREIGN KEY (`sentto`) REFERENCES `user` (`username`) ON DELETE CASCADE ON UPDATE CASCADE);
  
+ CREATE TABLE `group`(
+   `gm` varchar (100) NOT NULL,
+   `m` varchar (100) NOT NULL,
+   CONSTRAINT `gm` FOREIGN KEY (`gm`) REFERENCES `user` (`username`) ON DELETE CASCADE ON UPDATE CASCADE,
+   CONSTRAINT `m` FOREIGN KEY (`m`) REFERENCES `user` (`username`) ON DELETE CASCADE ON UPDATE CASCADE);
+ 
  
 CREATE TABLE `time` (
   `tid` int(10) NOT NULL,
