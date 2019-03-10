@@ -40,10 +40,9 @@ public class SignIn extends AppCompatActivity {
     private ProgressDialog pDialog;
     private String TAG = SignIn.class.getSimpleName();
     private String tag_json_obj = "jobj_req", tag_json_arry = "jarray_req";
-    private ArrayList<String> passWd = new ArrayList<String>();
-    private ArrayList<String> UserEmail = new ArrayList<String>();
-    String storedPass = "";
     private TextView msgResponse;
+    private Boolean trueMail = true;
+    private Boolean success = false;
 
 
     @Override
@@ -65,12 +64,8 @@ public class SignIn extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     makeJsonArrayReq();
-                    //reader = new JSONObject(in);
                     System.err.println("makeJsonArrayReq");
-                    validate(Email.getText().toString(), Password.getText().toString());
                     System.err.println("Finish validate");
-                } catch (JSONException e) {
-                    System.out.print("on click catch");
                 }
                 catch (Exception e){
                     System.err.println("Hard Fail");
@@ -90,27 +85,17 @@ public class SignIn extends AppCompatActivity {
         pDialog.setCancelable(false);
     }
 
-    private void validate(String uEmail, String userPass) throws JSONException {
-        if(userPass == ""||userPass == null) {
-            return;
-        }
-            //JSONObject sys  = reader.getJSONObject(userEmail);
-            //passWd = sys.getString("password");
-        System.err.println("username: ");
-        for(int i = 0; i< UserEmail.size();i++){
-            if(UserEmail.get(i).equals(uEmail)){
-                storedPass = passWd.get(i);
-               
-                break;
-            }
-        }
+    private void validate(String uEmail, String userPass, String passWd) throws JSONException {
+        System.err.println("in Validate");
         if (((uEmail.equals("Admin")) && (userPass.equals("123Abc")))||passWd.equals(userPass)) {
-            Intent intent = new Intent(SignIn.this,  SecondActivity.class);
+            Intent intent = new Intent(SignIn.this, SecondActivity.class);
             startActivity(intent);
-
-        } else {
+        }
+        else {
             counter--;
             Info.setText("Attempts left: " + String.valueOf(counter));
+            Toast.makeText(getApplicationContext(),"incorrect combination of username and password",Toast.LENGTH_LONG).show();
+            trueMail = false;
             if (counter == 0) {
 
                 counter = 0;
@@ -184,19 +169,24 @@ public class SignIn extends AppCompatActivity {
              new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        System.err.println("in onResponse");
+
                         try{
                         for (int i = 0; i < response.length(); i++) {
-
+                            System.err.println("in onResponse");
                             JSONObject person = (JSONObject) response
                                     .get(i);
-                            //JSONObject userName = person.getJSONObject("UserName");
-                            System.err.print("This: " + person);
-                            passWd.add(person.getString("password"));
-                            UserEmail.add(person.getString("username"));
-                            //System.err.print("Username: " + userName.toString());
-                        }
+                            String passWd = person.getString("password");
+                            String UserEmail = person.getString("username");
+                            if(((Email.getText().toString().equals("Admin")) && (Password.getText().toString().equals("123Abc")))||(UserEmail.equals(Email.getText().toString().trim()))){
+                                System.err.println("same Email");
+                                validate(UserEmail,Password.getText().toString(), passWd);
+                            }
+                            System.err.println("");
+                            System.err.println("username: " + person.getString("username"));
+                            System.err.println("password: " + person.getString("password"));
 
+                        }
+                            System.err.println(Email.getText().toString());
                         }
                         catch(JSONException e) {
                                 System.err.print("in makejsonarrReq");
@@ -207,6 +197,7 @@ public class SignIn extends AppCompatActivity {
 
                             }
                         hideProgressDialog();
+
                     }
                 }, new Response.ErrorListener() {
             @Override
