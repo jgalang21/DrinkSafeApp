@@ -30,8 +30,8 @@ import org.json.JSONObject;
 public class ProfileScreen extends AppCompatActivity {
     private EditText name_box, weight_box, email_box;
     private Spinner gender_s, feet_s, inches_s;
-    private String name, email;
-    private int weight, height, gender;
+    private String name, email, weight;
+    private int height, gender; //if gender is 1, user is male. Otherwise they are female
     private int[] height_arr = new int[2];
 
     private static String TAG = ProfileScreen.class.getSimpleName();
@@ -113,12 +113,12 @@ public class ProfileScreen extends AppCompatActivity {
             }
         });
 
-        getInfo(this.name, this.email, this.weight, this.height, this.gender);
+        getInfo();
 
         heightConv(this.height, this.height_arr, true);
     }
 
-    private void getInfo(String n, String e, int w, int h, int g) {
+    private void getInfo() {
         /*JsonObjectRequest jsonObjRew = new JsonObjectRequest(Response.Method.GET, Const.URL_USER_INFO,
                 null, new Response.Listener<JSONObject>() {
             @Override
@@ -136,17 +136,17 @@ public class ProfileScreen extends AppCompatActivity {
                         try {
                             // Parsing json array response
                             // loop through each json object
-                            for (int i = 0; i < response.length(); i++) {
+                            JSONObject person = findUser(response);
 
-                                JSONObject person = (JSONObject) response
-                                        .get(i);
-
-                                n = person.getString("name");
-                                email = person.getString("email");
-                                height = person.getString("email");
-                                weight = person.getString("email");
-                                gender = person.getString("email");
-                            }
+                            name = person.getString("name");
+                            email = person.getString("username");
+                            String h = person.getString("height");
+                            height = Integer.parseInt(h);
+                            weight = person.getString("weight");
+                            String g = person.getString("gender");
+                            gender = Integer.parseInt(g);
+                            heightConv(height, height_arr, true);
+                            update_text();
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(),
@@ -164,6 +164,8 @@ public class ProfileScreen extends AppCompatActivity {
         });
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(req);
+
+
     }
 
     /**
@@ -182,5 +184,30 @@ public class ProfileScreen extends AppCompatActivity {
             temp += h_arr[1];
             h = temp;
         }
+    }
+
+    private JSONObject findUser(JSONArray response) throws JSONException {
+        JSONObject person = null;
+        for (int i = 0; i < response.length(); i++) {
+            person = (JSONObject) response.get(i);
+            String tmp = person.getString("username");
+            if (tmp.equals(Const.cur_user_name)) {
+                break;
+            }
+        }
+        if(person == null) {
+            throw new JSONException("Could not find user");
+        } else {
+            return person;
+        }
+    }
+
+    private void update_text(){
+        name_box.setText(name);
+        email_box.setText(email);
+        gender_s.setSelection(gender);
+        feet_s.setSelection(height_arr[0] - 1);
+        inches_s.setSelection(height_arr[1] - 1);
+        weight_box.setText(weight);
     }
 }
