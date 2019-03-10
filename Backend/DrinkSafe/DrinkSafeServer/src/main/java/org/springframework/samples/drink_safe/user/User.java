@@ -83,11 +83,11 @@ public class User{
     time user_time; 
     
     
-    
+    private boolean isLeader = false;
 
     
 
-	public User(String username, String name, String password, int height, int weight,int gender, int guestStatus) {
+	public User(String username, String name, String password, int height, int weight,int gender, int guestStatus, boolean isLeader) {
 		this.username = username;
 		this.name = name;
 		this.password = password;
@@ -95,6 +95,7 @@ public class User{
 		this.weight=weight;
 		this.gender=gender;
 		this.guestStatus=guestStatus;
+		this.isLeader = isLeader;
 		
 		
 	}
@@ -253,5 +254,14 @@ public class User{
 	public void setGroupedinvitee(Set<User> groupedinvitee) {
 		this.groupedinvitee = groupedinvitee;
 	}
+	
+	public void setToLeader() {
+		isLeader = true; 
+	}
+	
+	public void demoteLeader() {
+		isLeader = false; 
+	}
+	
 
 }
