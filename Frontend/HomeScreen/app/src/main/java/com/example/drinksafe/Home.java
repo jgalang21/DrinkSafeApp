@@ -24,7 +24,7 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
@@ -70,16 +70,27 @@ public class Home extends AppCompatActivity {
                             case R.id.nav_profile:
                                 i = new Intent(Home.this, ProfileScreen.class);
                                 startActivity(i);
+                                break;
                             case R.id.nav_drinks:
-                                i = new Intent(Home.this, ProfileScreen.class);
+                                i = new Intent(Home.this, Drinks.class);
                                 startActivity(i);
+                                break;
                             case R.id.nav_party:
-                                i = new Intent(Home.this, ProfileScreen.class);
+                                i = new Intent(Home.this, Party.class);
                                 startActivity(i);
+                                break;
+                            case R.id.nav_map:
+                                i = new Intent(Home.this, Map.class);
+                                startActivity(i);
+                                break;
+                            case R.id.nav_log_out:
+                                i = new Intent(Home.this, SignIn.class);
+                                startActivity(i);
+                                break;
                             default:
                                 return true;
                         }
-
+                        return true;
                     }
                 });
 
