@@ -3,12 +3,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_map"
+            android:icon="@android:drawable/ic_menu_mapmode"
             android:title="Map" />
         <item
             android:id="@+id/nav_drinks"
+            android:icon="@drawable/ic_local_drink"
             android:title="Drinks" />
         <item
             android:id="@+id/nav_party"
+            android:icon="@drawable/ic_group"
             android:title="Party" />
         <item
             android:id="@+id/nav_profile"
@@ -16,6 +19,7 @@
             android:title="Profile" />
         <item
             android:id="@+id/nav_log_out"
+            android:icon="@drawable/ic_first_page"
             android:title="Log Out" />
     </group>
 </menu>
