@@ -1,9 +1,9 @@
-package com.jorden.login;
+package com.example.drinksafe;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,13 +18,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.jorden.app.AppController;
-import com.jorden.net_utils.Const;
+import com.example.drinksafe.net_utils.Const;
+import com.example.drinksafe.app.AppController;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,14 +48,14 @@ public class SignIn extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_log_in);
 
         Email = (EditText) findViewById(R.id.etemail);
         Password = (EditText) findViewById(R.id.etpass);
         Info = (TextView) findViewById(R.id.tvInfo);
         Login = (Button) findViewById(R.id.btnLogin);
         SignUp = (Button) findViewById(R.id.SignUpbtn);
-        msgResponse = (TextView) findViewById(R.id.textToShow);
+        //msgResponse = (TextView) findViewById(R.id.textToShow);
 
 
         Info.setText("attempts left: 5");
@@ -88,7 +88,8 @@ public class SignIn extends AppCompatActivity {
     private void validate(String uEmail, String userPass, String passWd) throws JSONException {
         System.err.println("in Validate");
         if (((uEmail.equals("Admin")) && (userPass.equals("123Abc")))||passWd.equals(userPass)) {
-            Intent intent = new Intent(SignIn.this, SecondActivity.class);
+            Const.cur_user_name = uEmail;
+            Intent intent = new Intent(SignIn.this, Home.class);
             startActivity(intent);
         }
         else {
