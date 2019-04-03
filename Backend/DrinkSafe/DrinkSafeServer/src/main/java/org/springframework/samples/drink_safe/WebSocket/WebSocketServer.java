@@ -1,4 +1,4 @@
-package websocket;
+package org.springframework.samples.drink_safe.WebSocket;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 
 import org.springframework.stereotype.Component;
 
-@ServerEndpoint("/websocket/{username}")
+@ServerEndpoint("/WebSocket/{username}")
 @Component
 public class WebSocketServer {
 	
@@ -25,7 +25,7 @@ public class WebSocketServer {
     private static Map<Session, String> sessionUsernameMap = new HashMap<>();
     private static Map<String, Session> usernameSessionMap = new HashMap<>();
     
-    private final Logger logger = (Logger) LoggerFactory.getLogger(WebSocketServer.class);
+    private final org.slf4j.Logger logger =  LoggerFactory.getLogger(WebSocketServer.class);
     
     @OnOpen
     public void onOpen(
