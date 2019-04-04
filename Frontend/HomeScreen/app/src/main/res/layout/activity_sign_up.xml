@@ -40,7 +40,7 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/height(in)" />
+        app:layout_constraintTop_toBottomOf="@+id/height_in" />
 
     <Switch
         android:id="@+id/maleSex"
@@ -61,7 +61,7 @@
         app:layout_constraintVertical_bias="0.263" />
 
     <EditText
-        android:id="@+id/height(in)"
+        android:id="@+id/height_in"
         android:layout_width="85dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -72,7 +72,7 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.297"
-        app:layout_constraintStart_toEndOf="@+id/height(ft)"
+        app:layout_constraintStart_toEndOf="@+id/height_ft"
         app:layout_constraintTop_toBottomOf="@+id/UserPass" />
 
     <TextView
@@ -109,7 +109,7 @@
         app:layout_constraintVertical_bias="0.229" />
 
     <EditText
-        android:id="@+id/height(ft)"
+        android:id="@+id/height_ft"
         android:layout_width="78dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

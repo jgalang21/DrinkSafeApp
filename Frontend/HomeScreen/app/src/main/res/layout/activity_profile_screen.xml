@@ -131,7 +131,7 @@
         app:layout_constraintTop_toTopOf="@+id/gender_t" />
 
     <Spinner
-        android:id="@+id/incehs_spin"
+        android:id="@+id/inches_spin"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginEnd="8dp"
@@ -155,7 +155,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
         android:text="@string/inch_t"
-        app:layout_constraintBottom_toBottomOf="@+id/incehs_spin"
+        app:layout_constraintBottom_toBottomOf="@+id/inches_spin"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
@@ -164,7 +164,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="@string/feet_t"
-        app:layout_constraintEnd_toStartOf="@+id/incehs_spin"
+        app:layout_constraintEnd_toStartOf="@+id/inches_spin"
         app:layout_constraintTop_toTopOf="@+id/textView3" />
 
     <EditText

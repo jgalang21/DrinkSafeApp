@@ -15,12 +15,10 @@ import android.widget.Toast;
 import com.example.drinksafe.app.AppController;
 import com.example.drinksafe.net_utils.Const;
 
-import com.android.volley.Request.Method;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,7 +49,7 @@ public class ProfileScreen extends AppCompatActivity {
 
         gender_s = (Spinner) findViewById(R.id.sex_spin);
         feet_s = (Spinner) findViewById(R.id.feet_spin);
-        inches_s = (Spinner) findViewById(R.id.incehs_spin);
+        inches_s = (Spinner) findViewById(R.id.inches_spin);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
@@ -109,12 +107,14 @@ public class ProfileScreen extends AppCompatActivity {
                     feet_s.setEnabled(false);
                     inches_s.setEnabled(false);
                     v.setTag(1);
+
+
                 }
             }
         });
 
-        getInfo();
 
+        getInfo();
         heightConv(this.height, this.height_arr, true);
     }
 
