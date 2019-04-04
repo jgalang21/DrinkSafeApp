@@ -35,7 +35,7 @@ public class TestUser {
 		
 	}
 	
-	
+	//// --------------------------------------------------JEREMY'S TESTS ---------------------------
 	//Testing if the user credentials match
 	@Test
 	public void testCredentials() {
@@ -49,6 +49,26 @@ public class TestUser {
 		assertEquals(222, x.getWeight());
 		assertEquals(0, x.getGender());
 		assertEquals(0, x.getGuestStatus());
+		
+		
+	}
+	@Test
+	public void testCredentialsMock() {
+		//public User(String username, String name, String password, int height, int weight,int gender, int guestStatus)
+		User x = mock(User.class);
+		
+		
+		when(x.getUsername()).thenReturn("Tim21");
+		when(x.getName()).thenReturn("Tim");
+		when(x.getPassword()).thenReturn("Rajon Rondo");
+		when(x.getHeight()).thenReturn(33);
+		when(x.getWeight()).thenReturn(100);
+		when(x.getGender()).thenReturn(0);
+		when(x.getGuestStatus()).thenReturn(1);
+		
+		
+		
+		
 		
 		
 	}
@@ -86,7 +106,7 @@ public class TestUser {
 		Drink r = new Drink("Grey Goose", 10, 15, x); 
 
 		
-		when(x.giveDrink(r)).thenReturn("Grey Goose");
+		//when(x.giveDrink(r)).thenReturn("Grey Goose");
 		x.giveDrink(r);
 		x.giveDrink(r);
 		
@@ -112,8 +132,30 @@ public class TestUser {
 
 	}
 	
+	@Test
+	public void testDrink4() {
+		
+		User y = mock(User.class);
+		Drink r = new Drink("Grey Goose", 10, 15, y); 
+		Drink r2 = mock(Drink.class);
+	
+		when(y.getGender()).thenReturn(0);
+		//when(y.giveDrink(r)).thenReturn("Done");
+		y.giveDrink(r);
+		y.giveDrink(r);
+		y.giveDrink(r2);
+		
+		assertEquals(y.getGender(), 0);
+		
+		//verify(y, times(2)).giveDrink(r);
 	
 
+	}
+	
+	
+	
+	
+	//// --------------------------------------------------JEREMY'S TESTS ---------------------------
 	
 	
 }

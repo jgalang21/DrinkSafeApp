@@ -1434,3 +1434,10 @@ Caused by: java.lang.IllegalStateException: The remote endpoint was in state [TE
 2019-04-03 20:13:52.050  INFO 19246 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
 2019-04-03 20:13:52.051  INFO 19246 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : Started DrinkSafeServerApplication in 16.765 seconds (JVM running for 5955.897)
 2019-04-03 20:13:52.056  INFO 19246 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2019-04-03 21:14:12.509  INFO 19246 --- [RMI TCP Connection(180)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2019-04-03 21:14:12.511  INFO 19246 --- [RMI TCP Connection(180)-127.0.0.1] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@55d2d1ff: startup date [Wed Apr 03 20:13:50 CDT 2019]; root of context hierarchy
+2019-04-03 21:14:12.515  INFO 19246 --- [RMI TCP Connection(180)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-04-03 21:14:12.515  INFO 19246 --- [RMI TCP Connection(180)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-04-03 21:14:12.517  INFO 19246 --- [RMI TCP Connection(180)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-04-03 21:14:12.519  INFO 19246 --- [RMI TCP Connection(180)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2019-04-03 21:14:12.521  INFO 19246 --- [RMI TCP Connection(180)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
