@@ -1,7 +1,6 @@
 package org.springframework.samples.drink_safe.user;
 
 import java.util.HashSet;
-<<<<<<< HEAD
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,13 +12,6 @@ import org.hibernate.annotations.NotFoundAction;
 
 @Entity
 @Table(name="group")
-=======
-import javax.persistence.Column;
-import javax.persistence.Id;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
-
->>>>>>> 0a2fb7890052d5564aff76271231ad0620c2b66b
 public class Group {
 	@Id
     @Column(name = "gm")
@@ -51,33 +43,5 @@ public class Group {
 		this.group = group;
 	}
 	
-
-<<<<<<< HEAD
-=======
-	@Id
-	@Column(name = "groupName")
-	@NotFound(action = NotFoundAction.IGNORE)
-	private String groupName;
-
-
-	HashSet<User> group = new HashSet<User>();
-
-	public Group(String gName) {
-		this.groupName = gName; 
-	}
-
-	public Group() {
-	}
-
-	
-	public void addMember(User name) {
-		group.add(name);
-	}
-	
-	public void removeMember(User name) {
-		group.remove(name);
-	}
-	
->>>>>>> 0a2fb7890052d5564aff76271231ad0620c2b66b
 	
 }
