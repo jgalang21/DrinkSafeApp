@@ -2,4 +2,9 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
     <fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
+    <fullyQualifiedTypeName name="org.springframework.samples.drink_safe.user.UserService"/>
+    <fullyQualifiedTypeName name="org.springframework.samples.drink_safe.user.UserRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.samples.drink_safe.user.User"/>
+    <fullyQualifiedTypeName name="org.springframework.samples.drink_safe.Drink.Drink"/>
+    <fullyQualifiedTypeName name="org.mockito.Mockito"/>
 </qualifiedTypeNameHistroy>

@@ -196,7 +196,7 @@ public class User{
 	public String getDrinks() {
 		String returner ="";
 		for(Drink d: drinks)
-			returner+=d.getDrinkid() + " ";
+			returner+=d.getDrinkid();
 		return returner;
 	}
 	public void setDrinks(Set<Drink> drinks) {
