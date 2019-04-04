@@ -12,18 +12,18 @@ CREATE TABLE `user` (
   `guest_status` int(1) DEFAULT NULL,
   PRIMARY KEY (`username`));
  
+ 
 CREATE TABLE `friend`(
    `sentfrom` varchar (100) NOT NULL,
    `sentto` varchar (100) NOT NULL,
    CONSTRAINT `sentfrom` FOREIGN KEY (`sentfrom`) REFERENCES `user` (`username`) ON DELETE CASCADE ON UPDATE CASCADE,
    CONSTRAINT `sentto` FOREIGN KEY (`sentto`) REFERENCES `user` (`username`) ON DELETE CASCADE ON UPDATE CASCADE);
- 
- CREATE TABLE `group`(
+   
+CREATE TABLE `group`(
    `gm` varchar (100) NOT NULL,
    `m` varchar (100) NOT NULL,
    CONSTRAINT `gm` FOREIGN KEY (`gm`) REFERENCES `user` (`username`) ON DELETE CASCADE ON UPDATE CASCADE,
    CONSTRAINT `m` FOREIGN KEY (`m`) REFERENCES `user` (`username`) ON DELETE CASCADE ON UPDATE CASCADE);
- 
  
 CREATE TABLE `time` (
   `tid` int(10) NOT NULL,
@@ -32,11 +32,12 @@ CREATE TABLE `time` (
   PRIMARY KEY (`tid`));
   
 CREATE TABLE `Drink` (
+  `did` int(10) NOT NULL,
   `drinkid` varchar(100) NOT NULL,
   `alcpercent` int(20) DEFAULT NULL,
   `volume` int(20) DEFAULT NULL,
   `fkuser` varchar(100) NOT NULL,
-  PRIMARY KEY (`drinkid`),
+  PRIMARY KEY (`did`),
   CONSTRAINT `fkuser` FOREIGN KEY (`fkuser`) REFERENCES `user` (`username`) ON DELETE CASCADE ON UPDATE CASCADE);
   
   
@@ -46,4 +47,4 @@ CREATE TABLE `drink_time` (
   CONSTRAINT `tid` FOREIGN KEY (`tid`) REFERENCES `time` (`tid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `dtusername` FOREIGN KEY (`dtusername`) REFERENCES `user` (`username`) ON DELETE CASCADE ON UPDATE CASCADE);
   
-  
+

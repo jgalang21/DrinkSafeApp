@@ -22,25 +22,31 @@ public class Group {
     @Column(name = "m")
     @NotFound(action = NotFoundAction.IGNORE)
 	private String m;
+    
     public Group()
     {
     	
     }
-    public Group(String gm, String ,)
+    public Group(String gm, String m)
     {
-    	this.gm=u1;
-    	sentto=u2;
+    	this.gm = gm;
+    	this.m =m;
     }
 
-	public String getGroup() {
-		String returner = "";
-		for(User u: group)
-			returner+= u.getUsername()+ " ";
-		return returner;
+	public String getGm() {
+		return gm;
 	}
 
-	public void setGroup(HashSet<User> group) {
-		this.group = group;
+	public void setGm(String gm) {
+		this.gm = gm;
+	}
+
+	public String getM() {
+		return m;
+	}
+
+	public void setM(String m) {
+		this.m = m;
 	}
 	
 	

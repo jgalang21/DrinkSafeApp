@@ -1,6 +1,7 @@
 package org.springframework.samples.drink_safe.tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -14,9 +15,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.samples.drink_safe.Drink.Drink;
+import org.springframework.samples.drink_safe.Drink.DrinkController;
 import org.springframework.samples.drink_safe.user.User;
+import org.springframework.samples.drink_safe.user.UserController;
 import org.springframework.samples.drink_safe.user.UserRepository;
 import org.springframework.samples.drink_safe.user.UserService;
+import org.springframework.web.bind.annotation.PathVariable;
 
 public class TestUser {
 
@@ -72,7 +76,7 @@ public class TestUser {
 		
 		
 	}
-	
+	/*
 	@Test
 	public void testDrinkCredentials() {
 		User x = new User("jman22", "John", "Dogs", 48, 222, 0, 0);
@@ -153,9 +157,19 @@ public class TestUser {
 	}
 	
 	
-	
+	*/
 	
 	//// --------------------------------------------------JEREMY'S TESTS ---------------------------
-	
+	/// ---------------------------------------------------NICK'S TESTS------------------------------
+	@Test
+	public void testDrinkAdd() {
+		DrinkController x = mock(DrinkController.class);
+		UserController m = mock(UserController.class);
+		m.saveUser("username","name","password",70,200,1,0);
+		x.addDrink("Beer", 4, 18, "username");
+		User a = m.findUserbyID("username");
+		assertTrue(a.getDrinks().equals("Beer"));
+
+	}
 	
 }

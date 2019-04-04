@@ -2,6 +2,8 @@ package org.springframework.samples.drink_safe.Drink;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,6 +19,10 @@ import org.springframework.samples.drink_safe.user.User;
 public class Drink {
 
 	@Id
+	@Column(name ="did")
+	@NotFound(action = NotFoundAction.IGNORE)
+	private int did;
+	
 	@Column(name = "drinkid")
 	@NotFound(action = NotFoundAction.IGNORE)
 	private String drinkid;
@@ -37,7 +43,8 @@ public class Drink {
 	public Drink() {
 		
 	}
-	public Drink(String drinkid, int alcPercent, int volume, User fkuser) {
+	public Drink(int did, String drinkid, int alcPercent, int volume, User fkuser) {
+		this.did = did;
 		this.drinkid = drinkid;
 		this.alcpercent = alcPercent;
 		this.volume = volume;
@@ -80,6 +87,12 @@ public class Drink {
 		returner += " Volume = " + getVolume();
 		returner += " User = " + getFkuser();
 		return returner;
+	}
+	public int getDid() {
+		return did;
+	}
+	public void setDid(int did) {
+		this.did = did;
 	}
 
 

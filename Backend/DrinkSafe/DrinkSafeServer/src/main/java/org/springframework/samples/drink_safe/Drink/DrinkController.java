@@ -33,7 +33,13 @@ import org.springframework.web.bind.annotation.RestController;
 		time t = new time(u.getUsername().hashCode(),x,x+1000);
 		u.setUser_time(t);
 		userRepo.save(u);
-		Drink drink = new Drink(DrinkId, alcPercent, volume,u);
+		List<Drink> r = (List<Drink>) drinkRepo.findAll();
+		int did;
+		if(r.isEmpty())
+			did=0;
+		else
+			did = r.size();
+		Drink drink = new Drink(did,DrinkId, alcPercent, volume,u);
 		drinkRepo.save(drink);
 		logger.info(fkuser + " had added " +DrinkId + " as a drink");
 	}

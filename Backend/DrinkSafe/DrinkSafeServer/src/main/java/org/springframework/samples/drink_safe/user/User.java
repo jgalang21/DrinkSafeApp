@@ -87,7 +87,7 @@ public class User{
 
     
 
-	public User(String username, String name, String password, int height, int weight,int gender, int guestStatus, boolean isLeader) {
+	public User(String username, String name, String password, int height, int weight,int gender, int guestStatus) {
 		this.username = username;
 		this.name = name;
 		this.password = password;
@@ -192,11 +192,10 @@ public class User{
 	public void setUser_time(time user_time) {
 		this.user_time = user_time;
 	}
-	
 	public String getDrinks() {
 		String returner ="";
 		for(Drink d: drinks)
-			returner+=d.getDrinkid();
+			returner+=d.getDrinkid()+ " ";
 		return returner;
 	}
 	public void setDrinks(Set<Drink> drinks) {
