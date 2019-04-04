@@ -1,6 +1,7 @@
 package org.springframework.samples.drink_safe.tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -28,6 +29,10 @@ public class TestUser {
 	@Before
 	public void init() {
 		MockitoAnnotations.initMocks(this);
+		
+		userServe = mock(UserService.class);
+		userRepo = mock(UserRepository.class);
+		
 	}
 	
 	
@@ -48,6 +53,17 @@ public class TestUser {
 		
 	}
 	
+	@Test
+	public void testDrinkCredentials() {
+		User x = new User("jman22", "John", "Dogs", 48, 222, 0, 0);
+		Drink r = new Drink("Grey Goose", 10, 15, x); 
+		
+		
+		assertEquals("Grey Goose", r.getDrinkid());
+		assertEquals(10, r.getAlcpercent());
+		assertEquals(15, r.getVolume());
+		assertEquals(x.getUsername(), r.getFkuser());
+	}
 	
 
 	@Test
@@ -58,8 +74,6 @@ public class TestUser {
 		
 		x.giveDrink(r);
 		
-		Mockito.verify(x).giveDrink(r);
-		
 		assertEquals("Grey Goose", x.getDrinks());
 	}
 	
@@ -68,9 +82,11 @@ public class TestUser {
 	@Test
 	public void testDrink2() {
 		//public Drink(String drinkid, int alcPercent, int volume, User fkuser)
-		User x = new User("jman22", "John", "Dogs", 48, 222, 0, 0);
+		User x = mock(User.class);
 		Drink r = new Drink("Grey Goose", 10, 15, x); 
+
 		
+		when(x.giveDrink(r)).thenReturn("Grey Goose");
 		x.giveDrink(r);
 		x.giveDrink(r);
 		
@@ -78,13 +94,26 @@ public class TestUser {
 	}
 	
 	
-	public void testDrinkCredentials() {
-		User x = new User("jman22", "John", "Dogs", 48, 222, 0, 0);
-		Drink r = new Drink("Grey Goose", 10, 15, x); 
+	//this tests that the drink r has been added twice, and doesn't include any other drinks.
+	//this essentially counts how many instances of a certain drink
+	@Test
+	public void testDrink3() {
 		
+		User y = mock(User.class);
+		Drink r = new Drink("Grey Goose", 10, 15, y); 
+		Drink r2 = mock(Drink.class);
+	
+		y.giveDrink(r);
+		y.giveDrink(r);
+		y.giveDrink(r2);
 		
-	//	assertEquals("Grey Goose", )
+		verify(y, times(2)).giveDrink(r);
+	
+
 	}
+	
+	
+
 	
 	
 }
