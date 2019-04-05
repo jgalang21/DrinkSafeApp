@@ -28,6 +28,9 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.samples.drink_safe.Drink.Drink;
 import org.springframework.samples.drink_safe.Drink.DrinkController;
+import org.springframework.samples.drink_safe.buddies.buddies;
+import org.springframework.samples.drink_safe.friend.friend;
+import org.springframework.samples.drink_safe.time.time;
 import org.springframework.samples.drink_safe.user.User;
 import org.springframework.samples.drink_safe.user.UserController;
 import org.springframework.samples.drink_safe.user.UserRepository;
@@ -172,5 +175,24 @@ public class TestUser {
 	
 	
 	/// ---------------------------------------------------NICK'S TESTS------------------------------
-
+	 @Test
+	    public void testBuddies() throws Exception {
+	        buddies r = mock(buddies.class);
+	        when(r.getInviter()).thenReturn("BigHAAS");
+	        when(r.getInvitee()).thenReturn("Jeremy");
+	        assertEquals(r.getInviter(),"BigHAAS");
+	        assertEquals(r.getInvitee(),"Jeremy");
+	    }
+	    public void testFriends() throws Exception {
+	        friend r = mock(friend.class);
+	        when(r.getSentfrom()).thenReturn("BigHAAS");
+	        when(r.getSentto()).thenReturn("Jeremy");
+	        assertEquals(r.getSentfrom(),"BigHAAS");
+	        assertEquals(r.getSentto(),"Jeremy");
+	    }
+	    public void testTime() throws Exception {
+	        time r = mock(time.class);
+	        when(r.getTid()).thenReturn(1);
+	        assertEquals(r.getTid(),1);
+	    }
 }
