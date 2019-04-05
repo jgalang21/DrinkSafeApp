@@ -51,15 +51,6 @@ public class User{
     @Column(name = "guest_status")
     @NotFound(action = NotFoundAction.IGNORE)
 	private int guestStatus;
-    
-    @ManyToMany
-    @JoinTable(name = "group", 
-        joinColumns = @JoinColumn(name = "gm"),
-    	inverseJoinColumns = @JoinColumn(name = "m"))
-    private Set<User> groupedinviter = new HashSet<User>();
-    @ManyToMany(mappedBy = "groupedinviter")
-    private Set<User> groupedinvitee = new HashSet<User>();
-   
   
     @ManyToMany
     @JoinTable(name = "friend", 
@@ -68,6 +59,15 @@ public class User{
     private Set<User> friends = new HashSet<User>();
     @ManyToMany(mappedBy = "friends")
     private Set<User> befriended = new HashSet<User>();
+    
+    
+    @ManyToMany
+    @JoinTable(name = "buddies", 
+        joinColumns = @JoinColumn(name = "inviter"),
+    	inverseJoinColumns = @JoinColumn(name = "invitee"))
+    private Set<User> inviter = new HashSet<User>();
+    @ManyToMany(mappedBy = "inviter")
+    private Set<User> invitee = new HashSet<User>();
     
     
     @OneToMany(mappedBy = "fkuser", cascade = CascadeType.ALL)
@@ -82,8 +82,6 @@ public class User{
     )
     time user_time; 
     
-    
-    private boolean isLeader = false;
 
     
 
@@ -95,7 +93,6 @@ public class User{
 		this.weight=weight;
 		this.gender=gender;
 		this.guestStatus=guestStatus;
-		this.isLeader = isLeader;
 		
 		
 	}
@@ -210,6 +207,26 @@ public class User{
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getInviter() {
+		{
+			String returner ="";
+			for(User u: inviter)
+				returner+=u.getUsername() + " ";
+			return returner;
+		}
+	}
+	public void setInviter(Set<User> inviter) {
+		this.inviter = inviter;
+	}
+	public String getInvitee() {
+		String returner ="";
+		for(User u: invitee)
+			returner+=u.getUsername() + " ";
+		return returner;
+	}
+	public void setInvitee(Set<User> invitee) {
+		this.invitee = invitee;
+	}
 	
 	public String toString()
 	{
@@ -241,26 +258,8 @@ public class User{
 		returner += "timer: "+timer;
 		return returner;
 	}
-	public Set<User> getGroupedinviter() {
-		return groupedinviter;
-	}
-	public void setGroupedinviter(Set<User> groupedinviter) {
-		this.groupedinviter = groupedinviter;
-	}
-	public Set<User> getGroupedinvitee() {
-		return groupedinvitee;
-	}
-	public void setGroupedinvitee(Set<User> groupedinvitee) {
-		this.groupedinvitee = groupedinvitee;
-	}
+
 	
-	public void setToLeader() {
-		isLeader = true; 
-	}
-	
-	public void demoteLeader() {
-		isLeader = false; 
-	}
 	
 
 }
