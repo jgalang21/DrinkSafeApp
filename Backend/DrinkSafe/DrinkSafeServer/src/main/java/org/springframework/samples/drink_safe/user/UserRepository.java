@@ -8,10 +8,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
 
-	User findByUsername(String u2);
+
 
 
 	List<User> findAllByGuestStatus(int guest_status);
+
+	User findByUsername(String id);
 
 
 	//Optional<User> getFriends(String id);
