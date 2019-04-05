@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 	@Autowired
 	UserRepository userRepo;
 	
-	
+
 	
 	@RequestMapping(method = RequestMethod.GET, path= "/drink/new/{DrinkId}/{alcPercent}/{volume}/{fkuser}")
 	public void addDrink(@PathVariable("DrinkId") String DrinkId,@PathVariable("alcPercent") int alcPercent,@PathVariable("volume") int volume, @PathVariable("fkuser") String fkuser)

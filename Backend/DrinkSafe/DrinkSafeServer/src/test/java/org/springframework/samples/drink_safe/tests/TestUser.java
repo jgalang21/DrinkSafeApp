@@ -10,7 +10,13 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
+
 import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,36 +30,43 @@ import org.springframework.samples.drink_safe.user.User;
 import org.springframework.samples.drink_safe.user.UserController;
 import org.springframework.samples.drink_safe.user.UserRepository;
 import org.springframework.samples.drink_safe.user.UserService;
+
 import org.springframework.test.web.servlet.MockMvc;
+
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.bind.annotation.PathVariable;
 
 public class TestUser {
 
-    private MockMvc mockMvc;
 
-    @Mock
-    private UserService userService;
 
-    @InjectMocks
-    private UserController userController;
+	@InjectMocks
+	UserService userServe;
+	
+	@Mock
+	UserRepository userRepo;
+	
+	
+	
+	@Before
+	public void init() {
+		MockitoAnnotations.initMocks(this);
+		userServe = mock(UserService.class);
+		userRepo = mock(UserRepository.class);
+		
+	}
 
-    @Before
-    public void init(){
-        MockitoAnnotations.initMocks(this);
-        mockMvc = MockMvcBuilders
-                .standaloneSetup(userController)
-                .build();
-    }
 	
 	//// --------------------------------------------------JEREMY'S TESTS ---------------------------
 	//Testing if the user credentials match
 	@Test
-	public void testCredentials() {
+	public void testUserCredentials() {
 		//public User(String username, String name, String password, int height, int weight,int gender, int guestStatus)
 		User x = new User("jman22", "John", "Dogs", 48, 222, 0, 0);
 		
-		assertEquals("jman22", x.getUsername());
+		x.setUsername("jman223");
+		
+		assertEquals("jman223", x.getUsername());
 		assertEquals("John", x.getName());
 		assertEquals("Dogs", x.getPassword());
 		assertEquals(48, x.getHeight());
@@ -61,112 +74,57 @@ public class TestUser {
 		assertEquals(0, x.getGender());
 		assertEquals(0, x.getGuestStatus());
 		
-		
 	}
+
+	
 	@Test
-	public void testCredentialsMock() {
-		//public User(String username, String name, String password, int height, int weight,int gender, int guestStatus)
-		User x = mock(User.class);
-		
-		
-		when(x.getUsername()).thenReturn("Tim21");
-		when(x.getName()).thenReturn("Tim");
-		when(x.getPassword()).thenReturn("Rajon Rondo");
-		when(x.getHeight()).thenReturn(33);
-		when(x.getWeight()).thenReturn(100);
+	public void testUserCredentialsMock() {
+		User x = mock(User.class);//new User("jman22", "John", "Dogs", 48, 222, 0, 0);
+
+		when(x.getUsername()).thenReturn("Snake21");
+		when(x.getName()).thenReturn("John");
+		when(x.getPassword()).thenReturn("Cobra");
+		when(x.getHeight()).thenReturn(57);
+		when(x.getWeight()).thenReturn(170);
 		when(x.getGender()).thenReturn(0);
 		when(x.getGuestStatus()).thenReturn(1);
+
 		
-		
-		
-		
-		
-		
+		assertEquals("Snake21", x.getUsername());
+		assertEquals("John", x.getName());
+		assertEquals("Cobra", x.getPassword());
+		assertEquals(57, x.getHeight());
+		assertEquals(170, x.getWeight());
+		assertEquals(0, x.getGender());
+		assertEquals(1, x.getGuestStatus());
+	
 	}
-	/*
+	
 	@Test
 	public void testDrinkCredentials() {
-		User x = new User("jman22", "John", "Dogs", 48, 222, 0, 0);
-		Drink r = new Drink("Grey Goose", 10, 15, x); 
+		//public Drink(int did, String drinkid, int alcPercent, int volume, User fkuser) {
+		User r = mock(User.class);
+		Drink w = new Drink(0, "Whiskey", 10, 23, r);
+		
+		assertEquals(0, w.getDid());
+		assertEquals("Whiskey", w.getDrinkid());
+		assertEquals(10, w.getAlcpercent());
+		assertEquals(23, w.getVolume());
+		assertEquals(null, w.getFkuser());
 		
 		
-		assertEquals("Grey Goose", r.getDrinkid());
-		assertEquals(10, r.getAlcpercent());
-		assertEquals(15, r.getVolume());
-		assertEquals(x.getUsername(), r.getFkuser());
+		
+		
 	}
-	
 
-	@Test
-	public void testDrink() {
-		//public Drink(String drinkid, int alcPercent, int volume, User fkuser)
-		User x = new User("jman22", "John", "Dogs", 48, 222, 0, 0);
-		Drink r = new Drink("Grey Goose", 10, 15, x); 
-		
-		x.giveDrink(r);
-		
-		assertEquals("Grey Goose", x.getDrinks());
-	}
 	
 	
-	//does not like multiple instances of the same drink
-	@Test
-	public void testDrink2() {
-		//public Drink(String drinkid, int alcPercent, int volume, User fkuser)
-		User x = mock(User.class);
-		Drink r = new Drink("Grey Goose", 10, 15, x); 
-
-		
-		//when(x.giveDrink(r)).thenReturn("Grey Goose");
-		x.giveDrink(r);
-		x.giveDrink(r);
-		
-		assertEquals("Grey Goose Grey Goose ", x.getDrinks());
-	}
 	
-	
-	//this tests that the drink r has been added twice, and doesn't include any other drinks.
-	//this essentially counts how many instances of a certain drink
-	@Test
-	public void testDrink3() {
-		
-		User y = mock(User.class);
-		Drink r = new Drink("Grey Goose", 10, 15, y); 
-		Drink r2 = mock(Drink.class);
-	
-		y.giveDrink(r);
-		y.giveDrink(r);
-		y.giveDrink(r2);
-		
-		verify(y, times(2)).giveDrink(r);
-	
-
-	}
-	
-	@Test
-	public void testDrink4() {
-		
-		User y = mock(User.class);
-		Drink r = new Drink("Grey Goose", 10, 15, y); 
-		Drink r2 = mock(Drink.class);
-	
-		when(y.getGender()).thenReturn(0);
-		//when(y.giveDrink(r)).thenReturn("Done");
-		y.giveDrink(r);
-		y.giveDrink(r);
-		y.giveDrink(r2);
-		
-		assertEquals(y.getGender(), 0);
-		
-		//verify(y, times(2)).giveDrink(r);
-	
-
-	}
-	
-	
-	*/
 	
 	//// --------------------------------------------------JEREMY'S TESTS ---------------------------
+	
+	
+	
 	/// ---------------------------------------------------NICK'S TESTS------------------------------
 	@Test
 	public void testDrinkAdd() throws Exception {
@@ -181,5 +139,4 @@ public class TestUser {
 
 
 	}
-	
 }
