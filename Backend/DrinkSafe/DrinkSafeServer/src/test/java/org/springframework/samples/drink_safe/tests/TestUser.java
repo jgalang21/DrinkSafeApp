@@ -12,6 +12,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -40,21 +42,21 @@ public class TestUser {
 
 
 
-	@InjectMocks
-	UserService userServe;
-	
-	@Mock
-	UserRepository userRepo;
-	
-	
-	
-	@Before
-	public void init() {
-		MockitoAnnotations.initMocks(this);
-		userServe = mock(UserService.class);
-		userRepo = mock(UserRepository.class);
-		
-	}
+    private MockMvc mockMvc;
+
+    @Mock
+    private UserService userService;
+
+    @InjectMocks
+    private UserController userController;
+
+    @Before
+    public void init(){
+        MockitoAnnotations.initMocks(this);
+        mockMvc = MockMvcBuilders
+                .standaloneSetup(userController)
+                .build();
+    }
 
 	
 	//// --------------------------------------------------JEREMY'S TESTS ---------------------------
@@ -170,17 +172,5 @@ public class TestUser {
 	
 	
 	/// ---------------------------------------------------NICK'S TESTS------------------------------
-	@Test
-	public void testDrinkAdd() throws Exception {
-		Drink x = mock(Drink.class);
-		
-		
-		when(x.getDid()).thenReturn(0);
-		when(x.getDrinkid()).thenReturn("Beer");
-		when(x.getAlcpercent()).thenReturn(4);
-		when(x.getVolume()).thenReturn(18);
-		when(x.getFkuser()).thenReturn("BigHAAS");
 
-
-	}
 }
