@@ -200,6 +200,7 @@ public class User{
 	}
 	public void giveDrink(Drink drink) {
 		drinks.add(drink);
+		this.setGuestStatus(1);
 	}
 	public String getName() {
 		return name;

@@ -64,14 +64,36 @@ public class TestUser {
 		//public User(String username, String name, String password, int height, int weight,int gender, int guestStatus)
 		User x = new User("jman22", "John", "Dogs", 48, 222, 0, 0);
 		
-		x.setUsername("jman223");
 		
-		assertEquals("jman223", x.getUsername());
+		assertEquals("jman22", x.getUsername());
 		assertEquals("John", x.getName());
 		assertEquals("Dogs", x.getPassword());
 		assertEquals(48, x.getHeight());
 		assertEquals(222, x.getWeight());
 		assertEquals(0, x.getGender());
+		assertEquals(0, x.getGuestStatus());
+		
+	}
+	
+	@Test
+	public void testUserSetters() {
+		User x = new User("jman22", "John", "Dogs", 48, 222, 0, 0);
+		
+		x.setUsername("Kdog");
+		x.setName("Carl");
+		x.setPassword("Cats");
+		x.setHeight(49);
+		x.setWeight(223);
+		x.setGender(1);
+		x.setGuestStatus(0);
+		
+		
+		assertEquals("Kdog", x.getUsername());
+		assertEquals("Carl", x.getName());
+		assertEquals("Cats", x.getPassword());
+		assertEquals(49, x.getHeight());
+		assertEquals(223, x.getWeight());
+		assertEquals(1, x.getGender());
 		assertEquals(0, x.getGuestStatus());
 		
 	}
@@ -113,9 +135,31 @@ public class TestUser {
 		assertEquals(null, w.getFkuser());
 		
 		
+	}
+	
+	@Test
+	public void testMockDrinkCredentials() {
+		//public Drink(int did, String drinkid, int alcPercent, int volume, User fkuser) {
+		User r = mock(User.class);
+		Drink w = mock(Drink.class);
+		
+		
+		when(w.getDid()).thenReturn(0);
+		when(w.getDrinkid()).thenReturn("Whiskey");
+		when(w.getAlcpercent()).thenReturn(10);
+		when(w.getVolume()).thenReturn(23);
+		when(w.getFkuser()).thenReturn("lmaokai");
+		
+		assertEquals(0, w.getDid());
+		assertEquals("Whiskey", w.getDrinkid());
+		assertEquals(10, w.getAlcpercent());
+		assertEquals(23, w.getVolume());
+		assertEquals("lmaokai", w.getFkuser());
 		
 		
 	}
+	
+	
 
 	
 	
