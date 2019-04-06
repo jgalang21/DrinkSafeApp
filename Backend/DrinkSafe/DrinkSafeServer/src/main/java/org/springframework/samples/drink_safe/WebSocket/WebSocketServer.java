@@ -1,6 +1,7 @@
 package org.springframework.samples.drink_safe.WebSocket;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -24,6 +25,7 @@ public class WebSocketServer {
 	// Store all socket session and their corresponding username.
 	private static Map<Session, String> sessionUsernameMap = new HashMap<>();
 	private static Map<String, Session> usernameSessionMap = new HashMap<>();
+	private static ArrayList<String> group1 = new ArrayList<String>();
 
 	private final org.slf4j.Logger logger = LoggerFactory.getLogger(WebSocketServer.class);
 
@@ -34,13 +36,7 @@ public class WebSocketServer {
 		sessionUsernameMap.put(session, username);
 		usernameSessionMap.put(username, session);
 
-		
-		String message = null; 
-		if (username.equals("john")) {
-			message = "hello johnny boy";
-		} else {
-			 message = "User:" + username + " has Joined the Chat";
-		}
+		String message = "User:" + username + " has Joined the Chat";
 		broadcast(message);
 
 	}
@@ -56,7 +52,36 @@ public class WebSocketServer {
 			String destUsername = message.split(" ")[0].substring(1); // don't do this in your code!
 			sendMessageToPArticularUser(destUsername, "[DM] " + username + ": " + message);
 			sendMessageToPArticularUser(username, "[DM] " + username + ": " + message);
-		} else // Message to whole chat
+		}
+
+		if (message.equals("!group")) {
+			broadcast(username + " has started a new group.");
+			group1.add(username);
+		}
+		
+		if(message.equals("!get_members")) {
+			broadcast("List of members:");
+			for(int i = 0; i < group1.size(); i++) {
+				broadcast(group1.get(i));
+			}
+		}
+		
+		if(message.equals("!leave")) {
+			
+		}
+		
+		/*
+		 * if(message.startsWith("!")) { String check = message.substring(1,
+		 * message.length()-1); if(check.equals("group")) { broadcast("group made!"); }
+		 * if(check.equals("leave")) {
+		 * 
+		 * }
+		 * 
+		 * 
+		 * }
+		 */
+
+		else // Message to whole chat
 		{
 			broadcast(username + ": " + message);
 		}
