@@ -178,6 +178,8 @@ public class SignIn extends AppCompatActivity {
                                     .get(i);
                             String passWd = person.getString("password");
                             String UserEmail = person.getString("username");
+                            //getPassword(passWd);
+                            //getUsername(UserEmail);
                             if(((Email.getText().toString().equals("Admin")) && (Password.getText().toString().equals("123Abc")))||(UserEmail.equals(Email.getText().toString().trim()))){
                                 System.err.println("same Email");
                                 validate(UserEmail,Password.getText().toString(), passWd);
@@ -215,4 +217,24 @@ public class SignIn extends AppCompatActivity {
 
 
     }
+    public String getUsername(String userName){
+        return userName;
+    }
+    public String getPassword(String password){
+        return password;
+    }
+    public JSONObject getResponse(String username, String password) {
+        return null;
+    }
+    public boolean tryLogin(String username, String password, SignIn loginHandler) throws JSONException {
+
+        //Does not work because .getResponse has not been implemented
+        if (loginHandler.getResponse(username, password).getBoolean("loginSuccess")) {
+            return true;
+        }
+
+        return false;
+    }
+
+
 }
