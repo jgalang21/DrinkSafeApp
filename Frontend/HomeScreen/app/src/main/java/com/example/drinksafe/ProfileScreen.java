@@ -210,4 +210,11 @@ public class ProfileScreen extends AppCompatActivity {
         inches_s.setSelection(height_arr[1] - 1);
         weight_box.setText(weight);
     }
+
+    private boolean checkForChanges() {
+        if(name_box.getText().equals(null)) {
+            
+        }
+
+    }
 }
