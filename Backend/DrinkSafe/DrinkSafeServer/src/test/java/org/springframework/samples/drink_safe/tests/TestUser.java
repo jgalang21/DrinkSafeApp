@@ -12,6 +12,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -26,6 +28,9 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.samples.drink_safe.Drink.Drink;
 import org.springframework.samples.drink_safe.Drink.DrinkController;
+import org.springframework.samples.drink_safe.buddies.buddies;
+import org.springframework.samples.drink_safe.friend.friend;
+import org.springframework.samples.drink_safe.time.time;
 import org.springframework.samples.drink_safe.user.User;
 import org.springframework.samples.drink_safe.user.UserController;
 import org.springframework.samples.drink_safe.user.UserRepository;
@@ -40,21 +45,21 @@ public class TestUser {
 
 
 
-	@InjectMocks
-	UserService userServe;
-	
-	@Mock
-	UserRepository userRepo;
-	
-	
-	
-	@Before
-	public void init() {
-		MockitoAnnotations.initMocks(this);
-		userServe = mock(UserService.class);
-		userRepo = mock(UserRepository.class);
-		
-	}
+    private MockMvc mockMvc;
+
+    @Mock
+    private UserService userService;
+
+    @InjectMocks
+    private UserController userController;
+
+    @Before
+    public void init(){
+        MockitoAnnotations.initMocks(this);
+        mockMvc = MockMvcBuilders
+                .standaloneSetup(userController)
+                .build();
+    }
 
 	
 	//// --------------------------------------------------JEREMY'S TESTS ---------------------------
@@ -63,7 +68,6 @@ public class TestUser {
 	public void testUserCredentials() {
 		//public User(String username, String name, String password, int height, int weight,int gender, int guestStatus)
 		User x = new User("jman22", "John", "Dogs", 48, 222, 0, 0);
-		
 		
 		assertEquals("jman22", x.getUsername());
 		assertEquals("John", x.getName());
@@ -155,21 +159,109 @@ public class TestUser {
 		assertEquals(10, w.getAlcpercent());
 		assertEquals(23, w.getVolume());
 		assertEquals("lmaokai", w.getFkuser());
-		
-		
+			
 	}
 	
 	
+	//Give one drink
+	@Test
+	public void countDrinks() {
+		User r = mock(User.class);
+		Drink w = mock(Drink.class);
+		
+		r.giveDrink(w);
+		
+		//when(r.getGuestStatus()).thenReturn(1);
+		
+		verify(r, times(1)).giveDrink(w);
+		
+		
+
+	}
+	
+	//Counting multiple instances of one drink
+	@Test
+	public void countDrinks2() {
+		User r = mock(User.class);
+		Drink w = mock(Drink.class);
+		
+		r.giveDrink(w);
+		r.giveDrink(w);
+		r.giveDrink(w);
+		r.giveDrink(w);
+		r.giveDrink(w);
+		r.giveDrink(w);
+		
+		verify(r, times(6)).giveDrink(w);
+		
+
+	}
+	
+	//Count the number of drinks
+	@Test
+	public void countDrinks3() {
+		User r = mock(User.class);
+		Drink w = mock(Drink.class);
+		Drink k = mock(Drink.class);
+		Drink l = mock(Drink.class);
+		
+		r.giveDrink(w);
+		r.giveDrink(w);
+		r.giveDrink(w);
+		r.giveDrink(w);
+		r.giveDrink(w);
+		r.giveDrink(w);
+		r.giveDrink(k);
+		r.giveDrink(k);
+		r.giveDrink(l);
+		
+		verify(r, times(6)).giveDrink(w);
+		verify(r, times(2)).giveDrink(k);
+		verify(r, times(1)).giveDrink(l);
+		
+
+	}
+	
+	@Test
+	public void UserCont() {
+		
+		User r = new User("jman22", "Charles", "Dogs", 48, 222, 0, 0);
+		UserController k = mock(UserController.class);
+		
+		when(k.findUserbyID("Charles")).thenReturn(r);
+		
+		
+		assertEquals(r, k.findUserbyID("Charles"));
+		
+		
+	}	
 	
 	
-	
-	
-	
-	//// --------------------------------------------------JEREMY'S TESTS ---------------------------
+	//--------------------------------------------------JEREMY'S TESTS ---------------------------
 	
 	
 	
 	/// ---------------------------------------------------NICK'S TESTS------------------------------
+	 @Test
+	    public void testBuddies() throws Exception {
+	        buddies r = mock(buddies.class);
+	        when(r.getInviter()).thenReturn("BigHAAS");
+	        when(r.getInvitee()).thenReturn("Jeremy");
+	        assertEquals(r.getInviter(),"BigHAAS");
+	        assertEquals(r.getInvitee(),"Jeremy");
+	    }
+	    public void testFriends() throws Exception {
+	        friend r = mock(friend.class);
+	        when(r.getSentfrom()).thenReturn("BigHAAS");
+	        when(r.getSentto()).thenReturn("Jeremy");
+	        assertEquals(r.getSentfrom(),"BigHAAS");
+	        assertEquals(r.getSentto(),"Jeremy");
+	    }
+	    public void testTime() throws Exception {
+	        time r = mock(time.class);
+	        when(r.getTid()).thenReturn(1);
+	        assertEquals(r.getTid(),1);
+	    }
 	@Test
 	public void testDrinkAdd() throws Exception {
 		Drink x = mock(Drink.class);
@@ -183,4 +275,6 @@ public class TestUser {
 
 
 	}
+	
+	
 }

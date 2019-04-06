@@ -170,6 +170,11 @@ public class User{
 	{
 		return friends;
 	}
+
+public Set<User> toModifyBuddies()
+{
+	return inviter;
+}
 	public String getBefriended() {
 		String returner ="";
 		for(User u: befriended)
