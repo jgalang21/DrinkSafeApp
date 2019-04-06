@@ -250,6 +250,7 @@ public class TestUser {
 	        assertEquals(r.getInviter(),"BigHAAS");
 	        assertEquals(r.getInvitee(),"Jeremy");
 	    }
+	 @Test
 	    public void testFriends() throws Exception {
 	        friend r = mock(friend.class);
 	        when(r.getSentfrom()).thenReturn("BigHAAS");
@@ -257,6 +258,7 @@ public class TestUser {
 	        assertEquals(r.getSentfrom(),"BigHAAS");
 	        assertEquals(r.getSentto(),"Jeremy");
 	    }
+	 @Test
 	    public void testTime() throws Exception {
 	        time r = mock(time.class);
 	        when(r.getTid()).thenReturn(1);
