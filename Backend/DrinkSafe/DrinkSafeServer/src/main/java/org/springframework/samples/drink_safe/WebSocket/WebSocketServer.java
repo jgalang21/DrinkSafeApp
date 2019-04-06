@@ -15,7 +15,7 @@ import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
 import org.slf4j.LoggerFactory;
-
+import org.springframework.samples.drink_safe.user.UserController;
 import org.springframework.stereotype.Component;
 
 @ServerEndpoint("/WebSocket/{username}")
@@ -43,6 +43,10 @@ public class WebSocketServer {
 
 	@OnMessage
 	public void onMessage(Session session, String message) throws IOException {
+		
+		UserController x = new UserController();
+		
+		
 		// Handle new messages
 		logger.info("Entered into Message: Got Message:" + message);
 		String username = sessionUsernameMap.get(session);
@@ -91,11 +95,15 @@ public class WebSocketServer {
 		}
 
 		// adding a member
-		if (message.substring(0, 3).equals("!add")) {
+		if (message.substring(0, 4).equals("!add")) {
 
 			if (!usernameSessionMap.containsKey(message.substring(5, message.length() - 1))
 					&& !group1.contains(message.substring(5, message.length() - 1))) {
 				group1.add(message.substring(5, message.length() - 1));
+			}
+			
+			if(message.substring(5, message.length() - 1).equals(username)) {
+				broadcast("You're already in the group!");
 			}
 			else {
 				broadcast("User does not exist");
