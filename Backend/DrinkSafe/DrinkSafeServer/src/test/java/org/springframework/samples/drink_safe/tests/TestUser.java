@@ -231,10 +231,6 @@ public class TestUser {
 	        assertEquals(r.getInviter(),"BigHAAS");
 	        assertEquals(r.getInvitee(),"Jeremy");
 	    }
-<<<<<<< HEAD
-=======
-	 
->>>>>>> ff00b7ef4f14cb074c6121eb75be5674a020a5a2
 	 @Test
 	    public void testFriends() throws Exception {
 	        friend r = mock(friend.class);
@@ -243,10 +239,6 @@ public class TestUser {
 	        assertEquals(r.getSentfrom(),"BigHAAS");
 	        assertEquals(r.getSentto(),"Jeremy");
 	    }
-<<<<<<< HEAD
-=======
-	 
->>>>>>> ff00b7ef4f14cb074c6121eb75be5674a020a5a2
 	 @Test
 	    public void testTime() throws Exception {
 	        time r = mock(time.class);

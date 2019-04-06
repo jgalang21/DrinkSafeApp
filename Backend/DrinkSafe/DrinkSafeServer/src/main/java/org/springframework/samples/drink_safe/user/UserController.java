@@ -80,6 +80,23 @@ import org.springframework.web.bind.annotation.RestController;
 		userRepo.save(u);
 		logger.info(u.getUsername()+ " has added " + u2.getUsername() + " into their group");
 	}
+	@RequestMapping(method = RequestMethod.GET, path="/users/edit/weight/{userId}/{weight}")
+	public void editWeight(@PathVariable("userId") String user,@PathVariable("weight") int newWeight)
+	{
+		User u = userRepo.findByUsername(user);
+		u.setWeight(newWeight);
+		userRepo.save(u);
+		logger.info(u.getUsername()+ " has changed weight to " + newWeight);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path="/users/edit/height/{userId}/{height}")
+	public void editHeight(@PathVariable("userId") String user,@PathVariable("height") int newHeight)
+	{
+		User u = userRepo.findByUsername(user);
+		u.setHeight(newHeight);
+		userRepo.save(u);
+		logger.info(u.getUsername()+ " has changed weight to " + newHeight);
+	}
 	
 
 
