@@ -1,4 +1,7 @@
 package com.example.drinksafe;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,13 +23,39 @@ public class SignInTest {
         //mock(SignIn.)
     }
     @Test
-    public void signInTest2(){
+    public void signInTestSuccess() throws JSONException {
         SignIn test = mock(SignIn.class);
-        String userCorrect = "jorden@hotmail.com";
-        String passCorrect = "drinksafe";
+        SignIn testLoginSuccess = new SignIn();
+        String userCorrect = "BigHAAS";
+        String passCorrect = "password123";
+
+        JSONObject response = new JSONObject();
+        response.put("loginSuccess", new Boolean(true));
+        when(test.getResponse(userCorrect,passCorrect)).thenReturn(response);
+        Assert.assertEquals(testLoginSuccess.tryLogin(userCorrect,passCorrect,test),response.getBoolean("loginSuccess"));
     }
     @Test
-    public void signInTest3(){
+    public void signInTestFailedUser()throws JSONException{
+        SignIn test = mock(SignIn.class);
+        SignIn testLoginFail = new SignIn();
+        String userInCorrect = "jordan@hotmail.com";
+        String passInCorrect = "drinksafe";
 
+        JSONObject response = new JSONObject();
+        response.put("loginSuccess", new Boolean(false));
+        when(test.getResponse(userInCorrect,passInCorrect)).thenReturn(response);
+        Assert.assertEquals(testLoginFail.tryLogin(userInCorrect,passInCorrect,test),response.getBoolean("loginSuccess"));
+    }
+    @Test
+    public void signInTestFailedPass()throws JSONException{
+        SignIn test = mock(SignIn.class);
+        SignIn testLoginFail = new SignIn();
+        String userInCorrect = "jorden@hotmail.com";
+        String passInCorrect = "DRANKSAFE";
+
+        JSONObject response = new JSONObject();
+        response.put("loginSuccess", new Boolean(false));
+        when(test.getResponse(userInCorrect,passInCorrect)).thenReturn(response);
+        Assert.assertEquals(testLoginFail.tryLogin(userInCorrect,passInCorrect,test),response.getBoolean("loginSuccess"));
     }
 }

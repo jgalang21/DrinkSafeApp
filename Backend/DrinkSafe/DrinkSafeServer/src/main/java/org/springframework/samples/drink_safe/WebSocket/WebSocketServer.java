@@ -15,7 +15,7 @@ import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
 import org.slf4j.LoggerFactory;
-
+import org.springframework.samples.drink_safe.user.UserController;
 import org.springframework.stereotype.Component;
 
 @ServerEndpoint("/WebSocket/{username}")
@@ -43,6 +43,10 @@ public class WebSocketServer {
 
 	@OnMessage
 	public void onMessage(Session session, String message) throws IOException {
+		
+		UserController x = new UserController();
+		
+		
 		// Handle new messages
 		logger.info("Entered into Message: Got Message:" + message);
 		String username = sessionUsernameMap.get(session);
@@ -54,32 +58,58 @@ public class WebSocketServer {
 			sendMessageToPArticularUser(username, "[DM] " + username + ": " + message);
 		}
 
+		if (message.equals("!help")) {
+			broadcast("List of commands: \n" + "---------------\n" + "GROUP COMMANDS\n" + "---------------\n"
+					+ "Create group: !group\n" + "List members: !get_members\n" + "Leave group: !leave\n"
+					+ "Add member: !add [username]\n");
+
+		}
+
 		if (message.equals("!group")) {
 			broadcast(username + " has started a new group.");
 			group1.add(username);
 		}
-		
-		if(message.equals("!get_members")) {
+
+		if (message.equals("!get_members")) {
 			broadcast("List of members:");
-			for(int i = 0; i < group1.size(); i++) {
+			for (int i = 0; i < group1.size(); i++) {
 				broadcast(group1.get(i));
 			}
 		}
-		
-		if(message.equals("!leave")) {
-			
+
+		if (message.equals("!leave")) {
+			if (group1.contains(username)) {
+				int temp = 0;
+				int k;
+				for (k = 0; k < group1.size(); k++) {
+					if (group1.get(k).equals(username)) {
+						temp = k;
+						break;
+					}
+				}
+				group1.remove(k);
+				broadcast(username + " has left the group.");
+			} else {
+				broadcast("You are not currently in a group.");
+			}
 		}
-		
-		/*
-		 * if(message.startsWith("!")) { String check = message.substring(1,
-		 * message.length()-1); if(check.equals("group")) { broadcast("group made!"); }
-		 * if(check.equals("leave")) {
-		 * 
-		 * }
-		 * 
-		 * 
-		 * }
-		 */
+
+		// adding a member
+		if (message.substring(0, 4).equals("!add")) {
+
+			if (!usernameSessionMap.containsKey(message.substring(5, message.length() - 1))
+					&& !group1.contains(message.substring(5, message.length() - 1))) {
+				group1.add(message.substring(5, message.length() - 1));
+			}
+			
+			if(message.substring(5, message.length() - 1).equals(username)) {
+				broadcast("You're already in the group!");
+			}
+			else {
+				broadcast("User does not exist");
+			}
+
+		}
 
 		else // Message to whole chat
 		{
