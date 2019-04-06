@@ -1,45 +1,26 @@
 package org.springframework.samples.drink_safe.tests;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-
-
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.samples.drink_safe.Drink.Drink;
-import org.springframework.samples.drink_safe.Drink.DrinkController;
 import org.springframework.samples.drink_safe.buddies.buddies;
 import org.springframework.samples.drink_safe.friend.friend;
 import org.springframework.samples.drink_safe.time.time;
 import org.springframework.samples.drink_safe.user.User;
 import org.springframework.samples.drink_safe.user.UserController;
-import org.springframework.samples.drink_safe.user.UserRepository;
 import org.springframework.samples.drink_safe.user.UserService;
 
 import org.springframework.test.web.servlet.MockMvc;
 
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.bind.annotation.PathVariable;
 
 public class TestUser {
 
@@ -250,6 +231,8 @@ public class TestUser {
 	        assertEquals(r.getInviter(),"BigHAAS");
 	        assertEquals(r.getInvitee(),"Jeremy");
 	    }
+	 
+	 @Test
 	    public void testFriends() throws Exception {
 	        friend r = mock(friend.class);
 	        when(r.getSentfrom()).thenReturn("BigHAAS");
@@ -257,6 +240,8 @@ public class TestUser {
 	        assertEquals(r.getSentfrom(),"BigHAAS");
 	        assertEquals(r.getSentto(),"Jeremy");
 	    }
+	 
+	 @Test
 	    public void testTime() throws Exception {
 	        time r = mock(time.class);
 	        when(r.getTid()).thenReturn(1);

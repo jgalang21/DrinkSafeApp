@@ -9,4 +9,9 @@
     <fullyQualifiedTypeName name="org.mockito.Mockito"/>
     <fullyQualifiedTypeName name="org.springframework.samples.drink_safe.Drink.DrinkRepository"/>
     <fullyQualifiedTypeName name="org.springframework.samples.drink_safe.Drink.DrinkController"/>
+    <fullyQualifiedTypeName name="org.springframework.test.web.servlet.setup.MockMvcBuilders"/>
+    <fullyQualifiedTypeName name="java.util.HashSet"/>
+    <fullyQualifiedTypeName name="java.util.stream.Stream"/>
+    <fullyQualifiedTypeName name="java.util.stream.Collectors"/>
+    <fullyQualifiedTypeName name="javax.websocket.ClientEndpoint"/>
 </qualifiedTypeNameHistroy>
