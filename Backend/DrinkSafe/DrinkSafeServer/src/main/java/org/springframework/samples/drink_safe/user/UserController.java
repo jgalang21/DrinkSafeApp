@@ -1,5 +1,7 @@
 package org.springframework.samples.drink_safe.user;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import javassist.bytecode.Descriptor.Iterator;
 
 @RestController
 	public class UserController {
@@ -76,10 +80,38 @@ import org.springframework.web.bind.annotation.RestController;
 	public void addGroup(@PathVariable("user1Id") String user1,@PathVariable("user2Id") String user2) {
 		User u = userRepo.findByUsername(user1);
 		User u2 =userRepo.findByUsername(user2);
-		u.toModifyBuddies().add(u2);
-		userRepo.save(u);
+		u2.toModifyBuddies().add(u);
+		userRepo.save(u2);
 		logger.info(u.getUsername()+ " has added " + u2.getUsername() + " into their group");
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, path="/users/friend/getGroup/{userId}")
+	public List<User> getGroup(@PathVariable("userId") String user) {
+		User u = userRepo.findByUsername(user);
+		User u2;
+		if (!u.toModifyBuddies().isEmpty())
+		{
+			
+			java.util.Iterator<User> iter = u.toModifyBuddies().iterator();
+			u2 = iter.next();
+			java.util.Iterator<User> iter2 = u2.toModifyInvitee().iterator();
+			List<User> returner = new ArrayList<User>();
+			returner.add(u2);
+			while(iter2.hasNext())
+				returner.add(iter2.next());
+			return returner;
+		}
+		else
+		{
+			java.util.Iterator<User> iter2 = u.toModifyInvitee().iterator();
+			List<User> returner = new ArrayList<User>();
+			returner.add(u);
+			while(iter2.hasNext())
+				returner.add(iter2.next());
+			return returner;
+		}
+	}
+	
 	@RequestMapping(method = RequestMethod.GET, path="/users/edit/weight/{userId}/{weight}")
 	public void editWeight(@PathVariable("userId") String user,@PathVariable("weight") int newWeight)
 	{
