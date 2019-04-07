@@ -1,11 +1,8 @@
 package org.springframework.samples.drink_safe.WebSocket;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
-
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
@@ -20,9 +17,6 @@ import org.springframework.samples.drink_safe.user.User;
 import org.springframework.samples.drink_safe.user.UserController;
 import org.springframework.samples.drink_safe.user.UserRepository;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @ServerEndpoint("/WebSocket/{username}")
 @Component
@@ -55,10 +49,13 @@ public class WebSocketServer {
 
 		// Handle new messages
 		logger.info("Entered into Message: Got Message:" + message);
-		User u = userRepo.findByUsername(sessionUsernameMap.get(session));
+		// User u = userRepo.findByUsername(sessionUsernameMap.get(session));
+		String r = sessionUsernameMap.get(session);
+		User u = x.findUserbyID(r);
+		
 
-		if (message.startsWith("@")) // Direct message to a user using the format "@username <message>"
-		{
+		if (message.startsWith("@")) { // Direct message to a user using the format "@username <message>"
+
 			String destUsername = message.split(" ")[0].substring(1); // don't do this in your code!
 			sendMessageToPArticularUser(destUsername, "[DM] " + u.getUsername() + ": " + message);
 			sendMessageToPArticularUser(u.getUsername(), "[DM] " + u.getUsername() + ": " + message);
@@ -98,8 +95,7 @@ public class WebSocketServer {
 
 			if (message.equals("!leave")) {
 				if (!u.toModifyBuddies().isEmpty()) {
-					
-					
+
 				}
 				broadcast(u.getUsername() + " has left the group.");
 			} else {
@@ -107,15 +103,12 @@ public class WebSocketServer {
 			}
 		}
 
+		else {// Message to whole chat
+
+			broadcast(u.getUsername() + ": " + message);
+		}
+
 	}
-
-	else // Message to whole chat
-
-	{
-		broadcast(u.getUsername() + ": " + message);
-	}
-
-	}}
 
 	@OnClose
 	public void onClose(Session session) throws IOException {
