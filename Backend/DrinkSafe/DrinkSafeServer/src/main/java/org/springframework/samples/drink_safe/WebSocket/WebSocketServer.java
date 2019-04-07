@@ -73,18 +73,11 @@ public class WebSocketServer {
 					+ "Add member: !add [username]\n");
 
 		}
-
-		if (message.equals("!group")) {
-			broadcast(u.getUsername() + " has started a new group.");
-			group1.add(u.getUsername());
-		}
 		
 
 		if (message.equals("!get_members")) {
 			broadcast("List of members:");
-			for (int i = 0; i < group1.size(); i++) {
-				broadcast(group1.get(i));
-			}
+			
 		}
 
 		if (message.equals("!leave")) {

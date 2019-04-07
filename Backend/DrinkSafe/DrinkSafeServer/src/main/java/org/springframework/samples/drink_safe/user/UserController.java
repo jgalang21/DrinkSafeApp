@@ -2,6 +2,7 @@ package org.springframework.samples.drink_safe.user;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -85,6 +86,24 @@ import javassist.bytecode.Descriptor.Iterator;
 		logger.info(u.getUsername()+ " has added " + u2.getUsername() + " into their group");
 	}
 	
+	@RequestMapping(method = RequestMethod.GET, path="/users/friend/leave/{userId}")
+	public void leaveGroup(@PathVariable("userId") String user) {
+		User u = userRepo.findByUsername(user);
+		if(!u.toModifyBuddies().isEmpty()) {
+			u.setInviter( new HashSet<User>());
+		}
+		else {
+			java.util.Iterator<User> iter = u.toModifyInvitee().iterator();
+			while(iter.hasNext())
+			{
+				User u2 = iter.next();
+				u2.setInviter( new HashSet<User>());
+			}
+		}
+		userRepo.save(u);
+		logger.info(u.getUsername()+ " has removed themselves from the group");
+	}
+	
 	@RequestMapping(method = RequestMethod.GET, path="/users/friend/getGroup/{userId}")
 	public List<User> getGroup(@PathVariable("userId") String user) {
 		User u = userRepo.findByUsername(user);
@@ -111,6 +130,8 @@ import javassist.bytecode.Descriptor.Iterator;
 			return returner;
 		}
 	}
+	
+	
 	
 	@RequestMapping(method = RequestMethod.GET, path="/users/edit/weight/{userId}/{weight}")
 	public void editWeight(@PathVariable("userId") String user,@PathVariable("weight") int newWeight)
