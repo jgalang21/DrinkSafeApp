@@ -24,6 +24,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Hashtable;
+
 
 public class ProfileScreen extends AppCompatActivity {
     private EditText name_box, weight_box, email_box;
@@ -33,6 +35,8 @@ public class ProfileScreen extends AppCompatActivity {
     private int[] height_arr = new int[2];
 
     private static String TAG = ProfileScreen.class.getSimpleName();
+
+    private Hashtable<String, Boolean> changes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +86,14 @@ public class ProfileScreen extends AppCompatActivity {
             }
         });
 
+        changes.put("name", false);
+        changes.put("email", false);
+        changes.put("gender", false);
+        changes.put("feet", false);
+        changes.put("inches", false);
+        changes.put("weight", false);
+
+
         final Button b = findViewById(R.id.save_edit_button);
         b.setTag(1);
         b.setText(R.string.edit_t);
@@ -107,12 +119,13 @@ public class ProfileScreen extends AppCompatActivity {
                     feet_s.setEnabled(false);
                     inches_s.setEnabled(false);
                     v.setTag(1);
-
+                    if(checkForChanges()) {
+                        updateServer();
+                    }
 
                 }
             }
         });
-
 
         getInfo();
         heightConv(this.height, this.height_arr, true);
@@ -209,5 +222,44 @@ public class ProfileScreen extends AppCompatActivity {
         feet_s.setSelection(height_arr[0] - 1);
         inches_s.setSelection(height_arr[1] - 1);
         weight_box.setText(weight);
+    }
+
+    private boolean checkForChanges() {
+        if(name_box.getText().toString().equals(null)) {
+            Toast.makeText(getApplicationContext(), "Please enter a valid Name", Toast.LENGTH_SHORT).show();
+        } else if(email_box.getText().toString().equals(null)) {
+
+        } else if(weight_box.getText().toString().equals(null)) {
+
+        }
+
+        if(!name_box.getText().toString().equals(name)) {
+            changes.put("name", true);
+            name = name_box.getText().toString();
+        } else if(!email_box.getText().toString().equals(email)) {
+            changes.put("email", true);
+            email = email_box.getText().toString();
+        } else if(!weight_box.getText().toString().equals(weight)) {
+            changes.put("weight", true);
+            weight = weight_box.getText().toString();
+        } else if((int) feet_s.getSelectedItem() != height_arr[0]) {
+            changes.put("feet", true);
+            height_arr[0] = (int)feet_s.getSelectedItem();
+        } else if((int) inches_s.getSelectedItem() != height_arr[1]) {
+            changes.put("inches", true);
+            height_arr[1] = (int)inches_s.getSelectedItem();
+        } else if((int) gender_s.getSelectedItem() != gender) {
+            changes.put("gender", true);
+            gender = (int)gender_s.getSelectedItem();
+        } else {
+            return false;
+        }
+
+            return true;
+    }
+
+    private boolean updateServer(){
+
+        return true;
     }
 }
