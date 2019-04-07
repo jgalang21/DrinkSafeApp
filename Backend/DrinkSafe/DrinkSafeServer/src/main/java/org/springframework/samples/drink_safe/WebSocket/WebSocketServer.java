@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
-
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
@@ -62,7 +60,6 @@ public class WebSocketServer {
 			broadcast("List of commands: \n" + "---------------\n" + "GROUP COMMANDS\n" + "---------------\n"
 					+ "Create group: !group\n" + "List members: !get_members\n" + "Leave group: !leave\n"
 					+ "Add member: !add [username]\n");
-
 		}
 
 		if (message.equals("!group")) {
@@ -118,7 +115,8 @@ public class WebSocketServer {
 			}
 
 		}
-
+		
+		
 		else // Message to whole chat
 		{
 			broadcast(username + ": " + message);
