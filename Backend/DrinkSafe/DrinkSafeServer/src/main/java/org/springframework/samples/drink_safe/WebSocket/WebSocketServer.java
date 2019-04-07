@@ -69,6 +69,14 @@ public class WebSocketServer {
 			broadcast(username + " has started a new group.");
 			group1.add(username);
 		}
+		
+		if (message.length()>11)
+		{
+			if (message.substring(0,11).equals("!join_group"))
+			{
+				
+			}
+		}
 
 		if (message.equals("!get_members")) {
 			broadcast("List of members:");
