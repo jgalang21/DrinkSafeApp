@@ -23,7 +23,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static com.example.drinksafe.net_utils.Const.URL_ADDUSER_INFO;
+//import static com.example.drinksafe.net_utils.Const.URL_ADDUSER_INFO;
 import static com.example.drinksafe.net_utils.Const.URL_USER_INFO;
 
 public class SignUp extends AppCompatActivity {

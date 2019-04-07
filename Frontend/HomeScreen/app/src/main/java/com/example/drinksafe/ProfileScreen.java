@@ -88,6 +88,8 @@ public class ProfileScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ProfileScreen.this, Home.class);
+                Log.d(TAG, i.getAction());
+                Log.d(TAG, i.getDataString());
                 startActivity(i);
             }
         });
