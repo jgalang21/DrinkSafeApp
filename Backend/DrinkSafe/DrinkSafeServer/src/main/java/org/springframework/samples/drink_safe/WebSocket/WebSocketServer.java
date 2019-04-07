@@ -32,10 +32,10 @@ public class WebSocketServer {
 	private static Map<Session, String> sessionUsernameMap = new HashMap<>();
 	private static Map<String, Session> usernameSessionMap = new HashMap<>();
 	private final org.slf4j.Logger logger = LoggerFactory.getLogger(WebSocketServer.class);
-	
+
 	@Autowired
 	UserRepository userRepo;
-	
+
 	UserController x = new UserController();
 
 	@OnOpen
@@ -47,15 +47,12 @@ public class WebSocketServer {
 
 		String message = "User:" + username + " has Joined the Chat";
 		broadcast(message);
-		
 
 	}
 
 	@OnMessage
 	public void onMessage(Session session, String message) throws IOException {
-		
-		
-		
+
 		// Handle new messages
 		logger.info("Entered into Message: Got Message:" + message);
 		User u = userRepo.findByUsername(sessionUsernameMap.get(session));
@@ -74,59 +71,51 @@ public class WebSocketServer {
 
 		}
 
-		if (message.equals("!group")) {
-			broadcast(u.getUsername() + " has started a new group.");
-			group1.add(u.getUsername());
-		}
-		
+		// if they aren't in a group, they shouldn't be able to run these commands
 
-		if (message.equals("!get_members")) {
-			broadcast("List of members:");
-			for (int i = 0; i < group1.size(); i++) {
-				broadcast(group1.get(i));
+		if (!u.toModifyBuddies().isEmpty() && !u.toModifyInvitee().isEmpty()) {
+
+			if (message.equals("!get_members")) {
+				broadcast("List of members:");
+				System.out.println(x.getGroup(u.getUsername()));
 			}
-		}
 
-		if (message.equals("!leave")) {
-			if (group1.contains(u.getUsername())) {
-				int temp = 0;
-				int k;
-				for (k = 0; k < group1.size(); k++) {
-					if (group1.get(k).equals(u.getUsername())) {
-						temp = k;
-						break;
-					}
+			if (message.substring(0, 5).equals("!add ")) {
+
+				if (u.toModifyBuddies().isEmpty()) {
+					User u2 = userRepo.findByUsername(message.substring(6, message.length() - 1));
+
+					x.addGroup(u.getUsername(), u2.getUsername());
+
 				}
-				group1.remove(k);
+
+				if (message.substring(6, message.length() - 1).equals(u.getUsername())) {
+					broadcast("You're already in the group!");
+				} else {
+					broadcast("User does not exist");
+				}
+			}
+
+			if (message.equals("!leave")) {
+				if (!u.toModifyBuddies().isEmpty()) {
+					
+					
+				}
 				broadcast(u.getUsername() + " has left the group.");
 			} else {
 				broadcast("You are not currently in a group.");
 			}
 		}
 
-		// adding a member
-		if (message.substring(0, 4).equals("!add")) {
-
-			if (!usernameSessionMap.containsKey(message.substring(5, message.length() - 1))
-					&& !group1.contains(message.substring(5, message.length() - 1))) {
-				group1.add(message.substring(5, message.length() - 1));
-				x.addGroup(u.getUsername(),(message.substring(5, message.length() - 1))); 
-			}
-			
-			if(message.substring(5, message.length() - 1).equals(u.getUsername())) {
-				broadcast("You're already in the group!");
-			}
-			else {
-				broadcast("User does not exist");
-			}
-
-		}
-
-		else // Message to whole chat
-		{
-			broadcast(u.getUsername() + ": " + message);
-		}
 	}
+
+	else // Message to whole chat
+
+	{
+		broadcast(u.getUsername() + ": " + message);
+	}
+
+	}}
 
 	@OnClose
 	public void onClose(Session session) throws IOException {
