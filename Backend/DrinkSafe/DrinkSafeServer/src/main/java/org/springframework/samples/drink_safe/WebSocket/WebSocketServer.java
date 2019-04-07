@@ -1,11 +1,8 @@
 package org.springframework.samples.drink_safe.WebSocket;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
-
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
@@ -20,9 +17,6 @@ import org.springframework.samples.drink_safe.user.User;
 import org.springframework.samples.drink_safe.user.UserController;
 import org.springframework.samples.drink_safe.user.UserRepository;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @ServerEndpoint("/WebSocket/{username}")
 @Component
@@ -32,10 +26,10 @@ public class WebSocketServer {
 	private static Map<Session, String> sessionUsernameMap = new HashMap<>();
 	private static Map<String, Session> usernameSessionMap = new HashMap<>();
 	private final org.slf4j.Logger logger = LoggerFactory.getLogger(WebSocketServer.class);
-	
+
 	@Autowired
 	UserRepository userRepo;
-	
+
 	UserController x = new UserController();
 
 	@OnOpen
@@ -47,21 +41,21 @@ public class WebSocketServer {
 
 		String message = "User:" + username + " has Joined the Chat";
 		broadcast(message);
-		
 
 	}
 
 	@OnMessage
 	public void onMessage(Session session, String message) throws IOException {
-		
-		
-		
+
 		// Handle new messages
 		logger.info("Entered into Message: Got Message:" + message);
-		User u = userRepo.findByUsername(sessionUsernameMap.get(session));
+		// User u = userRepo.findByUsername(sessionUsernameMap.get(session));
+		String r = sessionUsernameMap.get(session);
+		User u = x.findUserbyID(r);
+		
 
-		if (message.startsWith("@")) // Direct message to a user using the format "@username <message>"
-		{
+		if (message.startsWith("@")) { // Direct message to a user using the format "@username <message>"
+
 			String destUsername = message.split(" ")[0].substring(1); // don't do this in your code!
 			sendMessageToPArticularUser(destUsername, "[DM] " + u.getUsername() + ": " + message);
 			sendMessageToPArticularUser(u.getUsername(), "[DM] " + u.getUsername() + ": " + message);
@@ -73,52 +67,48 @@ public class WebSocketServer {
 					+ "Add member: !add [username]\n");
 
 		}
-		
 
-		if (message.equals("!get_members")) {
-			broadcast("List of members:");
-			
-		}
 
-		if (message.equals("!leave")) {
-			if (group1.contains(u.getUsername())) {
-				int temp = 0;
-				int k;
-				for (k = 0; k < group1.size(); k++) {
-					if (group1.get(k).equals(u.getUsername())) {
-						temp = k;
-						break;
-					}
+		// if they aren't in a group, they shouldn't be able to run these commands
+
+		if (!u.toModifyBuddies().isEmpty() && !u.toModifyInvitee().isEmpty()) {
+
+			if (message.equals("!get_members")) {
+				broadcast("List of members:");
+				System.out.println(x.getGroup(u.getUsername()));
+			}
+
+			if (message.substring(0, 5).equals("!add ")) {
+
+				if (u.toModifyBuddies().isEmpty()) {
+					User u2 = userRepo.findByUsername(message.substring(6, message.length() - 1));
+
+					x.addGroup(u.getUsername(), u2.getUsername());
+
 				}
-				group1.remove(k);
+
+				if (message.substring(6, message.length() - 1).equals(u.getUsername())) {
+					broadcast("You're already in the group!");
+				} else {
+					broadcast("User does not exist");
+				}
+			}
+
+			if (message.equals("!leave")) {
+				if (!u.toModifyBuddies().isEmpty()) {
+
+				}
 				broadcast(u.getUsername() + " has left the group.");
 			} else {
 				broadcast("You are not currently in a group.");
 			}
 		}
 
-		// adding a member
-		if (message.substring(0, 4).equals("!add")) {
+		else {// Message to whole chat
 
-			if (!usernameSessionMap.containsKey(message.substring(5, message.length() - 1))
-					&& !group1.contains(message.substring(5, message.length() - 1))) {
-				group1.add(message.substring(5, message.length() - 1));
-				x.addGroup(u.getUsername(),(message.substring(5, message.length() - 1))); 
-			}
-			
-			if(message.substring(5, message.length() - 1).equals(u.getUsername())) {
-				broadcast("You're already in the group!");
-			}
-			else {
-				broadcast("User does not exist");
-			}
-
-		}
-
-		else // Message to whole chat
-		{
 			broadcast(u.getUsername() + ": " + message);
 		}
+
 	}
 
 	@OnClose
