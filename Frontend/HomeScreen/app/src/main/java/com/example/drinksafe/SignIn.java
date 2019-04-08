@@ -85,9 +85,14 @@ public class SignIn extends AppCompatActivity {
         pDialog.setCancelable(false);
     }
 
-    private void validate(String uEmail, String userPass, String passWd) throws JSONException {
+    private void validate(String uEmail, String userEmail, String userPass, String passWd) throws JSONException {
         System.err.println("in Validate");
-        if (((uEmail.equals("Admin")) && (userPass.equals("123Abc")))||passWd.equals(userPass)) {
+        if((uEmail.equals("Admin")) && (userPass.equals("123Abc"))){
+            Intent intent = new Intent(SignIn.this, Home.class);
+            success = true;
+            startActivity(intent);
+        }
+        else if (passWd.equals(userPass)) {
             Const.cur_user_name = uEmail;
             Intent intent = new Intent(SignIn.this, Home.class);
             success = true;
@@ -186,7 +191,7 @@ public class SignIn extends AppCompatActivity {
                             //getUsername(UserEmail);
                             if(((Email.getText().toString().equals("Admin")) && (Password.getText().toString().equals("123Abc")))||(UserEmail.equals(Email.getText().toString().trim()))){
                                 System.err.println("same Email");
-                                validate(UserEmail,Password.getText().toString(), passWd);
+                                validate(UserEmail,Email.getText().toString(),Password.getText().toString(), passWd);
                             }
                             System.err.println("");
                             System.err.println("username: " + person.getString("username"));

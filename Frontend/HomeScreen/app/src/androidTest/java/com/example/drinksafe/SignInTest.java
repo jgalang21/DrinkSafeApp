@@ -16,6 +16,7 @@ import androidx.test.espresso.intent.rule.IntentsTestRule;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.intent.Intents.intended;
 import static androidx.test.espresso.intent.Intents.intending;
@@ -45,10 +46,21 @@ public class SignInTest {
         onView(withId(R.id.SignUpbtn)).perform(click());
 
         intended(allOf(toPackage("com.example.drinksafe"), hasComponent(SignUp.class.getName())));
-        //, hasAction(Intent.)
     }
     @Test
-    public void checkLoginIn(){
+    public void checkLoginTest(){
+        onView(withId(R.id.etemail)).perform(typeText("BigHAAS"));
+        onView(withId(R.id.etpass)).perform(typeText("password123"));
+        onView(withId(R.id.btnLogin)).perform(click());
 
+        intended(allOf(toPackage("com.example.drinksafe"), hasComponent(Home.class.getName())));
+    }
+    @Test
+    public void checkLoginTestAdmin(){
+        onView(withId(R.id.etemail)).perform(typeText("Admin"));
+        onView(withId(R.id.etpass)).perform(typeText("123Abc"));
+        onView(withId(R.id.btnLogin)).perform(click());
+
+        intended(allOf(toPackage("com.example.drinksafe"), hasComponent(Home.class.getName())));
     }
 }
