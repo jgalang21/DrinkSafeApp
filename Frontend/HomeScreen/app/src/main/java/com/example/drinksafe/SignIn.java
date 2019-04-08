@@ -90,7 +90,10 @@ public class SignIn extends AppCompatActivity {
         if (((uEmail.equals("Admin")) && (userPass.equals("123Abc")))||passWd.equals(userPass)) {
             Const.cur_user_name = uEmail;
             Intent intent = new Intent(SignIn.this, Home.class);
+            success = true;
             startActivity(intent);
+            //return true;
+
         }
         else {
             counter--;
@@ -102,6 +105,7 @@ public class SignIn extends AppCompatActivity {
                 counter = 0;
                 Login.setEnabled(false);
             }
+            success = false;
         }
     }
 
@@ -223,7 +227,10 @@ public class SignIn extends AppCompatActivity {
     public String getPassword(String password){
         return password;
     }
-    public JSONObject getResponse(String username, String password) {
+    public JSONObject getResponse(String username, String password) throws JSONException {
+/*        JSONObject temp = new JSONObject(username);
+        JSONObject temp2 = new JSONObject(password);*/
+        makeJsonArrayReq();
         return null;
     }
     public boolean tryLogin(String username, String password, SignIn loginHandler) throws JSONException {

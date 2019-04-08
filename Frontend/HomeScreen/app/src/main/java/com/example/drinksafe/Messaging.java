@@ -42,7 +42,7 @@ public class Messaging extends AppCompatActivity {
                  * computer, and change the ip address to that of your computer.
                  * If running on the emulator, you can use localhost.
                  */
-                String w = "http://cs309-bs-7.misc.iastate.edu:8080/websocket/"+e1.getText().toString();
+                String w = "ws://cs309-bs-7.misc.iastate.edu:8080/websocket/"+e1.getText().toString();
 
                 try {
                     Log.d("Socket:", "Trying socket");
@@ -51,6 +51,7 @@ public class Messaging extends AppCompatActivity {
                         public void onMessage(String message) {
                             Log.d("", "run() returned: " + message);
                             String s=t1.getText().toString();
+                            message += "\n";
                             //t1.setText("hello world");
                             //Log.d("first", "run() returned: " + s);
                             //s=t1.getText().toString();

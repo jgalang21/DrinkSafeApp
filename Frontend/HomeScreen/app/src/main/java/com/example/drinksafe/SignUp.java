@@ -25,7 +25,7 @@ import org.json.JSONObject;
 
 //import static com.example.drinksafe.net_utils.Const.URL_ADDUSER_INFO;
 import static com.example.drinksafe.net_utils.Const.URL_USER_INFO;
-
+//GO TO PROFILESCREEN
 public class SignUp extends AppCompatActivity {
 
     private EditText email, password, weight, heightIn, heightFt;
@@ -54,7 +54,7 @@ public class SignUp extends AppCompatActivity {
                 try {
                     height = (Integer.parseInt(heightFt.getText().toString())*12)+Integer.parseInt(heightIn.getText().toString());
                     tempURL = URL_USER_INFO;
-                    tempURL += "/new/" + "/" + email +"/";
+                    tempURL += "/new/" + email +"/";
                     makeJsonArrayReq();
                     System.err.println("makeJsonArrayReq");
                     System.err.println("Finish validate");
