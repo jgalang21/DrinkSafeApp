@@ -1,7 +1,10 @@
 package org.springframework.samples.drink_safe.WebSocket;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
@@ -16,21 +19,151 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.drink_safe.user.User;
 import org.springframework.samples.drink_safe.user.UserController;
 import org.springframework.samples.drink_safe.user.UserRepository;
+import org.springframework.samples.drink_safe.user.UserService;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @ServerEndpoint("/WebSocket/{username}")
 @Component
 public class WebSocketServer {
+	
+	@Autowired
+	UserRepository userRepo;
+
+		@RequestMapping(method = RequestMethod.GET, path= "/users/new/{username}/{name}/{password}/{height}/{weight}/{gender}/{guestStatus}")
+		public void saveUser(@PathVariable("username") String username,@PathVariable("name") String name,@PathVariable("password") String password,@PathVariable("height") int height,@PathVariable("weight") int weight,@PathVariable("gender") int gender, @PathVariable("guestStatus") int guestStatus)
+		{
+			User user = new User(username,name,password,height,weight,gender,guestStatus);
+			userRepo.save(user);
+			logger.info("saving new user: " + user.getUsername());
+		}
+		
+		@RequestMapping(method = RequestMethod.GET, path= "/users")
+		public List<User> returnAllUsers(){
+			logger.info("Displaying all users");
+	        List<User> results = (List<User>) userRepo.findAll();
+	        logger.info("Number of users:"  + results.size());
+	        return results;
+			
+		}
+		
+		@RequestMapping(method = RequestMethod.GET, path="/users/find/id/{userId}")
+		public User findUserbyID(@PathVariable("userId") String id) {
+			logger.info("Finding user: "+id);
+	        User results = userRepo.findByUsername(id);
+	        return results;
+		}
+		
+		@RequestMapping(method = RequestMethod.GET, path="/users/find/gs/{guest_status}")
+		public List<User> findByGuest_Status(@PathVariable("guest_status") int guest_status) {
+			logger.info("Finding user: "+guest_status);
+	        List<User> results = userRepo.findAllByGuestStatus(guest_status);
+	        return results;
+		}
+		
+
+		
+		@RequestMapping(method = RequestMethod.GET, path="/users/friend/addFriends/{user1Id}/{user2Id}")
+		public void addFriends(@PathVariable("user1Id") String user1,@PathVariable("user2Id") String user2) {
+			User u = userRepo.findByUsername(user1);
+			User u2 =userRepo.findByUsername(user2);
+			u.toModifyFriends().add(u2);
+			userRepo.save(u);
+			logger.info(u.getUsername()+ " has added " + u2.getUsername() + " as a friend");
+		}
+		
+
+		@RequestMapping(method = RequestMethod.GET, path="/users/friend/addGroup/{user1Id}/{user2Id}")
+		public void addGroup(@PathVariable("user1Id") String user1,@PathVariable("user2Id") String user2) {
+			User u = userRepo.findByUsername(user1);
+			User u2 =userRepo.findByUsername(user2);
+			u2.toModifyBuddies().add(u);
+			userRepo.save(u2);
+			logger.info(u.getUsername()+ " has added " + u2.getUsername() + " into their group");
+		}
+		
+		@RequestMapping(method = RequestMethod.GET, path="/users/friend/leave/{userId}")
+		public void leaveGroup(@PathVariable("userId") String user) {
+			User u = userRepo.findByUsername(user);
+			if(!u.toModifyBuddies().isEmpty()) {
+				u.setInviter( new HashSet<User>());
+			}
+			else {
+				java.util.Iterator<User> iter = u.toModifyInvitee().iterator();
+				while(iter.hasNext())
+				{
+					User u2 = iter.next();
+					u2.setInviter( new HashSet<User>());
+				}
+			}
+			userRepo.save(u);
+			logger.info(u.getUsername()+ " has removed themselves from the group");
+		}
+		
+		@RequestMapping(method = RequestMethod.GET, path="/users/friend/getGroup/{userId}")
+		public List<User> getGroup(@PathVariable("userId") String user) {
+			User u = userRepo.findByUsername(user);
+			User u2;
+			if (!u.toModifyBuddies().isEmpty())
+			{
+				
+				java.util.Iterator<User> iter = u.toModifyBuddies().iterator();
+				u2 = iter.next();
+				java.util.Iterator<User> iter2 = u2.toModifyInvitee().iterator();
+				List<User> returner = new ArrayList<User>();
+				returner.add(u2);
+				while(iter2.hasNext())
+					returner.add(iter2.next());
+				return returner;
+			}
+			else
+			{
+				java.util.Iterator<User> iter2 = u.toModifyInvitee().iterator();
+				List<User> returner = new ArrayList<User>();
+				returner.add(u);
+				while(iter2.hasNext())
+					returner.add(iter2.next());
+				return returner;
+			}
+		}
+		
+		
+		
+		@RequestMapping(method = RequestMethod.GET, path="/users/edit/weight/{userId}/{weight}")
+		public void editWeight(@PathVariable("userId") String user,@PathVariable("weight") int newWeight)
+		{
+			User u = userRepo.findByUsername(user);
+			u.setWeight(newWeight);
+			userRepo.save(u);
+			logger.info(u.getUsername()+ " has changed weight to " + newWeight);
+		}
+		
+		@RequestMapping(method = RequestMethod.GET, path="/users/edit/height/{userId}/{height}")
+		public void editHeight(@PathVariable("userId") String user,@PathVariable("height") int newHeight)
+		{
+			User u = userRepo.findByUsername(user);
+			u.setHeight(newHeight);
+			userRepo.save(u);
+			logger.info(u.getUsername()+ " has changed weight to " + newHeight);
+		}
+		
+
+
+		
+
+
+
 
 	// Store all socket session and their corresponding username.
 	private static Map<Session, String> sessionUsernameMap = new HashMap<>();
 	private static Map<String, Session> usernameSessionMap = new HashMap<>();
 	private final org.slf4j.Logger logger = LoggerFactory.getLogger(WebSocketServer.class);
 
-	@Autowired
-	UserRepository userRepo;
 
 	UserController x = new UserController();
+	UserService s = new UserService();
 
 	@OnOpen
 	public void onOpen(Session session, @PathParam("username") String username) throws IOException {
@@ -51,7 +184,7 @@ public class WebSocketServer {
 		logger.info("Entered into Message: Got Message:" + message);
 		// User u = userRepo.findByUsername(sessionUsernameMap.get(session));
 		String r = sessionUsernameMap.get(session);
-		User u = x.findUserbyID(r);
+		User u = findUserbyID(r);
 		
 
 		if (message.startsWith("@")) { // Direct message to a user using the format "@username <message>"
@@ -81,9 +214,9 @@ public class WebSocketServer {
 			if (message.substring(0, 5).equals("!add ")) {
 
 				if (u.toModifyBuddies().isEmpty()) {
-					User u2 = userRepo.findByUsername(message.substring(6, message.length() - 1));
+					User u2 = findUserbyID(message.substring(6, message.length() - 1));
 
-					x.addGroup(u.getUsername(), u2.getUsername());
+					addGroup(u.getUsername(), u2.getUsername());
 
 				}
 
@@ -115,7 +248,7 @@ public class WebSocketServer {
 	public void onClose(Session session) throws IOException {
 		logger.info("Entered into Close");
 
-		User u = userRepo.findByUsername(sessionUsernameMap.get(session));
+		User u = findUserbyID(sessionUsernameMap.get(session));
 		sessionUsernameMap.remove(session);
 		usernameSessionMap.remove(u.getUsername());
 

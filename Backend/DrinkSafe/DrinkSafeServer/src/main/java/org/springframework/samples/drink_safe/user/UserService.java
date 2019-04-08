@@ -22,10 +22,10 @@ public class UserService {
         return results;
 	}
 
-	public User get(long id) {
-		userRepository.findById(id);
+	public User get(String id) {
+		User u = userRepository.findByUsername(id);
 		 
-		return null;
+		return u;
 	}
 	
 }

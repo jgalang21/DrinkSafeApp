@@ -32,7 +32,7 @@ import javassist.bytecode.Descriptor.Iterator;
 	buddiesRepository groupdRepo;
 	
 	
-	
+	public UserController(){}
 
 	@RequestMapping(method = RequestMethod.GET, path= "/users/new/{username}/{name}/{password}/{height}/{weight}/{gender}/{guestStatus}")
 	public void saveUser(@PathVariable("username") String username,@PathVariable("name") String name,@PathVariable("password") String password,@PathVariable("height") int height,@PathVariable("weight") int weight,@PathVariable("gender") int gender, @PathVariable("guestStatus") int guestStatus)

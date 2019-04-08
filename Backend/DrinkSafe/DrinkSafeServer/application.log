@@ -2334,3 +2334,691 @@ Caused by: java.lang.NullPointerException: null
 
 2019-04-07 14:09:21.911  INFO 24223 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Error
 >>>>>>> 9069a63daddfdf76a8eb2bb4c44a230cd5836288
+2019-04-07 14:19:45.410  INFO 8264 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : Starting DrinkSafeServerApplication on NICKSLAPTOP with PID 8264 (D:\GIT309\local_repo\local_repo_v2\team_51\Backend\DrinkSafe\DrinkSafeServer\target\classes started by Nick in D:\GIT309\local_repo\local_repo_v2\team_51\Backend\DrinkSafe\DrinkSafeServer)
+2019-04-07 14:19:45.410  INFO 8264 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : No active profile set, falling back to default profiles: default
+2019-04-07 14:19:45.457  INFO 8264 --- [restartedMain] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@43c32e1a: startup date [Sun Apr 07 14:19:45 CDT 2019]; root of context hierarchy
+2019-04-07 14:19:47.049  INFO 8264 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$de3dad81] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-07 14:19:47.366  INFO 8264 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-04-07 14:19:47.381  INFO 8264 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-04-07 14:19:47.381  INFO 8264 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.28
+2019-04-07 14:19:47.381  INFO 8264 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_201\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre1.8.0_201/bin/server;C:/Program Files/Java/jre1.8.0_201/bin;C:/Program Files/Java/jre1.8.0_201/lib/amd64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;D:\GIT\Git\cmd;C:\Program Files\Java\jdk1.8.0_201\bin;D:\apache-maven-3.6.0\bin;C:\Users\Nick\AppData\Local\Programs\Microsoft VS Code\bin;;C:\Windows\system32;;.]
+2019-04-07 14:19:47.475  INFO 8264 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-04-07 14:19:47.475  INFO 8264 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2018 ms
+2019-04-07 14:19:48.197  INFO 8264 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-04-07 14:19:48.207  INFO 8264 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-04-07 14:19:48.207  INFO 8264 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-04-07 14:19:48.207  INFO 8264 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-04-07 14:19:48.207  INFO 8264 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-04-07 14:19:48.207  INFO 8264 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-04-07 14:19:48.207  INFO 8264 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-04-07 14:19:48.270  INFO 8264 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-04-07 14:19:48.613  INFO 8264 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-04-07 14:19:48.645  INFO 8264 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:19:48.660  INFO 8264 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-04-07 14:19:48.707  INFO 8264 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.14.Final}
+2019-04-07 14:19:48.707  INFO 8264 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-04-07 14:19:48.738  INFO 8264 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-04-07 14:19:48.848  INFO 8264 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-04-07 14:19:49.254  INFO 8264 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:19:49.878  INFO 8264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@43c32e1a: startup date [Sun Apr 07 14:19:45 CDT 2019]; root of context hierarchy
+2019-04-07 14:19:49.894  WARN 8264 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-04-07 14:19:49.925  INFO 8264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/drink],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.Drink.Drink> org.springframework.samples.drink_safe.Drink.DrinkController.listAllDrinks()
+2019-04-07 14:19:49.925  INFO 8264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/drink/new/{DrinkId}/{alcPercent}/{volume}/{fkuser}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.Drink.DrinkController.addDrink(java.lang.String,int,int,java.lang.String)
+2019-04-07 14:19:49.925  INFO 8264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/link/{dtusername}/{tid}],methods=[GET]}" onto public org.springframework.samples.drink_safe.drink_time.drink_time org.springframework.samples.drink_safe.drink_time.drink_timeController.addLink(java.lang.String,int)
+2019-04-07 14:19:49.925  INFO 8264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/oups],methods=[GET]}" onto public java.lang.String org.springframework.samples.drink_safe.system.CrashController.triggerException()
+2019-04-07 14:19:49.925  INFO 8264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String org.springframework.samples.drink_safe.system.WelcomeController.welcome()
+2019-04-07 14:19:49.925  INFO 8264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/time],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.time.time> org.springframework.samples.drink_safe.time.timeController.listAllTime()
+2019-04-07 14:19:49.925  INFO 8264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/getGroup/{userId}],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.getGroup(java.lang.String)
+2019-04-07 14:19:49.925  INFO 8264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.returnAllUsers()
+2019-04-07 14:19:49.925  INFO 8264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/new/{username}/{name}/{password}/{height}/{weight}/{gender}/{guestStatus}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.saveUser(java.lang.String,java.lang.String,java.lang.String,int,int,int,int)
+2019-04-07 14:19:49.925  INFO 8264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/find/id/{userId}],methods=[GET]}" onto public org.springframework.samples.drink_safe.user.User org.springframework.samples.drink_safe.user.UserController.findUserbyID(java.lang.String)
+2019-04-07 14:19:49.925  INFO 8264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/addFriends/{user1Id}/{user2Id}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.addFriends(java.lang.String,java.lang.String)
+2019-04-07 14:19:49.925  INFO 8264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/leave/{userId}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.leaveGroup(java.lang.String)
+2019-04-07 14:19:49.925  INFO 8264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/addGroup/{user1Id}/{user2Id}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.addGroup(java.lang.String,java.lang.String)
+2019-04-07 14:19:49.925  INFO 8264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/edit/weight/{userId}/{weight}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.editWeight(java.lang.String,int)
+2019-04-07 14:19:49.925  INFO 8264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/edit/height/{userId}/{height}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.editHeight(java.lang.String,int)
+2019-04-07 14:19:49.925  INFO 8264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/find/gs/{guest_status}],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.findByGuest_Status(int)
+2019-04-07 14:19:49.940  INFO 8264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-04-07 14:19:49.940  INFO 8264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-07 14:19:49.972  INFO 8264 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:19:49.972  INFO 8264 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:19:50.003  INFO 8264 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:19:50.034  WARN 8264 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2019-04-07 14:19:50.331  INFO 8264 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-04-07 14:19:50.354  INFO 8264 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-07 14:19:50.354  INFO 8264 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-07 14:19:50.354  INFO 8264 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-07 14:19:50.448  INFO 8264 --- [restartedMain] o.s.w.s.s.s.ServerEndpointExporter       : Registering @ServerEndpoint class: class org.springframework.samples.drink_safe.WebSocket.WebSocketServer
+2019-04-07 14:19:50.463  INFO 8264 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-04-07 14:19:50.463  INFO 8264 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-04-07 14:19:50.463  INFO 8264 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-04-07 14:19:50.479  INFO 8264 --- [RMI TCP Connection(1)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-04-07 14:19:50.479  INFO 8264 --- [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2019-04-07 14:19:50.494  INFO 8264 --- [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 15 ms
+2019-04-07 14:19:50.510  INFO 8264 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-04-07 14:19:50.510  INFO 8264 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : Started DrinkSafeServerApplication in 5.381 seconds (JVM running for 6.205)
+2019-04-07 14:20:02.595  INFO 8264 --- [http-nio-8080-exec-1] o.s.s.d.WebSocket.WebSocketServer        : Entered into Open
+2019-04-07 14:20:05.971  INFO 8264 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Message: Got Message:hello
+2019-04-07 14:20:05.972  INFO 8264 --- [http-nio-8080-exec-2] o.s.s.drink_safe.user.UserController     : Finding user: BigHAAS
+2019-04-07 14:20:05.972  INFO 8264 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Error
+2019-04-07 14:20:05.973  INFO 8264 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Close
+2019-04-07 14:20:05.978 ERROR 8264 --- [http-nio-8080-exec-2] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [org.springframework.samples.drink_safe.WebSocket.WebSocketServer]
+
+java.lang.reflect.InvocationTargetException: null
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_201]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:106) ~[tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:535) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:513) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:240) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:151) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:54) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:53) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_201]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_201]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_201]
+Caused by: java.lang.NullPointerException: null
+	at org.springframework.samples.drink_safe.WebSocket.WebSocketServer.onClose(WebSocketServer.java:118) ~[classes/:na]
+	... 18 common frames omitted
+
+2019-04-07 14:20:05.979  INFO 8264 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Error
+2019-04-07 14:21:17.558  INFO 8264 --- [RMI TCP Connection(3)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2019-04-07 14:21:17.559  INFO 8264 --- [RMI TCP Connection(3)-127.0.0.1] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@43c32e1a: startup date [Sun Apr 07 14:19:45 CDT 2019]; root of context hierarchy
+2019-04-07 14:21:17.561  INFO 8264 --- [RMI TCP Connection(3)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-04-07 14:21:17.561  INFO 8264 --- [RMI TCP Connection(3)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-04-07 14:21:17.561  INFO 8264 --- [RMI TCP Connection(3)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:21:17.577  INFO 8264 --- [RMI TCP Connection(3)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-04-07 14:21:17.577  INFO 8264 --- [RMI TCP Connection(3)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-04-07 14:25:09.739  INFO 7812 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : Starting DrinkSafeServerApplication on NICKSLAPTOP with PID 7812 (D:\GIT309\local_repo\local_repo_v2\team_51\Backend\DrinkSafe\DrinkSafeServer\target\classes started by Nick in D:\GIT309\local_repo\local_repo_v2\team_51\Backend\DrinkSafe\DrinkSafeServer)
+2019-04-07 14:25:09.739  INFO 7812 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : No active profile set, falling back to default profiles: default
+2019-04-07 14:25:09.770  INFO 7812 --- [restartedMain] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6e0a3da4: startup date [Sun Apr 07 14:25:09 CDT 2019]; root of context hierarchy
+2019-04-07 14:25:11.207  INFO 7812 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$f149d18c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-07 14:25:11.548  INFO 7812 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-04-07 14:25:11.579  INFO 7812 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-04-07 14:25:11.579  INFO 7812 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.28
+2019-04-07 14:25:11.579  INFO 7812 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_201\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre1.8.0_201/bin/server;C:/Program Files/Java/jre1.8.0_201/bin;C:/Program Files/Java/jre1.8.0_201/lib/amd64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;D:\GIT\Git\cmd;C:\Program Files\Java\jdk1.8.0_201\bin;D:\apache-maven-3.6.0\bin;C:\Users\Nick\AppData\Local\Programs\Microsoft VS Code\bin;;C:\Windows\system32;;.]
+2019-04-07 14:25:11.660  INFO 7812 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-04-07 14:25:11.660  INFO 7812 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1890 ms
+2019-04-07 14:25:12.347  INFO 7812 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-04-07 14:25:12.353  INFO 7812 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-04-07 14:25:12.353  INFO 7812 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-04-07 14:25:12.353  INFO 7812 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-04-07 14:25:12.353  INFO 7812 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-04-07 14:25:12.353  INFO 7812 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-04-07 14:25:12.353  INFO 7812 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-04-07 14:25:12.416  INFO 7812 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-04-07 14:25:12.731  INFO 7812 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-04-07 14:25:12.778  INFO 7812 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:25:12.778  INFO 7812 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-04-07 14:25:12.841  INFO 7812 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.14.Final}
+2019-04-07 14:25:12.841  INFO 7812 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-04-07 14:25:12.872  INFO 7812 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-04-07 14:25:12.966  INFO 7812 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-04-07 14:25:13.387  INFO 7812 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:25:13.979  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6e0a3da4: startup date [Sun Apr 07 14:25:09 CDT 2019]; root of context hierarchy
+2019-04-07 14:25:14.010  WARN 7812 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-04-07 14:25:14.025  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/drink],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.Drink.Drink> org.springframework.samples.drink_safe.Drink.DrinkController.listAllDrinks()
+2019-04-07 14:25:14.025  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/drink/new/{DrinkId}/{alcPercent}/{volume}/{fkuser}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.Drink.DrinkController.addDrink(java.lang.String,int,int,java.lang.String)
+2019-04-07 14:25:14.025  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/link/{dtusername}/{tid}],methods=[GET]}" onto public org.springframework.samples.drink_safe.drink_time.drink_time org.springframework.samples.drink_safe.drink_time.drink_timeController.addLink(java.lang.String,int)
+2019-04-07 14:25:14.025  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/oups],methods=[GET]}" onto public java.lang.String org.springframework.samples.drink_safe.system.CrashController.triggerException()
+2019-04-07 14:25:14.041  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String org.springframework.samples.drink_safe.system.WelcomeController.welcome()
+2019-04-07 14:25:14.041  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/time],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.time.time> org.springframework.samples.drink_safe.time.timeController.listAllTime()
+2019-04-07 14:25:14.041  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/getGroup/{userId}],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.getGroup(java.lang.String)
+2019-04-07 14:25:14.041  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/find/gs/{guest_status}],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.findByGuest_Status(int)
+2019-04-07 14:25:14.041  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/new/{username}/{name}/{password}/{height}/{weight}/{gender}/{guestStatus}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.saveUser(java.lang.String,java.lang.String,java.lang.String,int,int,int,int)
+2019-04-07 14:25:14.041  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.returnAllUsers()
+2019-04-07 14:25:14.041  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/find/id/{userId}],methods=[GET]}" onto public org.springframework.samples.drink_safe.user.User org.springframework.samples.drink_safe.user.UserController.findUserbyID(java.lang.String)
+2019-04-07 14:25:14.041  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/addFriends/{user1Id}/{user2Id}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.addFriends(java.lang.String,java.lang.String)
+2019-04-07 14:25:14.041  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/edit/weight/{userId}/{weight}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.editWeight(java.lang.String,int)
+2019-04-07 14:25:14.041  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/addGroup/{user1Id}/{user2Id}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.addGroup(java.lang.String,java.lang.String)
+2019-04-07 14:25:14.041  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/edit/height/{userId}/{height}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.editHeight(java.lang.String,int)
+2019-04-07 14:25:14.041  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/leave/{userId}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.leaveGroup(java.lang.String)
+2019-04-07 14:25:14.041  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-04-07 14:25:14.041  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-07 14:25:14.072  INFO 7812 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:25:14.072  INFO 7812 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:25:14.119  INFO 7812 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:25:14.135  WARN 7812 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2019-04-07 14:25:14.447  INFO 7812 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-04-07 14:25:14.477  INFO 7812 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-07 14:25:14.477  INFO 7812 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-07 14:25:14.477  INFO 7812 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-07 14:25:14.555  INFO 7812 --- [restartedMain] o.s.w.s.s.s.ServerEndpointExporter       : Registering @ServerEndpoint class: class org.springframework.samples.drink_safe.WebSocket.WebSocketServer
+2019-04-07 14:25:14.571  INFO 7812 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-04-07 14:25:14.571  INFO 7812 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-04-07 14:25:14.571  INFO 7812 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-04-07 14:25:14.604  INFO 7812 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-04-07 14:25:14.620  INFO 7812 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : Started DrinkSafeServerApplication in 5.147 seconds (JVM running for 6.032)
+2019-04-07 14:25:15.997  INFO 7812 --- [RMI TCP Connection(1)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-04-07 14:25:16.011  INFO 7812 --- [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2019-04-07 14:25:16.012  INFO 7812 --- [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 1 ms
+2019-04-07 14:25:25.883  INFO 7812 --- [http-nio-8080-exec-1] o.s.s.d.WebSocket.WebSocketServer        : Entered into Open
+2019-04-07 14:25:29.362  INFO 7812 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Message: Got Message:hello
+2019-04-07 14:25:29.363  INFO 7812 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Error
+2019-04-07 14:25:29.365  INFO 7812 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Close
+2019-04-07 14:25:29.369 ERROR 7812 --- [http-nio-8080-exec-2] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [org.springframework.samples.drink_safe.WebSocket.WebSocketServer]
+
+java.lang.reflect.InvocationTargetException: null
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_201]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:106) ~[tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:535) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:513) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:240) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:151) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:54) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:53) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_201]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_201]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_201]
+Caused by: java.lang.NullPointerException: null
+	at org.springframework.samples.drink_safe.WebSocket.WebSocketServer.onClose(WebSocketServer.java:120) ~[classes/:na]
+	... 18 common frames omitted
+
+2019-04-07 14:25:29.369  INFO 7812 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Error
+2019-04-07 14:26:01.636  INFO 7812 --- [Thread-9] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6e0a3da4: startup date [Sun Apr 07 14:25:09 CDT 2019]; root of context hierarchy
+2019-04-07 14:26:01.644  INFO 7812 --- [Thread-9] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-04-07 14:26:01.644  INFO 7812 --- [Thread-9] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-04-07 14:26:01.644  INFO 7812 --- [Thread-9] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:26:01.644  INFO 7812 --- [Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-04-07 14:26:01.644  INFO 7812 --- [Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-04-07 14:26:04.403  INFO 7812 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : Starting DrinkSafeServerApplication on NICKSLAPTOP with PID 7812 (D:\GIT309\local_repo\local_repo_v2\team_51\Backend\DrinkSafe\DrinkSafeServer\target\classes started by Nick in D:\GIT309\local_repo\local_repo_v2\team_51\Backend\DrinkSafe\DrinkSafeServer)
+2019-04-07 14:26:04.403  INFO 7812 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : No active profile set, falling back to default profiles: default
+2019-04-07 14:26:04.403  INFO 7812 --- [restartedMain] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@45c93d93: startup date [Sun Apr 07 14:26:04 CDT 2019]; root of context hierarchy
+2019-04-07 14:26:04.856  INFO 7812 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$f149d18c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-07 14:26:04.981  INFO 7812 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-04-07 14:26:04.981  INFO 7812 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-04-07 14:26:04.981  INFO 7812 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.28
+2019-04-07 14:26:05.013  INFO 7812 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-04-07 14:26:05.013  INFO 7812 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 610 ms
+2019-04-07 14:26:05.200  INFO 7812 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-04-07 14:26:05.200  INFO 7812 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-04-07 14:26:05.200  INFO 7812 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-04-07 14:26:05.200  INFO 7812 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-04-07 14:26:05.200  INFO 7812 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-04-07 14:26:05.200  INFO 7812 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-04-07 14:26:05.200  INFO 7812 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-04-07 14:26:05.231  INFO 7812 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2019-04-07 14:26:05.294  INFO 7812 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2019-04-07 14:26:05.309  INFO 7812 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:26:05.309  INFO 7812 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-04-07 14:26:05.325  INFO 7812 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-04-07 14:26:05.372  INFO 7812 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:26:05.627  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@45c93d93: startup date [Sun Apr 07 14:26:04 CDT 2019]; root of context hierarchy
+2019-04-07 14:26:05.649  WARN 7812 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-04-07 14:26:05.649  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/drink],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.Drink.Drink> org.springframework.samples.drink_safe.Drink.DrinkController.listAllDrinks()
+2019-04-07 14:26:05.649  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/drink/new/{DrinkId}/{alcPercent}/{volume}/{fkuser}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.Drink.DrinkController.addDrink(java.lang.String,int,int,java.lang.String)
+2019-04-07 14:26:05.649  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/link/{dtusername}/{tid}],methods=[GET]}" onto public org.springframework.samples.drink_safe.drink_time.drink_time org.springframework.samples.drink_safe.drink_time.drink_timeController.addLink(java.lang.String,int)
+2019-04-07 14:26:05.649  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/oups],methods=[GET]}" onto public java.lang.String org.springframework.samples.drink_safe.system.CrashController.triggerException()
+2019-04-07 14:26:05.649  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String org.springframework.samples.drink_safe.system.WelcomeController.welcome()
+2019-04-07 14:26:05.649  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/time],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.time.time> org.springframework.samples.drink_safe.time.timeController.listAllTime()
+2019-04-07 14:26:05.649  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/getGroup/{userId}],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.getGroup(java.lang.String)
+2019-04-07 14:26:05.649  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/find/gs/{guest_status}],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.findByGuest_Status(int)
+2019-04-07 14:26:05.649  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/new/{username}/{name}/{password}/{height}/{weight}/{gender}/{guestStatus}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.saveUser(java.lang.String,java.lang.String,java.lang.String,int,int,int,int)
+2019-04-07 14:26:05.649  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.returnAllUsers()
+2019-04-07 14:26:05.649  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/find/id/{userId}],methods=[GET]}" onto public org.springframework.samples.drink_safe.user.User org.springframework.samples.drink_safe.user.UserController.findUserbyID(java.lang.String)
+2019-04-07 14:26:05.649  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/addFriends/{user1Id}/{user2Id}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.addFriends(java.lang.String,java.lang.String)
+2019-04-07 14:26:05.649  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/edit/weight/{userId}/{weight}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.editWeight(java.lang.String,int)
+2019-04-07 14:26:05.649  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/addGroup/{user1Id}/{user2Id}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.addGroup(java.lang.String,java.lang.String)
+2019-04-07 14:26:05.649  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/edit/height/{userId}/{height}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.editHeight(java.lang.String,int)
+2019-04-07 14:26:05.649  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/leave/{userId}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.leaveGroup(java.lang.String)
+2019-04-07 14:26:05.649  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-04-07 14:26:05.649  INFO 7812 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-07 14:26:05.680  INFO 7812 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:26:05.680  INFO 7812 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:26:05.711  INFO 7812 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:26:05.727  WARN 7812 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2019-04-07 14:26:05.868  INFO 7812 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-04-07 14:26:05.868  INFO 7812 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-07 14:26:05.868  INFO 7812 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-07 14:26:05.868  INFO 7812 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-07 14:26:05.961  INFO 7812 --- [restartedMain] o.s.w.s.s.s.ServerEndpointExporter       : Registering @ServerEndpoint class: class org.springframework.samples.drink_safe.WebSocket.WebSocketServer
+2019-04-07 14:26:05.977  INFO 7812 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-04-07 14:26:05.977  INFO 7812 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-04-07 14:26:05.993  INFO 7812 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-04-07 14:26:06.008  INFO 7812 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-04-07 14:26:06.008  INFO 7812 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : Started DrinkSafeServerApplication in 1.641 seconds (JVM running for 57.426)
+2019-04-07 14:26:06.008  INFO 7812 --- [RMI TCP Connection(1)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-04-07 14:26:06.008  INFO 7812 --- [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2019-04-07 14:26:06.008  INFO 7812 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2019-04-07 14:26:06.008  INFO 7812 --- [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 0 ms
+2019-04-07 14:26:08.171  INFO 7812 --- [RMI TCP Connection(6)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2019-04-07 14:26:08.171  INFO 7812 --- [RMI TCP Connection(6)-127.0.0.1] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@45c93d93: startup date [Sun Apr 07 14:26:04 CDT 2019]; root of context hierarchy
+2019-04-07 14:26:08.173  INFO 7812 --- [RMI TCP Connection(6)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-04-07 14:26:08.173  INFO 7812 --- [RMI TCP Connection(6)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-04-07 14:26:08.173  INFO 7812 --- [RMI TCP Connection(6)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:26:08.173  INFO 7812 --- [RMI TCP Connection(6)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2019-04-07 14:26:08.173  INFO 7812 --- [RMI TCP Connection(6)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2019-04-07 14:26:17.992  INFO 17352 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : Starting DrinkSafeServerApplication on NICKSLAPTOP with PID 17352 (D:\GIT309\local_repo\local_repo_v2\team_51\Backend\DrinkSafe\DrinkSafeServer\target\classes started by Nick in D:\GIT309\local_repo\local_repo_v2\team_51\Backend\DrinkSafe\DrinkSafeServer)
+2019-04-07 14:26:17.992  INFO 17352 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : No active profile set, falling back to default profiles: default
+2019-04-07 14:26:18.023  INFO 17352 --- [restartedMain] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@cd6061d: startup date [Sun Apr 07 14:26:18 CDT 2019]; root of context hierarchy
+2019-04-07 14:26:19.449  INFO 17352 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$98cb4238] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-07 14:26:19.746  INFO 17352 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-04-07 14:26:19.762  INFO 17352 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-04-07 14:26:19.762  INFO 17352 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.28
+2019-04-07 14:26:19.777  INFO 17352 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_201\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre1.8.0_201/bin/server;C:/Program Files/Java/jre1.8.0_201/bin;C:/Program Files/Java/jre1.8.0_201/lib/amd64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;D:\GIT\Git\cmd;C:\Program Files\Java\jdk1.8.0_201\bin;D:\apache-maven-3.6.0\bin;C:\Users\Nick\AppData\Local\Programs\Microsoft VS Code\bin;;C:\Windows\system32;;.]
+2019-04-07 14:26:19.855  INFO 17352 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-04-07 14:26:19.855  INFO 17352 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1832 ms
+2019-04-07 14:26:20.558  INFO 17352 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-04-07 14:26:20.564  INFO 17352 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-04-07 14:26:20.564  INFO 17352 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-04-07 14:26:20.564  INFO 17352 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-04-07 14:26:20.564  INFO 17352 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-04-07 14:26:20.564  INFO 17352 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-04-07 14:26:20.564  INFO 17352 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-04-07 14:26:20.629  INFO 17352 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-04-07 14:26:20.941  INFO 17352 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-04-07 14:26:20.988  INFO 17352 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:26:20.988  INFO 17352 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-04-07 14:26:21.051  INFO 17352 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.14.Final}
+2019-04-07 14:26:21.051  INFO 17352 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-04-07 14:26:21.082  INFO 17352 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-04-07 14:26:21.207  INFO 17352 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-04-07 14:26:21.726  INFO 17352 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:26:22.353  INFO 17352 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@cd6061d: startup date [Sun Apr 07 14:26:18 CDT 2019]; root of context hierarchy
+2019-04-07 14:26:22.384  WARN 17352 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-04-07 14:26:22.400  INFO 17352 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/drink],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.Drink.Drink> org.springframework.samples.drink_safe.Drink.DrinkController.listAllDrinks()
+2019-04-07 14:26:22.400  INFO 17352 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/drink/new/{DrinkId}/{alcPercent}/{volume}/{fkuser}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.Drink.DrinkController.addDrink(java.lang.String,int,int,java.lang.String)
+2019-04-07 14:26:22.415  INFO 17352 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/link/{dtusername}/{tid}],methods=[GET]}" onto public org.springframework.samples.drink_safe.drink_time.drink_time org.springframework.samples.drink_safe.drink_time.drink_timeController.addLink(java.lang.String,int)
+2019-04-07 14:26:22.415  INFO 17352 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/oups],methods=[GET]}" onto public java.lang.String org.springframework.samples.drink_safe.system.CrashController.triggerException()
+2019-04-07 14:26:22.415  INFO 17352 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String org.springframework.samples.drink_safe.system.WelcomeController.welcome()
+2019-04-07 14:26:22.415  INFO 17352 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/time],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.time.time> org.springframework.samples.drink_safe.time.timeController.listAllTime()
+2019-04-07 14:26:22.415  INFO 17352 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/find/id/{userId}],methods=[GET]}" onto public org.springframework.samples.drink_safe.user.User org.springframework.samples.drink_safe.user.UserController.findUserbyID(java.lang.String)
+2019-04-07 14:26:22.415  INFO 17352 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/leave/{userId}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.leaveGroup(java.lang.String)
+2019-04-07 14:26:22.415  INFO 17352 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/edit/weight/{userId}/{weight}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.editWeight(java.lang.String,int)
+2019-04-07 14:26:22.415  INFO 17352 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/new/{username}/{name}/{password}/{height}/{weight}/{gender}/{guestStatus}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.saveUser(java.lang.String,java.lang.String,java.lang.String,int,int,int,int)
+2019-04-07 14:26:22.415  INFO 17352 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/addGroup/{user1Id}/{user2Id}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.addGroup(java.lang.String,java.lang.String)
+2019-04-07 14:26:22.415  INFO 17352 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/edit/height/{userId}/{height}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.editHeight(java.lang.String,int)
+2019-04-07 14:26:22.415  INFO 17352 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/addFriends/{user1Id}/{user2Id}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.addFriends(java.lang.String,java.lang.String)
+2019-04-07 14:26:22.415  INFO 17352 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.returnAllUsers()
+2019-04-07 14:26:22.415  INFO 17352 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/getGroup/{userId}],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.getGroup(java.lang.String)
+2019-04-07 14:26:22.415  INFO 17352 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/find/gs/{guest_status}],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.findByGuest_Status(int)
+2019-04-07 14:26:22.415  INFO 17352 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-04-07 14:26:22.415  INFO 17352 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-07 14:26:22.446  INFO 17352 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:26:22.446  INFO 17352 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:26:22.493  INFO 17352 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:26:22.509  WARN 17352 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2019-04-07 14:26:22.810  INFO 17352 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-04-07 14:26:22.828  INFO 17352 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-07 14:26:22.828  INFO 17352 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-07 14:26:22.828  INFO 17352 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-07 14:26:22.907  INFO 17352 --- [restartedMain] o.s.w.s.s.s.ServerEndpointExporter       : Registering @ServerEndpoint class: class org.springframework.samples.drink_safe.WebSocket.WebSocketServer
+2019-04-07 14:26:22.907  INFO 17352 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-04-07 14:26:22.907  INFO 17352 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-04-07 14:26:22.922  INFO 17352 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-04-07 14:26:22.953  INFO 17352 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-04-07 14:26:22.953  INFO 17352 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : Started DrinkSafeServerApplication in 5.243 seconds (JVM running for 6.189)
+2019-04-07 14:26:26.097  INFO 17352 --- [RMI TCP Connection(1)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-04-07 14:26:26.098  INFO 17352 --- [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2019-04-07 14:26:26.117  INFO 17352 --- [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 19 ms
+2019-04-07 14:26:32.398  INFO 17352 --- [http-nio-8080-exec-1] o.s.s.d.WebSocket.WebSocketServer        : Entered into Open
+2019-04-07 14:26:37.023  INFO 17352 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Message: Got Message:hello
+2019-04-07 14:26:37.024  INFO 17352 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Error
+2019-04-07 14:26:37.026  INFO 17352 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Close
+2019-04-07 14:26:37.031 ERROR 17352 --- [http-nio-8080-exec-2] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [org.springframework.samples.drink_safe.WebSocket.WebSocketServer]
+
+java.lang.reflect.InvocationTargetException: null
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_201]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:106) ~[tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:535) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:513) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:240) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:151) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:54) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:53) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_201]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_201]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_201]
+Caused by: java.lang.NullPointerException: null
+	at org.springframework.samples.drink_safe.user.UserService.get(UserService.java:26) ~[classes/:na]
+	at org.springframework.samples.drink_safe.WebSocket.WebSocketServer.onClose(WebSocketServer.java:120) ~[classes/:na]
+	... 18 common frames omitted
+
+2019-04-07 14:26:37.032  INFO 17352 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Error
+2019-04-07 14:27:18.819  INFO 17352 --- [RMI TCP Connection(5)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2019-04-07 14:27:18.827  INFO 17352 --- [RMI TCP Connection(5)-127.0.0.1] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@cd6061d: startup date [Sun Apr 07 14:26:18 CDT 2019]; root of context hierarchy
+2019-04-07 14:27:18.829  INFO 17352 --- [RMI TCP Connection(7)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2019-04-07 14:27:18.829  INFO 17352 --- [RMI TCP Connection(5)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-04-07 14:27:18.829  INFO 17352 --- [RMI TCP Connection(5)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-04-07 14:27:18.829  INFO 17352 --- [RMI TCP Connection(5)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:27:18.829  INFO 17352 --- [RMI TCP Connection(5)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-04-07 14:27:18.829  INFO 17352 --- [RMI TCP Connection(5)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-04-07 14:30:02.499  INFO 8248 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : Starting DrinkSafeServerApplication on NICKSLAPTOP with PID 8248 (D:\GIT309\local_repo\local_repo_v2\team_51\Backend\DrinkSafe\DrinkSafeServer\target\classes started by Nick in D:\GIT309\local_repo\local_repo_v2\team_51\Backend\DrinkSafe\DrinkSafeServer)
+2019-04-07 14:30:02.499  INFO 8248 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : No active profile set, falling back to default profiles: default
+2019-04-07 14:30:02.546  INFO 8248 --- [restartedMain] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6176d267: startup date [Sun Apr 07 14:30:02 CDT 2019]; root of context hierarchy
+2019-04-07 14:30:03.999  INFO 8248 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a4968224] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-07 14:30:04.312  INFO 8248 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-04-07 14:30:04.328  INFO 8248 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-04-07 14:30:04.328  INFO 8248 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.28
+2019-04-07 14:30:04.328  INFO 8248 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_201\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre1.8.0_201/bin/server;C:/Program Files/Java/jre1.8.0_201/bin;C:/Program Files/Java/jre1.8.0_201/lib/amd64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;D:\GIT\Git\cmd;C:\Program Files\Java\jdk1.8.0_201\bin;D:\apache-maven-3.6.0\bin;C:\Users\Nick\AppData\Local\Programs\Microsoft VS Code\bin;;C:\Windows\system32;;.]
+2019-04-07 14:30:04.421  INFO 8248 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-04-07 14:30:04.421  INFO 8248 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1875 ms
+2019-04-07 14:30:05.109  INFO 8248 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-04-07 14:30:05.118  INFO 8248 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-04-07 14:30:05.118  INFO 8248 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-04-07 14:30:05.118  INFO 8248 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-04-07 14:30:05.118  INFO 8248 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-04-07 14:30:05.118  INFO 8248 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-04-07 14:30:05.118  INFO 8248 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-04-07 14:30:05.181  INFO 8248 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-04-07 14:30:05.509  INFO 8248 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-04-07 14:30:05.540  INFO 8248 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:30:05.555  INFO 8248 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-04-07 14:30:05.607  INFO 8248 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.14.Final}
+2019-04-07 14:30:05.607  INFO 8248 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-04-07 14:30:05.654  INFO 8248 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-04-07 14:30:05.763  INFO 8248 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-04-07 14:30:06.200  INFO 8248 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:30:06.850  INFO 8248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6176d267: startup date [Sun Apr 07 14:30:02 CDT 2019]; root of context hierarchy
+2019-04-07 14:30:06.866  WARN 8248 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-04-07 14:30:06.897  INFO 8248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/drink],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.Drink.Drink> org.springframework.samples.drink_safe.Drink.DrinkController.listAllDrinks()
+2019-04-07 14:30:06.897  INFO 8248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/drink/new/{DrinkId}/{alcPercent}/{volume}/{fkuser}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.Drink.DrinkController.addDrink(java.lang.String,int,int,java.lang.String)
+2019-04-07 14:30:06.897  INFO 8248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/link/{dtusername}/{tid}],methods=[GET]}" onto public org.springframework.samples.drink_safe.drink_time.drink_time org.springframework.samples.drink_safe.drink_time.drink_timeController.addLink(java.lang.String,int)
+2019-04-07 14:30:06.897  INFO 8248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/oups],methods=[GET]}" onto public java.lang.String org.springframework.samples.drink_safe.system.CrashController.triggerException()
+2019-04-07 14:30:06.897  INFO 8248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String org.springframework.samples.drink_safe.system.WelcomeController.welcome()
+2019-04-07 14:30:06.897  INFO 8248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/time],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.time.time> org.springframework.samples.drink_safe.time.timeController.listAllTime()
+2019-04-07 14:30:06.897  INFO 8248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/getGroup/{userId}],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.getGroup(java.lang.String)
+2019-04-07 14:30:06.897  INFO 8248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/edit/weight/{userId}/{weight}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.editWeight(java.lang.String,int)
+2019-04-07 14:30:06.897  INFO 8248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/addFriends/{user1Id}/{user2Id}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.addFriends(java.lang.String,java.lang.String)
+2019-04-07 14:30:06.897  INFO 8248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/leave/{userId}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.leaveGroup(java.lang.String)
+2019-04-07 14:30:06.897  INFO 8248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/addGroup/{user1Id}/{user2Id}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.addGroup(java.lang.String,java.lang.String)
+2019-04-07 14:30:06.897  INFO 8248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/new/{username}/{name}/{password}/{height}/{weight}/{gender}/{guestStatus}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.saveUser(java.lang.String,java.lang.String,java.lang.String,int,int,int,int)
+2019-04-07 14:30:06.897  INFO 8248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.returnAllUsers()
+2019-04-07 14:30:06.897  INFO 8248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/find/id/{userId}],methods=[GET]}" onto public org.springframework.samples.drink_safe.user.User org.springframework.samples.drink_safe.user.UserController.findUserbyID(java.lang.String)
+2019-04-07 14:30:06.897  INFO 8248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/edit/height/{userId}/{height}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.editHeight(java.lang.String,int)
+2019-04-07 14:30:06.913  INFO 8248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/find/gs/{guest_status}],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.findByGuest_Status(int)
+2019-04-07 14:30:06.913  INFO 8248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-04-07 14:30:06.913  INFO 8248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-07 14:30:06.944  INFO 8248 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:30:06.944  INFO 8248 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:30:06.991  INFO 8248 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:30:07.007  WARN 8248 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2019-04-07 14:30:07.319  INFO 8248 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-04-07 14:30:07.343  INFO 8248 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-07 14:30:07.343  INFO 8248 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-07 14:30:07.343  INFO 8248 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-07 14:30:07.421  INFO 8248 --- [restartedMain] o.s.w.s.s.s.ServerEndpointExporter       : Registering @ServerEndpoint class: class org.springframework.samples.drink_safe.WebSocket.WebSocketServer
+2019-04-07 14:30:07.437  INFO 8248 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-04-07 14:30:07.437  INFO 8248 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-04-07 14:30:07.437  INFO 8248 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-04-07 14:30:07.468  INFO 8248 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-04-07 14:30:07.484  INFO 8248 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : Started DrinkSafeServerApplication in 5.281 seconds (JVM running for 6.135)
+2019-04-07 14:30:11.520  INFO 8248 --- [RMI TCP Connection(1)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-04-07 14:30:11.526  INFO 8248 --- [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2019-04-07 14:30:11.528  INFO 8248 --- [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 2 ms
+2019-04-07 14:30:16.517  INFO 8248 --- [http-nio-8080-exec-1] o.s.s.d.WebSocket.WebSocketServer        : Entered into Open
+2019-04-07 14:30:21.394  INFO 8248 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Message: Got Message:hello
+2019-04-07 14:30:21.395  INFO 8248 --- [http-nio-8080-exec-2] o.s.s.drink_safe.user.UserController     : Finding user: BigHAAS
+2019-04-07 14:30:21.395  INFO 8248 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Error
+2019-04-07 14:30:21.396  INFO 8248 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Close
+2019-04-07 14:30:21.397  INFO 8248 --- [http-nio-8080-exec-2] o.s.s.drink_safe.user.UserController     : Finding user: BigHAAS
+2019-04-07 14:30:21.404 ERROR 8248 --- [http-nio-8080-exec-2] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [org.springframework.samples.drink_safe.WebSocket.WebSocketServer]
+
+java.lang.reflect.InvocationTargetException: null
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_201]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:106) ~[tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:535) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:513) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:240) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:151) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:54) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:53) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_201]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_201]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_201]
+Caused by: java.lang.NullPointerException: null
+	at org.springframework.samples.drink_safe.user.UserController.findUserbyID(UserController.java:57) ~[classes/:na]
+	at org.springframework.samples.drink_safe.WebSocket.WebSocketServer.onClose(WebSocketServer.java:120) ~[classes/:na]
+	... 18 common frames omitted
+
+2019-04-07 14:30:21.405  INFO 8248 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Error
+2019-04-07 14:32:28.491  INFO 8248 --- [http-nio-8080-exec-3] o.s.s.d.WebSocket.WebSocketServer        : Entered into Open
+2019-04-07 14:32:28.492  INFO 8248 --- [http-nio-8080-exec-3] o.s.s.d.WebSocket.WebSocketServer        : Entered into Error
+2019-04-07 14:32:28.493  INFO 8248 --- [http-nio-8080-exec-3] o.s.s.d.WebSocket.WebSocketServer        : Entered into Close
+2019-04-07 14:32:28.493  INFO 8248 --- [http-nio-8080-exec-3] o.s.s.drink_safe.user.UserController     : Finding user: Corby44
+2019-04-07 14:32:28.494 ERROR 8248 --- [http-nio-8080-exec-3] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [org.springframework.samples.drink_safe.WebSocket.WebSocketServer]
+
+java.lang.reflect.InvocationTargetException: null
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_201]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:106) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:535) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.WsSession.doClose(WsSession.java:481) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.WsSession.close(WsSession.java:445) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.WsSession.close(WsSession.java:439) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.handleOnOpenOrCloseError(PojoEndpointBase.java:95) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.doOnOpen(PojoEndpointBase.java:78) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointServer.onOpen(PojoEndpointServer.java:64) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.init(WsHttpUpgradeHandler.java:133) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:836) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_201]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_201]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_201]
+Caused by: java.lang.NullPointerException: null
+	at org.springframework.samples.drink_safe.user.UserController.findUserbyID(UserController.java:57) ~[classes/:na]
+	at org.springframework.samples.drink_safe.WebSocket.WebSocketServer.onClose(WebSocketServer.java:120) ~[classes/:na]
+	... 20 common frames omitted
+
+2019-04-07 14:32:28.494  INFO 8248 --- [http-nio-8080-exec-3] o.s.s.d.WebSocket.WebSocketServer        : Entered into Error
+2019-04-07 14:46:28.493  INFO 8248 --- [RMI TCP Connection(12)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2019-04-07 14:46:28.493  INFO 8248 --- [RMI TCP Connection(12)-127.0.0.1] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6176d267: startup date [Sun Apr 07 14:30:02 CDT 2019]; root of context hierarchy
+2019-04-07 14:46:28.497  INFO 8248 --- [RMI TCP Connection(12)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-04-07 14:46:28.498  INFO 8248 --- [RMI TCP Connection(12)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-04-07 14:46:28.500  INFO 8248 --- [RMI TCP Connection(12)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:46:28.502  INFO 8248 --- [RMI TCP Connection(12)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-04-07 14:46:28.505  INFO 8248 --- [RMI TCP Connection(12)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-04-07 14:49:19.084  INFO 19196 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : Starting DrinkSafeServerApplication on NICKSLAPTOP with PID 19196 (D:\GIT309\local_repo\local_repo_v2\team_51\Backend\DrinkSafe\DrinkSafeServer\target\classes started by Nick in D:\GIT309\local_repo\local_repo_v2\team_51\Backend\DrinkSafe\DrinkSafeServer)
+2019-04-07 14:49:19.085  INFO 19196 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : No active profile set, falling back to default profiles: default
+2019-04-07 14:49:19.120  INFO 19196 --- [restartedMain] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@23aab488: startup date [Sun Apr 07 14:49:19 CDT 2019]; root of context hierarchy
+2019-04-07 14:49:20.586  INFO 19196 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$60c41e4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-07 14:49:20.896  INFO 19196 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-04-07 14:49:20.915  INFO 19196 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-04-07 14:49:20.915  INFO 19196 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.28
+2019-04-07 14:49:20.919  INFO 19196 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_201\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre1.8.0_201/bin/server;C:/Program Files/Java/jre1.8.0_201/bin;C:/Program Files/Java/jre1.8.0_201/lib/amd64;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;D:\GIT\Git\cmd;C:\Program Files\Java\jdk1.8.0_201\bin;D:\apache-maven-3.6.0\bin;C:\Users\Nick\AppData\Local\Programs\Microsoft VS Code\bin;;C:\Windows\system32;;.]
+2019-04-07 14:49:21.008  INFO 19196 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-04-07 14:49:21.009  INFO 19196 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1889 ms
+2019-04-07 14:49:21.790  INFO 19196 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-04-07 14:49:21.793  INFO 19196 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-04-07 14:49:21.794  INFO 19196 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-04-07 14:49:21.794  INFO 19196 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-04-07 14:49:21.794  INFO 19196 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-04-07 14:49:21.794  INFO 19196 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-04-07 14:49:21.795  INFO 19196 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-04-07 14:49:21.871  INFO 19196 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-04-07 14:49:22.215  INFO 19196 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-04-07 14:49:22.255  INFO 19196 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:49:22.267  INFO 19196 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-04-07 14:49:22.332  INFO 19196 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.14.Final}
+2019-04-07 14:49:22.334  INFO 19196 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-04-07 14:49:22.370  INFO 19196 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-04-07 14:49:22.479  INFO 19196 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-04-07 14:49:22.964  INFO 19196 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:49:23.689  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@23aab488: startup date [Sun Apr 07 14:49:19 CDT 2019]; root of context hierarchy
+2019-04-07 14:49:23.720  WARN 19196 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-04-07 14:49:23.748  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/drink],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.Drink.Drink> org.springframework.samples.drink_safe.Drink.DrinkController.listAllDrinks()
+2019-04-07 14:49:23.752  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/drink/new/{DrinkId}/{alcPercent}/{volume}/{fkuser}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.Drink.DrinkController.addDrink(java.lang.String,int,int,java.lang.String)
+2019-04-07 14:49:23.752  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/link/{dtusername}/{tid}],methods=[GET]}" onto public org.springframework.samples.drink_safe.drink_time.drink_time org.springframework.samples.drink_safe.drink_time.drink_timeController.addLink(java.lang.String,int)
+2019-04-07 14:49:23.753  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/oups],methods=[GET]}" onto public java.lang.String org.springframework.samples.drink_safe.system.CrashController.triggerException()
+2019-04-07 14:49:23.755  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String org.springframework.samples.drink_safe.system.WelcomeController.welcome()
+2019-04-07 14:49:23.756  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/time],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.time.time> org.springframework.samples.drink_safe.time.timeController.listAllTime()
+2019-04-07 14:49:23.759  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/getGroup/{userId}],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.getGroup(java.lang.String)
+2019-04-07 14:49:23.760  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/find/gs/{guest_status}],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.findByGuest_Status(int)
+2019-04-07 14:49:23.760  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/edit/weight/{userId}/{weight}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.editWeight(java.lang.String,int)
+2019-04-07 14:49:23.760  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/find/id/{userId}],methods=[GET]}" onto public org.springframework.samples.drink_safe.user.User org.springframework.samples.drink_safe.user.UserController.findUserbyID(java.lang.String)
+2019-04-07 14:49:23.761  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/leave/{userId}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.leaveGroup(java.lang.String)
+2019-04-07 14:49:23.761  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/addFriends/{user1Id}/{user2Id}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.addFriends(java.lang.String,java.lang.String)
+2019-04-07 14:49:23.761  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/new/{username}/{name}/{password}/{height}/{weight}/{gender}/{guestStatus}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.saveUser(java.lang.String,java.lang.String,java.lang.String,int,int,int,int)
+2019-04-07 14:49:23.761  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/addGroup/{user1Id}/{user2Id}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.addGroup(java.lang.String,java.lang.String)
+2019-04-07 14:49:23.762  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.returnAllUsers()
+2019-04-07 14:49:23.762  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/edit/height/{userId}/{height}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.editHeight(java.lang.String,int)
+2019-04-07 14:49:23.766  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-04-07 14:49:23.767  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-07 14:49:23.801  INFO 19196 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:49:23.801  INFO 19196 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:49:23.841  INFO 19196 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:49:23.869  WARN 19196 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2019-04-07 14:49:24.188  INFO 19196 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-04-07 14:49:24.211  INFO 19196 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-07 14:49:24.212  INFO 19196 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-07 14:49:24.213  INFO 19196 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-07 14:49:24.308  INFO 19196 --- [restartedMain] o.s.w.s.s.s.ServerEndpointExporter       : Registering @ServerEndpoint class: class org.springframework.samples.drink_safe.WebSocket.WebSocketServer
+2019-04-07 14:49:24.316  INFO 19196 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-04-07 14:49:24.317  INFO 19196 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-04-07 14:49:24.323  INFO 19196 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-04-07 14:49:24.358  INFO 19196 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-04-07 14:49:24.362  INFO 19196 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : Started DrinkSafeServerApplication in 5.557 seconds (JVM running for 6.461)
+2019-04-07 14:49:27.741  INFO 19196 --- [RMI TCP Connection(1)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-04-07 14:49:27.741  INFO 19196 --- [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2019-04-07 14:49:27.760  INFO 19196 --- [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 18 ms
+2019-04-07 14:49:34.053  INFO 19196 --- [http-nio-8080-exec-1] o.s.s.d.WebSocket.WebSocketServer        : Entered into Open
+2019-04-07 14:49:37.953  INFO 19196 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Message: Got Message:hello
+2019-04-07 14:49:37.953  INFO 19196 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Finding user: BigHAAS
+2019-04-07 14:49:37.953  INFO 19196 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Error
+2019-04-07 14:49:37.955  INFO 19196 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Close
+2019-04-07 14:49:37.955  INFO 19196 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Finding user: BigHAAS
+2019-04-07 14:49:37.959 ERROR 19196 --- [http-nio-8080-exec-2] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [org.springframework.samples.drink_safe.WebSocket.WebSocketServer]
+
+java.lang.reflect.InvocationTargetException: null
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_201]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:106) ~[tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:535) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:513) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:240) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:151) [tomcat-embed-websocket-8.5.28.jar:8.5.28]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:54) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:53) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_201]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_201]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.28.jar:8.5.28]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_201]
+Caused by: java.lang.NullPointerException: null
+	at org.springframework.samples.drink_safe.WebSocket.WebSocketServer.findUserbyID(WebSocketServer.java:52) ~[classes/:na]
+	at org.springframework.samples.drink_safe.WebSocket.WebSocketServer.onClose(WebSocketServer.java:250) ~[classes/:na]
+	... 18 common frames omitted
+
+2019-04-07 14:49:37.960  INFO 19196 --- [http-nio-8080-exec-2] o.s.s.d.WebSocket.WebSocketServer        : Entered into Error
+2019-04-07 14:50:06.165  INFO 19196 --- [Thread-9] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@23aab488: startup date [Sun Apr 07 14:49:19 CDT 2019]; root of context hierarchy
+2019-04-07 14:50:06.173  INFO 19196 --- [Thread-9] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-04-07 14:50:06.173  INFO 19196 --- [Thread-9] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-04-07 14:50:06.173  INFO 19196 --- [Thread-9] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:50:06.173  INFO 19196 --- [Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-04-07 14:50:06.173  INFO 19196 --- [Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-04-07 14:50:08.903  INFO 19196 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : Starting DrinkSafeServerApplication on NICKSLAPTOP with PID 19196 (D:\GIT309\local_repo\local_repo_v2\team_51\Backend\DrinkSafe\DrinkSafeServer\target\classes started by Nick in D:\GIT309\local_repo\local_repo_v2\team_51\Backend\DrinkSafe\DrinkSafeServer)
+2019-04-07 14:50:08.903  INFO 19196 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : No active profile set, falling back to default profiles: default
+2019-04-07 14:50:08.903  INFO 19196 --- [restartedMain] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6c9c042: startup date [Sun Apr 07 14:50:08 CDT 2019]; root of context hierarchy
+2019-04-07 14:50:09.434  INFO 19196 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$60c41e4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-07 14:50:09.590  INFO 19196 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-04-07 14:50:09.590  INFO 19196 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-04-07 14:50:09.606  INFO 19196 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.28
+2019-04-07 14:50:09.637  INFO 19196 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-04-07 14:50:09.637  INFO 19196 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 734 ms
+2019-04-07 14:50:09.871  INFO 19196 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-04-07 14:50:09.871  INFO 19196 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-04-07 14:50:09.871  INFO 19196 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-04-07 14:50:09.871  INFO 19196 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-04-07 14:50:09.871  INFO 19196 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-04-07 14:50:09.871  INFO 19196 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-04-07 14:50:09.871  INFO 19196 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-04-07 14:50:09.903  INFO 19196 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2019-04-07 14:50:09.985  INFO 19196 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2019-04-07 14:50:10.001  INFO 19196 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:50:10.001  INFO 19196 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-04-07 14:50:10.016  INFO 19196 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-04-07 14:50:10.079  INFO 19196 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-04-07 14:50:10.313  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6c9c042: startup date [Sun Apr 07 14:50:08 CDT 2019]; root of context hierarchy
+2019-04-07 14:50:10.329  WARN 19196 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-04-07 14:50:10.329  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/drink],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.Drink.Drink> org.springframework.samples.drink_safe.Drink.DrinkController.listAllDrinks()
+2019-04-07 14:50:10.329  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/drink/new/{DrinkId}/{alcPercent}/{volume}/{fkuser}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.Drink.DrinkController.addDrink(java.lang.String,int,int,java.lang.String)
+2019-04-07 14:50:10.329  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/link/{dtusername}/{tid}],methods=[GET]}" onto public org.springframework.samples.drink_safe.drink_time.drink_time org.springframework.samples.drink_safe.drink_time.drink_timeController.addLink(java.lang.String,int)
+2019-04-07 14:50:10.329  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/oups],methods=[GET]}" onto public java.lang.String org.springframework.samples.drink_safe.system.CrashController.triggerException()
+2019-04-07 14:50:10.329  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String org.springframework.samples.drink_safe.system.WelcomeController.welcome()
+2019-04-07 14:50:10.329  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/time],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.time.time> org.springframework.samples.drink_safe.time.timeController.listAllTime()
+2019-04-07 14:50:10.329  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/getGroup/{userId}],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.getGroup(java.lang.String)
+2019-04-07 14:50:10.329  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/find/gs/{guest_status}],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.findByGuest_Status(int)
+2019-04-07 14:50:10.329  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/edit/weight/{userId}/{weight}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.editWeight(java.lang.String,int)
+2019-04-07 14:50:10.329  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/find/id/{userId}],methods=[GET]}" onto public org.springframework.samples.drink_safe.user.User org.springframework.samples.drink_safe.user.UserController.findUserbyID(java.lang.String)
+2019-04-07 14:50:10.329  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/leave/{userId}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.leaveGroup(java.lang.String)
+2019-04-07 14:50:10.329  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/addFriends/{user1Id}/{user2Id}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.addFriends(java.lang.String,java.lang.String)
+2019-04-07 14:50:10.329  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/new/{username}/{name}/{password}/{height}/{weight}/{gender}/{guestStatus}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.saveUser(java.lang.String,java.lang.String,java.lang.String,int,int,int,int)
+2019-04-07 14:50:10.329  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/friend/addGroup/{user1Id}/{user2Id}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.addGroup(java.lang.String,java.lang.String)
+2019-04-07 14:50:10.329  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users],methods=[GET]}" onto public java.util.List<org.springframework.samples.drink_safe.user.User> org.springframework.samples.drink_safe.user.UserController.returnAllUsers()
+2019-04-07 14:50:10.329  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/edit/height/{userId}/{height}],methods=[GET]}" onto public void org.springframework.samples.drink_safe.user.UserController.editHeight(java.lang.String,int)
+2019-04-07 14:50:10.344  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-04-07 14:50:10.344  INFO 19196 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-07 14:50:10.360  INFO 19196 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:50:10.360  INFO 19196 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:50:10.375  INFO 19196 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-07 14:50:10.391  WARN 19196 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2019-04-07 14:50:10.516  INFO 19196 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-04-07 14:50:10.516  INFO 19196 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-07 14:50:10.516  INFO 19196 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-07 14:50:10.516  INFO 19196 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-07 14:50:10.651  INFO 19196 --- [restartedMain] o.s.w.s.s.s.ServerEndpointExporter       : Registering @ServerEndpoint class: class org.springframework.samples.drink_safe.WebSocket.WebSocketServer
+2019-04-07 14:50:10.651  INFO 19196 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-04-07 14:50:10.651  INFO 19196 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-04-07 14:50:10.651  INFO 19196 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-04-07 14:50:10.666  INFO 19196 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-04-07 14:50:10.666  INFO 19196 --- [restartedMain] o.s.s.d.DrinkSafeServerApplication       : Started DrinkSafeServerApplication in 1.799 seconds (JVM running for 52.771)
+2019-04-07 14:50:10.666  INFO 19196 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2019-04-07 14:50:12.726  INFO 19196 --- [RMI TCP Connection(1)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-04-07 14:50:12.726  INFO 19196 --- [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2019-04-07 14:50:12.730  INFO 19196 --- [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 4 ms
+2019-04-07 15:03:40.435  INFO 19196 --- [RMI TCP Connection(3)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2019-04-07 15:03:40.436  INFO 19196 --- [RMI TCP Connection(3)-127.0.0.1] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6c9c042: startup date [Sun Apr 07 14:50:08 CDT 2019]; root of context hierarchy
+2019-04-07 15:03:40.438  INFO 19196 --- [RMI TCP Connection(3)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-04-07 15:03:40.439  INFO 19196 --- [RMI TCP Connection(3)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-04-07 15:03:40.440  INFO 19196 --- [RMI TCP Connection(3)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-04-07 15:03:40.441  INFO 19196 --- [RMI TCP Connection(3)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2019-04-07 15:03:40.450  INFO 19196 --- [RMI TCP Connection(3)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
