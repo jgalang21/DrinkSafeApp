@@ -3,8 +3,6 @@ package org.springframework.samples.drink_safe.WebSocket;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
@@ -15,15 +13,8 @@ import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.drink_safe.user.User;
-import org.springframework.samples.drink_safe.user.UserController;
-import org.springframework.samples.drink_safe.user.UserRepository;
-import org.springframework.samples.drink_safe.user.UserService;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
 
 @ServerEndpoint("/websocket/{username}")
 @Component
