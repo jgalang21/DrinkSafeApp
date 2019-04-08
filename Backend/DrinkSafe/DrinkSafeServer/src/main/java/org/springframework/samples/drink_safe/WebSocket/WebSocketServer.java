@@ -84,12 +84,20 @@ public class WebSocketServer {
 		}
 		
 		if(message.equals("!get_members")) { //hasn't been tested
-			for(int i = 0; i < groups.size(); i++) {
-				broadcast("In group " + i + ": ");
-				for(int k = 0; k < groups.get(i).size(); k++) {
-					broadcast(groups.get(i).get(i)); //list member			
-				}				
+			int s=0;
+			for(; s<groups.size(); s++)
+			{
+				if(groups.get(s).contains(username))
+				{
+					String broadcast_message = "";
+					for(int i=0; i<groups.get(s).size();i++)
+						broadcast_message += groups.get(s).get(i)+ " "; 
+					broadcast(broadcast_message);
+				}
 			}
+			if(s>=groups.size())
+				broadcast("not in a group");
+		 
 		}
 		
 		
