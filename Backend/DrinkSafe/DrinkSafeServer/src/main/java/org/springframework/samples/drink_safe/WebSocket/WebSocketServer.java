@@ -81,15 +81,32 @@ public class WebSocketServer {
 			groups.add(newGroup);
 
 		}
+/*<<<<<<< HEAD
 
 		if (message.equals("!get_members")) {
 			for (int i = 0; i < groups.size(); i++) {
 				broadcast("In group " + i + ": ");
 				for (int k = 0; k < groups.get(i).size(); k++) {
 					broadcast(groups.get(i).get(i)); // list member
+=======
+		
+		if(message.equals("!get_members")) { //hasn't been tested
+			int s=0;
+			for(; s<groups.size(); s++)
+			{
+				if(groups.get(s).contains(username))
+				{
+					String broadcast_message = "";
+					for(int i=0; i<groups.get(s).size();i++)
+						broadcast_message += groups.get(s).get(i)+ " "; 
+					broadcast(broadcast_message);
+>>>>>>> 531edfe9052bda77bbccd4191a479a6eab0fb305
 				}
 			}
-		}
+			if(s>=groups.size())
+				broadcast("not in a group");*/
+		 
+	//	}
 
 		if (message.equals("!leave")) {
 			for (int i = 0; i < groups.size(); i++) {
