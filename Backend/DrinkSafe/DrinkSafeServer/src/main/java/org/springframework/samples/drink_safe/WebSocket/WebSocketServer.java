@@ -3,8 +3,6 @@ package org.springframework.samples.drink_safe.WebSocket;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
@@ -15,17 +13,9 @@ import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.drink_safe.user.User;
-import org.springframework.samples.drink_safe.user.UserController;
-import org.springframework.samples.drink_safe.user.UserRepository;
-import org.springframework.samples.drink_safe.user.UserService;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-@ServerEndpoint("/WebSocket/{username}")
+@ServerEndpoint("/websocket/{username}")
 @Component
 public class WebSocketServer {
 
@@ -34,9 +24,7 @@ public class WebSocketServer {
 	private static Map<String, Session> usernameSessionMap = new HashMap<>();
 	private final org.slf4j.Logger logger = LoggerFactory.getLogger(WebSocketServer.class);
 
-
 	private static ArrayList<ArrayList<String>> groups = new ArrayList<ArrayList<String>>();
-
 
 	@OnOpen
 	public void onOpen(Session session, @PathParam("username") String username) throws IOException {
@@ -58,8 +46,9 @@ public class WebSocketServer {
 		// User u = userRepo.findByUsername(sessionUsernameMap.get(session));
 
 		String username = sessionUsernameMap.get(session);
-		//User r = x.findUserbyID(username);
 
+		// String temp = message.substring(0, 4); String x = message.substring(5,
+		// message.length()); //save the username in the message in case we're adding
 
 		if (message.startsWith("@")) // Direct message to a user using the format "@username <message>"
 		{
@@ -68,83 +57,57 @@ public class WebSocketServer {
 			sendMessageToPArticularUser(username, "[DM] " + username + ": " + message);
 		}
 
-		if (message.equals("!help")) {
+		else if (message.equals("!help")) {
 			broadcast("List of commands: \n" + "---------------\n" + "GROUP COMMANDS\n" + "---------------\n"
 					+ "Create group: !group\n" + "List members: !get_members\n" + "Leave group: !leave\n"
 					+ "Add member: !add [username]\n");
 
 		}
-		
-		if(message.equals("!group")) {
+
+		else if (message.equals("!group")) {
 			broadcast(username + " has started a group");
 			ArrayList<String> newGroup = new ArrayList<String>();
 			newGroup.add(username);
 			groups.add(newGroup);
 
-		}
-		
-		if(message.equals("!get_members")) { //hasn't been tested
-			for(int i = 0; i < groups.size(); i++) {
-				broadcast("In group " + i + ": ");
-				for(int k = 0; k < groups.get(i).size(); k++) {
-					broadcast(groups.get(i).get(i)); //list member			
-				}				
-			}
-		}
-		
-		
-		if(message.equals("!leave")) {
-			for(int i = 0; i < groups.size(); i++) {
-				if(groups.get(i).contains(username)) {
-					groups.get(i).remove(username); //remove from the arraylist, might be wrong (?)
+		} else if (message.equals("!get_members")) { // hasn't been tested
+			boolean did_leave = false;
+			int s = 0;
+			for (; s < groups.size(); s++) {
+				if (groups.get(s).contains(username)) {
+					String broadcast_message = "";
+					for (int i = 0; i < groups.get(s).size(); i++)
+						broadcast_message += groups.get(s).get(i) + " ";
+					broadcast(broadcast_message);
+					s = groups.size();
+					did_leave=true;
 				}
 			}
-		}
-		
-		if(message.substring(0, 4).equals("!add")) { //add to the group
-			for(int i = 0; i < groups.size(); i++) {
-				if(groups.get(i).contains(username)) {
-					groups.get(i).add(message.substring(5, message.length()));
+			if(!did_leave)
+				broadcast("No group");
+		} 
+		else if (message.equals("!leave")) {
+			for (int i = 0; i < groups.size(); i++) {
+				if (groups.get(i).contains(username)) {
+					groups.get(i).remove(username);
 				}
 			}
-			broadcast(username + "has added " + message.substring(5, message.length()));
+			broadcast(username + " has left the group");
 		}
-		
-		
-		
 
-		else {// Message to whole chat
+		else if (message.length() > 5) {
+			if (message.substring(0, 4).equals("!add")) { // add to the group
+				for (int i = 0; i < groups.size(); i++) {
+					if (groups.get(i).contains(username)) {
+						groups.get(i).add(message.substring(5, message.length()));
+					}
+				}
+				broadcast(username + " has added " + message.substring(5, message.length()));
 
+			}
+		} else {
 			broadcast(username + ": " + message);
 		}
-
-
-		// if they aren't in a group, they shouldn't be able to run these commands
-		/*
-		 * if (!u.toModifyBuddies().isEmpty() && !u.toModifyInvitee().isEmpty()) {
-		 * 
-		 * if (message.equals("!get_members")) { broadcast("List of members:");
-		 * System.out.println(x.getGroup(u.getUsername())); }
-		 * 
-		 * if (message.substring(0, 5).equals("!add ")) {
-		 * 
-		 * if (u.toModifyBuddies().isEmpty()) { User u2 =
-		 * userRepo.findByUsername(message.substring(6, message.length() - 1));
-		 * 
-		 * x.addGroup(u.getUsername(), u2.getUsername());
-		 * 
-		 * }
-		 * 
-		 * if (message.substring(6, message.length() - 1).equals(u.getUsername())) {
-		 * broadcast("You're already in the group!"); } else {
-		 * broadcast("User does not exist"); } }
-		 * 
-		 * if (message.equals("!leave")) { if (!u.toModifyBuddies().isEmpty()) {
-		 * 
-		 * } broadcast(u.getUsername() + " has left the group."); } else {
-		 * broadcast("You are not currently in a group."); }
-		 */
-		
 
 	}
 
