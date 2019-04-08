@@ -248,6 +248,7 @@ public class ProfileScreen extends AppCompatActivity {
             changes.put("email", true);
             email = email_box.getText().toString();
         } else if(!weight_box.getText().toString().equals(weight)) {
+            Log.d(TAG, "Weight has changed");
             changes.put("weight", true);
             weight = weight_box.getText().toString();
         } else if(Integer.parseInt((String) feet_s.getSelectedItem()) != height_arr[0]) {

@@ -17,6 +17,7 @@
         <activity android:name=".Map" />
         <activity android:name=".Party" />
         <activity android:name=".ProfileScreen" />
+        <activity android:name=".Messaging" />
         <activity android:name=".SignUp" />
         <activity android:name=".Home" />
         <activity android:name=".SignIn">

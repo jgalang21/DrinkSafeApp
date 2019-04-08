@@ -64,23 +64,6 @@ public class ProfileScreenTests {
         onView(withId(R.id.save_edit_button)).check(matches(withText("Save")));
     }
 
-    @Rule
-    public IntentsTestRule<ProfileScreen> intentsTestRule =
-            new IntentsTestRule<>(ProfileScreen.class);
-
-    @Before
-    public void stubAllExternalIntents() {
-        // By default Espresso Intents does not stub any Intents. Stubbing needs to be setup before
-        // every test run. In this case all external Intents will be blocked.
-        intending(not(isInternal())).respondWith(new Instrumentation.ActivityResult(Activity.RESULT_OK, null));
-    }
-
-    @Test
-    public void checkIntent() {
-        onView(withId(R.id.back_button)).perform(click());
-
-        intended(allOf(toPackage("com.example.drinksafe")));
-        //, hasAction(Intent.)
-    }
+    /**/
 
 }

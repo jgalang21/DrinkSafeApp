@@ -14,6 +14,10 @@
             android:icon="@drawable/ic_group"
             android:title="Party" />
         <item
+            android:id="@+id/nav_chat"
+            android:icon="@drawable/ic_textsms"
+            android:title="Group Chat" />
+        <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_person"
             android:title="Profile" />
