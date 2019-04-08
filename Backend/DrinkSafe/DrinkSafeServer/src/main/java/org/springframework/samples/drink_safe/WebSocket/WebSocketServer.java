@@ -1,6 +1,7 @@
 package org.springframework.samples.drink_safe.WebSocket;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.websocket.OnClose;
@@ -27,6 +28,8 @@ public class WebSocketServer {
 	private static Map<String, Session> usernameSessionMap = new HashMap<>();
 	private final org.slf4j.Logger logger = LoggerFactory.getLogger(WebSocketServer.class);
 
+	private static ArrayList<ArrayList<String>> groups = new ArrayList<ArrayList<String>>();
+
 	@Autowired
 	UserRepository userRepo;
 
@@ -50,15 +53,15 @@ public class WebSocketServer {
 		// Handle new messages
 		logger.info("Entered into Message: Got Message:" + message);
 		// User u = userRepo.findByUsername(sessionUsernameMap.get(session));
-		String r = sessionUsernameMap.get(session);
-		User u = x.findUserbyID(r);
-		
+		String username = sessionUsernameMap.get(session);
+		//User r = x.findUserbyID(username);
 
-		if (message.startsWith("@")) { // Direct message to a user using the format "@username <message>"
 
+		if (message.startsWith("@")) // Direct message to a user using the format "@username <message>"
+		{
 			String destUsername = message.split(" ")[0].substring(1); // don't do this in your code!
-			sendMessageToPArticularUser(destUsername, "[DM] " + u.getUsername() + ": " + message);
-			sendMessageToPArticularUser(u.getUsername(), "[DM] " + u.getUsername() + ": " + message);
+			sendMessageToPArticularUser(destUsername, "[DM] " + username + ": " + message);
+			sendMessageToPArticularUser(username, "[DM] " + username + ": " + message);
 		}
 
 		if (message.equals("!help")) {
@@ -67,47 +70,76 @@ public class WebSocketServer {
 					+ "Add member: !add [username]\n");
 
 		}
+		
+		if(message.equals("!group")) {
+			broadcast(username + " has started a group");
+			ArrayList<String> newGroup = new ArrayList<String>();
+			newGroup.add(username);
+			groups.add(newGroup);
 
-
-		// if they aren't in a group, they shouldn't be able to run these commands
-
-		if (!u.toModifyBuddies().isEmpty() && !u.toModifyInvitee().isEmpty()) {
-
-			if (message.equals("!get_members")) {
-				broadcast("List of members:");
-				System.out.println(x.getGroup(u.getUsername()));
-			}
-
-			if (message.substring(0, 5).equals("!add ")) {
-
-				if (u.toModifyBuddies().isEmpty()) {
-					User u2 = userRepo.findByUsername(message.substring(6, message.length() - 1));
-
-					x.addGroup(u.getUsername(), u2.getUsername());
-
-				}
-
-				if (message.substring(6, message.length() - 1).equals(u.getUsername())) {
-					broadcast("You're already in the group!");
-				} else {
-					broadcast("User does not exist");
-				}
-			}
-
-			if (message.equals("!leave")) {
-				if (!u.toModifyBuddies().isEmpty()) {
-
-				}
-				broadcast(u.getUsername() + " has left the group.");
-			} else {
-				broadcast("You are not currently in a group.");
+		}
+		
+		if(message.equals("!get_members")) { //hasn't been tested
+			for(int i = 0; i < groups.size(); i++) {
+				broadcast("In group " + i + ": ");
+				for(int k = 0; k < groups.get(i).size(); k++) {
+					broadcast(groups.get(i).get(i)); //list member			
+				}				
 			}
 		}
+		
+		
+		if(message.equals("!leave")) {
+			for(int i = 0; i < groups.size(); i++) {
+				if(groups.get(i).contains(username)) {
+					groups.get(i).remove(username); //remove from the arraylist, might be wrong (?)
+				}
+			}
+		}
+		
+		if(message.substring(0, 4).equals("!add ")) { //add to the group
+			for(int i = 0; i < groups.size(); i++) {
+				if(groups.get(i).contains(username)) {
+					groups.get(i).add(username.substring(5, message.length()));
+				}
+			}
+		}
+		
+		
+		
 
 		else {// Message to whole chat
 
-			broadcast(u.getUsername() + ": " + message);
+			broadcast(username + ": " + message);
 		}
+
+
+		// if they aren't in a group, they shouldn't be able to run these commands
+		/*
+		 * if (!u.toModifyBuddies().isEmpty() && !u.toModifyInvitee().isEmpty()) {
+		 * 
+		 * if (message.equals("!get_members")) { broadcast("List of members:");
+		 * System.out.println(x.getGroup(u.getUsername())); }
+		 * 
+		 * if (message.substring(0, 5).equals("!add ")) {
+		 * 
+		 * if (u.toModifyBuddies().isEmpty()) { User u2 =
+		 * userRepo.findByUsername(message.substring(6, message.length() - 1));
+		 * 
+		 * x.addGroup(u.getUsername(), u2.getUsername());
+		 * 
+		 * }
+		 * 
+		 * if (message.substring(6, message.length() - 1).equals(u.getUsername())) {
+		 * broadcast("You're already in the group!"); } else {
+		 * broadcast("User does not exist"); } }
+		 * 
+		 * if (message.equals("!leave")) { if (!u.toModifyBuddies().isEmpty()) {
+		 * 
+		 * } broadcast(u.getUsername() + " has left the group."); } else {
+		 * broadcast("You are not currently in a group."); }
+		 */
+		
 
 	}
 
