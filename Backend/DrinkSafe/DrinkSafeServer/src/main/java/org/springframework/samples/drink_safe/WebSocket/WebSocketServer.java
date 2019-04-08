@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@ServerEndpoint("/WebSocket/{username}")
+@ServerEndpoint("/websocket/{username}")
 @Component
 public class WebSocketServer {
 
@@ -34,9 +34,7 @@ public class WebSocketServer {
 	private static Map<String, Session> usernameSessionMap = new HashMap<>();
 	private final org.slf4j.Logger logger = LoggerFactory.getLogger(WebSocketServer.class);
 
-
 	private static ArrayList<ArrayList<String>> groups = new ArrayList<ArrayList<String>>();
-
 
 	@OnOpen
 	public void onOpen(Session session, @PathParam("username") String username) throws IOException {
@@ -58,8 +56,9 @@ public class WebSocketServer {
 		// User u = userRepo.findByUsername(sessionUsernameMap.get(session));
 
 		String username = sessionUsernameMap.get(session);
-		//User r = x.findUserbyID(username);
 
+		// String temp = message.substring(0, 4); String x = message.substring(5,
+		// message.length()); //save the username in the message in case we're adding
 
 		if (message.startsWith("@")) // Direct message to a user using the format "@username <message>"
 		{
@@ -74,7 +73,7 @@ public class WebSocketServer {
 					+ "Add member: !add [username]\n");
 
 		}
-		
+
 		else if(message.equals("!group")) {
 			broadcast(username + " has started a group");
 			ArrayList<String> newGroup = new ArrayList<String>();
@@ -82,7 +81,6 @@ public class WebSocketServer {
 			groups.add(newGroup);
 
 		}
-		
 		else if(message.equals("!get_members")) { //hasn't been tested
 			int s=0;
 			for(; s<groups.size(); s++)
@@ -98,8 +96,6 @@ public class WebSocketServer {
 			}
 		 
 		}
-		
-		
 		else if(message.equals("!leave")) {
 			for(int i = 0; i < groups.size(); i++) {
 				if(groups.get(i).contains(username)) {
@@ -115,39 +111,12 @@ public class WebSocketServer {
 				}
 			}
 			broadcast(username + " has added " + message.substring(5, message.length()));
+			
 		}
-		else {// Message to whole chat
 
+		else {
 			broadcast(username + ": " + message);
 		}
-
-
-		// if they aren't in a group, they shouldn't be able to run these commands
-		/*
-		 * if (!u.toModifyBuddies().isEmpty() && !u.toModifyInvitee().isEmpty()) {
-		 * 
-		 * if (message.equals("!get_members")) { broadcast("List of members:");
-		 * System.out.println(x.getGroup(u.getUsername())); }
-		 * 
-		 * if (message.substring(0, 5).equals("!add ")) {
-		 * 
-		 * if (u.toModifyBuddies().isEmpty()) { User u2 =
-		 * userRepo.findByUsername(message.substring(6, message.length() - 1));
-		 * 
-		 * x.addGroup(u.getUsername(), u2.getUsername());
-		 * 
-		 * }
-		 * 
-		 * if (message.substring(6, message.length() - 1).equals(u.getUsername())) {
-		 * broadcast("You're already in the group!"); } else {
-		 * broadcast("User does not exist"); } }
-		 * 
-		 * if (message.equals("!leave")) { if (!u.toModifyBuddies().isEmpty()) {
-		 * 
-		 * } broadcast(u.getUsername() + " has left the group."); } else {
-		 * broadcast("You are not currently in a group."); }
-		 */
-		
 
 	}
 
