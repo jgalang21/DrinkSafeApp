@@ -80,18 +80,21 @@ public class WebSocketServer {
 						broadcast_message += groups.get(s).get(i) + " ";
 					broadcast(broadcast_message);
 					s = groups.size();
-					did_leave=true;
+					did_leave = true;
 				}
 			}
-			if(!did_leave)
+			if (!did_leave)
 				broadcast("No group");
-		} 
-		else if (message.equals("!leave")) {
+		} else if (message.equals("!leave")) {
 			for (int i = 0; i < groups.size(); i++) {
 				if (groups.get(i).contains(username)) {
-					groups.get(i).remove(username);
+
+					groups.get(i).remove(username); // remove from the arraylist, might be wrong (?)
+					broadcast(username + "has left the group");
+
 				}
 			}
+
 			broadcast(username + " has left the group");
 		}
 

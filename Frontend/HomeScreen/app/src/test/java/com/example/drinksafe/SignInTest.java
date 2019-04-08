@@ -38,8 +38,8 @@ public class SignInTest {
     public void signInTestFailedUser()throws JSONException{
         SignIn test = mock(SignIn.class);
         SignIn testLoginFail = new SignIn();
-        String userInCorrect = "jordan@hotmail.com";
-        String passInCorrect = "drinksafe";
+        String userInCorrect = "BigHAASisaPoo";
+        String passInCorrect = "password123";
 
         JSONObject response = new JSONObject();
         response.put("loginSuccess", new Boolean(false));
@@ -50,8 +50,8 @@ public class SignInTest {
     public void signInTestFailedPass()throws JSONException{
         SignIn test = mock(SignIn.class);
         SignIn testLoginFail = new SignIn();
-        String userInCorrect = "jorden@hotmail.com";
-        String passInCorrect = "DRANKSAFE";
+        String userInCorrect = "BigHAAS";
+        String passInCorrect = "password1234IdeclareThumbwar";
 
         JSONObject response = new JSONObject();
         response.put("loginSuccess", new Boolean(false));
