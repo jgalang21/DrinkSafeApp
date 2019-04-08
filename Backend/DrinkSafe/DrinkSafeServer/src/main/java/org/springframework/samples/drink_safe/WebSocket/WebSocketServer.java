@@ -37,8 +37,6 @@ public class WebSocketServer {
 
 	private static ArrayList<ArrayList<String>> groups = new ArrayList<ArrayList<String>>();
 
-	UserController x = new UserController();
-	UserService s = new UserService();
 
 	@OnOpen
 	public void onOpen(Session session, @PathParam("username") String username) throws IOException {
@@ -92,6 +90,7 @@ public class WebSocketServer {
 					broadcast(groups.get(i).get(i)); //list member			
 				}				
 			}
+		}
 		
 		
 		if(message.equals("!leave")) {
@@ -102,12 +101,13 @@ public class WebSocketServer {
 			}
 		}
 		
-		if(message.substring(0, 4).equals("!add ")) { //add to the group
+		if(message.substring(0, 4).equals("!add")) { //add to the group
 			for(int i = 0; i < groups.size(); i++) {
 				if(groups.get(i).contains(username)) {
-					groups.get(i).add(username.substring(5, message.length()));
+					groups.get(i).add(message.substring(5, message.length()));
 				}
 			}
+			broadcast(username + "has added " + message.substring(5, message.length()));
 		}
 		
 		
@@ -116,7 +116,6 @@ public class WebSocketServer {
 		else {// Message to whole chat
 
 			broadcast(username + ": " + message);
-		}
 		}
 
 
