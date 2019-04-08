@@ -12,6 +12,11 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.ParseError;
+import com.android.volley.Request;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.drinksafe.app.AppController;
 import com.example.drinksafe.net_utils.Const;
 
@@ -24,6 +29,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Hashtable;
 
 
@@ -82,10 +88,12 @@ public class ProfileScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ProfileScreen.this, Home.class);
+                Log.d(TAG, i.getAction());
+                Log.d(TAG, i.getDataString());
                 startActivity(i);
             }
         });
-
+        changes = new Hashtable<String,Boolean>();
         changes.put("name", false);
         changes.put("email", false);
         changes.put("gender", false);
@@ -242,13 +250,13 @@ public class ProfileScreen extends AppCompatActivity {
         } else if(!weight_box.getText().toString().equals(weight)) {
             changes.put("weight", true);
             weight = weight_box.getText().toString();
-        } else if((int) feet_s.getSelectedItem() != height_arr[0]) {
+        } else if(Integer.parseInt((String) feet_s.getSelectedItem()) != height_arr[0]) {
             changes.put("feet", true);
             height_arr[0] = (int)feet_s.getSelectedItem();
-        } else if((int) inches_s.getSelectedItem() != height_arr[1]) {
+        } else if(Integer.parseInt((String) inches_s.getSelectedItem()) != height_arr[1]) {
             changes.put("inches", true);
             height_arr[1] = (int)inches_s.getSelectedItem();
-        } else if((int) gender_s.getSelectedItem() != gender) {
+        } else if(Integer.parseInt((String) gender_s.getSelectedItem()) != gender) {
             changes.put("gender", true);
             gender = (int)gender_s.getSelectedItem();
         } else {
@@ -259,7 +267,72 @@ public class ProfileScreen extends AppCompatActivity {
     }
 
     private boolean updateServer(){
+        String tmpURL = Const.URL_USER_INFO + "/edit/height/" + Const.cur_user_name + "/" + height;
+        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tmpURL, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d(TAG, response.toString());
 
+                        /*try {
+                            // Parsing json array response
+                            // loop through each json object
+                            JSONObject person = findUser(response);
+
+                            name = person.getString("name");
+                            email = person.getString("username");
+                            String h = person.getString("height");
+                            height = Integer.parseInt(h);
+                            weight = person.getString("weight");
+                            String g = person.getString("gender");
+                            gender = Integer.parseInt(g);
+                            heightConv(height, height_arr, true);
+                            update_text();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(),
+                                    "Error: " + e.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }*/
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                Toast.makeText(getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }){
+
+            @Override
+            protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
+
+
+                try {
+                    String json = new String(
+                            response.data,
+                            "UTF-8"
+                    );
+
+                    if (json.length() == 0) {
+                        return Response.success(
+                                null,
+                                HttpHeaderParser.parseCacheHeaders(response)
+                        );
+                    }
+                    else {
+                        return super.parseNetworkResponse(response);
+                    }
+                }
+                catch (UnsupportedEncodingException e) {
+                    return Response.error(new ParseError(e));
+                }
+
+
+            }
+        };
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(req);
         return true;
     }
 }

@@ -28,139 +28,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @ServerEndpoint("/WebSocket/{username}")
 @Component
 public class WebSocketServer {
-	
-	@Autowired
-	UserRepository userRepo;
-
-		@RequestMapping(method = RequestMethod.GET, path= "/users/new/{username}/{name}/{password}/{height}/{weight}/{gender}/{guestStatus}")
-		public void saveUser(@PathVariable("username") String username,@PathVariable("name") String name,@PathVariable("password") String password,@PathVariable("height") int height,@PathVariable("weight") int weight,@PathVariable("gender") int gender, @PathVariable("guestStatus") int guestStatus)
-		{
-			User user = new User(username,name,password,height,weight,gender,guestStatus);
-			userRepo.save(user);
-			logger.info("saving new user: " + user.getUsername());
-		}
-		
-		@RequestMapping(method = RequestMethod.GET, path= "/users")
-		public List<User> returnAllUsers(){
-			logger.info("Displaying all users");
-	        List<User> results = (List<User>) userRepo.findAll();
-	        logger.info("Number of users:"  + results.size());
-	        return results;
-			
-		}
-		
-		@RequestMapping(method = RequestMethod.GET, path="/users/find/id/{userId}")
-		public User findUserbyID(@PathVariable("userId") String id) {
-			logger.info("Finding user: "+id);
-	        User results = userRepo.findByUsername(id);
-	        return results;
-		}
-		
-		@RequestMapping(method = RequestMethod.GET, path="/users/find/gs/{guest_status}")
-		public List<User> findByGuest_Status(@PathVariable("guest_status") int guest_status) {
-			logger.info("Finding user: "+guest_status);
-	        List<User> results = userRepo.findAllByGuestStatus(guest_status);
-	        return results;
-		}
-		
-
-		
-		@RequestMapping(method = RequestMethod.GET, path="/users/friend/addFriends/{user1Id}/{user2Id}")
-		public void addFriends(@PathVariable("user1Id") String user1,@PathVariable("user2Id") String user2) {
-			User u = userRepo.findByUsername(user1);
-			User u2 =userRepo.findByUsername(user2);
-			u.toModifyFriends().add(u2);
-			userRepo.save(u);
-			logger.info(u.getUsername()+ " has added " + u2.getUsername() + " as a friend");
-		}
-		
-
-		@RequestMapping(method = RequestMethod.GET, path="/users/friend/addGroup/{user1Id}/{user2Id}")
-		public void addGroup(@PathVariable("user1Id") String user1,@PathVariable("user2Id") String user2) {
-			User u = userRepo.findByUsername(user1);
-			User u2 =userRepo.findByUsername(user2);
-			u2.toModifyBuddies().add(u);
-			userRepo.save(u2);
-			logger.info(u.getUsername()+ " has added " + u2.getUsername() + " into their group");
-		}
-		
-		@RequestMapping(method = RequestMethod.GET, path="/users/friend/leave/{userId}")
-		public void leaveGroup(@PathVariable("userId") String user) {
-			User u = userRepo.findByUsername(user);
-			if(!u.toModifyBuddies().isEmpty()) {
-				u.setInviter( new HashSet<User>());
-			}
-			else {
-				java.util.Iterator<User> iter = u.toModifyInvitee().iterator();
-				while(iter.hasNext())
-				{
-					User u2 = iter.next();
-					u2.setInviter( new HashSet<User>());
-				}
-			}
-			userRepo.save(u);
-			logger.info(u.getUsername()+ " has removed themselves from the group");
-		}
-		
-		@RequestMapping(method = RequestMethod.GET, path="/users/friend/getGroup/{userId}")
-		public List<User> getGroup(@PathVariable("userId") String user) {
-			User u = userRepo.findByUsername(user);
-			User u2;
-			if (!u.toModifyBuddies().isEmpty())
-			{
-				
-				java.util.Iterator<User> iter = u.toModifyBuddies().iterator();
-				u2 = iter.next();
-				java.util.Iterator<User> iter2 = u2.toModifyInvitee().iterator();
-				List<User> returner = new ArrayList<User>();
-				returner.add(u2);
-				while(iter2.hasNext())
-					returner.add(iter2.next());
-				return returner;
-			}
-			else
-			{
-				java.util.Iterator<User> iter2 = u.toModifyInvitee().iterator();
-				List<User> returner = new ArrayList<User>();
-				returner.add(u);
-				while(iter2.hasNext())
-					returner.add(iter2.next());
-				return returner;
-			}
-		}
-		
-		
-		
-		@RequestMapping(method = RequestMethod.GET, path="/users/edit/weight/{userId}/{weight}")
-		public void editWeight(@PathVariable("userId") String user,@PathVariable("weight") int newWeight)
-		{
-			User u = userRepo.findByUsername(user);
-			u.setWeight(newWeight);
-			userRepo.save(u);
-			logger.info(u.getUsername()+ " has changed weight to " + newWeight);
-		}
-		
-		@RequestMapping(method = RequestMethod.GET, path="/users/edit/height/{userId}/{height}")
-		public void editHeight(@PathVariable("userId") String user,@PathVariable("height") int newHeight)
-		{
-			User u = userRepo.findByUsername(user);
-			u.setHeight(newHeight);
-			userRepo.save(u);
-			logger.info(u.getUsername()+ " has changed weight to " + newHeight);
-		}
-		
-
-
-		
-
-
-
 
 	// Store all socket session and their corresponding username.
 	private static Map<Session, String> sessionUsernameMap = new HashMap<>();
 	private static Map<String, Session> usernameSessionMap = new HashMap<>();
 	private final org.slf4j.Logger logger = LoggerFactory.getLogger(WebSocketServer.class);
 
+
+	private static ArrayList<ArrayList<String>> groups = new ArrayList<ArrayList<String>>();
 
 	UserController x = new UserController();
 	UserService s = new UserService();
@@ -183,15 +58,16 @@ public class WebSocketServer {
 		// Handle new messages
 		logger.info("Entered into Message: Got Message:" + message);
 		// User u = userRepo.findByUsername(sessionUsernameMap.get(session));
-		String r = sessionUsernameMap.get(session);
-		User u = findUserbyID(r);
-		
 
-		if (message.startsWith("@")) { // Direct message to a user using the format "@username <message>"
+		String username = sessionUsernameMap.get(session);
+		//User r = x.findUserbyID(username);
 
+
+		if (message.startsWith("@")) // Direct message to a user using the format "@username <message>"
+		{
 			String destUsername = message.split(" ")[0].substring(1); // don't do this in your code!
-			sendMessageToPArticularUser(destUsername, "[DM] " + u.getUsername() + ": " + message);
-			sendMessageToPArticularUser(u.getUsername(), "[DM] " + u.getUsername() + ": " + message);
+			sendMessageToPArticularUser(destUsername, "[DM] " + username + ": " + message);
+			sendMessageToPArticularUser(username, "[DM] " + username + ": " + message);
 		}
 
 		if (message.equals("!help")) {
@@ -200,59 +76,88 @@ public class WebSocketServer {
 					+ "Add member: !add [username]\n");
 
 		}
+		
+		if(message.equals("!group")) {
+			broadcast(username + " has started a group");
+			ArrayList<String> newGroup = new ArrayList<String>();
+			newGroup.add(username);
+			groups.add(newGroup);
 
-
-		// if they aren't in a group, they shouldn't be able to run these commands
-
-		if (!u.toModifyBuddies().isEmpty() && !u.toModifyInvitee().isEmpty()) {
-
-			if (message.equals("!get_members")) {
-				broadcast("List of members:");
-				System.out.println(x.getGroup(u.getUsername()));
+		}
+		
+		if(message.equals("!get_members")) { //hasn't been tested
+			for(int i = 0; i < groups.size(); i++) {
+				broadcast("In group " + i + ": ");
+				for(int k = 0; k < groups.get(i).size(); k++) {
+					broadcast(groups.get(i).get(i)); //list member			
+				}				
 			}
-
-			if (message.substring(0, 5).equals("!add ")) {
-
-				if (u.toModifyBuddies().isEmpty()) {
-					User u2 = findUserbyID(message.substring(6, message.length() - 1));
-
-					addGroup(u.getUsername(), u2.getUsername());
-
+		
+		
+		if(message.equals("!leave")) {
+			for(int i = 0; i < groups.size(); i++) {
+				if(groups.get(i).contains(username)) {
+					groups.get(i).remove(username); //remove from the arraylist, might be wrong (?)
 				}
-
-				if (message.substring(6, message.length() - 1).equals(u.getUsername())) {
-					broadcast("You're already in the group!");
-				} else {
-					broadcast("User does not exist");
-				}
-			}
-
-			if (message.equals("!leave")) {
-				if (!u.toModifyBuddies().isEmpty()) {
-
-				}
-				broadcast(u.getUsername() + " has left the group.");
-			} else {
-				broadcast("You are not currently in a group.");
 			}
 		}
+		
+		if(message.substring(0, 4).equals("!add ")) { //add to the group
+			for(int i = 0; i < groups.size(); i++) {
+				if(groups.get(i).contains(username)) {
+					groups.get(i).add(username.substring(5, message.length()));
+				}
+			}
+		}
+		
+		
+		
 
 		else {// Message to whole chat
 
-			broadcast(u.getUsername() + ": " + message);
+			broadcast(username + ": " + message);
 		}
+		}
+
+
+		// if they aren't in a group, they shouldn't be able to run these commands
+		/*
+		 * if (!u.toModifyBuddies().isEmpty() && !u.toModifyInvitee().isEmpty()) {
+		 * 
+		 * if (message.equals("!get_members")) { broadcast("List of members:");
+		 * System.out.println(x.getGroup(u.getUsername())); }
+		 * 
+		 * if (message.substring(0, 5).equals("!add ")) {
+		 * 
+		 * if (u.toModifyBuddies().isEmpty()) { User u2 =
+		 * userRepo.findByUsername(message.substring(6, message.length() - 1));
+		 * 
+		 * x.addGroup(u.getUsername(), u2.getUsername());
+		 * 
+		 * }
+		 * 
+		 * if (message.substring(6, message.length() - 1).equals(u.getUsername())) {
+		 * broadcast("You're already in the group!"); } else {
+		 * broadcast("User does not exist"); } }
+		 * 
+		 * if (message.equals("!leave")) { if (!u.toModifyBuddies().isEmpty()) {
+		 * 
+		 * } broadcast(u.getUsername() + " has left the group."); } else {
+		 * broadcast("You are not currently in a group."); }
+		 */
+		
 
 	}
 
 	@OnClose
 	public void onClose(Session session) throws IOException {
+		String username = sessionUsernameMap.get(session);
 		logger.info("Entered into Close");
 
-		User u = findUserbyID(sessionUsernameMap.get(session));
 		sessionUsernameMap.remove(session);
-		usernameSessionMap.remove(u.getUsername());
+		usernameSessionMap.remove(username);
 
-		String message = u.getUsername() + " disconnected";
+		String message = username + " disconnected";
 		broadcast(message);
 	}
 
