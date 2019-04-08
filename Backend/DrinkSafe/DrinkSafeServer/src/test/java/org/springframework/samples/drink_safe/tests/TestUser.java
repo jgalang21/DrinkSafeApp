@@ -143,6 +143,25 @@ public class TestUser {
 			
 	}
 	
+	@Test 
+	public void shouldFail() {
+		User r = mock(User.class);
+		Drink w = mock(Drink.class);
+		
+		
+		when(w.getDid()).thenReturn(0);
+		when(w.getDrinkid()).thenReturn("Whiskey");
+		when(w.getAlcpercent()).thenReturn(10);
+		when(w.getVolume()).thenReturn(23);
+		when(w.getFkuser()).thenReturn("lmaokai");
+		
+		assertEquals(0, w.getDid());
+		assertEquals("Vodka", w.getDrinkid());
+		assertEquals(10, w.getAlcpercent());
+		assertEquals(23, w.getVolume());
+		assertEquals("Rat", w.getFkuser());
+	}
+	
 	
 	//Give one drink
 	@Test

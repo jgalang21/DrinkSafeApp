@@ -86,8 +86,11 @@ public class WebSocketServer {
 			for (int i = 0; i < groups.size(); i++) {
 				if (groups.get(i).contains(username)) {
 					groups.get(i).remove(username); // remove from the arraylist, might be wrong (?)
+					broadcast(username + "has left the group");
+					
 				}
 			}
+		
 		}
 
 		else if (message.length() > 5) {
