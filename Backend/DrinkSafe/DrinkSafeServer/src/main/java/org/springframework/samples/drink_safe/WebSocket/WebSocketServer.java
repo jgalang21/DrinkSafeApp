@@ -68,14 +68,14 @@ public class WebSocketServer {
 			sendMessageToPArticularUser(username, "[DM] " + username + ": " + message);
 		}
 
-		if (message.equals("!help")) {
+		else if (message.equals("!help")) {
 			broadcast("List of commands: \n" + "---------------\n" + "GROUP COMMANDS\n" + "---------------\n"
 					+ "Create group: !group\n" + "List members: !get_members\n" + "Leave group: !leave\n"
 					+ "Add member: !add [username]\n");
 
 		}
 		
-		if(message.equals("!group")) {
+		else if(message.equals("!group")) {
 			broadcast(username + " has started a group");
 			ArrayList<String> newGroup = new ArrayList<String>();
 			newGroup.add(username);
@@ -83,7 +83,7 @@ public class WebSocketServer {
 
 		}
 		
-		if(message.equals("!get_members")) { //hasn't been tested
+		else if(message.equals("!get_members")) { //hasn't been tested
 			int s=0;
 			for(; s<groups.size(); s++)
 			{
@@ -93,15 +93,14 @@ public class WebSocketServer {
 					for(int i=0; i<groups.get(s).size();i++)
 						broadcast_message += groups.get(s).get(i)+ " "; 
 					broadcast(broadcast_message);
+					s=groups.size();
 				}
 			}
-			if(s>=groups.size())
-				broadcast("not in a group");
 		 
 		}
 		
 		
-		if(message.equals("!leave")) {
+		else if(message.equals("!leave")) {
 			for(int i = 0; i < groups.size(); i++) {
 				if(groups.get(i).contains(username)) {
 					groups.get(i).remove(username); //remove from the arraylist, might be wrong (?)
@@ -109,18 +108,14 @@ public class WebSocketServer {
 			}
 		}
 		
-		if(message.substring(0, 4).equals("!add")) { //add to the group
+		else if(message.substring(0, 4).equals("!add")) { //add to the group
 			for(int i = 0; i < groups.size(); i++) {
 				if(groups.get(i).contains(username)) {
 					groups.get(i).add(message.substring(5, message.length()));
 				}
 			}
-			broadcast(username + "has added " + message.substring(5, message.length()));
+			broadcast(username + " has added " + message.substring(5, message.length()));
 		}
-		
-		
-		
-
 		else {// Message to whole chat
 
 			broadcast(username + ": " + message);
