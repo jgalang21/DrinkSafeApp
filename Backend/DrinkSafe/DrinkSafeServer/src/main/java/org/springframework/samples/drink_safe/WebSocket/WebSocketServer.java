@@ -85,21 +85,20 @@ public class WebSocketServer {
 			}
 			if (!did_leave)
 				broadcast("No group");
-		} else if (message.equals("!leave")) {
+		} 
+		else if (message.equals("!leave")) {
+			boolean did_leave = false;
 			for (int i = 0; i < groups.size(); i++) {
 				if (groups.get(i).contains(username)) {
-
-					groups.get(i).remove(username); // remove from the arraylist, might be wrong (?)
-					broadcast(username + "has left the group");
-
+					groups.get(i).remove(username);
+					broadcast(username + " has left the group");
+					did_leave =true;
 				}
 			}
-
-			broadcast(username + " has left the group");
+			if(!did_leave)
+				broadcast("No group to leave");
 		}
-
-		else if (message.length() > 5) {
-			if (message.substring(0, 4).equals("!add")) { // add to the group
+		else if (message.length() > 5 && message.substring(0, 4).equals("!add")) { // add to the group
 				for (int i = 0; i < groups.size(); i++) {
 					if (groups.get(i).contains(username)) {
 						groups.get(i).add(message.substring(5, message.length()));
@@ -108,7 +107,7 @@ public class WebSocketServer {
 				broadcast(username + " has added " + message.substring(5, message.length()));
 
 			}
-		} else {
+		else {
 			broadcast(username + ": " + message);
 		}
 

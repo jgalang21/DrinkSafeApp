@@ -274,7 +274,7 @@ public class TestUser {
 		when(x.getAlcpercent()).thenReturn(4);
 		when(x.getVolume()).thenReturn(18);
 		when(x.getFkuser()).thenReturn("BigHAAS");
-
+		assertEquals(x.getDid(),0);
 
 	}
 	
