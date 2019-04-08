@@ -88,8 +88,8 @@ public class ProfileScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ProfileScreen.this, Home.class);
-                Log.d(TAG, i.getAction());
-                Log.d(TAG, i.getDataString());
+                //Log.d(TAG, i.getAction());
+                //Log.d(TAG, i.getDataString());
                 startActivity(i);
             }
         });
@@ -248,17 +248,18 @@ public class ProfileScreen extends AppCompatActivity {
             changes.put("email", true);
             email = email_box.getText().toString();
         } else if(!weight_box.getText().toString().equals(weight)) {
+            Log.d(TAG, "Weight has changed");
             changes.put("weight", true);
             weight = weight_box.getText().toString();
         } else if(Integer.parseInt((String) feet_s.getSelectedItem()) != height_arr[0]) {
             changes.put("feet", true);
-            height_arr[0] = (int)feet_s.getSelectedItem();
+            height_arr[0] = Integer.parseInt((String) feet_s.getSelectedItem());
         } else if(Integer.parseInt((String) inches_s.getSelectedItem()) != height_arr[1]) {
             changes.put("inches", true);
-            height_arr[1] = (int)inches_s.getSelectedItem();
+            height_arr[1] = Integer.parseInt((String) inches_s.getSelectedItem());
         } else if(Integer.parseInt((String) gender_s.getSelectedItem()) != gender) {
             changes.put("gender", true);
-            gender = (int)gender_s.getSelectedItem();
+            gender = Integer.parseInt((String) gender_s.getSelectedItem());
         } else {
             return false;
         }
@@ -267,12 +268,16 @@ public class ProfileScreen extends AppCompatActivity {
     }
 
     private boolean updateServer(){
-        String tmpURL = Const.URL_USER_INFO + "/edit/height/" + Const.cur_user_name + "/" + height;
-        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tmpURL, null,
-                new Response.Listener<JSONObject>() {
+        String tmpURL = Const.URL_USER_INFO + "/edit/weight/" + Const.cur_user_name + "/" + weight;
+        //JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tmpURL, null,
+                //new Response.Listener<JSONObject>() {
+        JsonArrayRequest req = new JsonArrayRequest(Const.URL_USER_INFO,
+                new Response.Listener<JSONArray>() {
                     @Override
-                    public void onResponse(JSONObject response) {
-                        Log.d(TAG, response.toString());
+                    public void onResponse(JSONArray response) {
+                    //@Override
+                    //public void onResponse(JSONObject response) {
+                        //Log.d(TAG, response.toString());
 
                         /*try {
                             // Parsing json array response
@@ -305,7 +310,7 @@ public class ProfileScreen extends AppCompatActivity {
         }){
 
             @Override
-            protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
+            protected Response<JSONArray> parseNetworkResponse(NetworkResponse response) {
 
 
                 try {

@@ -80,10 +80,10 @@ public class WebSocketServer {
 						broadcast_message += groups.get(s).get(i) + " ";
 					broadcast(broadcast_message);
 					s = groups.size();
-					did_leave=true;
+					did_leave = true;
 				}
 			}
-			if(!did_leave)
+			if (!did_leave)
 				broadcast("No group");
 		} 
 		else if (message.equals("!leave")) {
@@ -97,9 +97,7 @@ public class WebSocketServer {
 			}
 			if(!did_leave)
 				broadcast("No group to leave");
-			
 		}
-
 		else if (message.length() > 5 && message.substring(0, 4).equals("!add")) { // add to the group
 				for (int i = 0; i < groups.size(); i++) {
 					if (groups.get(i).contains(username)) {

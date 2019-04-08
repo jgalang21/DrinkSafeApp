@@ -79,6 +79,10 @@ public class Home extends AppCompatActivity {
                                 i = new Intent(Home.this, Party.class);
                                 startActivity(i);
                                 break;
+                            case R.id.nav_chat:
+                                i = new Intent(Home.this, Messaging.class);
+                                startActivity(i);
+                                break;
                             case R.id.nav_map:
                                 i = new Intent(Home.this, Map.class);
                                 startActivity(i);
