@@ -15,7 +15,6 @@ import javax.websocket.server.ServerEndpoint;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-
 @ServerEndpoint("/websocket/{username}")
 @Component
 public class WebSocketServer {
@@ -65,47 +64,43 @@ public class WebSocketServer {
 
 		}
 
-		else if(message.equals("!group")) {
+		else if (message.equals("!group")) {
 			broadcast(username + " has started a group");
 			ArrayList<String> newGroup = new ArrayList<String>();
 			newGroup.add(username);
 			groups.add(newGroup);
 
-		}
-		else if(message.equals("!get_members")) { //hasn't been tested
-			int s=0;
-			for(; s<groups.size(); s++)
-			{
-				if(groups.get(s).contains(username))
-				{
+		} else if (message.equals("!get_members")) { // hasn't been tested
+			int s = 0;
+			for (; s < groups.size(); s++) {
+				if (groups.get(s).contains(username)) {
 					String broadcast_message = "";
-					for(int i=0; i<groups.get(s).size();i++)
-						broadcast_message += groups.get(s).get(i)+ " "; 
+					for (int i = 0; i < groups.get(s).size(); i++)
+						broadcast_message += groups.get(s).get(i) + " ";
 					broadcast(broadcast_message);
-					s=groups.size();
+					s = groups.size();
 				}
 			}
-		 
-		}
-		else if(message.equals("!leave")) {
-			for(int i = 0; i < groups.size(); i++) {
-				if(groups.get(i).contains(username)) {
-					groups.get(i).remove(username); //remove from the arraylist, might be wrong (?)
+
+		} else if (message.equals("!leave")) {
+			for (int i = 0; i < groups.size(); i++) {
+				if (groups.get(i).contains(username)) {
+					groups.get(i).remove(username); // remove from the arraylist, might be wrong (?)
 				}
 			}
-		}
-		
-		else if(message.substring(0, 4).equals("!add")) { //add to the group
-			for(int i = 0; i < groups.size(); i++) {
-				if(groups.get(i).contains(username)) {
-					groups.get(i).add(message.substring(5, message.length()));
-				}
-			}
-			broadcast(username + " has added " + message.substring(5, message.length()));
-			
 		}
 
-		else {
+		else if (message.length() > 5) {
+			if (message.substring(0, 4).equals("!add")) { // add to the group
+				for (int i = 0; i < groups.size(); i++) {
+					if (groups.get(i).contains(username)) {
+						groups.get(i).add(message.substring(5, message.length()));
+					}
+				}
+				broadcast(username + " has added " + message.substring(5, message.length()));
+
+			}
+		} else {
 			broadcast(username + ": " + message);
 		}
 
