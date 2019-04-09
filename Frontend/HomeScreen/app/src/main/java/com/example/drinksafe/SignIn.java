@@ -43,6 +43,8 @@ public class SignIn extends AppCompatActivity {
     private TextView msgResponse;
     private Boolean trueMail = true;
     private Boolean success = false;
+    private Boolean ad = false;
+
 
 
     @Override
@@ -85,17 +87,11 @@ public class SignIn extends AppCompatActivity {
         pDialog.setCancelable(false);
     }
 
-    private void validate(String uEmail, String userEmail, String userPass, String passWd) throws JSONException {
+    private void validate(String uEmail, String userPass, String passWd) throws JSONException {
         System.err.println("in Validate");
-        if((uEmail.equals("Admin")) && (userPass.equals("123Abc"))){
-            Intent intent = new Intent(SignIn.this, Home.class);
-            success = true;
-            startActivity(intent);
-        }
-        else if (passWd.equals(userPass)) {
+        if (passWd.equals(userPass)||ad == true) {
             Const.cur_user_name = uEmail;
             Intent intent = new Intent(SignIn.this, Home.class);
-            success = true;
             startActivity(intent);
             //return true;
 
@@ -189,9 +185,12 @@ public class SignIn extends AppCompatActivity {
                             String UserEmail = person.getString("username");
                             //getPassword(passWd);
                             //getUsername(UserEmail);
-                            if(((Email.getText().toString().equals("Admin")) && (Password.getText().toString().equals("123Abc")))||(UserEmail.equals(Email.getText().toString().trim()))){
+                            if ((Email.getText().toString().equals("Admin")) && (Password.getText().toString().equals("123Abc"))){
+                                ad = true;
+                            }
+                            if((UserEmail.equals(Email.getText().toString().trim()))||ad == true){
                                 System.err.println("same Email");
-                                validate(UserEmail,Email.getText().toString(),Password.getText().toString(), passWd);
+                                validate(UserEmail,Password.getText().toString().trim(), passWd);
                             }
                             System.err.println("");
                             System.err.println("username: " + person.getString("username"));
