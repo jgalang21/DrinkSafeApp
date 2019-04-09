@@ -60,14 +60,14 @@ public class SignInTest {
         intended(allOf(toPackage("com.example.drinksafe"), hasComponent(Home.class.getName())));
         System.out.println(Home.class.getName());
     }
-    @Test
+    /*@Test
     public void checkLoginTestAdmin(){
         onView(withId(R.id.etemail)).perform(typeText("Admin"));
         onView(withId(R.id.etpass)).perform(typeText("123Abc"));
         onView(withId(R.id.btnLogin)).perform(click());
 
         intended(allOf(toPackage("com.example.drinksafe"), hasComponent(Home.class.getName())));
-    }
+    }*/
     @Test
     public void checkButtons(){
         onView(withId(R.id.btnLogin)).check(matches(isClickable()));

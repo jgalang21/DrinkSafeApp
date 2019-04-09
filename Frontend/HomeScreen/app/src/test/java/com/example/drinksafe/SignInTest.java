@@ -27,7 +27,7 @@ public class SignInTest {
         SignIn test = mock(SignIn.class);
         SignIn testLoginSuccess = new SignIn();
         String userCorrect = "BigHAAS";
-        String passCorrect = "jargon";
+        String passCorrect = "password123";
 
         JSONObject response = new JSONObject();
         response.put("loginSuccess", new Boolean(true));
