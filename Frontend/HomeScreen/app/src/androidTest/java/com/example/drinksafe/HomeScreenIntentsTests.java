@@ -21,6 +21,7 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.contrib.DrawerActions.open;
+import static androidx.test.espresso.contrib.DrawerActions.openDrawer;
 import static androidx.test.espresso.intent.Intents.intended;
 import static androidx.test.espresso.intent.Intents.intending;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasAction;
@@ -51,7 +52,8 @@ public class HomeScreenIntentsTests {
 
     @Test
     public void checkNavBar1() {
-        //onView(withId(R.id.drawer_layout)).perform(open());
+        onView(withId(R.id.drawer_layout)).perform(clickXY(0,0));
+        openDrawer(R.id.drawer_layout);
         //onView(allOf(withParent(withId(R.id.toolbar)), isDisplayed())).perform(click());
         //onView(withText("Group Chat")).perform(click());
         onView(withId(R.id.nav_view)).perform(NavigationViewActions.navigateTo(R.id.nav_chat));
