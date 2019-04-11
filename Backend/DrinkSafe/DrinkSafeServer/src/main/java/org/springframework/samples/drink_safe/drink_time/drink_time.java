@@ -19,7 +19,7 @@ public class drink_time {
 	
     @Column(name = "tid")
     @NotFound(action = NotFoundAction.IGNORE)
-	private int timeLeft;
+	private int tid;
 
     public drink_time()
     {
@@ -27,20 +27,24 @@ public class drink_time {
     }
     public drink_time(String person, int time)
     {
-    	this.timeLeft = time; 
+    	this.tid = time; 
     	this.person = person; 
     	
     }
-
+	public String getPerson() {
+		return person;
+	}
+	public void setPerson(String person) {
+		this.person = person;
+	}
+	public int getTid() {
+		return tid;
+	}
+	public void setTid(int tid) {
+		this.tid = tid;
+	}
     
-    public String returnuser() {
-    	return this.person; 
-    }
-    
 
-    public int returnTimeRaw() {
-    	return this.timeLeft ;
-    }
     
     
 

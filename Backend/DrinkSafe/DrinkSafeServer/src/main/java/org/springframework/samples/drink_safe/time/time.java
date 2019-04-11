@@ -75,6 +75,12 @@ public class time {
 	public void setTime_finish(long time_finish) {
 		this.time_finish = time_finish;
 	}
+	public String getUser() {
+		return user.getUsername();
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public String toString() 
 	{
 		String returner = "";
@@ -84,12 +90,6 @@ public class time {
 		returner += "Time to finish: "+getTime_finish();
 		return returner;
 		
-	}
-	public String getUser() {
-		return user.getUsername();
-	}
-	public void setUser(User user) {
-		this.user = user;
 	}
     
 }

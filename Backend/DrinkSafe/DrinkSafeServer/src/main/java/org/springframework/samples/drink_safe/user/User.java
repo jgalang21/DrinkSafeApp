@@ -60,16 +60,6 @@ public class User{
     @ManyToMany(mappedBy = "friends")
     private Set<User> befriended = new HashSet<User>();
     
-    
-    @ManyToMany
-    @JoinTable(name = "buddies", 
-        joinColumns = @JoinColumn(name = "inviter"),
-    	inverseJoinColumns = @JoinColumn(name = "invitee"))
-    private Set<User> inviter = new HashSet<User>();
-    @ManyToMany(mappedBy = "inviter")
-    private Set<User> invitee = new HashSet<User>();
-    
-    
     @OneToMany(mappedBy = "fkuser", cascade = CascadeType.ALL)
     private Set<Drink> drinks= new HashSet<Drink>();
     
@@ -170,15 +160,6 @@ public class User{
 	{
 		return friends;
 	}
-
-	public Set<User> toModifyBuddies()
-	{
-		return inviter;
-	}
-	public Set<User> toModifyInvitee()
-	{
-		return invitee;
-	}
 	public String getBefriended() {
 		String returner ="";
 		for(User u: befriended)
@@ -220,26 +201,6 @@ public class User{
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getInviter() {
-		{
-			String returner ="";
-			for(User u: inviter)
-				returner+=u.getUsername() + " ";
-			return returner;
-		}
-	}
-	public void setInviter(Set<User> inviter) {
-		this.inviter = inviter;
-	}
-	public String getInvitee() {
-		String returner ="";
-		for(User u: invitee)
-			returner+=u.getUsername() + " ";
-		return returner;
-	}
-	public void setInvitee(Set<User> invitee) {
-		this.invitee = invitee;
 	}
 	
 	public String toString()
