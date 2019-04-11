@@ -1,11 +1,13 @@
 package org.springframework.samples.drink_safe.Drink;
 
+import java.sql.Time;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.drink_safe.time.time;
+import org.springframework.samples.drink_safe.time.timeRepository;
 import org.springframework.samples.drink_safe.user.User;
 import org.springframework.samples.drink_safe.user.UserRepository;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +25,9 @@ import org.springframework.web.bind.annotation.RestController;
 	@Autowired
 	UserRepository userRepo;
 	
+	@Autowired
+	timeRepository timeRepo;
+	
 
 	
 	@RequestMapping(method = RequestMethod.GET, path= "/drink/new/{DrinkId}/{alcPercent}/{volume}/{fkuser}")
@@ -30,7 +35,14 @@ import org.springframework.web.bind.annotation.RestController;
 	{
 		long x = System.nanoTime();
 		User u = userRepo.findByUsername(fkuser);
-		time t = new time(u.getUsername().hashCode(),x,x+1000);
+		int tid;
+		List<time> s = (List<time>) timeRepo.findAll();
+		if(s.isEmpty())
+			tid=0;
+		else
+			tid = s.size();
+		time t = new time(tid);
+		t.setTime_finish(t.getTime_start() + t.calculate());
 		u.setUser_time(t);
 		userRepo.save(u);
 		List<Drink> r = (List<Drink>) drinkRepo.findAll();

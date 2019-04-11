@@ -204,6 +204,10 @@ public class User{
 			returner+=d.getDrinkid()+ " ";
 		return returner;
 	}
+	public Set<Drink> toModifyDrinks()
+	{
+		return drinks;
+	}
 	public void setDrinks(Set<Drink> drinks) {
 		this.drinks = drinks;
 	}
