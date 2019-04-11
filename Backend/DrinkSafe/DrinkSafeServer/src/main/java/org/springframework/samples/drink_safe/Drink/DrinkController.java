@@ -1,7 +1,11 @@
 package org.springframework.samples.drink_safe.Drink;
 
+<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.Iterator;
+=======
+import java.sql.Time;
+>>>>>>> 5a63f3269a6616055df3413495507ad262ce791b
 import java.util.List;
 import java.util.Set;
 
@@ -9,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.drink_safe.time.time;
+import org.springframework.samples.drink_safe.time.timeRepository;
 import org.springframework.samples.drink_safe.user.User;
 import org.springframework.samples.drink_safe.user.UserRepository;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,13 +30,31 @@ public class DrinkController {
 
 	@Autowired
 	UserRepository userRepo;
+<<<<<<< HEAD
+=======
+	
+	@Autowired
+	timeRepository timeRepo;
+	
+>>>>>>> 5a63f3269a6616055df3413495507ad262ce791b
 
 	@RequestMapping(method = RequestMethod.GET, path = "/drink/new/{DrinkId}/{alcPercent}/{volume}/{fkuser}")
 	public void addDrink(@PathVariable("DrinkId") String DrinkId, @PathVariable("alcPercent") int alcPercent,
 			@PathVariable("volume") int volume, @PathVariable("fkuser") String fkuser) {
 		long x = System.nanoTime();
 		User u = userRepo.findByUsername(fkuser);
+<<<<<<< HEAD
 		time t = new time(u.getUsername().hashCode(), x, x + 1000);
+=======
+		int tid;
+		List<time> s = (List<time>) timeRepo.findAll();
+		if(s.isEmpty())
+			tid=0;
+		else
+			tid = s.size();
+		time t = new time(tid);
+		t.setTime_finish(t.getTime_start() + t.calculate());
+>>>>>>> 5a63f3269a6616055df3413495507ad262ce791b
 		u.setUser_time(t);
 		userRepo.save(u);
 		List<Drink> r = (List<Drink>) drinkRepo.findAll();

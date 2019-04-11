@@ -36,6 +36,10 @@ public class time {
     {
     	
     }
+    public time(int tid)
+    {
+    	this.tid = tid;
+    }
     public time(int tid, long time_start,long time_finish) {
     	this.tid = tid;
     	this.time_start = time_start;
