@@ -43,6 +43,8 @@ public class SignIn extends AppCompatActivity {
     private TextView msgResponse;
     private Boolean trueMail = true;
     private Boolean success = false;
+    private Boolean ad = false;
+
 
 
     @Override
@@ -87,10 +89,12 @@ public class SignIn extends AppCompatActivity {
 
     private void validate(String uEmail, String userPass, String passWd) throws JSONException {
         System.err.println("in Validate");
-        if (((uEmail.equals("Admin")) && (userPass.equals("123Abc")))||passWd.equals(userPass)) {
+        if (passWd.equals(userPass)||ad == true) {
             Const.cur_user_name = uEmail;
             Intent intent = new Intent(SignIn.this, Home.class);
             startActivity(intent);
+            //return true;
+
         }
         else {
             counter--;
@@ -102,6 +106,7 @@ public class SignIn extends AppCompatActivity {
                 counter = 0;
                 Login.setEnabled(false);
             }
+            success = false;
         }
     }
 
@@ -180,9 +185,12 @@ public class SignIn extends AppCompatActivity {
                             String UserEmail = person.getString("username");
                             //getPassword(passWd);
                             //getUsername(UserEmail);
-                            if(((Email.getText().toString().equals("Admin")) && (Password.getText().toString().equals("123Abc")))||(UserEmail.equals(Email.getText().toString().trim()))){
+                            if ((Email.getText().toString().equals("Admin")) && (Password.getText().toString().equals("123Abc"))){
+                                ad = true;
+                            }
+                            if((UserEmail.equals(Email.getText().toString().trim()))||ad == true){
                                 System.err.println("same Email");
-                                validate(UserEmail,Password.getText().toString(), passWd);
+                                validate(UserEmail,Password.getText().toString().trim(), passWd);
                             }
                             System.err.println("");
                             System.err.println("username: " + person.getString("username"));
@@ -223,7 +231,10 @@ public class SignIn extends AppCompatActivity {
     public String getPassword(String password){
         return password;
     }
-    public JSONObject getResponse(String username, String password) {
+    public JSONObject getResponse(String username, String password) throws JSONException {
+/*        JSONObject temp = new JSONObject(username);
+        JSONObject temp2 = new JSONObject(password);*/
+        makeJsonArrayReq();
         return null;
     }
     public boolean tryLogin(String username, String password, SignIn loginHandler) throws JSONException {

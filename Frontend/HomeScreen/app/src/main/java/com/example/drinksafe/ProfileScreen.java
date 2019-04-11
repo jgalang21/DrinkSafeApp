@@ -93,14 +93,14 @@ public class ProfileScreen extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        changes = new Hashtable<String,Boolean>();
+        changes = new Hashtable<>();
         changes.put("name", false);
         changes.put("email", false);
         changes.put("gender", false);
         changes.put("feet", false);
         changes.put("inches", false);
         changes.put("weight", false);
-
+        Log.d(TAG, changes.toString());
 
         final Button b = findViewById(R.id.save_edit_button);
         b.setTag(1);
@@ -128,7 +128,8 @@ public class ProfileScreen extends AppCompatActivity {
                     inches_s.setEnabled(false);
                     v.setTag(1);
                     if(checkForChanges()) {
-                        updateServer();
+                        Log.d(TAG, "Working");
+                        updateServer(changes);
                     }
 
                 }
@@ -227,8 +228,8 @@ public class ProfileScreen extends AppCompatActivity {
         name_box.setText(name);
         email_box.setText(email);
         gender_s.setSelection(gender);
-        feet_s.setSelection(height_arr[0] - 1);
-        inches_s.setSelection(height_arr[1] - 1);
+        feet_s.setSelection(height_arr[0]);
+        inches_s.setSelection(height_arr[1]);
         weight_box.setText(weight);
     }
 
@@ -244,34 +245,53 @@ public class ProfileScreen extends AppCompatActivity {
         if(!name_box.getText().toString().equals(name)) {
             changes.put("name", true);
             name = name_box.getText().toString();
-        } else if(!email_box.getText().toString().equals(email)) {
+        }
+        if(!email_box.getText().toString().equals(email)) {
             changes.put("email", true);
             email = email_box.getText().toString();
-        } else if(!weight_box.getText().toString().equals(weight)) {
-            Log.d(TAG, "Weight has changed");
+        }
+        if(!weight_box.getText().toString().equals(weight)) {
+            //Log.d(TAG, "Weight has changed");
             changes.put("weight", true);
             weight = weight_box.getText().toString();
-        } else if(Integer.parseInt((String) feet_s.getSelectedItem()) != height_arr[0]) {
+        }
+        if(Integer.parseInt((String) feet_s.getSelectedItem()) != height_arr[0]) {
             changes.put("feet", true);
             height_arr[0] = Integer.parseInt((String) feet_s.getSelectedItem());
-        } else if(Integer.parseInt((String) inches_s.getSelectedItem()) != height_arr[1]) {
+        }
+        if(Integer.parseInt((String) inches_s.getSelectedItem()) != height_arr[1]) {
             changes.put("inches", true);
             height_arr[1] = Integer.parseInt((String) inches_s.getSelectedItem());
-        } else if(Integer.parseInt((String) gender_s.getSelectedItem()) != gender) {
+        }
+        if(gender_s.getSelectedItemPosition() != gender) {
             changes.put("gender", true);
             gender = Integer.parseInt((String) gender_s.getSelectedItem());
-        } else {
-            return false;
         }
-
+        Log.d(TAG, changes.toString());
             return true;
     }
 
-    private boolean updateServer(){
-        String tmpURL = Const.URL_USER_INFO + "/edit/weight/" + Const.cur_user_name + "/" + weight;
-        //JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tmpURL, null,
+    private boolean updateServer(Hashtable<String, Boolean> c){
+        String tmpURL = Const.URL_USER_INFO + "/edit";
+
+        Log.d(TAG, changes.toString());
+        if(changes.get("height")) {
+            Log.d(TAG, "Sending Height");
+            tmpURL += "/height/" + Const.cur_user_name + "/" + height;
+            JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(req);
+        }
+
+        if(c.get("weight")) {
+            Log.d(TAG, "Sending Weight");
+            tmpURL += "/weight/" + Const.cur_user_name + "/" + weight;
+            JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(req);
+        }
                 //new Response.Listener<JSONObject>() {
-        JsonArrayRequest req = new JsonArrayRequest(Const.URL_USER_INFO,
+        /*JsonArrayRequest req = new JsonArrayRequest(Const.URL_USER_INFO,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -279,26 +299,7 @@ public class ProfileScreen extends AppCompatActivity {
                     //public void onResponse(JSONObject response) {
                         //Log.d(TAG, response.toString());
 
-                        /*try {
-                            // Parsing json array response
-                            // loop through each json object
-                            JSONObject person = findUser(response);
 
-                            name = person.getString("name");
-                            email = person.getString("username");
-                            String h = person.getString("height");
-                            height = Integer.parseInt(h);
-                            weight = person.getString("weight");
-                            String g = person.getString("gender");
-                            gender = Integer.parseInt(g);
-                            heightConv(height, height_arr, true);
-                            update_text();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(getApplicationContext(),
-                                    "Error: " + e.getMessage(),
-                                    Toast.LENGTH_LONG).show();
-                        }*/
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -335,9 +336,21 @@ public class ProfileScreen extends AppCompatActivity {
 
 
             }
+        };*/
+
+
+        /*Request<String> req = new Request<String>(Request.Method.GET, tmpURL, null) {
+            @Override
+            protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                return null;
+            }
+
+            @Override
+            protected void deliverResponse(String response) {
+
+            }
         };
-        // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(req);
+        req.setRequestQueue(AppController.getInstance().getRequestQueue());*/
         return true;
     }
 }
