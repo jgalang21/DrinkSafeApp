@@ -1,5 +1,8 @@
 package org.springframework.samples.drink_safe.time;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -57,7 +60,13 @@ public class time {
 	}
 
 
-	public long getTime_start() {
+	public String getTime_start() {
+		SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");  
+		Date date = new Date(time_start);  
+		return (formatter.format(date));
+	}
+	
+	public long toModifyTime_start() {
 		return time_start;
 	}
 
@@ -67,10 +76,15 @@ public class time {
 	}
 
 
-	public long getTime_finish() {
+	public String getTime_finish() {
+		SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");  
+		Date date = new Date(time_finish);  
+		return (formatter.format(date));
+	}
+	public long toModifyTime_finish()
+	{
 		return time_finish;
 	}
-
 
 	public void setTime_finish(long time_finish) {
 		this.time_finish = time_finish;

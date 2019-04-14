@@ -72,6 +72,10 @@ public class User{
     )
     time user_time; 
     
+    @Column(name = "bac")
+    @NotFound(action = NotFoundAction.IGNORE)
+    private double BAC;
+    
 
     
 
@@ -83,6 +87,7 @@ public class User{
 		this.weight=weight;
 		this.gender=gender;
 		this.guestStatus=guestStatus;
+		this.BAC=0;
 		
 		
 	}
@@ -202,37 +207,13 @@ public class User{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public String toString()
-	{
-		String friends_list="";
-		for(User i: friends)
-			friends_list+=i.getUsername()+", ";
-		String befriended_list="";
-		for(User i:befriended)
-			befriended_list+=i.getUsername() +", ";
-		String drink_list="";
-		for(Drink d: drinks)
-			drink_list+=d.getDrinkid() +", ";
-		String timer = "";
-		if(! (user_time == null))
-		{
-			timer+=(user_time.getTime_finish() -user_time.getTime_start());
-		}
-		String returner ="";
-		returner += "Username: " + getUsername()+"\n";
-		returner += "Name: " + getName() + "\n";
-		returner += "Password: " + getPassword()+"\n";
-		returner += "Height: " + getHeight()+"\n";
-		returner += "Weight: " + getWeight()+"\n";
-		returner += "Gender: " + getGender()+"\n";
-		returner += "Guest Status: " + getGuestStatus()+"\n";
-		returner += "Friends List: "+friends_list+ "\n";
-		returner += "Befriened List: "+befriended_list+"\n";
-		returner += "Drink List: "+drink_list+"\n";
-		returner += "timer: "+timer;
-		return returner;
+	public double getBAC() {
+		return BAC;
 	}
+	public void setBAC(double bAC) {
+		BAC = bAC;
+	}
+	
 
 	
 	

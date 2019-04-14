@@ -53,11 +53,27 @@ public class DrinkController {
 				tid = 0;
 			else
 				tid = s.size();
-			time t = new time(tid, System.nanoTime(), System.nanoTime() + calculateBAC(u));
+			double cBAC = calculateBAC(u,drink);
+			time t;
+			if(cBAC<0.08)
+			{
+				t = new time(tid,System.currentTimeMillis(),0);
+			}
+			else
+			{
+				long time_to_add = (long) ((cBAC-0.08)/0.015);
+				t = new time(tid,System.currentTimeMillis(),System.currentTimeMillis()+(time_to_add*3600000));
+			}
+			u.setBAC(cBAC);
 			u.setUser_time(t);
 			userRepo.save(u);
 		} else {
-			u.getUser_time().setTime_finish(u.getUser_time().getTime_finish() + calculateBAC(u));
+			double cBAC = u.getBAC() + calculateBAC(u,drink);
+			cBAC -= (0.015 * ((System.currentTimeMillis() - u.getUser_time().toModifyTime_finish()) / 3600000));
+			u.getUser_time().setTime_start(System.currentTimeMillis());
+			long time_to_add = (long) ((cBAC-0.08)/0.015);
+			u.getUser_time().setTime_finish(u.getUser_time().toModifyTime_finish()+time_to_add * 3600000);
+			u.setBAC(cBAC);
 			userRepo.save(u);
 		}
 		logger.info(fkuser + " had added " + DrinkId + " as a drink");
@@ -74,7 +90,7 @@ public class DrinkController {
 	@RequestMapping(method = RequestMethod.GET, path = "/drink/find/{DrinkId}")
 	public Drink findDrinkbyID(@PathVariable("DrinkId") String DrinkId) {
 		logger.info("Finding drink: " + DrinkId);
-		Drink result = drinkRepo.findByDrinkId(DrinkId);
+		Drink result = drinkRepo.findByDrinkid(DrinkId);
 		return result;
 	}
 
@@ -83,11 +99,10 @@ public class DrinkController {
 	 * These calculations derived from: 
 	 * https://www.teamdui.com/bac-widmarks-formula/
 	 */
-	public long calculateBAC(@PathVariable("username") User username) {
+	public double calculateBAC(User username,Drink drink) {
 		double height = username.getHeight();
 		double weight = username.getWeight();
 		int gender = username.getGender();
-		double legalBAClimit = 0.08; //0.08%
 		
 		double ratio = 0.0;
 
@@ -99,31 +114,10 @@ public class DrinkController {
 
 		double temp = 0.0;
 
-		String drinkList = username.getDrinks(); // all of the user's drinks
-		String[] drinkArr;
-		ArrayList<Drink> x = new ArrayList<Drink>();
 
-		drinkArr = drinkList.split(" "); //split it into an array
-
-		for (int i = 0; i < drinkArr.length; i++) {
-			Drink r = findDrinkbyID(drinkArr[i]);
-
-			if (!r.equals(null)) { //if it's a valid drink
-				x.add(r);
-			}
-
-		}
-
-		long resultTemp = 0; 
-		
-		for(int r = 0; r < x.size(); r++) {
-			resultTemp += (0.08 -  ((x.get(r).getVolume() * 5.14) / username.getWeight() * ratio)) / (-0.015);
-			
-		}
-		
-		
-
-		return resultTemp;
+		double result = (0.08 - ((((drink.getAlcpercent()/100.0) * drink.getVolume()) *5.14) / (weight * ratio)));
+		logger.info("time added: "+ result + " hours");
+		return result;
 	}
 
 }
