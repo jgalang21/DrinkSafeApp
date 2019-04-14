@@ -57,7 +57,7 @@ public class DrinkController {
 			time t;
 			if(cBAC<0.08)
 			{
-				t = new time(tid,System.currentTimeMillis(),0);
+				t = new time(tid,System.currentTimeMillis(),System.currentTimeMillis());
 			}
 			else
 			{
