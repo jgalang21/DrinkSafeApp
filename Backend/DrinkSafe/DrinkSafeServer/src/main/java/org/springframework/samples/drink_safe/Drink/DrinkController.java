@@ -70,9 +70,18 @@ public class DrinkController {
 		} else {
 			double cBAC = u.getBAC() + calculateBAC(u,drink);
 			cBAC -= (0.015 * ((System.currentTimeMillis() - u.getUser_time().toModifyTime_finish()) / 3600000));
-			u.getUser_time().setTime_start(System.currentTimeMillis());
-			long time_to_add = (long) ((cBAC-0.08)/0.015);
-			u.getUser_time().setTime_finish(u.getUser_time().toModifyTime_finish()+time_to_add * 3600000);
+			if(cBAC<0.08)
+			{
+				u.getUser_time().setTime_start(System.currentTimeMillis());
+				u.getUser_time().setTime_finish(System.currentTimeMillis());
+			}
+			else
+			{
+				u.getUser_time().setTime_start(System.currentTimeMillis());
+				long time_to_add = (long) (3600000 * ((cBAC-0.08)/0.015));
+				logger.info("Adding " + time_to_add * 3600000 + " hours to time finish");
+				u.getUser_time().setTime_finish(u.getUser_time().toModifyTime_finish()+time_to_add);
+			}
 			u.setBAC(cBAC);
 			userRepo.save(u);
 		}
@@ -115,8 +124,7 @@ public class DrinkController {
 		double temp = 0.0;
 
 
-		double result = (0.08 - ((((drink.getAlcpercent()/100.0) * drink.getVolume()) *5.14) / (weight * ratio)));
-		logger.info("time added: "+ result + " hours");
+		double result = ((((drink.getAlcpercent()/100.0) * drink.getVolume()) *5.14) / (weight * ratio));
 		return result;
 	}
 
