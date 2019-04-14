@@ -1,5 +1,6 @@
 package org.springframework.samples.drink_safe.Drink;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.sql.Time;
@@ -28,7 +29,7 @@ public class DrinkController {
 
 	@Autowired
 	UserRepository userRepo;
-	
+
 	@Autowired
 	timeRepository timeRepo;
 
@@ -45,21 +46,18 @@ public class DrinkController {
 			did = r.size();
 		Drink drink = new Drink(did, DrinkId, alcPercent, volume, u);
 		drinkRepo.save(drink);
-		if(u.getUser_time()==null)
-		{
-		int tid;
-		List<time> s = (List<time>) timeRepo.findAll();
-		if(s.isEmpty())
-			tid=0;
-		else
-			tid = s.size();
-		time t = new time(tid,System.nanoTime(),System.nanoTime()+calculateBAC(u));
-		u.setUser_time(t);
-		userRepo.save(u);
-		}
-		else
-		{
-			u.getUser_time().setTime_finish(u.getUser_time().getTime_finish()+calculateBAC(u));
+		if (u.getUser_time() == null) {
+			int tid;
+			List<time> s = (List<time>) timeRepo.findAll();
+			if (s.isEmpty())
+				tid = 0;
+			else
+				tid = s.size();
+			time t = new time(tid, System.nanoTime(), System.nanoTime() + calculateBAC(u));
+			u.setUser_time(t);
+			userRepo.save(u);
+		} else {
+			u.getUser_time().setTime_finish(u.getUser_time().getTime_finish() + calculateBAC(u));
 			userRepo.save(u);
 		}
 		logger.info(fkuser + " had added " + DrinkId + " as a drink");
@@ -69,15 +67,28 @@ public class DrinkController {
 	public List<Drink> listAllDrinks() {
 		logger.info("Entered into control layer (For drinks)");
 		List<Drink> r = (List<Drink>) drinkRepo.findAll();
-		logger.info("displaying all drinks");
+		logger.info("Displaying all drinks in database");
 		return r;
-
 	}
 
+	@RequestMapping(method = RequestMethod.GET, path = "/drink/find/{DrinkId}")
+	public Drink findDrinkbyID(@PathVariable("DrinkId") String DrinkId) {
+		logger.info("Finding drink: " + DrinkId);
+		Drink result = drinkRepo.findByDrinkId(DrinkId);
+		return result;
+	}
+
+	
+	/**
+	 * These calculations derived from: 
+	 * https://www.teamdui.com/bac-widmarks-formula/
+	 */
 	public long calculateBAC(@PathVariable("username") User username) {
 		double height = username.getHeight();
 		double weight = username.getWeight();
 		int gender = username.getGender();
+		double legalBAClimit = 0.08; //0.08%
+		
 		double ratio = 0.0;
 
 		if (gender == 1) { // constant ratio for women
@@ -89,17 +100,30 @@ public class DrinkController {
 		double temp = 0.0;
 
 		String drinkList = username.getDrinks(); // all of the user's drinks
-		String[] drinkArr; 
+		String[] drinkArr;
+		ArrayList<Drink> x = new ArrayList<Drink>();
+
+		drinkArr = drinkList.split(" "); //split it into an array
+
+		for (int i = 0; i < drinkArr.length; i++) {
+			Drink r = findDrinkbyID(drinkArr[i]);
+
+			if (!r.equals(null)) { //if it's a valid drink
+				x.add(r);
+			}
+
+		}
+
+		long resultTemp = 0; 
 		
-		drinkArr = drinkList.split(" ");
-		
-		
-		for(int i = 0; i < drinkArr.length; i++) {
+		for(int r = 0; r < x.size(); r++) {
+			resultTemp += (0.08 -  ((x.get(r).getVolume() * 5.14) / username.getWeight() * ratio)) / (-0.015);
 			
 		}
 		
 		
-		return 0;
+
+		return resultTemp;
 	}
 
 }
