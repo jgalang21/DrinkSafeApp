@@ -2,26 +2,20 @@ package com.example.drinksafe;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.drinksafe.app.AppController;
-import com.example.drinksafe.net_utils.Const;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 //import static com.example.drinksafe.net_utils.Const.URL_ADDUSER_INFO;
 import static com.example.drinksafe.net_utils.Const.URL_USER_INFO;
@@ -29,11 +23,11 @@ import static com.example.drinksafe.net_utils.Const.URL_USER_INFO;
 public class SignUp extends AppCompatActivity {
 
     private EditText email, password, weight, heightIn, heightFt;
-    private Switch maleSw, femSw;
+    private Switch sexSw;
     private Button signUp;
     private ProgressDialog pDialog;
     private String TAG = SignIn.class.getSimpleName();
-    private int height;
+    private int height, sex;
     private String tempURL;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +38,7 @@ public class SignUp extends AppCompatActivity {
         weight = (EditText) findViewById(R.id.userWeight);
         heightIn = (EditText) findViewById(R.id.height_in);
         heightFt = (EditText) findViewById(R.id.height_ft);
-        maleSw = (Switch) findViewById(R.id.maleSex);
-        femSw = (Switch) findViewById(R.id.femSex);
+        sexSw = (Switch) findViewById(R.id.mfSwitch);
         signUp = (Button) findViewById(R.id.SignUpbtn);
 
         signUp.setOnClickListener(new View.OnClickListener() {
