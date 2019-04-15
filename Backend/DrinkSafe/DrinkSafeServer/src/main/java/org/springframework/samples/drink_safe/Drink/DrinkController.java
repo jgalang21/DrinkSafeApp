@@ -104,15 +104,20 @@ public class DrinkController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/drink/check/{User}")
-	public boolean isSober(@PathVariable("User") User username) {
-		
-		if(username.getUser_time().toModifyTime_finish() <= System.currentTimeMillis()) {
-			return false;
+	public boolean isSober(@PathVariable("User") String u) {
+		User username = userRepo.findByUsername(u);
+		if(username.getUser_time()!=null)
+		{
+			if(username.getUser_time().toModifyTime_finish() <= System.currentTimeMillis()) {
+				return true;
+			}
+			
+			else {
+				return false;
+			}
 		}
-		
-		else {
+		else
 			return true;
-		}
 		
 		
 		
