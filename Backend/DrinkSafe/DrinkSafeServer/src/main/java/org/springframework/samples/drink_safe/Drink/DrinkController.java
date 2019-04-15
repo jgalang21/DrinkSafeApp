@@ -102,6 +102,21 @@ public class DrinkController {
 		Drink result = drinkRepo.findByDrinkid(DrinkId);
 		return result;
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/drink/check/{User}")
+	public boolean isSober(@PathVariable("User") User username) {
+		
+		if(username.getUser_time().toModifyTime_finish() <= System.currentTimeMillis()) {
+			return false;
+		}
+		
+		else {
+			return true;
+		}
+		
+		
+		
+	}
 
 	
 	/**
