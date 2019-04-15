@@ -69,7 +69,7 @@ public class DrinkController {
 			userRepo.save(u);
 		} else {
 			double cBAC = u.getBAC() + calculateBAC(u,drink);
-			cBAC -= (0.015 * ((System.currentTimeMillis() - u.getUser_time().toModifyTime_finish()) / 3600000));
+			cBAC -= (0.015 * ((System.currentTimeMillis() - u.getUser_time().toModifyTime_start()) / 3600000));
 			if(cBAC<0.08)
 			{
 				u.getUser_time().setTime_start(System.currentTimeMillis());
