@@ -19,88 +19,95 @@ import org.hibernate.annotations.NotFoundAction;
 import org.springframework.samples.drink_safe.Drink.Drink;
 import org.springframework.samples.drink_safe.time.time;
 
-@Entity // the @Entity annotation tells the complier that this is a Database mapped object
-@Table(name = "user") // this tells the complier that this class is mapped to the table called "user" in the database
-public class User{
+/**
+ * The user class that encompasses most of our app's functionality
+ * 
+ * @author Jeremy and Nick
+ *
+ */
+@Entity // the @Entity annotation tells the complier that this is a Database mapped
+		// object
+@Table(name = "user") // this tells the complier that this class is mapped to the table called "user"
+						// in the database
+public class User {
 	@Id
-    @Column(name = "username")
-    @NotFound(action = NotFoundAction.IGNORE)
+	@Column(name = "username")
+	@NotFound(action = NotFoundAction.IGNORE)
 	private String username;
-	
-    @Column(name = "name")
-    @NotFound(action = NotFoundAction.IGNORE)
+
+	@Column(name = "name")
+	@NotFound(action = NotFoundAction.IGNORE)
 	private String name;
-	
-    @Column(name = "password")
-    @NotFound(action = NotFoundAction.IGNORE)
+
+	@Column(name = "password")
+	@NotFound(action = NotFoundAction.IGNORE)
 	private String password;
-    
 
-    @Column(name = "height")
-    @NotFound(action = NotFoundAction.IGNORE)
+	@Column(name = "height")
+	@NotFound(action = NotFoundAction.IGNORE)
 	private int height;
-    
-    @Column(name = "weight")
-    @NotFound(action = NotFoundAction.IGNORE)
-	private int weight; 
-    
-    @Column(name = "gender")
-    @NotFound(action = NotFoundAction.IGNORE)
-	private int gender; 
-    
-    @Column(name = "guest_status")
-    @NotFound(action = NotFoundAction.IGNORE)
+
+	@Column(name = "weight")
+	@NotFound(action = NotFoundAction.IGNORE)
+	private int weight;
+
+	@Column(name = "gender")
+	@NotFound(action = NotFoundAction.IGNORE)
+	private int gender;
+
+	@Column(name = "guest_status")
+	@NotFound(action = NotFoundAction.IGNORE)
 	private int guestStatus;
-  
-    @ManyToMany
-    @JoinTable(name = "friend", 
-        joinColumns = @JoinColumn(name = "sentfrom"),
-    	inverseJoinColumns = @JoinColumn(name = "sentto"))
-    private Set<User> friends = new HashSet<User>();
-    @ManyToMany(mappedBy = "friends")
-    private Set<User> befriended = new HashSet<User>();
-    
-    @OneToMany(mappedBy = "fkuser", cascade = CascadeType.ALL)
-    private Set<Drink> drinks= new HashSet<Drink>();
-    
 
-    @OneToOne(cascade = { CascadeType.ALL })
-    @JoinTable(
-        name = "drink_time", 
-        joinColumns = { @JoinColumn(name = "dtusername") }, 
-        inverseJoinColumns = { @JoinColumn(name = "tid") }
-    )
-    time user_time; 
-    
-    @Column(name = "bac")
-    @NotFound(action = NotFoundAction.IGNORE)
-    private double BAC;
-    
+	@ManyToMany
+	@JoinTable(name = "friend", joinColumns = @JoinColumn(name = "sentfrom"), inverseJoinColumns = @JoinColumn(name = "sentto"))
+	private Set<User> friends = new HashSet<User>();
+	@ManyToMany(mappedBy = "friends")
+	private Set<User> befriended = new HashSet<User>();
 
-    
+	@OneToMany(mappedBy = "fkuser", cascade = CascadeType.ALL)
+	private Set<Drink> drinks = new HashSet<Drink>();
 
-	public User(String username, String name, String password, int height, int weight,int gender, int guestStatus) {
+	@OneToOne(cascade = { CascadeType.ALL })
+	@JoinTable(name = "drink_time", joinColumns = { @JoinColumn(name = "dtusername") }, inverseJoinColumns = {
+			@JoinColumn(name = "tid") })
+	time user_time;
+
+	@Column(name = "bac")
+	@NotFound(action = NotFoundAction.IGNORE)
+	private double BAC;
+
+	/**
+	 * The user constructor class
+	 * 
+	 * @param username
+	 * @param name
+	 * @param password
+	 * @param height
+	 * @param weight
+	 * @param gender
+	 * @param guestStatus
+	 */
+	public User(String username, String name, String password, int height, int weight, int gender, int guestStatus) {
 		this.username = username;
 		this.name = name;
 		this.password = password;
-		this.height=height;
-		this.weight=weight;
-		this.gender=gender;
-		this.guestStatus=guestStatus;
-		this.BAC=0;
-		
-		
+		this.height = height;
+		this.weight = weight;
+		this.gender = gender;
+		this.guestStatus = guestStatus;
+		this.BAC = 0;
+
 	}
-	public User()
-	{}
+
+	public User() {
+	}
 
 	public static void create(User newUser) {
-		
+
 	}
-	
-	//deleted the check friends in user since that is already in friends 
-	
-	
+
+	// getters and setters for user, password, gender, etc
 	public String getUsername() {
 		return username;
 	}
@@ -132,7 +139,7 @@ public class User{
 	public void setWeight(int weight) {
 		this.weight = weight;
 	}
-	
+
 	public int getGender() {
 		return gender;
 	}
@@ -148,74 +155,127 @@ public class User{
 	public void setGuestStatus(int guest_status) {
 		this.guestStatus = guest_status;
 	}
+
 	public void setGender(int gender) {
 		this.gender = gender;
 	}
+
+	/**
+	 * 
+	 * @return a list of all the user's friends as a string
+	 */
 	public String getFriends() {
-		String returner ="";
-		for(User u: friends)
-			returner+=u.getUsername() + " ";
+		String returner = "";
+		for (User u : friends)
+			returner += u.getUsername() + " ";
 		return returner;
-			
+
 	}
+
+	/**
+	 * 
+	 * @param friends - a list of friends to modify
+	 */
 	public void setFriends(Set<User> friends) {
 		this.friends = friends;
 	}
-	public Set<User> toModifyFriends()
-	{
+
+	/**
+	 * @return friends - a modifiable set of friends
+	 */
+	public Set<User> toModifyFriends() {
 		return friends;
 	}
+
+	/**
+	 * @return get's a list of friends
+	 */
 	public String getBefriended() {
-		String returner ="";
-		for(User u: befriended)
-			returner+=u.getUsername() + " ";
+		String returner = "";
+		for (User u : befriended)
+			returner += u.getUsername() + " ";
 		return returner;
 	}
+
+	/**
+	 * @return sets a list of friends
+	 */
 	public void setBefriended(Set<User> befriended) {
 		this.befriended = befriended;
 	}
-	public Set<User> toModifyBefriended()
-	{
+
+	/**
+	 * 
+	 * @return a list of friends that can be modified
+	 */
+	public Set<User> toModifyBefriended() {
 		return befriended;
 	}
+
+	/**
+	 * @return the user's time
+	 */
 	public time getUser_time() {
 		return user_time;
 	}
+
+	/**
+	 * @param user_time - sets the user's time
+	 */
 	public void setUser_time(time user_time) {
 		this.user_time = user_time;
 	}
+
+	/**
+	 * @return returner - all the drinks as a string
+	 */
 	public String getDrinks() {
-		String returner ="";
-		for(Drink d: drinks)
-			returner+=d.getDrinkid()+ " ";
+		String returner = "";
+		for (Drink d : drinks)
+			returner += d.getDrinkid() + " ";
 		return returner;
 	}
-	public Set<Drink> toModifyDrinks()
-	{
+
+	public Set<Drink> toModifyDrinks() {
 		return drinks;
 	}
+
 	public void setDrinks(Set<Drink> drinks) {
 		this.drinks = drinks;
 	}
+
+	/**
+	 * Gives the user a drink
+	 * 
+	 * @param drink - the drink to give the user
+	 */
 	public void giveDrink(Drink drink) {
 		drinks.add(drink);
 		this.setGuestStatus(1);
 	}
+
+	/**
+	 * 
+	 * @return - the user's name
+	 */
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	/**
+	 * 
+	 * @return - the user's BAC
+	 */
 	public double getBAC() {
 		return BAC;
 	}
+
 	public void setBAC(double bAC) {
 		BAC = bAC;
 	}
-	
-
-	
-	
 
 }

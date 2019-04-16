@@ -1,8 +1,5 @@
 package org.springframework.samples.drink_safe.user;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,86 +10,130 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javassist.bytecode.Descriptor.Iterator;
-
+/**
+ * UserController class
+ * 
+ * This class interacts with the user's credentials in the database
+ * 
+ * @author Jeremy and Nick
+ *
+ */
 @RestController
-	public class UserController {
-	
-	//private final org.jboss.logging.Logger logger = LoggerFactory.logger(UserController.class);
+public class UserController {
+
 	private final Logger logger = LoggerFactory.getLogger(UserController.class);
-	
+
 	@Autowired
 	UserRepository userRepo;
-	
+
 	@Autowired
 	friendRepository friendRepo;
-	
-	
-	public UserController(){}
 
-	@RequestMapping(method = RequestMethod.GET, path= "/users/new/{username}/{name}/{password}/{height}/{weight}/{gender}/{guestStatus}")
-	public void saveUser(@PathVariable("username") String username,@PathVariable("name") String name,@PathVariable("password") String password,@PathVariable("height") int height,@PathVariable("weight") int weight,@PathVariable("gender") int gender, @PathVariable("guestStatus") int guestStatus)
-	{
-		User user = new User(username,name,password,height,weight,gender,guestStatus);
+	public UserController() {
+	}
+
+	/**
+	 * Save the user into the database
+	 * 
+	 * @param username    - the user's name as an email
+	 * @param name        - the actual name of the user
+	 * @param password    - the user's password
+	 * @param height      - the height of the user
+	 * @param weight      - the weight of the user
+	 * @param gender      - the user's gender, 0 = male, 1 = female
+	 * @param guestStatus - whether the user is drunk or not
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/users/new/{username}/{name}/{password}/{height}/{weight}/{gender}/{guestStatus}")
+	public void saveUser(@PathVariable("username") String username, @PathVariable("name") String name,
+			@PathVariable("password") String password, @PathVariable("height") int height,
+			@PathVariable("weight") int weight, @PathVariable("gender") int gender,
+			@PathVariable("guestStatus") int guestStatus) {
+		User user = new User(username, name, password, height, weight, gender, guestStatus);
 		userRepo.save(user);
 		logger.info("saving new user: " + user.getUsername());
 	}
-	
-	@RequestMapping(method = RequestMethod.GET, path= "/users")
-	public List<User> returnAllUsers(){
-		logger.info("Displaying all users");
-        List<User> results = (List<User>) userRepo.findAll();
-        logger.info("Number of users:"  + results.size());
-        return results;
-		
-	}
-	
-	@RequestMapping(method = RequestMethod.GET, path="/users/find/id/{userId}")
-	public User findUserbyID(@PathVariable("userId") String id) {
-		logger.info("Finding user: "+id);
-        User results = userRepo.findByUsername(id);
-        return results;
-	}
-	
-	@RequestMapping(method = RequestMethod.GET, path="/users/find/gs/{guest_status}")
-	public List<User> findByGuest_Status(@PathVariable("guest_status") int guest_status) {
-		logger.info("Finding user: "+guest_status);
-        List<User> results = userRepo.findAllByGuestStatus(guest_status);
-        return results;
-	}
-	
 
-	
-	@RequestMapping(method = RequestMethod.GET, path="/users/friend/addFriends/{user1Id}/{user2Id}")
-	public void addFriends(@PathVariable("user1Id") String user1,@PathVariable("user2Id") String user2) {
+	/**
+	 * Returns a list of all the users in the database
+	 * 
+	 * @return results - a list of all the usernames in the database
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/users")
+	public List<User> returnAllUsers() {
+		logger.info("Displaying all users");
+		List<User> results = (List<User>) userRepo.findAll();
+		logger.info("Number of users:" + results.size());
+		return results;
+
+	}
+
+	/**
+	 * Finds a user in the database
+	 * 
+	 * @param id - the username
+	 * @return the user as an object
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/users/find/id/{userId}")
+	public User findUserbyID(@PathVariable("userId") String id) {
+		logger.info("Finding user: " + id);
+		User results = userRepo.findByUsername(id);
+		return results;
+	}
+
+	/**
+	 * Find a list of all the sober and drunk people
+	 * 
+	 * @param guest_status - whether we're looking for sober/drunk people
+	 * @return results - a list of all guests who are sober or drunk
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/users/find/gs/{guest_status}")
+	public List<User> findByGuest_Status(@PathVariable("guest_status") int guest_status) {
+		logger.info("Finding user: " + guest_status);
+		List<User> results = userRepo.findAllByGuestStatus(guest_status);
+		return results;
+	}
+
+	/**
+	 * Adding friend relation between 2 users
+	 * 
+	 * @param user1 - the first user
+	 * @param user2 - the second user
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/users/friend/addFriends/{user1Id}/{user2Id}")
+	public void addFriends(@PathVariable("user1Id") String user1, @PathVariable("user2Id") String user2) {
 		User u = userRepo.findByUsername(user1);
-		User u2 =userRepo.findByUsername(user2);
+		User u2 = userRepo.findByUsername(user2);
 		u.toModifyFriends().add(u2);
 		userRepo.save(u);
-		logger.info(u.getUsername()+ " has added " + u2.getUsername() + " as a friend");
+		logger.info(u.getUsername() + " has added " + u2.getUsername() + " as a friend");
 	}
-	
-	@RequestMapping(method = RequestMethod.GET, path="/users/edit/weight/{userId}/{weight}")
-	public void editWeight(@PathVariable("userId") String user,@PathVariable("weight") int newWeight)
-	{
+
+	/**
+	 * Edits the user's weight
+	 * 
+	 * @param user      - the user
+	 * @param newWeight - the modified weight
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/users/edit/weight/{userId}/{weight}")
+	public void editWeight(@PathVariable("userId") String user, @PathVariable("weight") int newWeight) {
 		User u = userRepo.findByUsername(user);
 		u.setWeight(newWeight);
 		userRepo.save(u);
-		logger.info(u.getUsername()+ " has changed weight to " + newWeight);
+		logger.info(u.getUsername() + " has changed weight to " + newWeight);
 	}
-	
-	@RequestMapping(method = RequestMethod.GET, path="/users/edit/height/{userId}/{height}")
-	public void editHeight(@PathVariable("userId") String user,@PathVariable("height") int newHeight)
-	{
+
+	/**
+	 * Edits the user's height
+	 * 
+	 * @param user      - the user
+	 * @param newHeight - the user's new height
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/users/edit/height/{userId}/{height}")
+	public void editHeight(@PathVariable("userId") String user, @PathVariable("height") int newHeight) {
 		User u = userRepo.findByUsername(user);
 		u.setHeight(newHeight);
 		userRepo.save(u);
-		logger.info(u.getUsername()+ " has changed weight to " + newHeight);
+		logger.info(u.getUsername() + " has changed weight to " + newHeight);
 	}
-	
 
-
-	
 }
-
-

@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
+/**
+ * Time controller class
+ * 
+ * @author Jeremy and Nick
+ *
+ */
 @RestController
 public class timeController {
 	private final Logger logger = LoggerFactory.getLogger(timeController.class);
@@ -17,6 +23,10 @@ public class timeController {
 	@Autowired
 	timeRepository timeRepo;
 	
+	/**
+	 * 
+	 * @return - all the user's times
+	 */
 	@RequestMapping(method = RequestMethod.GET, path ="/time")
 	public List<time> listAllTime(){
 		logger.info("listing user times");
