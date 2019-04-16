@@ -3,17 +3,19 @@ package org.springframework.samples.drink_safe.friend;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+/**
+ * The friend service class
+ * 
+ * @author Jeremy and Nick
+ *
+ */
 @Service
 public class friendService {
 	@Autowired
 	friendRepository friendRepo;
 
-	public friend create(friend new_rel) {
-		// validate model
-		// authenticate user, etc
-		friend.create(new_rel);
-		return new_rel;
-	}
+	
 
 	public Iterable<friend> getAll() {
       

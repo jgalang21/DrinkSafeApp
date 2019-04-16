@@ -13,7 +13,14 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.springframework.samples.drink_safe.user.User;
 
-@Entity // the @Entity annotation tells the complier that this is a Database mapped object
+
+/**
+ * The time class
+ * 
+ * @author Jeremy and Nick
+ *
+ */
+@Entity 
 @Table(name = "time")
 public class time {
 	
@@ -59,23 +66,32 @@ public class time {
 		this.tid = tid;
 	}
 
-
+	/**
+	 * @return the time in YYYY-MM-DD format
+	 */
 	public String getTime_start() {
 		SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");  
 		Date date = new Date(time_start);  
 		return (formatter.format(date));
 	}
 	
+
 	public long toModifyTime_start() {
 		return time_start;
 	}
 
-
+	/**
+	 * Modifiable time for drinking
+	 * @return time_start - the time the user starts drinking
+	 */
 	public void setTime_start(long time_start) {
 		this.time_start = time_start;
 	}
 
 
+	/**
+	 * @return The time until the user finishes
+	 */
 	public String getTime_finish() {
 		SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");  
 		Date date = new Date(time_finish);  
@@ -86,9 +102,13 @@ public class time {
 		return time_finish;
 	}
 
+	/**
+	 * @param Sets the time until the user finishes
+	 */
 	public void setTime_finish(long time_finish) {
 		this.time_finish = time_finish;
 	}
+	
 	public String getUser() {
 		return user.getUsername();
 	}

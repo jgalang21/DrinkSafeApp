@@ -5,6 +5,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+
+/**
+ * Controller that handles if the server crashes
+ * 
+ * @author Jeremy and Nick
+ *
+ */
 @RestController
 class CrashController {
 

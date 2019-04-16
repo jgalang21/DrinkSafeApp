@@ -15,6 +15,12 @@ import javax.websocket.server.ServerEndpoint;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+/**
+ * The websockets we've used in our application
+ * 
+ * @author Jeremy and Nick
+ *
+ */
 @ServerEndpoint("/websocket/{username}")
 @Component
 public class WebSocketServer {
@@ -26,6 +32,13 @@ public class WebSocketServer {
 
 	private static ArrayList<ArrayList<String>> groups = new ArrayList<ArrayList<String>>();
 
+	/**
+	 * When a user joins
+	 * 
+	 * @param session  - the client
+	 * @param username
+	 * @throws IOException
+	 */
 	@OnOpen
 	public void onOpen(Session session, @PathParam("username") String username) throws IOException {
 		logger.info("Entered into Open");
@@ -38,17 +51,21 @@ public class WebSocketServer {
 
 	}
 
+	/**
+	 * Messaging system between users
+	 * 
+	 * @param session
+	 * @param message
+	 * @throws IOException
+	 */
 	@OnMessage
 	public void onMessage(Session session, String message) throws IOException {
 
 		// Handle new messages
 		logger.info("Entered into Message: Got Message:" + message);
-		// User u = userRepo.findByUsername(sessionUsernameMap.get(session));
+	
 
 		String username = sessionUsernameMap.get(session);
-
-		// String temp = message.substring(0, 4); String x = message.substring(5,
-		// message.length()); //save the username in the message in case we're adding
 
 		if (message.startsWith("@")) // Direct message to a user using the format "@username <message>"
 		{
@@ -57,6 +74,8 @@ public class WebSocketServer {
 			sendMessageToPArticularUser(username, "[DM] " + username + ": " + message);
 		}
 
+		// lists all the available commands to the user
+
 		else if (message.equals("!help")) {
 			broadcast("List of commands: \n" + "---------------\n" + "GROUP COMMANDS\n" + "---------------\n"
 					+ "Create group: !group\n" + "List members: !get_members\n" + "Leave group: !leave\n"
@@ -64,13 +83,17 @@ public class WebSocketServer {
 
 		}
 
+		// create a new group
 		else if (message.equals("!group")) {
 			broadcast(username + " has started a group");
 			ArrayList<String> newGroup = new ArrayList<String>();
 			newGroup.add(username);
 			groups.add(newGroup);
 
-		} else if (message.equals("!get_members")) { // hasn't been tested
+		} 
+		
+		// list all the members
+		else if (message.equals("!get_members")) {
 			boolean did_leave = false;
 			int s = 0;
 			for (; s < groups.size(); s++) {
@@ -86,33 +109,45 @@ public class WebSocketServer {
 			if (!did_leave)
 				broadcast("No group");
 		} 
+		
+		// leave a group if someone's in one
 		else if (message.equals("!leave")) {
 			boolean did_leave = false;
 			for (int i = 0; i < groups.size(); i++) {
 				if (groups.get(i).contains(username)) {
 					groups.get(i).remove(username);
 					broadcast(username + " has left the group");
-					did_leave =true;
+					did_leave = true;
 				}
 			}
-			if(!did_leave)
+			if (!did_leave)
 				broadcast("No group to leave");
-		}
+		} 
+		
+		//add someone to the group
 		else if (message.length() > 5 && message.substring(0, 4).equals("!add")) { // add to the group
-				for (int i = 0; i < groups.size(); i++) {
-					if (groups.get(i).contains(username)) {
-						groups.get(i).add(message.substring(5, message.length()));
-					}
+			for (int i = 0; i < groups.size(); i++) {
+				if (groups.get(i).contains(username)) {
+					groups.get(i).add(message.substring(5, message.length()));
 				}
-				broadcast(username + " has added " + message.substring(5, message.length()));
-
 			}
+			broadcast(username + " has added " + message.substring(5, message.length()));
+
+		} 
+		
+		//otherwise it's just a regular message, and it will be sent to everyone
 		else {
 			broadcast(username + ": " + message);
 		}
 
 	}
 
+	/**
+	 * When a user disconnects from the chat, it tells everyone that they left
+	 * 
+	 * @param session
+	 * @throws IOException
+	 */
 	@OnClose
 	public void onClose(Session session) throws IOException {
 		String username = sessionUsernameMap.get(session);
@@ -125,13 +160,24 @@ public class WebSocketServer {
 		broadcast(message);
 	}
 
+	/**
+	 * Error handling
+	 * 
+	 * @param session
+	 * @param throwable
+	 */
 	@OnError
 	public void onError(Session session, Throwable throwable) {
-		// Do error handling here
+
 		logger.info("Entered into Error");
 	}
 
-	// sends message to specific client
+	/**
+	 * Sends a message to a particular user
+	 * 
+	 * @param username - the user to send a message to
+	 * @param message - the message to be sent
+	 */
 	private void sendMessageToPArticularUser(String username, String message) {
 		try {
 			usernameSessionMap.get(username).getBasicRemote().sendText(message);
@@ -141,10 +187,12 @@ public class WebSocketServer {
 		}
 	}
 
-	// sends a message to all clients connected to the server
-
-	// modify this so that we can broadcast if a user's time is 0, meaning that they
-	// are able to drive
+	/**
+	 * This handles all the messaging across clients
+	 * 
+	 * @param message
+	 * @throws IOException
+	 */
 	private static void broadcast(String message) throws IOException {
 		sessionUsernameMap.forEach((session, username) -> {
 			synchronized (session) {
