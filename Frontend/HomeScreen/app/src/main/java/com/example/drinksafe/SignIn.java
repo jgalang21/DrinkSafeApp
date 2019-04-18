@@ -225,27 +225,7 @@ public class SignIn extends AppCompatActivity {
 
 
     }
-    public String getUsername(String userName){
-        return userName;
-    }
-    public String getPassword(String password){
-        return password;
-    }
-    public JSONObject getResponse(String username, String password) throws JSONException {
-/*        JSONObject temp = new JSONObject(username);
-        JSONObject temp2 = new JSONObject(password);*/
-        makeJsonArrayReq();
-        return null;
-    }
-    public boolean tryLogin(String username, String password, SignIn loginHandler) throws JSONException {
 
-        //Does not work because .getResponse has not been implemented
-        if (loginHandler.getResponse(username, password).getBoolean("loginSuccess")) {
-            return true;
-        }
-
-        return false;
-    }
 
 
 }
