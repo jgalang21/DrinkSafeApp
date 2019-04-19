@@ -1,5 +1,9 @@
 package org.springframework.samples.drink_safe.time;
 
+import javax.transaction.Transactional;
+
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +16,14 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface timeRepository extends CrudRepository<time, Long> {
+
+	time findByTid(int k);
+	
+	
+	  @Modifying
+	  @Transactional
+	  @Query("delete from time t where t.tid = ?1")
+	  void deleteByTid(int tid);
 
 
 }

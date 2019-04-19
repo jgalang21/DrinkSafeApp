@@ -232,7 +232,7 @@ public class User {
 	public String getDrinks() {
 		String returner = "";
 		for (Drink d : drinks)
-			returner += d.getDrinkid() + " ";
+			returner += d.getDid() + " " + d.getDrinkid() + " ";
 		return returner;
 	}
 

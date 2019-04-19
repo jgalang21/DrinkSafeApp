@@ -1,9 +1,13 @@
 package org.springframework.samples.drink_safe.user;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.drink_safe.Drink.Drink;
 import org.springframework.samples.drink_safe.friend.friendRepository;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -133,7 +137,36 @@ public class UserController {
 		User u = userRepo.findByUsername(user);
 		u.setHeight(newHeight);
 		userRepo.save(u);
-		logger.info(u.getUsername() + " has changed weight to " + newHeight);
+		logger.info(u.getUsername() + " has changed height to " + newHeight);
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/users/edit/password/{userId}/{password}")
+	public void editPassword(@PathVariable("userId") String user, @PathVariable("password") String password) {
+		User u = userRepo.findByUsername(user);
+		u.setPassword(password);
+		userRepo.save(u);
+		logger.info(u.getUsername() + " has changed password to " + password);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/users/edit/name/{userId}/{name}")
+	public void editName(@PathVariable("userId") String user, @PathVariable("name") String name) {
+		User u = userRepo.findByUsername(user);
+		u.setName(name);
+		userRepo.save(u);
+		logger.info(u.getUsername() + " has changed name to " + name);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/users/list/drink/{userId}")
+	public List<Drink> listDrinks(@PathVariable("userId") String user) {
+		User u = userRepo.findByUsername(user);
+		Set<Drink> list_of_drink =  u.toModifyDrinks();
+		logger.info(u.getUsername() + " is listing all their drinks");
+		List<Drink> returner = new ArrayList<Drink>(); 
+	    for (Drink x : list_of_drink) 
+	      returner.add(x);
+		return returner;
+	}
+	
+	
 
 }
