@@ -45,41 +45,12 @@ public class DrinkController {
 		long x = System.nanoTime();
 		User u = userRepo.findByUsername(fkuser);
 		List<Drink> r = (List<Drink>) drinkRepo.findAll();
-		int did=0;
-		int i=0;
-		boolean maxDid=true;
-		for(;i<r.size();i++)
-		{
-			Drink d = drinkRepo.findByDid(i);
-			if(!r.contains(d))
-			{
-				did = i;
-				i=r.size();
-				maxDid=false;
-			}
-		}
-		if(maxDid)
-			did=r.size();
+		int did=r.size();
 		Drink drink = new Drink(did, DrinkId, alcPercent, volume, u);
 		drinkRepo.save(drink);
 		if (u.getUser_time() == null) {
 			List<time> s = (List<time>) timeRepo.findAll();
-			logger.info(s.size()+"");
-			int tid=0;
-			int k=0;
-			boolean maxTid=true;
-			for(;k<s.size();k++)
-			{
-				time t = timeRepo.findByTid(k);
-				if(!s.contains(t))
-				{
-					tid =k;
-					k=s.size();
-					maxTid=false;
-				}
-			}
-			if(maxTid)
-				tid=s.size();
+			int tid=s.size();
 			double cBAC = calculateBAC(u, drink);
 			time t;
 			if (cBAC < 0.08) {

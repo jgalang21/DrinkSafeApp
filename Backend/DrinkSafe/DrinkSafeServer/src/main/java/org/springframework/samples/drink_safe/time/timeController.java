@@ -54,6 +54,7 @@ public class timeController {
 	public void clearTime(@PathVariable("userId") String user){
 		User u = userRepo.findByUsername(user);
 		time t = timeRepo.findByTid(u.getUser_time().getTid());
+		logger.info("Tid: " + t.getTid());
 		drink_time dt = dtRepo.findByPerson(user);
 		dtRepo.delete(dt);
 		timeRepo.delete(t);
@@ -61,10 +62,9 @@ public class timeController {
 		drinkRepo.deleteAll(results);
 		u.setBAC(0);
 		u.setGuestStatus(0);
-		dtRepo.save(dt);
 		timeRepo.save(t);
-		drinkRepo.saveAll(results);
-		userRepo.save(u);
+		//dtRepo.save(dt);
+		//drinkRepo.saveAll(results);
 		String drink_list="";
 		for(Drink d: results)
 			drink_list +=d.getDid()+ " "+ d.getDrinkid();
