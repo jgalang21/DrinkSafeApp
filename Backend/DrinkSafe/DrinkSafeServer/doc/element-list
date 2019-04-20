@@ -1,0 +1,11 @@
+com.example.demo
+org.springframework.samples.drink_safe
+org.springframework.samples.drink_safe.calculations
+org.springframework.samples.drink_safe.Drink
+org.springframework.samples.drink_safe.drink_time
+org.springframework.samples.drink_safe.friend
+org.springframework.samples.drink_safe.system
+org.springframework.samples.drink_safe.tests
+org.springframework.samples.drink_safe.time
+org.springframework.samples.drink_safe.user
+org.springframework.samples.drink_safe.WebSocket

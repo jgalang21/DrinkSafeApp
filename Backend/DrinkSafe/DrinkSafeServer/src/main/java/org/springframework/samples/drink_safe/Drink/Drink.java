@@ -64,39 +64,85 @@ public class Drink {
 		this.fkuser = fkuser;
 	}
 
-	// the next few methods are just simply getters and setters
+	/**
+	 * Return the volume of the drink left
+	 * 
+	 * @return volume - the amount in ml
+	 */
 	public int getVolume() {
 		return volume;
 	}
 
+	
+	/**
+	 * Sets the volume of a drink object
+	 * 
+	 * @param volume - amount in ml
+	 */
 	public void setVolume(int volume) {
 		this.volume = volume;
 	}
 
+	
+	/**
+	 * 
+	 * @return the user that consumed the drink
+	 */
 	public String getFkuser() {
 		return fkuser.getUsername();
 	}
 
+	
+	/**
+	 * Sets the user that had the drink
+	 * 
+	 * @param the username
+	 */
 	public void setFkuser(User fkuser) {
 		this.fkuser = fkuser;
 	}
 
+	
+	/**
+	 * 
+	 * @return the name of the drink
+	 */
 	public String getDrinkid() {
 		return drinkid;
 	}
 
+	
+	/**
+	 * 
+	 * Sets the name of the drink
+	 * @param drinkid - the name of the drink
+	 */
 	public void setDrinkid(String drinkid) {
 		this.drinkid = drinkid;
 	}
 
+	
+	/**
+	 * @return the drink's alcohol percentage
+	 */
 	public int getAlcpercent() {
 		return alcpercent;
 	}
 
+	
+	/**
+	 * Sets the drink's alcohol percentage
+	 * 
+	 * @param alcpercent - percent of alcohol contained in the drink
+	 */
 	public void setAlcpercent(int alcpercent) {
 		this.alcpercent = alcpercent;
 	}
 
+	
+	/**
+	 * Returns the contents of the drink
+	 */
 	public String toString() {
 		String returner = "";
 		returner += "Drink = " + getDrinkid();
@@ -106,10 +152,18 @@ public class Drink {
 		return returner;
 	}
 
+	/**
+	 * @return The drink's ID number as an integer
+	 */
 	public int getDid() {
 		return did;
 	}
 
+	
+	/**
+	 * Sets the drink ID's number
+	 * @param did - the ID we're looking for
+	 */
 	public void setDid(int did) {
 		this.did = did;
 	}

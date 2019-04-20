@@ -140,6 +140,11 @@ public class UserController {
 		logger.info(u.getUsername() + " has changed height to " + newHeight);
 	}
 	
+	/**
+	 * Edit the user's password
+	 * @param user - the user
+	 * @param password - the user's password
+	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/users/edit/password/{userId}/{password}")
 	public void editPassword(@PathVariable("userId") String user, @PathVariable("password") String password) {
 		User u = userRepo.findByUsername(user);
@@ -148,6 +153,12 @@ public class UserController {
 		logger.info(u.getUsername() + " has changed password to " + password);
 	}
 	
+	/**
+	 * Edit the user's first name
+	 * 
+	 * @param user - the user
+	 * @param name - the user's first name
+	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/users/edit/name/{userId}/{name}")
 	public void editName(@PathVariable("userId") String user, @PathVariable("name") String name) {
 		User u = userRepo.findByUsername(user);
@@ -156,6 +167,13 @@ public class UserController {
 		logger.info(u.getUsername() + " has changed name to " + name);
 	}
 	
+	
+	/**
+	 * List all the user's drinks
+	 * 
+	 * @param user - the user
+	 * @return - a list of all the drinks the user had
+	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/users/list/drink/{userId}")
 	public List<Drink> listDrinks(@PathVariable("userId") String user) {
 		User u = userRepo.findByUsername(user);

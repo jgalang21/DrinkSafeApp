@@ -107,55 +107,103 @@ public class User {
 
 	}
 
-	// getters and setters for user, password, gender, etc
+	/**
+	 * 
+	 * @return - the person's registered username
+	 */
 	public String getUsername() {
 		return username;
 	}
 
+	/**
+	 * Set or change a person's username
+	 * @param username - the desired username
+	 */
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
+	/**
+	 * @return - the User's password as a string
+	 */
 	public String getPassword() {
 		return password;
 	}
 
+	/**
+	 * 
+	 * @param password - a User's password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	/**
+	 * 
+	 * @return height - the user's height
+	 */
 	public int getHeight() {
 		return height;
 	}
 
+	/**
+	 * Set the user's height
+	 * @param height - the user's height
+	 */
 	public void setHeight(int height) {
 		this.height = height;
 	}
 
+	/**
+	 * Gets the user's weight
+	 * @return weight - the user's weight as an integer
+	 */
 	public int getWeight() {
 		return weight;
 	}
 
+	/**
+	 * Sets the user's weight
+	 * @param weight- the user's weight as an integer
+	 */
 	public void setWeight(int weight) {
 		this.weight = weight;
 	}
 
+	/**
+	 * @return gender - the user's gender
+	 */
 	public int getGender() {
 		return gender;
 	}
 
+	/**
+	 * @param gender - the user's gender, 0 = male, 1 = female
+	 */
 	public void Gender(int gender) {
 		this.gender = gender;
 	}
 
+	/**
+	 * 
+	 * @return whether the user is sober or not, 0 = sober, 1 = not sober;
+	 */
 	public int getGuestStatus() {
 		return guestStatus;
 	}
 
+	/**
+	 * Sets if the user is sober or not
+	 * @param guest_status - boolean whether the user is sober or not
+	 */
 	public void setGuestStatus(int guest_status) {
 		this.guestStatus = guest_status;
 	}
 
+	/**
+	 * Sets the user's gender
+	 * @param gender - the gender of the user
+	 */
 	public void setGender(int gender) {
 		this.gender = gender;
 	}

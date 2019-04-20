@@ -36,22 +36,33 @@ public class friend {
 		sentto = u2;
 	}
 
-	public static void create(friend new_rel) {
-		// TODO Auto-generated method stub
-	}
-
+	/**
+	 * @return the user who sent the request
+	 */
 	public String getSentfrom() {
 		return sentfrom;
 	}
-
+	
+	
+	/**
+	 * Set the user who sends the request
+	 * @param sentfrom - a user
+	 */
 	public void setSentfrom(String sentfrom) {
 		this.sentfrom = sentfrom;
 	}
 
+	/**
+	 * @return - the person receiving the request
+	 */
 	public String getSentto() {
 		return sentto;
 	}
 
+	/**
+	 * Sets the user receiving the friend request
+	 * @param sentto - the username
+	 */
 	public void setSentto(String sentto) {
 		this.sentto = sentto;
 	}

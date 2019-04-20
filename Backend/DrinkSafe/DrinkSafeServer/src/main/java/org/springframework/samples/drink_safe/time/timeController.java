@@ -50,6 +50,11 @@ public class timeController {
 		List<time> r = (List<time>) timeRepo.findAll();
 		return r;
 	}
+	
+	/**
+	 * Clears the user's time
+	 * @param user - the user we want to clear
+	 */
 	@RequestMapping(method = RequestMethod.GET, path ="/time/clear/{userId}")
 	public void clearTime(@PathVariable("userId") String user){
 		User u = userRepo.findByUsername(user);
