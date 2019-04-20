@@ -183,8 +183,7 @@ public class SignIn extends AppCompatActivity {
                                     .get(i);
                             String passWd = person.getString("password");
                             String UserEmail = person.getString("username");
-                            //getPassword(passWd);
-                            //getUsername(UserEmail);
+
                             if ((Email.getText().toString().equals("Admin")) && (Password.getText().toString().equals("123Abc"))){
                                 ad = true;
                             }

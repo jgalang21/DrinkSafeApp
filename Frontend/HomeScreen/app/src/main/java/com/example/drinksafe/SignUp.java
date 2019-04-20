@@ -28,7 +28,7 @@ import static com.example.drinksafe.net_utils.Const.URL_USER_INFO;
 //GO TO PROFILESCREEN
 public class SignUp extends AppCompatActivity {
 
-    private EditText email, password, weight, heightIn, heightFt;
+    private EditText email, password, weight, heightIn, heightFt, name;
     private CheckBox sexF,sexM;
     private Button signUp;
     private ProgressDialog pDialog;
@@ -41,6 +41,7 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         email = (EditText) findViewById(R.id.userEmail);
+        name = (EditText) findViewById(R.id.name);
         password = (EditText) findViewById(R.id.UserPass);
         weight = (EditText) findViewById(R.id.userWeight);
         heightIn = (EditText) findViewById(R.id.height_in);
@@ -72,12 +73,12 @@ public class SignUp extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "please identify as only one sex", Toast.LENGTH_LONG).show();
                         mayProceed = false;
                     }
-                    tempURL = URL_USER_INFO;
-                    tempURL += "/new/" + email +"/";
-                    JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tempURL, null, null, null);
-                    AppController.getInstance().addToRequestQueue(req);
-                    System.err.println("makeJsonArrayReq");
-                    System.err.println("Finish validate");
+                    if(mayProceed) {
+                        tempURL = URL_USER_INFO;
+                        tempURL += "/new/" + email + "/"+name+"/"+password+"/"+height+"/"+weight+"/"+sex+"/"+0+"/";
+                        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tempURL, null, null, null);
+                        AppController.getInstance().addToRequestQueue(req);
+                    }
                 } catch (Exception e) {
                     System.err.println("Hard Fail");
                     System.err.println("FAILED: " + e);
