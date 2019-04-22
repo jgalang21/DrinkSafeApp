@@ -1,4 +1,9 @@
 package com.example.drinksafe;
+/**
+ * @author Jorden Lee
+ *
+ * Sign In is a security measure and a way for users to access their unique accounts
+ */
 
 import android.app.ProgressDialog;
 import android.content.Intent;

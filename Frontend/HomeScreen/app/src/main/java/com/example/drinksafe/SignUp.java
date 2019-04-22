@@ -1,4 +1,9 @@
 package com.example.drinksafe;
+/**
+ * @author Jorden Lee
+ *
+ * this page creates a user when a new user wants to make an account
+ */
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -25,6 +30,7 @@ import org.json.JSONArray;
 
 //import static com.example.drinksafe.net_utils.Const.URL_ADDUSER_INFO;
 import static com.example.drinksafe.net_utils.Const.URL_USER_INFO;
+
 //GO TO PROFILESCREEN
 public class SignUp extends AppCompatActivity {
 
@@ -56,7 +62,7 @@ public class SignUp extends AppCompatActivity {
         sexF = (CheckBox) findViewById(R.id.checkBoxF);
         signUp = (Button) findViewById(R.id.SignUpbtn);
         /**
-         * waits for a click confirmation to execute the code following 
+         * waits for a click confirmation to execute the code following
          */
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override

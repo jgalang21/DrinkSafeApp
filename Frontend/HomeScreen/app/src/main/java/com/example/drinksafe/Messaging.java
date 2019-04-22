@@ -1,4 +1,9 @@
 package com.example.drinksafe;
+/**
+ * @author Jorden Lee
+ *
+ * This page creates messaging capability within the app.
+ */
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,11 +20,7 @@ import org.java_websocket.handshake.ServerHandshake;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-/**
- * @author Jorden Lee
- *
- * This page creates messaging capability within the app.
- */
+
 public class Messaging extends AppCompatActivity {
 
     Button  b1,b2;
