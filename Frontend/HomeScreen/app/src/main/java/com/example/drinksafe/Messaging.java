@@ -15,6 +15,11 @@ import org.java_websocket.handshake.ServerHandshake;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/**
+ * @author Jorden Lee
+ *
+ * This page creates messaging capability within the app.
+ */
 public class Messaging extends AppCompatActivity {
 
     Button  b1,b2;
@@ -22,6 +27,11 @@ public class Messaging extends AppCompatActivity {
     TextView t1;
 
     private WebSocketClient cc;
+
+    /**
+     * Initiates all of the functionality specified when the page is created
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +57,10 @@ public class Messaging extends AppCompatActivity {
                 try {
                     Log.d("Socket:", "Trying socket");
                     cc = new WebSocketClient(new URI(w),(Draft) drafts[0]) {
+                        /**
+                         * prints the message the program receives on a text window
+                         * @param message
+                         */
                         @Override
                         public void onMessage(String message) {
                             Log.d("", "run() returned: " + message);

@@ -87,6 +87,14 @@ public class SignIn extends AppCompatActivity {
         pDialog.setCancelable(false);
     }
 
+    /**
+     * Helps validate the username and password comparing the inputted username and password with
+     * the server response
+     * @param uEmail
+     * @param userPass
+     * @param passWd
+     * @throws JSONException
+     */
     private void validate(String uEmail, String userPass, String passWd) throws JSONException {
         System.err.println("in Validate");
         if (passWd.equals(userPass)||ad == true) {
@@ -110,11 +118,17 @@ public class SignIn extends AppCompatActivity {
         }
     }
 
+    /**
+     * Shows a dialog box that has a spinning circle indicating that the user query is processing
+     */
     private void showProgressDialog() {
         if (!pDialog.isShowing())
             pDialog.show();
     }
 
+    /**
+     * hides the progress dialog box
+     */
     private void hideProgressDialog() {
         if (pDialog.isShowing())
             pDialog.hide();
@@ -168,6 +182,9 @@ public class SignIn extends AppCompatActivity {
 
     }
 
+    /**
+     * this method implements volley to talk to the server and get a response from the server
+     */
     private void makeJsonArrayReq() {
         showProgressDialog();
         System.err.println("TEEEESSSSSSSTTTTTTTT");

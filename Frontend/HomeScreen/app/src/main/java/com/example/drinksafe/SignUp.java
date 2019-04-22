@@ -36,6 +36,12 @@ public class SignUp extends AppCompatActivity {
     private int height, sex;
     private String tempURL;
     private boolean switchStatus, mayProceed = true;
+
+    /**
+     * Executes functionality of the sign up page when the page is created
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +55,9 @@ public class SignUp extends AppCompatActivity {
         sexM = (CheckBox) findViewById(R.id.checkBoxM);
         sexF = (CheckBox) findViewById(R.id.checkBoxF);
         signUp = (Button) findViewById(R.id.SignUpbtn);
-
+        /**
+         * waits for a click confirmation to execute the code following 
+         */
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,12 +81,17 @@ public class SignUp extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "please identify as only one sex", Toast.LENGTH_LONG).show();
                         mayProceed = false;
                     }
-                    if(mayProceed) {
+                    if(mayProceed&&email.getText() != null&&name.getText()!=null&&password.getText()!=null&&heightFt.getText()!=null&&heightIn.getText()!=null) {
                         tempURL = URL_USER_INFO;
                         tempURL += "/new/" + email + "/"+name+"/"+password+"/"+height+"/"+weight+"/"+sex+"/"+0+"/";
                         JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tempURL, null, null, null);
                         AppController.getInstance().addToRequestQueue(req);
+                        Intent intent = new Intent(SignUp.this, SignIn.class);
+                        startActivity(intent);
                     }
+                    else
+                        Toast.makeText(getApplicationContext(), "please fill out all information", Toast.LENGTH_LONG).show();
+
                 } catch (Exception e) {
                     System.err.println("Hard Fail");
                     System.err.println("FAILED: " + e);
@@ -89,42 +102,21 @@ public class SignUp extends AppCompatActivity {
         pDialog.setMessage("Loading...");
         pDialog.setCancelable(false);
     }
+
+    /**
+     * shows a dialog box with a spinning circle
+     */
         private void showProgressDialog() {
             if (!pDialog.isShowing())
                 pDialog.show();
         }
 
+    /**
+     * hides the progress dialog box
+     */
         private void hideProgressDialog() {
             if (pDialog.isShowing())
                 pDialog.hide();
-        }
-        private void makeJsonArrayReq() {
-            showProgressDialog();
-            System.err.println("TEEEESSSSSSSTTTTTTTT");
-            JsonArrayRequest req = new JsonArrayRequest(tempURL/*URL_USER_INFO*/,
-                    new Response.Listener<JSONArray>() {
-                        @Override
-                        public void onResponse(JSONArray response) {
-
-                            hideProgressDialog();
-                            if(mayProceed){
-                                Intent intent = new Intent(SignUp.this, SignIn.class);
-                                startActivity(intent);
-                            }
-
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    VolleyLog.d(TAG, "Error: " + error.getMessage());
-                    Log.d(TAG, error.getStackTrace() + "");
-                    Log.d(TAG, error.getLocalizedMessage() + "");
-                    hideProgressDialog();
-                }
-            });
-            System.err.println("before Request");
-            AppController.getInstance().addToRequestQueue(req);
-            System.err.println("Request to queue added");
         }
 
 }
