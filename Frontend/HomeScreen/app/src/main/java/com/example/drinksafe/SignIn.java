@@ -95,9 +95,9 @@ public class SignIn extends AppCompatActivity {
     /**
      * Helps validate the username and password comparing the inputted username and password with
      * the server response
-     * @param uEmail
-     * @param userPass
-     * @param passWd
+     * @param uEmail the user email stored in the database
+     * @param userPass the user password stored in the database
+     * @param passWd the password given by a user trying to access the app
      * @throws JSONException
      */
     private void validate(String uEmail, String userPass, String passWd) throws JSONException {
