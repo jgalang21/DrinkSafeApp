@@ -16,11 +16,21 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.example.drinksafe.net_utils.Const;
 import com.example.drinksafe.app.AppController;
 
-
+/**
+ * This class is for the Home Screen activity.  It is the main screen, used to access the other
+ * activities in the app.
+ * @author Philip Payne
+ */
 public class Home extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
 
+    /**
+     *  Creates the Home Screen activity and displays relevant info for the User, such as the timer,
+     *  last drink, and group member summary.  Also links the activity to the other activities in the app
+     *  using the navigation bar.
+     * @param savedInstanceState contains info for this activity if the activity was previously started, may be <code>null</code>
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,10 +93,6 @@ public class Home extends AppCompatActivity {
                                 i = new Intent(Home.this, Messaging.class);
                                 startActivity(i);
                                 break;
-                            case R.id.nav_map:
-                                i = new Intent(Home.this, Map.class);
-                                startActivity(i);
-                                break;
                             case R.id.nav_log_out:
                                 i = new Intent(Home.this, SignIn.class);
                                 startActivity(i);
@@ -112,7 +118,8 @@ public class Home extends AppCompatActivity {
         imgView.setImageUrl(Const.URL_Image, imageLoader);
     }
 
-    @Override
+
+    /*@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -120,5 +127,5 @@ public class Home extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }

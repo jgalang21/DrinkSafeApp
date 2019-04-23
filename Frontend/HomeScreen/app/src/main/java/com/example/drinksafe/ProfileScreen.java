@@ -32,7 +32,10 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.util.Hashtable;
 
-
+/**
+ * This class is for the Profile Screen activity
+ * @author Philip Payne
+ */
 public class ProfileScreen extends AppCompatActivity {
     private EditText name_box, weight_box, email_box;
     private Spinner gender_s, feet_s, inches_s;
@@ -44,6 +47,14 @@ public class ProfileScreen extends AppCompatActivity {
 
     private Hashtable<String, Boolean> changes;
 
+    /**
+     * This is the main method of this class, used to display the various text views, buttons, and
+     * spinners displayed on the screen.  It also calls the necessary methods to pull info from the server
+     * and update info on the server.  In this method, user clicks are also monitored.
+     * @param savedInstanceState contains info for this activity if the activity was previously started, may be <code>null</code>
+     * @see #getInfo()
+     * @see #updateServer(Hashtable)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -140,6 +151,11 @@ public class ProfileScreen extends AppCompatActivity {
         heightConv(this.height, this.height_arr, true);
     }
 
+    /**
+     *  Pulls a <code>JSONArray</code> from the database to find the current user's info. Using the
+     *  {@link #findUser(JSONArray) findUser} method, this method finds the current user and then updates
+     *  the text views on the screen with the {@link #update_text() update_text} method.
+     */
     private void getInfo() {
         /*JsonObjectRequest jsonObjRew = new JsonObjectRequest(Response.Method.GET, Const.URL_USER_INFO,
                 null, new Response.Listener<JSONObject>() {
@@ -208,6 +224,15 @@ public class ProfileScreen extends AppCompatActivity {
         }
     }
 
+    /**
+     *  This method searches through the <code>JSONArray</code> received in the
+     *   {@link #getInfo() getInfo} method to find a specific user. The method
+     *   iterates through the <code>JSONArray</code> to find a user based on the user name
+     *   stored upon login.
+     * @param response A <code>JSONArray</code> containing the users listed in the database
+     * @return returns a <code>JSONObject</code> of the current user
+     * @throws JSONException this exception is thrown if the user is not found in the <code>JSONArray</code>
+     */
     private JSONObject findUser(JSONArray response) throws JSONException {
         JSONObject person = null;
         for (int i = 0; i < response.length(); i++) {
@@ -224,6 +249,10 @@ public class ProfileScreen extends AppCompatActivity {
         }
     }
 
+    /**
+     * Updates the text views on the screen to show the current User's
+     * info pulled from the server.
+     */
     private void update_text(){
         name_box.setText(name);
         email_box.setText(email);
@@ -233,6 +262,12 @@ public class ProfileScreen extends AppCompatActivity {
         weight_box.setText(weight);
     }
 
+    /**
+     *  This method is used to scan for changes a user may have made on the profile screen.  It
+     *  stores the values in a Hashtable which is used in the {@link #updateServer(Hashtable) updateServer}
+     *  method. This method also checks to make sure that all text fields contain some value.
+     * @return returns true if any changes were found, false if otherwise or if any errors exist
+     */
     private boolean checkForChanges() {
         if(name_box.getText().toString().equals(null)) {
             Toast.makeText(getApplicationContext(), "Please enter a valid Name", Toast.LENGTH_SHORT).show();
@@ -271,6 +306,13 @@ public class ProfileScreen extends AppCompatActivity {
             return true;
     }
 
+    /**
+     * This method is used to change a user's info stored in the server database.  The method
+     * only updates the fields that have been marked as changed in the
+     * {@link #checkForChanges() checkForChanges} method.
+     * @param c a <code>Hashtable</code> used to store info on if the fields on the screen have been changed
+     * @return returns true if updates were successfully made to the server
+     */
     private boolean updateServer(Hashtable<String, Boolean> c){
         String tmpURL = Const.URL_USER_INFO + "/edit";
 
