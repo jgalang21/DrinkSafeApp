@@ -12,10 +12,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.android.volley.NetworkResponse;
-import com.android.volley.ParseError;
 import com.android.volley.Request;
-import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.drinksafe.app.AppController;
 import com.example.drinksafe.net_utils.Const;
@@ -29,7 +26,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Hashtable;
 
 /**
@@ -68,9 +64,9 @@ public class ProfileScreen extends AppCompatActivity {
         weight_box.setEnabled(false);
         email_box.setEnabled(false);
 
-        gender_s = (Spinner) findViewById(R.id.sex_spin);
-        feet_s = (Spinner) findViewById(R.id.feet_spin);
-        inches_s = (Spinner) findViewById(R.id.inches_spin);
+        gender_s = findViewById(R.id.sex_spin);
+        feet_s = findViewById(R.id.feet_spin);
+        inches_s = findViewById(R.id.inches_spin);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
@@ -332,67 +328,6 @@ public class ProfileScreen extends AppCompatActivity {
             // Adding request to request queue
             AppController.getInstance().addToRequestQueue(req);
         }
-                //new Response.Listener<JSONObject>() {
-        /*JsonArrayRequest req = new JsonArrayRequest(Const.URL_USER_INFO,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                    //@Override
-                    //public void onResponse(JSONObject response) {
-                        //Log.d(TAG, response.toString());
-
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG, "Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }){
-
-            @Override
-            protected Response<JSONArray> parseNetworkResponse(NetworkResponse response) {
-
-
-                try {
-                    String json = new String(
-                            response.data,
-                            "UTF-8"
-                    );
-
-                    if (json.length() == 0) {
-                        return Response.success(
-                                null,
-                                HttpHeaderParser.parseCacheHeaders(response)
-                        );
-                    }
-                    else {
-                        return super.parseNetworkResponse(response);
-                    }
-                }
-                catch (UnsupportedEncodingException e) {
-                    return Response.error(new ParseError(e));
-                }
-
-
-            }
-        };*/
-
-
-        /*Request<String> req = new Request<String>(Request.Method.GET, tmpURL, null) {
-            @Override
-            protected Response<String> parseNetworkResponse(NetworkResponse response) {
-                return null;
-            }
-
-            @Override
-            protected void deliverResponse(String response) {
-
-            }
-        };
-        req.setRequestQueue(AppController.getInstance().getRequestQueue());*/
         return true;
     }
 }
