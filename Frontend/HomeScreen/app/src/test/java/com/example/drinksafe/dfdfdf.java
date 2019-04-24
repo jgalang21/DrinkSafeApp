@@ -22,7 +22,7 @@ public class dfdfdf {
     public void signInTestSignUp(){
         //mock(SignIn.)
     }*/
-    @Test
+    /*@Test
     public void signInTestSuccess() throws JSONException {
         SignIn test = mock(SignIn.class);
         SignIn testLoginSuccess = new SignIn();
@@ -60,5 +60,5 @@ public class dfdfdf {
         when(test.getResponse(userInCorrect,passInCorrect)).thenReturn(response);
         System.out.println(response.getBoolean("loginSuccess3"));
         Assert.assertEquals(testLoginFail.tryLogin(userInCorrect,passInCorrect,test),response.getBoolean("loginSuccess3"));
-    }
+    }*/
 }

@@ -12,10 +12,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.android.volley.NetworkResponse;
-import com.android.volley.ParseError;
 import com.android.volley.Request;
-import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.drinksafe.app.AppController;
 import com.example.drinksafe.net_utils.Const;
@@ -29,7 +26,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Hashtable;
 
 /**
@@ -68,9 +64,9 @@ public class ProfileScreen extends AppCompatActivity {
         weight_box.setEnabled(false);
         email_box.setEnabled(false);
 
-        gender_s = (Spinner) findViewById(R.id.sex_spin);
-        feet_s = (Spinner) findViewById(R.id.feet_spin);
-        inches_s = (Spinner) findViewById(R.id.inches_spin);
+        gender_s = findViewById(R.id.sex_spin);
+        feet_s = findViewById(R.id.feet_spin);
+        inches_s = findViewById(R.id.inches_spin);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
@@ -363,7 +359,10 @@ public class ProfileScreen extends AppCompatActivity {
             // Adding request to request queue
             AppController.getInstance().addToRequestQueue(req);
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9e011f1292faedb45682d1a1b3be55ca9fe955bf
         return true;
     }
 }

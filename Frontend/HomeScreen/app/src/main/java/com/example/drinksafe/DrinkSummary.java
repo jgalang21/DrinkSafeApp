@@ -7,11 +7,11 @@ import android.os.Bundle;
  * @author Jorden Lee
  * @author Philip Payne
  */
-public class Drinks extends AppCompatActivity {
+public class DrinkSummary extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_drinks);
+        setContentView(R.layout.activity_drinks_summary);
     }
 }

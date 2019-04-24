@@ -1,5 +1,6 @@
 package com.example.drinksafe;
 
+import android.os.CountDownTimer;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -10,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.content.Intent;
+import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
@@ -24,7 +26,7 @@ import com.example.drinksafe.app.AppController;
 public class Home extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
-
+    private TextView home_hours,home_mins;
     /**
      *  Creates the Home Screen activity and displays relevant info for the User, such as the timer,
      *  last drink, and group member summary.  Also links the activity to the other activities in the app
@@ -81,8 +83,8 @@ public class Home extends AppCompatActivity {
                                 i = new Intent(Home.this, ProfileScreen.class);
                                 startActivity(i);
                                 break;
-                            case R.id.nav_drinks:
-                                i = new Intent(Home.this, Drinks.class);
+                            case R.id.nav_drinks_summary:
+                                i = new Intent(Home.this, DrinkSummary.class);
                                 startActivity(i);
                                 break;
                             case R.id.nav_party:
@@ -116,10 +118,24 @@ public class Home extends AppCompatActivity {
         ImageLoader imageLoader = AppController.getInstance().getImageLoader();
         // If you are using NetworkImageView
         imgView.setImageUrl(Const.URL_Image, imageLoader);
+
+        home_hours = findViewById(R.id.timer_hrs_home);
+
+        new CountDownTimer(30000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                home_hours.setText("" + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+
+            }
+        }.start();
+
     }
 
 
-    /*@Override
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -127,5 +143,5 @@ public class Home extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 }
