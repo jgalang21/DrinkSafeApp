@@ -157,15 +157,46 @@ public class ProfileScreen extends AppCompatActivity {
      *  the text views on the screen with the {@link #update_text() update_text} method.
      */
     private void getInfo() {
-        /*JsonObjectRequest jsonObjRew = new JsonObjectRequest(Response.Method.GET, Const.URL_USER_INFO,
-                null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
+        String tmpURL = Const.URL_USER_INFO + "/users/find/id/" + Const.cur_user_name;
 
-            }
-        })*/
+        JsonObjectRequest req = new JsonObjectRequest
+                (Request.Method.GET, tmpURL, null, new Response.Listener<JSONObject>() {
 
-        JsonArrayRequest req = new JsonArrayRequest(Const.URL_USER_INFO,
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d(TAG, response.toString());
+
+                        try {
+                            // Parsing json array response
+                            // loop through each json object
+
+                            name = response.getString("name");
+                            email = response.getString("username");
+                            String h = response.getString("height");
+                            height = Integer.parseInt(h);
+                            weight = response.getString("weight");
+                            String g = response.getString("gender");
+                            gender = Integer.parseInt(g);
+                            heightConv(height, height_arr, true);
+                            update_text();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(),
+                                    "Error: " + e.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        VolleyLog.d(TAG, "Error: " + error.getMessage());
+                        Toast.makeText(getApplicationContext(),
+                                error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        /*JsonArrayRequest req = new JsonArrayRequest(Const.URL_USER_INFO,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -199,7 +230,7 @@ public class ProfileScreen extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(req);
 
@@ -332,67 +363,7 @@ public class ProfileScreen extends AppCompatActivity {
             // Adding request to request queue
             AppController.getInstance().addToRequestQueue(req);
         }
-                //new Response.Listener<JSONObject>() {
-        /*JsonArrayRequest req = new JsonArrayRequest(Const.URL_USER_INFO,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                    //@Override
-                    //public void onResponse(JSONObject response) {
-                        //Log.d(TAG, response.toString());
 
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG, "Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }){
-
-            @Override
-            protected Response<JSONArray> parseNetworkResponse(NetworkResponse response) {
-
-
-                try {
-                    String json = new String(
-                            response.data,
-                            "UTF-8"
-                    );
-
-                    if (json.length() == 0) {
-                        return Response.success(
-                                null,
-                                HttpHeaderParser.parseCacheHeaders(response)
-                        );
-                    }
-                    else {
-                        return super.parseNetworkResponse(response);
-                    }
-                }
-                catch (UnsupportedEncodingException e) {
-                    return Response.error(new ParseError(e));
-                }
-
-
-            }
-        };*/
-
-
-        /*Request<String> req = new Request<String>(Request.Method.GET, tmpURL, null) {
-            @Override
-            protected Response<String> parseNetworkResponse(NetworkResponse response) {
-                return null;
-            }
-
-            @Override
-            protected void deliverResponse(String response) {
-
-            }
-        };
-        req.setRequestQueue(AppController.getInstance().getRequestQueue());*/
         return true;
     }
 }
