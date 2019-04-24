@@ -20,6 +20,8 @@
     <string name="feet_t">ft</string>
     <string name="inch_t">in</string>
     <string name="lbs_t">lbs</string>
+    <string name="seconds_t">seconds</string>
+    <string name="drink_history_t">Drink History</string>
 
     <string-array name="sex_array">
         <item>Female</item>

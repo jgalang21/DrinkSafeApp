@@ -8,15 +8,25 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.content.Intent;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.drinksafe.net_utils.Const;
 import com.example.drinksafe.app.AppController;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * This class is for the Home Screen activity.  It is the main screen, used to access the other
@@ -27,6 +37,11 @@ public class Home extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private TextView home_hours,home_mins;
+    private long hours,mins;
+
+    private String time;
+
+    private static String TAG = Home.class.getSimpleName();
     /**
      *  Creates the Home Screen activity and displays relevant info for the User, such as the timer,
      *  last drink, and group member summary.  Also links the activity to the other activities in the app
@@ -120,11 +135,16 @@ public class Home extends AppCompatActivity {
         imgView.setImageUrl(Const.URL_Image, imageLoader);
 
         home_hours = findViewById(R.id.timer_hrs_home);
+        home_mins = findViewById(R.id.timer_mins_home);
 
-        new CountDownTimer(30000, 1000) {
+        new CountDownTimer(4500000, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                home_hours.setText("" + millisUntilFinished / 1000);
+                convertTime(millisUntilFinished);
+                String h = Long.toString(hours);
+                String m = Long.toString(mins);
+                home_hours.setText(h);
+                home_mins.setText(m);
             }
 
             public void onFinish() {
@@ -143,5 +163,45 @@ public class Home extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void getDrinkInfo() {
+        String tmpURL = Const.URL_USER_INFO + "/find/id/" + Const.cur_user_name;
+
+        JsonObjectRequest req = new JsonObjectRequest
+                (Request.Method.GET, tmpURL, null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d(TAG, response.toString());
+
+                        try {
+                            time = response.getString("user_time");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(),
+                                    "Error: " + e.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        VolleyLog.d(TAG, "Error: " + error.getMessage());
+                        Toast.makeText(getApplicationContext(),
+                                error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(req);
+
+
+    }
+
+    private void convertTime(long ms) {
+        long tmp = ms;
+        hours = tmp / 3600000;
+        tmp -= hours * 3600000;
+        mins = tmp / 60000;
     }
 }

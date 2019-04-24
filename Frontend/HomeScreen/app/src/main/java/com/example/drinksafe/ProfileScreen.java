@@ -20,7 +20,6 @@ import com.example.drinksafe.net_utils.Const;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonArrayRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -153,7 +152,7 @@ public class ProfileScreen extends AppCompatActivity {
      *  the text views on the screen with the {@link #update_text() update_text} method.
      */
     private void getInfo() {
-        String tmpURL = Const.URL_USER_INFO + "/users/find/id/" + Const.cur_user_name;
+        String tmpURL = Const.URL_USER_INFO + "/find/id/" + Const.cur_user_name;
 
         JsonObjectRequest req = new JsonObjectRequest
                 (Request.Method.GET, tmpURL, null, new Response.Listener<JSONObject>() {
@@ -163,9 +162,6 @@ public class ProfileScreen extends AppCompatActivity {
                         Log.d(TAG, response.toString());
 
                         try {
-                            // Parsing json array response
-                            // loop through each json object
-
                             name = response.getString("name");
                             email = response.getString("username");
                             String h = response.getString("height");
@@ -190,44 +186,7 @@ public class ProfileScreen extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),
                                 error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                });
-
-        /*JsonArrayRequest req = new JsonArrayRequest(Const.URL_USER_INFO,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Log.d(TAG, response.toString());
-
-                        try {
-                            // Parsing json array response
-                            // loop through each json object
-                            JSONObject person = findUser(response);
-
-                            name = person.getString("name");
-                            email = person.getString("username");
-                            String h = person.getString("height");
-                            height = Integer.parseInt(h);
-                            weight = person.getString("weight");
-                            String g = person.getString("gender");
-                            gender = Integer.parseInt(g);
-                            heightConv(height, height_arr, true);
-                            update_text();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(getApplicationContext(),
-                                    "Error: " + e.getMessage(),
-                                    Toast.LENGTH_LONG).show();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG, "Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });*/
-        // Adding request to request queue
+                });        // Adding request to request queue
         AppController.getInstance().addToRequestQueue(req);
 
 
@@ -359,10 +318,6 @@ public class ProfileScreen extends AppCompatActivity {
             // Adding request to request queue
             AppController.getInstance().addToRequestQueue(req);
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> 9e011f1292faedb45682d1a1b3be55ca9fe955bf
         return true;
     }
 }
