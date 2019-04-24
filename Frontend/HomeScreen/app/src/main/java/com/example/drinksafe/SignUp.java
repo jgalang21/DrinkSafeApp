@@ -87,7 +87,7 @@ public class SignUp extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "please identify as only one sex", Toast.LENGTH_LONG).show();
                         mayProceed = false;
                     }
-                    if(mayProceed&&email.getText() != null&&name.getText()!=null&&password.getText()!=null&&heightFt.getText()!=null&&heightIn.getText()!=null) {
+                    if(mayProceed&&email.getText() != null&&name.getText()!=null&&password.getText()!=null&&weight!= null&&heightFt.getText()!=null&&heightIn.getText()!=null) {
                         tempURL = URL_USER_INFO;
                         tempURL += "/new/" + email + "/"+name+"/"+password+"/"+height+"/"+weight+"/"+sex+"/"+0+"/";
                         JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tempURL, null, null, null);

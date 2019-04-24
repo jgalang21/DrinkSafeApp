@@ -13,7 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DrinkSummary"/>
+        <activity
+            android:name=".AddingDrink"
+            android:label="@string/title_activity_adding_drink"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".DrinkSummary" />
         <activity android:name=".Party" />
         <activity android:name=".ProfileScreen" />
         <activity android:name=".Messaging" />
