@@ -4,7 +4,11 @@
         <item
             android:id="@+id/nav_drinks_summary"
             android:icon="@drawable/ic_local_drink"
-            android:title="Drinks" />
+            android:title="Drink Summary" />
+        <item
+            android:id="@+id/nav_drink_add"
+            android:icon="@drawable/ic_local_drink"
+            android:title="Add Drink" />
         <item
             android:id="@+id/nav_party"
             android:icon="@drawable/ic_group"
