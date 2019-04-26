@@ -31,9 +31,10 @@ public class WebSocketServer {
 	private final org.slf4j.Logger logger = LoggerFactory.getLogger(WebSocketServer.class);
 
 	private static ArrayList<ArrayList<String>> groups = new ArrayList<ArrayList<String>>();
-
+//	private ArrayList<String> messageLog = new ArrayList<String>();
+	
 	/**
-	 * When a user joins
+	 * When a user joins the chat
 	 * 
 	 * @param session  - the client
 	 * @param username
@@ -140,8 +141,20 @@ public class WebSocketServer {
 			broadcast(username + ": " + message);
 		}
 
+		
+	//	messageLog.add(message);
+		
+		/*
+		 * for(int test = 0; test < messageLog.size(); test++) {
+		 * broadcast(messageLog.get(test)); }
+		 */
 	}
-
+	
+	/*
+	 * public String getMessage() {
+	 * 
+	 * return messageLog.get(messageLog.size()-1); }
+	 */
 	/**
 	 * When a user disconnects from the chat, it tells everyone that they left
 	 * 
