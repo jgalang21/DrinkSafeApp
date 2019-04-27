@@ -69,10 +69,8 @@ public class time {
 	/**
 	 * @return the time in YYYY-MM-DD format
 	 */
-	public String getTime_start() {
-		SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");  
-		Date date = new Date(time_start);  
-		return (formatter.format(date));
+	public long getTime_start() {
+		return time_start;
 	}
 	
 
@@ -92,10 +90,8 @@ public class time {
 	/**
 	 * @return The time until the user finishes
 	 */
-	public String getTime_finish() {
-		SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");  
-		Date date = new Date(time_finish);  
-		return (formatter.format(date));
+	public long getTime_finish() {
+		return time_finish;
 	}
 	public long toModifyTime_finish()
 	{
