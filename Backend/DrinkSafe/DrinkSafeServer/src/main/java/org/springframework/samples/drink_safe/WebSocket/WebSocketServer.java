@@ -13,6 +13,9 @@ import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.drink_safe.user.User;
+import org.springframework.samples.drink_safe.user.UserRepository;
 import org.springframework.stereotype.Component;
 
 /**
@@ -31,6 +34,8 @@ public class WebSocketServer {
 	private final org.slf4j.Logger logger = LoggerFactory.getLogger(WebSocketServer.class);
 
 	private static ArrayList<ArrayList<String>> groups = new ArrayList<ArrayList<String>>();
+	@Autowired
+	UserRepository userRepo;
 //	private ArrayList<String> messageLog = new ArrayList<String>();
 	
 	/**
@@ -46,7 +51,7 @@ public class WebSocketServer {
 
 		sessionUsernameMap.put(session, username);
 		usernameSessionMap.put(username, session);
-
+		//User u = userRepo.findByUsername(username);
 		String message = "User:" + username + " has Joined the Chat";
 		broadcast(message);
 
