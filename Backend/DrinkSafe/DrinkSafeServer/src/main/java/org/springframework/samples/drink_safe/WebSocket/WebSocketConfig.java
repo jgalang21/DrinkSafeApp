@@ -12,13 +12,13 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 @ConditionalOnWebApplication
 @Configuration 
 public class WebSocketConfig {
-@Bean
-public ServerEndpointExporter serverEndpointExporter() {
-	return new ServerEndpointExporter();
-}
+	@Bean
+	public ServerEndpointExporter serverEndpointExporter() {
+		return new ServerEndpointExporter();
+	}
 
-@Bean
-public CustomConfigurator customConfigurator() {
-	return new CustomConfigurator();
-}
+	@Bean
+	public CustomConfigurator customConfigurator() {
+		return new CustomConfigurator();
+	}
 }

@@ -24,7 +24,7 @@ import org.springframework.stereotype.Component;
  * @author Jeremy and Nick
  *
  */
-@ServerEndpoint("/websocket/{username}")
+@ServerEndpoint(value ="/websocket/{username}" , configurator = CustomConfigurator.class)
 @Component
 public class WebSocketServer {
 
@@ -32,11 +32,10 @@ public class WebSocketServer {
 	private static Map<Session, String> sessionUsernameMap = new HashMap<>();
 	private static Map<String, Session> usernameSessionMap = new HashMap<>();
 	private final org.slf4j.Logger logger = LoggerFactory.getLogger(WebSocketServer.class);
-
 	private static ArrayList<ArrayList<String>> groups = new ArrayList<ArrayList<String>>();
+//	private ArrayList<String> messageLog = new ArrayList<String>();
 	@Autowired
 	UserRepository userRepo;
-//	private ArrayList<String> messageLog = new ArrayList<String>();
 	
 	/**
 	 * When a user joins the chat
@@ -51,8 +50,9 @@ public class WebSocketServer {
 
 		sessionUsernameMap.put(session, username);
 		usernameSessionMap.put(username, session);
-		//User u = userRepo.findByUsername(username);
-		String message = "User:" + username + " has Joined the Chat";
+		
+		User u = userRepo.findByUsername(username);
+		String message = "User:" + u.getUsername() + " has Joined the Chat";
 		broadcast(message);
 
 	}
@@ -71,13 +71,13 @@ public class WebSocketServer {
 		logger.info("Entered into Message: Got Message:" + message);
 	
 
-		String username = sessionUsernameMap.get(session);
+		User u = userRepo.findByUsername(sessionUsernameMap.get(session));
 
 		if (message.startsWith("@")) // Direct message to a user using the format "@username <message>"
 		{
 			String destUsername = message.split(" ")[0].substring(1); // don't do this in your code!
-			sendMessageToPArticularUser(destUsername, "[DM] " + username + ": " + message);
-			sendMessageToPArticularUser(username, "[DM] " + username + ": " + message);
+			sendMessageToPArticularUser(destUsername, "[DM] " + u.getUsername() + ": " + message);
+			sendMessageToPArticularUser(u.getUsername(), "[DM] " + u.getUsername() + ": " + message);
 		}
 
 		// lists all the available commands to the user
@@ -88,12 +88,21 @@ public class WebSocketServer {
 					+ "Add member: !add [username]\n");
 
 		}
-
+		else if (message.equals("!time")) {
+			if(u.getUser_time()!=null)
+			{
+				broadcast(u.getUsername() + " is sober at " + u.getUser_time().getTime_finish());
+			}
+			else
+			{
+				broadcast(u.getUsername() + " is sober now");
+			}
+		}
 		// create a new group
 		else if (message.equals("!group")) {
-			broadcast(username + " has started a group");
+			broadcast(u.getUsername() + " has started a group");
 			ArrayList<String> newGroup = new ArrayList<String>();
-			newGroup.add(username);
+			newGroup.add(u.getUsername());
 			groups.add(newGroup);
 
 		} 
@@ -103,7 +112,7 @@ public class WebSocketServer {
 			boolean did_leave = false;
 			int s = 0;
 			for (; s < groups.size(); s++) {
-				if (groups.get(s).contains(username)) {
+				if (groups.get(s).contains(u.getUsername())) {
 					String broadcast_message = "";
 					for (int i = 0; i < groups.get(s).size(); i++)
 						broadcast_message += groups.get(s).get(i) + " ";
@@ -120,9 +129,9 @@ public class WebSocketServer {
 		else if (message.equals("!leave")) {
 			boolean did_leave = false;
 			for (int i = 0; i < groups.size(); i++) {
-				if (groups.get(i).contains(username)) {
-					groups.get(i).remove(username);
-					broadcast(username + " has left the group");
+				if (groups.get(i).contains(u.getUsername())) {
+					groups.get(i).remove(u.getUsername());
+					broadcast(u.getUsername() + " has left the group");
 					did_leave = true;
 				}
 			}
@@ -133,17 +142,17 @@ public class WebSocketServer {
 		//add someone to the group
 		else if (message.length() > 5 && message.substring(0, 4).equals("!add")) { // add to the group
 			for (int i = 0; i < groups.size(); i++) {
-				if (groups.get(i).contains(username)) {
+				if (groups.get(i).contains(u.getUsername())) {
 					groups.get(i).add(message.substring(5, message.length()));
 				}
 			}
-			broadcast(username + " has added " + message.substring(5, message.length()));
+			broadcast(u.getUsername() + " has added " + message.substring(5, message.length()));
 
 		} 
 		
 		//otherwise it's just a regular message, and it will be sent to everyone
 		else {
-			broadcast(username + ": " + message);
+			broadcast(u.getUsername() + ": " + message);
 		}
 
 		
