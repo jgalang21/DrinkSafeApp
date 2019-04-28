@@ -92,7 +92,7 @@ public class SignUp extends AppCompatActivity {
                     if(mayProceed&&email.getText() != null&&name.getText()!=null&&password.getText()!=null&&weight!= null&&heightFt.getText()!=null&&heightIn.getText()!=null) {
                         System.err.println("got there");
                         System.err.println(height);
-                        tempURL = URL_USER_INFO; //+"/new/jdlee@iastate.edu/Jorden/jdlee/79/180/0/0";
+                        tempURL = URL_USER_INFO;
                         tempURL += "/new/" + email.getText() + "/" + name.getText()+"/"+password.getText()+"/"+heightString+"/"+weight.getText()+"/"+sexString+"/0";
                         JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tempURL, null, null, null);
                         AppController.getInstance().addToRequestQueue(req);
