@@ -28,6 +28,8 @@ import com.example.drinksafe.app.AppController;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+
 /**
  * This class is for the Home Screen activity.  It is the main screen, used to access the other
  * activities in the app.
@@ -114,6 +116,10 @@ public class Home extends AppCompatActivity {
                                 i = new Intent(Home.this, SignIn.class);
                                 startActivity(i);
                                 break;
+                            case R.id.nav_drink_add:
+                                i = new Intent(Home.this, AddingDrink.class);
+                                startActivity(i);
+                                break;
                             default:
                                 return true;
                         }
@@ -136,11 +142,11 @@ public class Home extends AppCompatActivity {
 
         home_hours = findViewById(R.id.timer_hrs_home);
         home_mins = findViewById(R.id.timer_mins_home);
-
+        getDrinkInfo();
         new CountDownTimer(4500000, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                convertTime(millisUntilFinished);
+
                 String h = Long.toString(hours);
                 String m = Long.toString(mins);
                 home_hours.setText(h);
@@ -177,6 +183,8 @@ public class Home extends AppCompatActivity {
 
                         try {
                             time = response.getString("user_time");
+                            long tmp = Long.parseLong(time);
+                            convertTime(tmp);
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(),
