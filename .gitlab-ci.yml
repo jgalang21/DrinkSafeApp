@@ -26,7 +26,7 @@ maven-test:
   script:
     - cd Backend/DrinkSafe/DrinkSafeServer
     - mvn test
-  artifcats:
+  artifacts:
     paths:
         -Backend/DrinkSafe/DrinkSafeServer/target/*.jar
 
