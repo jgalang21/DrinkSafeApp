@@ -124,6 +124,7 @@ public class DrinkSummary extends AppCompatActivity {
                         try {
                             for (int i = 0; i < response.length(); i++) {
                                 drinkList.add((JSONObject) response.get(i));
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
