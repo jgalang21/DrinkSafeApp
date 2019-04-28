@@ -25,7 +25,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 
 /**
  * This class is for the Profile Screen activity
@@ -40,7 +40,8 @@ public class ProfileScreen extends AppCompatActivity {
 
     private static String TAG = ProfileScreen.class.getSimpleName();
 
-    private Hashtable<String, Boolean> changes;
+    private HashMap<String, Boolean> changes;
+
 
     /**
      * This is the main method of this class, used to display the various text views, buttons, and
@@ -48,7 +49,7 @@ public class ProfileScreen extends AppCompatActivity {
      * and update info on the server.  In this method, user clicks are also monitored.
      * @param savedInstanceState contains info for this activity if the activity was previously started, may be <code>null</code>
      * @see #getInfo()
-     * @see #updateServer(Hashtable)
+     * @see #updateServer(HashMap)
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,13 +100,14 @@ public class ProfileScreen extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        changes = new Hashtable<>();
+        changes = new HashMap<>();
         changes.put("name", false);
         changes.put("email", false);
         changes.put("gender", false);
-        changes.put("feet", false);
-        changes.put("inches", false);
+        //changes.put("feet", false);
+        //changes.put("inches", false);
         changes.put("weight", false);
+        changes.put("height", false);
         Log.d(TAG, changes.toString());
 
         final Button b = findViewById(R.id.save_edit_button);
@@ -125,25 +127,24 @@ public class ProfileScreen extends AppCompatActivity {
                     inches_s.setEnabled(true);
                     v.setTag(0);
                 } else {
-                    b.setText(R.string.edit_t);
-                    name_box.setEnabled(false);
-                    weight_box.setEnabled(false);
-                    email_box.setEnabled(false);
-                    gender_s.setEnabled(false);
-                    feet_s.setEnabled(false);
-                    inches_s.setEnabled(false);
-                    v.setTag(1);
-                    if(checkForChanges()) {
+                    if(checkForChanges(changes)) {
                         Log.d(TAG, "Working");
                         updateServer(changes);
+                        b.setText(R.string.edit_t);
+                        name_box.setEnabled(false);
+                        weight_box.setEnabled(false);
+                        email_box.setEnabled(false);
+                        gender_s.setEnabled(false);
+                        feet_s.setEnabled(false);
+                        inches_s.setEnabled(false);
+                        v.setTag(1);
                     }
-
                 }
             }
         });
 
         getInfo();
-        heightConv(this.height, this.height_arr, true);
+
     }
 
     /**
@@ -250,60 +251,80 @@ public class ProfileScreen extends AppCompatActivity {
 
     /**
      *  This method is used to scan for changes a user may have made on the profile screen.  It
-     *  stores the values in a Hashtable which is used in the {@link #updateServer(Hashtable) updateServer}
+     *  stores the values in a Hashtable which is used in the {@link #updateServer(HashMap) updateServer}
      *  method. This method also checks to make sure that all text fields contain some value.
      * @return returns true if any changes were found, false if otherwise or if any errors exist
      */
-    private boolean checkForChanges() {
-        if(name_box.getText().toString().equals(null)) {
-            Toast.makeText(getApplicationContext(), "Please enter a valid Name", Toast.LENGTH_SHORT).show();
-        } else if(email_box.getText().toString().equals(null)) {
-
-        } else if(weight_box.getText().toString().equals(null)) {
-
+    private boolean checkForChanges(HashMap<String, Boolean> c) {
+        if(name_box.getText().toString().matches("")) {
+            Toast.makeText(getApplicationContext(), "Please enter a valid name", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if(email_box.getText().toString().matches("")) {
+            Toast.makeText(getApplicationContext(), "Please enter a valid email", Toast.LENGTH_SHORT).show();
+        } else if(weight_box.getText().toString().matches("")) {
+            Toast.makeText(getApplicationContext(), "Please enter a valid weight", Toast.LENGTH_SHORT).show();
         }
 
         if(!name_box.getText().toString().equals(name)) {
-            changes.put("name", true);
+            c.put("name", true);
             name = name_box.getText().toString();
+        } else {
+            c.put("name", false);
         }
         if(!email_box.getText().toString().equals(email)) {
-            changes.put("email", true);
+            c.put("email", true);
             email = email_box.getText().toString();
+        } else {
+            c.put("email", false);
         }
         if(!weight_box.getText().toString().equals(weight)) {
             //Log.d(TAG, "Weight has changed");
-            changes.put("weight", true);
+            c.put("weight", true);
             weight = weight_box.getText().toString();
+        } else {
+            c.put("weight", false);
         }
-        if(Integer.parseInt((String) feet_s.getSelectedItem()) != height_arr[0]) {
-            changes.put("feet", true);
+        /*if(Integer.parseInt((String) feet_s.getSelectedItem()) != height_arr[0]) {
+            c.put("feet", true);
             height_arr[0] = Integer.parseInt((String) feet_s.getSelectedItem());
+        } else {
+            c.put("feet", false);
         }
         if(Integer.parseInt((String) inches_s.getSelectedItem()) != height_arr[1]) {
-            changes.put("inches", true);
+            c.put("inches", true);
             height_arr[1] = Integer.parseInt((String) inches_s.getSelectedItem());
-        }
+        } else {
+            c.put("inches", false);
+        }*/
         if(gender_s.getSelectedItemPosition() != gender) {
-            changes.put("gender", true);
+            c.put("gender", true);
             gender = Integer.parseInt((String) gender_s.getSelectedItem());
+        } else {
+            c.put("gender", false);
         }
+        if(!feet_s.getSelectedItem().equals(height_arr[0]) || !inches_s.getSelectedItem().equals(height_arr[1])) {
+            c.put("height", true);
+            heightConv(height, height_arr, false);
+        } else {
+            c.put("height", false);
+        }
+
         Log.d(TAG, changes.toString());
-            return true;
+        return true;
     }
 
     /**
      * This method is used to change a user's info stored in the server database.  The method
      * only updates the fields that have been marked as changed in the
-     * {@link #checkForChanges() checkForChanges} method.
+     * {@link #checkForChanges(HashMap<String, Boolean>) checkForChanges} method.
      * @param c a <code>Hashtable</code> used to store info on if the fields on the screen have been changed
      * @return returns true if updates were successfully made to the server
      */
-    private boolean updateServer(Hashtable<String, Boolean> c){
+    private boolean updateServer(HashMap<String, Boolean> c){
         String tmpURL = Const.URL_USER_INFO + "/edit";
 
         Log.d(TAG, changes.toString());
-        if(changes.get("height")) {
+        if(c.get("height").equals(true)) {
             Log.d(TAG, "Sending Height");
             tmpURL += "/height/" + Const.cur_user_name + "/" + height;
             JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
@@ -311,13 +332,37 @@ public class ProfileScreen extends AppCompatActivity {
             AppController.getInstance().addToRequestQueue(req);
         }
 
-        if(c.get("weight")) {
+        if(c.get("weight").equals(true)) {
             Log.d(TAG, "Sending Weight");
             tmpURL += "/weight/" + Const.cur_user_name + "/" + weight;
             JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
             // Adding request to request queue
             AppController.getInstance().addToRequestQueue(req);
         }
+
+        if(c.get("name").equals(true)) {
+            Log.d(TAG, "Sending name");
+            tmpURL += "/name/" + Const.cur_user_name + "/" + name;
+            JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(req);
+        }
+
+        /*if(c.get("email").equals(true)) {
+            Log.d(TAG, "Sending email");
+            tmpURL += "/weight/" + Const.cur_user_name + "/" + weight;
+            JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(req);
+        }*/
+
+        /*if(c.get("gender").equals(true)) {
+            Log.d(TAG, "Sending gender");
+            tmpURL += "/weight/" + Const.cur_user_name + "/" + weight;
+            JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(req);
+        }*/
         return true;
     }
 }
