@@ -1,10 +1,19 @@
 package org.springframework.samples.drink_safe.WebSocket;
 
 import java.io.IOException;
+import java.security.Timestamp;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
@@ -90,14 +99,21 @@ public class WebSocketServer {
 					+ "Create group: !group\n" + "List members: !get_members\n" + "Leave group: !leave\n"
 					+ "Add member: !add [username]\n" + "Check if members are sober: !check\n");
 
-		} else if (message.equals("!time")) { //check what time the user is able to drive
+		} else if (message.equals("!time")) { // check what time the user is able to drive
+			// u.getUser_time().getTime_finish()
 			if (u.getUser_time() != null) {
-				broadcast(u.getUsername() + " is sober at " + u.getUser_time().getTime_finish());
+
+				Date date = new Date(u.getUser_time().getTime_finish()-System.currentTimeMillis());
+				Format format = new SimpleDateFormat("HH:mm:ss");
+
+				broadcast(u.getUsername() + " is sober at " + format.format(date));
+			
+
 			} else {
 				broadcast(u.getUsername() + " is sober now");
 			}
 		}
-		
+
 		// create a new group
 		else if (message.equals("!group")) {
 			broadcast(u.getUsername() + " has started a group");
@@ -150,19 +166,19 @@ public class WebSocketServer {
 
 		}
 
-		//check which users are able to drive or not
+		// check which users are able to drive or not
 		else if (message.equals("!check")) {
-			
-			List<User> m = r.findByGuest_Status(0); //first find all the sober users
 
-			if (m.size() > 0) { //if there are users able to drive
+			List<User> m = r.findByGuest_Status(0); // first find all the sober users
+
+			if (m.size() > 0) { // if there are users able to drive
 				broadcast("Current users able to drive:");
 				for (int p = 0; p < m.size(); p++) {
 					broadcast(m.get(p).getUsername());
 				}
 			}
-			
-			else { //otherwise there shouldn't be anyone available
+
+			else { // otherwise there shouldn't be anyone available
 				broadcast("No one is able to drive.");
 			}
 
@@ -204,6 +220,7 @@ public class WebSocketServer {
 	public void onError(Session session, Throwable throwable) {
 
 		logger.info("Entered into Error");
+		// throwable.printStackTrace();
 	}
 
 	/**
