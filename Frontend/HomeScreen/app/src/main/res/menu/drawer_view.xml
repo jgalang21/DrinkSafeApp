@@ -22,6 +22,10 @@
             android:icon="@drawable/ic_person"
             android:title="Profile" />
         <item
+            android:id="@+id/nav_disclaimer"
+            android:icon="@drawable/ic_priority_high"
+            android:title="Disclaimer" />
+        <item
             android:id="@+id/nav_log_out"
             android:icon="@drawable/ic_first_page"
             android:title="Log Out" />
