@@ -89,8 +89,9 @@ public class UserController {
 	 * @param user - the user we're looking at
 	 * @return a set containing the user's friends
 	 */
-	@RequestMapping(method = RequestMethod.GET, path = "/users/friends/{username}")
-	public Set<User> returnFriends(@PathVariable("userId") User user){
+	@RequestMapping(method = RequestMethod.GET, path = "/users/friends/{userId}")
+	public Set<User> returnFriends(@PathVariable("userId") String r){
+		User user = userRepo.findByUsername(r);
 		logger.info("Getting Friends");
 		Set<User> friends = user.toModifyBefriended(); 
 		friends.addAll(user.toModifyFriends());
