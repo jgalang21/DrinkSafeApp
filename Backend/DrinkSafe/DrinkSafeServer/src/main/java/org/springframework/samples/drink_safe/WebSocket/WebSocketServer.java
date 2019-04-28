@@ -3,6 +3,7 @@ package org.springframework.samples.drink_safe.WebSocket;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
@@ -15,6 +16,7 @@ import javax.websocket.server.ServerEndpoint;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.drink_safe.user.User;
+import org.springframework.samples.drink_safe.user.UserController;
 import org.springframework.samples.drink_safe.user.UserRepository;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +26,7 @@ import org.springframework.stereotype.Component;
  * @author Jeremy and Nick
  *
  */
-@ServerEndpoint(value ="/websocket/{username}" , configurator = CustomConfigurator.class)
+@ServerEndpoint(value = "/websocket/{username}", configurator = CustomConfigurator.class)
 @Component
 public class WebSocketServer {
 
@@ -33,10 +35,13 @@ public class WebSocketServer {
 	private static Map<String, Session> usernameSessionMap = new HashMap<>();
 	private final org.slf4j.Logger logger = LoggerFactory.getLogger(WebSocketServer.class);
 	private static ArrayList<ArrayList<String>> groups = new ArrayList<ArrayList<String>>();
-//	private ArrayList<String> messageLog = new ArrayList<String>();
+
 	@Autowired
 	UserRepository userRepo;
-	
+
+	@Autowired
+	UserController r;
+
 	/**
 	 * When a user joins the chat
 	 * 
@@ -50,7 +55,7 @@ public class WebSocketServer {
 
 		sessionUsernameMap.put(session, username);
 		usernameSessionMap.put(username, session);
-		
+
 		User u = userRepo.findByUsername(username);
 		String message = "User:" + u.getUsername() + " has Joined the Chat";
 		broadcast(message);
@@ -69,7 +74,6 @@ public class WebSocketServer {
 
 		// Handle new messages
 		logger.info("Entered into Message: Got Message:" + message);
-	
 
 		User u = userRepo.findByUsername(sessionUsernameMap.get(session));
 
@@ -85,16 +89,12 @@ public class WebSocketServer {
 		else if (message.equals("!help")) {
 			broadcast("List of commands: \n" + "---------------\n" + "GROUP COMMANDS\n" + "---------------\n"
 					+ "Create group: !group\n" + "List members: !get_members\n" + "Leave group: !leave\n"
-					+ "Add member: !add [username]\n");
+					+ "Add member: !add [username]\n" + "Check if members are sober: !check\n");
 
-		}
-		else if (message.equals("!time")) {
-			if(u.getUser_time()!=null)
-			{
+		} else if (message.equals("!time")) { //check what time the user is able to drive
+			if (u.getUser_time() != null) {
 				broadcast(u.getUsername() + " is sober at " + u.getUser_time().getTime_finish());
-			}
-			else
-			{
+			} else {
 				broadcast(u.getUsername() + " is sober now");
 			}
 		}
@@ -105,8 +105,8 @@ public class WebSocketServer {
 			newGroup.add(u.getUsername());
 			groups.add(newGroup);
 
-		} 
-		
+		}
+
 		// list all the members
 		else if (message.equals("!get_members")) {
 			boolean did_leave = false;
@@ -123,8 +123,8 @@ public class WebSocketServer {
 			}
 			if (!did_leave)
 				broadcast("No group");
-		} 
-		
+		}
+
 		// leave a group if someone's in one
 		else if (message.equals("!leave")) {
 			boolean did_leave = false;
@@ -137,9 +137,9 @@ public class WebSocketServer {
 			}
 			if (!did_leave)
 				broadcast("No group to leave");
-		} 
-		
-		//add someone to the group
+		}
+
+		// add someone to the group
 		else if (message.length() > 5 && message.substring(0, 4).equals("!add")) { // add to the group
 			for (int i = 0; i < groups.size(); i++) {
 				if (groups.get(i).contains(u.getUsername())) {
@@ -148,27 +148,33 @@ public class WebSocketServer {
 			}
 			broadcast(u.getUsername() + " has added " + message.substring(5, message.length()));
 
-		} 
-		
-		//otherwise it's just a regular message, and it will be sent to everyone
-		else {
-			broadcast(u.getUsername() + ": " + message);
 		}
 
-		
-	//	messageLog.add(message);
-		
-		/*
-		 * for(int test = 0; test < messageLog.size(); test++) {
-		 * broadcast(messageLog.get(test)); }
-		 */
+		else if (message.equals("!check")) {
+			
+			List<User> m = r.findByGuest_Status(0); //first find all the sober users
+
+			if (m.size() > 0) { //if there are users able to drive
+				broadcast("Current users able to drive:");
+				for (int p = 0; p < m.size(); p++) {
+					broadcast(m.get(p).getUsername());
+				}
+			}
+			
+			else { //otherwise there shouldn't be anyone available
+				broadcast("No one is able to drive.");
+			}
+
+		}
+
+		// otherwise it's just a regular message, and it will be sent to everyone
+		else {
+			broadcast(u.getUsername() + ": " + message);
+
+		}
+
 	}
-	
-	/*
-	 * public String getMessage() {
-	 * 
-	 * return messageLog.get(messageLog.size()-1); }
-	 */
+
 	/**
 	 * When a user disconnects from the chat, it tells everyone that they left
 	 * 
@@ -203,7 +209,7 @@ public class WebSocketServer {
 	 * Sends a message to a particular user
 	 * 
 	 * @param username - the user to send a message to
-	 * @param message - the message to be sent
+	 * @param message  - the message to be sent
 	 */
 	private void sendMessageToPArticularUser(String username, String message) {
 		try {
