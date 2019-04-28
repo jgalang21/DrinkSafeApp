@@ -97,9 +97,13 @@ public class DrinkSummary extends AppCompatActivity {
                         Log.d(TAG, response.toString());
 
                         try {
-                            time = response.getString("user_time");
-                            long tmp = Long.parseLong(time);
-                            convertTime(tmp);
+                            time = response.getString("drink_time");
+                            if(time != null) {
+                                long tmp = Long.parseLong(time);
+                                convertTime(tmp);
+                            } else {
+                                convertTime(0);
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(),

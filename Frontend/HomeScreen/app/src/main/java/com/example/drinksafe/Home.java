@@ -20,11 +20,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.drinksafe.net_utils.Const;
 import com.example.drinksafe.app.AppController;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -175,20 +177,42 @@ public class Home extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private JSONObject findTime(JSONArray response) throws JSONException {
+        JSONObject person = null;
+        for (int i = 0; i < response.length(); i++) {
+            person = (JSONObject) response.get(i);
+            String tmp = person.getString("username");
+            if (tmp.equals(Const.cur_user_name)) {
+                break;
+            }
+        }
+        if(person == null) {
+            throw new JSONException("Could not find user");
+        } else {
+            return person;
+        }
+    }
+
     private void getDrinkInfo() {
         String tmpURL = Const.URL_USER_INFO + "/find/id/" + Const.cur_user_name;
 
-        JsonObjectRequest req = new JsonObjectRequest
-                (Request.Method.GET, tmpURL, null, new Response.Listener<JSONObject>() {
+        JsonArrayRequest req = new JsonArrayRequest
+                (tmpURL, new Response.Listener<JSONArray>() {
 
                     @Override
-                    public void onResponse(JSONObject response) {
+                    public void onResponse(JSONArray response) {
                         Log.d(TAG, response.toString());
 
                         try {
-                            time = response.getString("user_time");
-                            long tmp = Long.parseLong(time);
-                            convertTime(tmp);
+                            JSONObject tmp_time = findTime(response);
+                            time = tmp_time.getString("time_finish");
+                            Log.d(TAG, time);
+                            if(!time.equals("")) {
+                                long tmp = Long.parseLong(time);
+                                convertTime(tmp);
+                            } else {
+                                convertTime(0);
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(),
@@ -206,8 +230,6 @@ public class Home extends AppCompatActivity {
                     }
                 });        // Adding request to request queue
         AppController.getInstance().addToRequestQueue(req);
-
-
     }
 
     private void convertTime(long ms) {
