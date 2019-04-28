@@ -116,6 +116,13 @@ public class User {
 	}
 
 	/**
+	 * pls god yml work please
+	 * PLS YML PLSSSS
+	 * YMLLLLLLLLLLLLLLLLLLLLLl
+	 * I THINK I DID IT
+	 */
+	
+	/**
 	 * Set or change a person's username
 	 * @param username - the desired username
 	 */
