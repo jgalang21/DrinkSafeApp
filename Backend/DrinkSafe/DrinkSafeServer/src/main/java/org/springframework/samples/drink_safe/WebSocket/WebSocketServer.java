@@ -116,15 +116,6 @@ public class WebSocketServer {
 				}
 			}
 
-			// create a new group
-			else if (message.equals("!group")) {
-				broadcast(u.getUsername() + " has started a group");
-				ArrayList<String> newGroup = new ArrayList<String>();
-				newGroup.add(u.getUsername());
-				groups.add(newGroup);
-
-			}
-
 			// list all the members
 			else if (message.equals("!get_members")) {
 				boolean did_leave = false;
@@ -191,12 +182,21 @@ public class WebSocketServer {
 				broadcast(u.getUsername() + ": " + message);
 
 			}
-		}
-		else {
+		} else {
+
+			if (message.equals("!group")) {
+				broadcast(u.getUsername() + " has started a group");
+				ArrayList<String> newGroup = new ArrayList<String>();
+				newGroup.add(u.getUsername());
+				groups.add(newGroup);
+				group = true;
+
+			}
+
 			broadcast(u.getUsername() + ": " + message);
 
 		}
-		
+
 	}
 
 	/**
