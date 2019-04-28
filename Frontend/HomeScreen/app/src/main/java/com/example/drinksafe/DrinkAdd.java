@@ -1,4 +1,7 @@
 package com.example.drinksafe;
+/**
+ * @author Jorden Lee
+ */
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +16,10 @@ public class DrinkAdd extends AppCompatActivity {
     RadioGroup radioGroup32;
     RadioButton radioButton16;
     RadioButton radioButton32;
+    Button scSingle;
+    Button scDouble;
+    Button jdSingle;
+    Button jdDouble;
     Button vSingle;
     Button vDouble;
     Button wSingle;
@@ -31,6 +38,10 @@ public class DrinkAdd extends AppCompatActivity {
 
         radioGroup = findViewById(R.id.radioGroup16oz);
         radioGroup32 = findViewById(R.id.radioGroup32oz);
+        scSingle = findViewById(R.id.sgSingle);
+        scDouble = findViewById(R.id.sgDouble);
+        jdSingle = findViewById(R.id.jdSingle);
+        jdDouble = findViewById(R.id.jdDouble);
         vSingle = findViewById(R.id.vodkaSingle);
         vDouble = findViewById(R.id.vodkaDouble);
         wSingle = findViewById(R.id.whiskeySingle);

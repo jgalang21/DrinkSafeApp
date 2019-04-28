@@ -130,7 +130,7 @@
         android:text="Double"
         app:layout_constraintBottom_toTopOf="@+id/whiskeyDouble"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toEndOf="@+id/vodkaSingle" />
 
     <Button
@@ -144,7 +144,7 @@
         android:text="Double"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.367"
         app:layout_constraintStart_toEndOf="@+id/rumSingle"
         app:layout_constraintTop_toBottomOf="@+id/textView10"
         app:layout_constraintVertical_bias="0.485" />
@@ -153,7 +153,7 @@
         android:id="@+id/rumSingle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="44dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
         android:text="Single"
@@ -166,7 +166,7 @@
         android:id="@+id/vodkaSingle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="40dp"
         android:layout_marginBottom="16dp"
         android:text="Single"
         app:layout_constraintBottom_toTopOf="@+id/whiskeySingle"
@@ -176,35 +176,18 @@
         android:id="@+id/textView12"
         android:layout_width="77dp"
         android:layout_height="46dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
-        android:text="Tito's Vodka"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="16dp"
+        android:text="Vodka"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView11"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="117dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
-        android:text="Custom Drink"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView12"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.443" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="73dp"
         android:layout_height="48dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         android:text="Captain Morgan"
         android:textSize="18sp"
@@ -230,22 +213,22 @@
         android:id="@+id/textView11"
         android:layout_width="77dp"
         android:layout_height="50dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="24dp"
         android:text="Crown Royal"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView13"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10"
-        app:layout_constraintVertical_bias="0.97" />
+        app:layout_constraintVertical_bias="0.367" />
 
     <Button
         android:id="@+id/whiskeySingle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="20dp"
         android:text="Single"
         app:layout_constraintBottom_toTopOf="@+id/rumSingle"
         app:layout_constraintStart_toEndOf="@+id/textView11" />
@@ -256,11 +239,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="20dp"
         android:text="Double"
         app:layout_constraintBottom_toTopOf="@+id/rumDouble"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toEndOf="@+id/whiskeySingle" />
 
     <TextView
@@ -296,5 +279,55 @@
         app:layout_constraintStart_toEndOf="@+id/textView15"
         app:layout_constraintTop_toBottomOf="@+id/textView13"
         app:layout_constraintVertical_bias="0.087" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="73dp"
+        android:layout_height="46dp"
+        android:text="Jack Daniels"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="169dp" />
+
+    <Button
+        android:id="@+id/jdSingle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Single"
+        tools:layout_editor_absoluteX="138dp"
+        tools:layout_editor_absoluteY="167dp" />
+
+    <Button
+        android:id="@+id/jdDouble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Double"
+        tools:layout_editor_absoluteX="268dp"
+        tools:layout_editor_absoluteY="165dp" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="87dp"
+        android:layout_height="44dp"
+        android:text="Seagrams Gin"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="98dp" />
+
+    <Button
+        android:id="@+id/sgSingle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Single"
+        tools:layout_editor_absoluteX="138dp"
+        tools:layout_editor_absoluteY="98dp" />
+
+    <Button
+        android:id="@+id/sgDouble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Double"
+        tools:layout_editor_absoluteX="268dp"
+        tools:layout_editor_absoluteY="98dp" />
 
 </android.support.constraint.ConstraintLayout>
