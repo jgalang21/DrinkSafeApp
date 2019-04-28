@@ -85,7 +85,6 @@ public class WebSocketServer {
 		}
 
 		// lists all the available commands to the user
-
 		else if (message.equals("!help")) {
 			broadcast("List of commands: \n" + "---------------\n" + "GROUP COMMANDS\n" + "---------------\n"
 					+ "Create group: !group\n" + "List members: !get_members\n" + "Leave group: !leave\n"
@@ -98,6 +97,7 @@ public class WebSocketServer {
 				broadcast(u.getUsername() + " is sober now");
 			}
 		}
+		
 		// create a new group
 		else if (message.equals("!group")) {
 			broadcast(u.getUsername() + " has started a group");
@@ -150,6 +150,7 @@ public class WebSocketServer {
 
 		}
 
+		//check which users are able to drive or not
 		else if (message.equals("!check")) {
 			
 			List<User> m = r.findByGuest_Status(0); //first find all the sober users
