@@ -43,7 +43,7 @@ public class Home extends AppCompatActivity {
     private TextView home_hours,home_mins;
     private long hours,mins;
 
-    private String time;
+    private String time_f,time_s;
 
     private static String TAG = Home.class.getSimpleName();
     /**
@@ -123,7 +123,7 @@ public class Home extends AppCompatActivity {
                                 startActivity(i);
                                 break;
                             case R.id.nav_disclaimer:
-                                i = new Intent(Home.this, DrinkAdd.class);
+                                i = new Intent(Home.this, Disclaimer.class);
                                 startActivity(i);
                                 break;
                             default:
@@ -178,23 +178,23 @@ public class Home extends AppCompatActivity {
     }
 
     private JSONObject findTime(JSONArray response) throws JSONException {
-        JSONObject person = null;
+        JSONObject ti = null;
         for (int i = 0; i < response.length(); i++) {
-            person = (JSONObject) response.get(i);
-            String tmp = person.getString("username");
+            ti = (JSONObject) response.get(i);
+            String tmp = ti.getString("user");
             if (tmp.equals(Const.cur_user_name)) {
                 break;
             }
         }
-        if(person == null) {
-            throw new JSONException("Could not find user");
+        if(ti == null) {
+            throw new JSONException("Could not find time");
         } else {
-            return person;
+            return ti;
         }
     }
 
     private void getDrinkInfo() {
-        String tmpURL = Const.URL_USER_INFO + "/find/id/" + Const.cur_user_name;
+        String tmpURL = "http://cs309-bs-7.misc.iastate.edu:8080/time";
 
         JsonArrayRequest req = new JsonArrayRequest
                 (tmpURL, new Response.Listener<JSONArray>() {
@@ -205,16 +205,21 @@ public class Home extends AppCompatActivity {
 
                         try {
                             JSONObject tmp_time = findTime(response);
-                            time = tmp_time.getString("time_finish");
-                            Log.d(TAG, time);
-                            if(!time.equals("")) {
-                                long tmp = Long.parseLong(time);
+                            time_f = tmp_time.getString("time_finish");
+                            time_s = tmp_time.getString("time_start");
+                            Log.d(TAG, time_f);
+                            Log.d(TAG, time_s);
+                            if(!time_f.equals("") && !time_s.equals("")) {
+                                long tmp_s = Long.parseLong(time_s);
+                                long tmp_f = Long.parseLong(time_f);
+                                long tmp = tmp_f - tmp_s;
                                 convertTime(tmp);
                             } else {
                                 convertTime(0);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            VolleyLog.d(TAG, "Error: " + e.getMessage());
                             Toast.makeText(getApplicationContext(),
                                     "Error: " + e.getMessage(),
                                     Toast.LENGTH_LONG).show();
@@ -226,7 +231,7 @@ public class Home extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         VolleyLog.d(TAG, "Error: " + error.getMessage());
                         Toast.makeText(getApplicationContext(),
-                                error.getMessage(), Toast.LENGTH_SHORT).show();
+                                error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });        // Adding request to request queue
         AppController.getInstance().addToRequestQueue(req);
