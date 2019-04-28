@@ -28,7 +28,7 @@ maven-test:
     - mvn test
   artifacts:
     paths:
-        -Backend/DrinkSafe/DrinkSafeServer/target/*.jar
+        - Backend/DrinkSafe/DrinkSafeServer/target/*.jar
 
 # # Below stage builds, deploys and executes the jar as service.
 # # Make sure there is /target directory in your server, else script will fail, or use any other folder you like.
