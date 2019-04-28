@@ -10,7 +10,7 @@ stages:
 maven-build:
   stage: mavenbuild
   tags:
-    - tag_spring
+    - shell
    script:
     - cd Backend/DrinkSafe/DrinkSafeServer
     - mvn package -B
