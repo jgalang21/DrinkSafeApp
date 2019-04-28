@@ -103,7 +103,7 @@ public class WebSocketServer {
 			// u.getUser_time().getTime_finish()
 			if (u.getUser_time() != null) {
 
-				Date date = new Date(u.getUser_time().getTime_finish()-System.currentTimeMillis());
+				Date date = new Date(u.getUser_time().getTime_finish());
 				Format format = new SimpleDateFormat("HH:mm:ss");
 
 				broadcast(u.getUsername() + " is sober at " + format.format(date));
