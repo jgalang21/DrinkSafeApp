@@ -121,9 +121,15 @@ public class UserController {
 	public void addFriends(@PathVariable("user1Id") String user1, @PathVariable("user2Id") String user2) {
 		User u = userRepo.findByUsername(user1);
 		User u2 = userRepo.findByUsername(user2);
-		u.toModifyFriends().add(u2);
-		userRepo.save(u);
-		logger.info(u.getUsername() + " has added " + u2.getUsername() + " as a friend");
+		if(!u.toModifyFriends().contains(u2) && !u.toModifyBefriended().contains(u2)) {
+			u.toModifyFriends().add(u2);
+			userRepo.save(u);
+			logger.info(u.getUsername() + " has added " + u2.getUsername() + " as a friend");
+		}
+		else
+		{
+			logger.info("Already friends");
+		}
 	}
 
 	/**
