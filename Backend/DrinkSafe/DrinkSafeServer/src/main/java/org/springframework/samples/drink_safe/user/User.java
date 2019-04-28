@@ -114,13 +114,6 @@ public class User {
 	public String getUsername() {
 		return username;
 	}
-
-	/**
-	 * pls god yml work please
-	 * PLS YML PLSSSS
-	 * YMLLLLLLLLLLLLLLLLLLLLLl
-	 * I THINK I DID IT
-	 */
 	
 	/**
 	 * Set or change a person's username
