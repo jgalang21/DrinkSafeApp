@@ -192,6 +192,11 @@ public class WebSocketServer {
 
 			}
 		}
+		else {
+			broadcast(u.getUsername() + ": " + message);
+
+		}
+		
 	}
 
 	/**
