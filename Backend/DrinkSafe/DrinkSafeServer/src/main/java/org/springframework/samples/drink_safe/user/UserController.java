@@ -173,6 +173,14 @@ public class UserController {
 		logger.info(u.getUsername() + " has changed password to " + password);
 	}
 	
+	@RequestMapping(method = RequestMethod.GET, path = "/users/edit/gender/{userId}/{gender}")
+	public void editGender(@PathVariable("userId") String user, @PathVariable("gender") int gender) {
+		User u = userRepo.findByUsername(user);
+		u.setGender(gender);
+		userRepo.save(u);
+		logger.info(u.getUsername() + " has changed password to " + gender);
+	}
+	
 	/**
 	 * Edit the user's first name
 	 * 
