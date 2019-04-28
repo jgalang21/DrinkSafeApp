@@ -33,16 +33,16 @@ maven-test:
 # # Below stage builds, deploys and executes the jar as service.
 # # Make sure there is /target directory in your server, else script will fail, or use any other folder you like.
 # # If you are changing the folder, reflect the change in systemd-web-demo service too.
-# autoDeploy:
-  # stage: autodeploy
-  # tags:
-   # - tag_spring
-  # script:
-    # - cd Backend/DrinkSafe/DrinkSafeServer
-    # - mvn package
-    # -sudo mv target/*.jar /target/web-demo.jar
-    # -sudo systemctl stop system-web-demo
-    # -sudo systemctl start system-web-demo
+autoDeploy:
+  stage: autodeploy
+  tags:
+   - tag_spring
+  script:
+    - cd Backend/DrinkSafe/DrinkSafeServer
+    - mvn package
+    -sudo mv target/*.jar /target/web-demo.jar
+    -sudo systemctl stop system-web-demo
+    -sudo systemctl start system-web-demo
 
     
 # To build android projects
