@@ -117,7 +117,7 @@ public class Home extends AppCompatActivity {
                                 startActivity(i);
                                 break;
                             case R.id.nav_drink_add:
-                                i = new Intent(Home.this, AddingDrink.class);
+                                i = new Intent(Home.this, DrinkAdd.class);
                                 startActivity(i);
                                 break;
                             default:
