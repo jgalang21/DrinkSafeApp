@@ -10,10 +10,11 @@ stages:
 maven-build:
   stage: mavenbuild
   tags:
-    - tag_spring
-   script:
+    - shell
+  script:
     - cd Backend/DrinkSafe/DrinkSafeServer
     - mvn package -B
+
 
   
 # artifacts are created when job executes successfully, and can be manually downloaded from GitLab GUI.
