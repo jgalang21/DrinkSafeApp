@@ -80,110 +80,123 @@ public class WebSocketServer {
 
 		User u = userRepo.findByUsername(sessionUsernameMap.get(session));
 
-		if (message.startsWith("@")) // Direct message to a user using the format "@username <message>"
-		{
-			String destUsername = message.split(" ")[0].substring(1); // don't do this in your code!
-			sendMessageToPArticularUser(destUsername, "[DM] " + u.getUsername() + ": " + message);
-			sendMessageToPArticularUser(u.getUsername(), "[DM] " + u.getUsername() + ": " + message);
-		}
-
-		// lists all the available commands to the user
-		else if (message.equals("!help")) {
-			broadcast("List of commands: \n" + "---------------\n" + "GROUP COMMANDS\n" + "---------------\n"
-					+ "Create group: !group\n" + "List members: !get_members\n" + "Leave group: !leave\n"
-					+ "Add member: !add [username]\n" + "Check if members are sober: !check\n");
-
-		} else if (message.equals("!time")) { // check what time the user is able to drive
-			// u.getUser_time().getTime_finish()
-			if (u.getUser_time() != null) {
-
-				Date date = new Date(u.getUser_time().getTime_finish());
-				Format format = new SimpleDateFormat("HH:mm:ss");
-
-				broadcast(u.getUsername() + " is sober at " + format.format(date));
-			
-
-			} else {
-				broadcast(u.getUsername() + " is sober now");
+		boolean group = false;
+		for (int z = 0; z < groups.size(); z++) {
+			if (groups.get(z).contains(u.getUsername())) {
+				group = true;
 			}
-		}
-
-		// create a new group
-		else if (message.equals("!group")) {
-			broadcast(u.getUsername() + " has started a group");
-			ArrayList<String> newGroup = new ArrayList<String>();
-			newGroup.add(u.getUsername());
-			groups.add(newGroup);
 
 		}
 
-		// list all the members
-		else if (message.equals("!get_members")) {
-			boolean did_leave = false;
-			int s = 0;
-			for (; s < groups.size(); s++) {
-				if (groups.get(s).contains(u.getUsername())) {
-					String broadcast_message = "";
-					for (int i = 0; i < groups.get(s).size(); i++)
-						broadcast_message += groups.get(s).get(i) + " ";
-					broadcast(broadcast_message);
-					s = groups.size();
-					did_leave = true;
-				}
+		if (group == true) {
+			if (message.startsWith("@")) // Direct message to a user using the format "@username <message>"
+			{
+				String destUsername = message.split(" ")[0].substring(1); // don't do this in your code!
+				sendMessageToPArticularUser(destUsername, "[DM] " + u.getUsername() + ": " + message);
+				sendMessageToPArticularUser(u.getUsername(), "[DM] " + u.getUsername() + ": " + message);
 			}
-			if (!did_leave)
-				broadcast("No group");
-		}
 
-		// leave a group if someone's in one
-		else if (message.equals("!leave")) {
-			boolean did_leave = false;
-			for (int i = 0; i < groups.size(); i++) {
-				if (groups.get(i).contains(u.getUsername())) {
-					groups.get(i).remove(u.getUsername());
-					broadcast(u.getUsername() + " has left the group");
-					did_leave = true;
-				}
-			}
-			if (!did_leave)
-				broadcast("No group to leave");
-		}
+			// lists all the available commands to the user
+			else if (message.equals("!help")) {
+				broadcast("List of commands: \n" + "---------------\n" + "GROUP COMMANDS\n" + "---------------\n"
+						+ "Create group: !group\n" + "List members: !get_members\n" + "Leave group: !leave\n"
+						+ "Add member: !add [username]\n" + "Check if members are sober: !check\n");
 
-		// add someone to the group
-		else if (message.length() > 5 && message.substring(0, 4).equals("!add")) { // add to the group
-			for (int i = 0; i < groups.size(); i++) {
-				if (groups.get(i).contains(u.getUsername())) {
-					groups.get(i).add(message.substring(5, message.length()));
-				}
-			}
-			broadcast(u.getUsername() + " has added " + message.substring(5, message.length()));
+			} else if (message.equals("!time")) { // check what time the user is able to drive
+				// u.getUser_time().getTime_finish()
+				if (u.getUser_time() != null) {
 
-		}
+					Date date = new Date(u.getUser_time().getTime_finish());
+					Format format = new SimpleDateFormat("HH:mm:ss");
 
-		// check which users are able to drive or not
-		else if (message.equals("!check")) {
+					broadcast(u.getUsername() + " is sober at " + format.format(date));
 
-			List<User> m = r.findByGuest_Status(0); // first find all the sober users
-
-			if (m.size() > 0) { // if there are users able to drive
-				broadcast("Current users able to drive:");
-				for (int p = 0; p < m.size(); p++) {
-					broadcast(m.get(p).getUsername());
+				} else {
+					broadcast(u.getUsername() + " is sober now");
 				}
 			}
 
-			else { // otherwise there shouldn't be anyone available
-				broadcast("No one is able to drive.");
+			// create a new group
+			else if (message.equals("!group")) {
+				broadcast(u.getUsername() + " has started a group");
+				ArrayList<String> newGroup = new ArrayList<String>();
+				newGroup.add(u.getUsername());
+				groups.add(newGroup);
+
 			}
 
-		}
+			// list all the members
+			else if (message.equals("!get_members")) {
+				boolean did_leave = false;
+				int s = 0;
+				for (; s < groups.size(); s++) {
+					if (groups.get(s).contains(u.getUsername())) {
+						String broadcast_message = "";
+						for (int i = 0; i < groups.get(s).size(); i++)
+							broadcast_message += groups.get(s).get(i) + " ";
+						broadcast(broadcast_message);
+						s = groups.size();
+						did_leave = true;
+					}
+				}
+				if (!did_leave)
+					broadcast("No group");
+			}
 
-		// otherwise it's just a regular message, and it will be sent to everyone
+			// leave a group if someone's in one
+			else if (message.equals("!leave")) {
+				boolean did_leave = false;
+				for (int i = 0; i < groups.size(); i++) {
+					if (groups.get(i).contains(u.getUsername())) {
+						groups.get(i).remove(u.getUsername());
+						broadcast(u.getUsername() + " has left the group");
+						did_leave = true;
+					}
+				}
+				if (!did_leave)
+					broadcast("No group to leave");
+			}
+
+			// add someone to the group
+			else if (message.length() > 5 && message.substring(0, 4).equals("!add")) { // add to the group
+				for (int i = 0; i < groups.size(); i++) {
+					if (groups.get(i).contains(u.getUsername())) {
+						groups.get(i).add(message.substring(5, message.length()));
+					}
+				}
+				broadcast(u.getUsername() + " has added " + message.substring(5, message.length()));
+
+			}
+
+			// check which users are able to drive or not
+			else if (message.equals("!check")) {
+
+				List<User> m = r.findByGuest_Status(0); // first find all the sober users
+
+				if (m.size() > 0) { // if there are users able to drive
+					broadcast("Current users able to drive:");
+					for (int p = 0; p < m.size(); p++) {
+						broadcast(m.get(p).getUsername());
+					}
+				}
+
+				else { // otherwise there shouldn't be anyone available
+					broadcast("No one is able to drive.");
+				}
+
+			}
+
+			// otherwise it's just a regular message, and it will be sent to everyone
+			else {
+				broadcast(u.getUsername() + ": " + message);
+
+			}
+		}
 		else {
 			broadcast(u.getUsername() + ": " + message);
 
 		}
-
+		
 	}
 
 	/**

@@ -120,6 +120,10 @@ public class Home extends AppCompatActivity {
                                 i = new Intent(Home.this, DrinkAdd.class);
                                 startActivity(i);
                                 break;
+                            case R.id.nav_disclaimer:
+                                i = new Intent(Home.this, DrinkAdd.class);
+                                startActivity(i);
+                                break;
                             default:
                                 return true;
                         }
