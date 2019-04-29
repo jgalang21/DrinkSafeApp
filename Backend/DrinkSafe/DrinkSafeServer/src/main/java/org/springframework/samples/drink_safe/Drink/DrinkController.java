@@ -1,5 +1,6 @@
 package org.springframework.samples.drink_safe.Drink;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,7 +46,24 @@ public class DrinkController {
 		long x = System.nanoTime();
 		User u = userRepo.findByUsername(fkuser);
 		List<Drink> r = (List<Drink>) drinkRepo.findAll();
-		int did=r.size();
+		List<Integer> dids = new ArrayList<Integer>();
+		int did=0;
+		boolean full_size=true;
+		for(int i =0; i< r.size();i++)
+		{
+			dids.add(r.get(i).getDid());
+		}
+		for(int i=0;i<r.size();i++)
+		{
+			if(!(dids.contains(i)))
+			{
+				did=i;
+				i=r.size();
+				full_size=false;
+			}
+		}
+		if(full_size)
+			did=r.size();
 		Drink drink = new Drink(did, DrinkId, alcPercent, volume, u);
 		drinkRepo.save(drink);
 		if (u.getUser_time() == null) {
