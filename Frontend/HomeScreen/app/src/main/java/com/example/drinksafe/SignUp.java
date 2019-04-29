@@ -70,7 +70,7 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     height = ((Integer.parseInt(heightFt.getText().toString()) * 12) + Integer.parseInt(heightIn.getText().toString()));
-                    heightString += height;
+                    heightString = Integer.toString(height);
                     Boolean maleStatus = sexM.isChecked();
                     Boolean femaleStatus = sexF.isChecked();
                     if (maleStatus == false && femaleStatus == true){

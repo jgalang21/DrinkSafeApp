@@ -24,8 +24,8 @@
     <string name="drink_history_t">Drink History</string>
 
     <string-array name="sex_array">
-        <item>Female</item>
         <item>Male</item>
+        <item>Female</item>
     </string-array>
 
     <string-array name="height_feet_array">

@@ -128,7 +128,6 @@ public class ProfileScreen extends AppCompatActivity {
                     v.setTag(0);
                 } else {
                     if(checkForChanges(changes)) {
-                        Log.d(TAG, "Working");
                         updateServer(changes);
                         b.setText(R.string.edit_t);
                         name_box.setEnabled(false);
@@ -298,12 +297,14 @@ public class ProfileScreen extends AppCompatActivity {
         }*/
         if(gender_s.getSelectedItemPosition() != gender) {
             c.put("gender", true);
-            gender = Integer.parseInt((String) gender_s.getSelectedItem());
+            gender = gender_s.getSelectedItemPosition();
         } else {
             c.put("gender", false);
         }
-        if(!feet_s.getSelectedItem().equals(height_arr[0]) || !inches_s.getSelectedItem().equals(height_arr[1])) {
+        if(feet_s.getSelectedItemPosition() != height_arr[0] || inches_s.getSelectedItemPosition() != height_arr[1]) {
             c.put("height", true);
+            height_arr[0] = feet_s.getSelectedItemPosition();
+            height_arr[1] = inches_s.getSelectedItemPosition();
             heightConv(height, height_arr, false);
         } else {
             c.put("height", false);
@@ -325,44 +326,45 @@ public class ProfileScreen extends AppCompatActivity {
 
         Log.d(TAG, changes.toString());
         if(c.get("height").equals(true)) {
-            Log.d(TAG, "Sending Height");
+            Log.d(TAG, "Sending Height" + height);
             tmpURL += "/height/" + Const.cur_user_name + "/" + height;
-            JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
+            JsonObjectRequest req_h = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
             // Adding request to request queue
-            AppController.getInstance().addToRequestQueue(req);
+            AppController.getInstance().addToRequestQueue(req_h);
         }
-
+        tmpURL = Const.URL_USER_INFO + "/edit";
         if(c.get("weight").equals(true)) {
-            Log.d(TAG, "Sending Weight");
+            Log.d(TAG, "Sending Weight" + weight);
             tmpURL += "/weight/" + Const.cur_user_name + "/" + weight;
-            JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
+            JsonObjectRequest req_w = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
             // Adding request to request queue
-            AppController.getInstance().addToRequestQueue(req);
+            AppController.getInstance().addToRequestQueue(req_w);
         }
-
+        tmpURL = Const.URL_USER_INFO + "/edit";
         if(c.get("name").equals(true)) {
-            Log.d(TAG, "Sending name");
+            Log.d(TAG, "Sending name:" + name);
             tmpURL += "/name/" + Const.cur_user_name + "/" + name;
-            JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
+            JsonObjectRequest req_n = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
             // Adding request to request queue
-            AppController.getInstance().addToRequestQueue(req);
+            AppController.getInstance().addToRequestQueue(req_n);
         }
-
+        tmpURL = Const.URL_USER_INFO + "/edit";
         /*if(c.get("email").equals(true)) {
             Log.d(TAG, "Sending email");
-            tmpURL += "/weight/" + Const.cur_user_name + "/" + weight;
+            tmpURL += "/email/" + Const.cur_user_name + "/" + email;
             JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
             // Adding request to request queue
             AppController.getInstance().addToRequestQueue(req);
         }*/
 
-        /*if(c.get("gender").equals(true)) {
+        if(c.get("gender").equals(true)) {
             Log.d(TAG, "Sending gender");
-            tmpURL += "/weight/" + Const.cur_user_name + "/" + weight;
-            JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
+            tmpURL += "/gender/" + Const.cur_user_name + "/" + gender;
+            JsonObjectRequest req_g = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
             // Adding request to request queue
-            AppController.getInstance().addToRequestQueue(req);
-        }*/
+            AppController.getInstance().addToRequestQueue(req_g);
+        }
+        //tmpURL = Const.URL_USER_INFO + "/edit";
         return true;
     }
 }

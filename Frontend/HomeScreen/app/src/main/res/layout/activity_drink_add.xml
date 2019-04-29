@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".DrinkAdd">
 
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="Percent of Alcohol(%)"
+        app:layout_constraintBottom_toTopOf="@+id/button_add_beer16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15"
+        app:layout_constraintVertical_bias="0.0" />
+
     <RadioGroup
         android:id="@+id/radioGroup16oz"
         android:layout_width="wrap_content"
@@ -20,7 +33,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.2">
 
         <RadioButton
             android:id="@+id/radio_one"
@@ -28,21 +41,21 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:onClick="checkButton"
-            android:text="5%" />
+            android:text="5" />
 
         <RadioButton
             android:id="@+id/radio_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="checkButton"
-            android:text="6%" />
+            android:text="6" />
 
         <RadioButton
             android:id="@+id/radio_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="checkButton"
-            android:text="7%" />
+            android:text="7" />
 
     </RadioGroup>
 
@@ -57,10 +70,10 @@
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toEndOf="@+id/radioGroup16oz"
         app:layout_constraintTop_toBottomOf="@+id/textView16"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.238">
 
         <RadioButton
             android:id="@+id/radio_one32oz"
@@ -68,21 +81,21 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:onClick="checkButton2"
-            android:text="5%" />
+            android:text="5" />
 
         <RadioButton
             android:id="@+id/radio_two32oz"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="checkButton2"
-            android:text="6%" />
+            android:text="6" />
 
         <RadioButton
             android:id="@+id/radio_three32oz"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="checkButton2"
-            android:text="7%" />
+            android:text="7" />
 
     </RadioGroup>
 
@@ -98,10 +111,10 @@
         android:text="add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.229"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15"
-        app:layout_constraintVertical_bias="0.287" />
+        app:layout_constraintVertical_bias="0.45" />
 
     <Button
         android:id="@+id/button_add_beer32"
@@ -118,7 +131,7 @@
         app:layout_constraintHorizontal_bias="0.81"
         app:layout_constraintStart_toEndOf="@+id/button_add_beer16"
         app:layout_constraintTop_toBottomOf="@+id/textView16"
-        app:layout_constraintVertical_bias="0.287" />
+        app:layout_constraintVertical_bias="0.45" />
 
     <Button
         android:id="@+id/vodkaDouble"
@@ -261,7 +274,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:layout_constraintVertical_bias="0.087" />
+        app:layout_constraintVertical_bias="0.089" />
 
     <TextView
         android:id="@+id/textView16"
@@ -352,5 +365,21 @@
         app:layout_constraintEnd_toEndOf="@+id/whiskeyDouble"
         app:layout_constraintStart_toStartOf="@+id/whiskeyDouble"
         app:layout_constraintTop_toTopOf="@+id/sgSingle" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="Percent of Alcohol(%)"
+        app:layout_constraintBottom_toTopOf="@+id/button_add_beer32"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.537"
+        app:layout_constraintStart_toEndOf="@+id/textView20"
+        app:layout_constraintTop_toBottomOf="@+id/textView16"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

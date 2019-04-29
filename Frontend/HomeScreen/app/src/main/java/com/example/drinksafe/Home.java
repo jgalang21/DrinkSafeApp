@@ -15,13 +15,11 @@ import android.content.Intent;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.drinksafe.net_utils.Const;
 import com.example.drinksafe.app.AppController;
@@ -29,8 +27,6 @@ import com.example.drinksafe.app.AppController;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.HashMap;
 
 /**
  * This class is for the Home Screen activity.  It is the main screen, used to access the other
@@ -41,10 +37,10 @@ public class Home extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private TextView home_hours,home_mins;
-    private long hours,mins;
+    private long hours,mins, ms;
 
     private String time_f,time_s;
-
+    CountDownTimer timer;
     private static String TAG = Home.class.getSimpleName();
     /**
      *  Creates the Home Screen activity and displays relevant info for the User, such as the timer,
@@ -149,20 +145,8 @@ public class Home extends AppCompatActivity {
         home_hours = findViewById(R.id.timer_hrs_home);
         home_mins = findViewById(R.id.timer_mins_home);
         getDrinkInfo();
-        new CountDownTimer(4500000, 1000) {
+        //Log.d(TAG, "ms2:" + ms);
 
-            public void onTick(long millisUntilFinished) {
-
-                String h = Long.toString(hours);
-                String m = Long.toString(mins);
-                home_hours.setText(h);
-                home_mins.setText(m);
-            }
-
-            public void onFinish() {
-
-            }
-        }.start();
 
     }
 
@@ -201,21 +185,36 @@ public class Home extends AppCompatActivity {
 
                     @Override
                     public void onResponse(JSONArray response) {
-                        Log.d(TAG, response.toString());
+                        //Log.d(TAG, response.toString());
 
                         try {
                             JSONObject tmp_time = findTime(response);
                             time_f = tmp_time.getString("time_finish");
                             time_s = tmp_time.getString("time_start");
-                            Log.d(TAG, time_f);
-                            Log.d(TAG, time_s);
+                            //Log.d(TAG, time_f);
+                            //Log.d(TAG, time_s);
                             if(!time_f.equals("") && !time_s.equals("")) {
                                 long tmp_s = Long.parseLong(time_s);
                                 long tmp_f = Long.parseLong(time_f);
-                                long tmp = tmp_f - tmp_s;
-                                convertTime(tmp);
+                                ms = tmp_f - tmp_s;
+                                timer  = new CountDownTimer(ms, 1000) {
+
+                                    public void onTick(long millisUntilFinished) {
+                                        convertTime(millisUntilFinished);
+                                        String h = Long.toString(hours);
+                                        String m = Long.toString(mins);
+                                        //Log.d(TAG, "h:" + h + "m:"+ m);
+                                        home_hours.setText(h);
+                                        home_mins.setText(m);
+                                    }
+
+                                    public void onFinish() {
+
+                                    }
+                                }.start();
+                                //Log.d(TAG, "ms:" + ms);
                             } else {
-                                convertTime(0);
+                                ms = 0;
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -235,6 +234,7 @@ public class Home extends AppCompatActivity {
                     }
                 });        // Adding request to request queue
         AppController.getInstance().addToRequestQueue(req);
+        //Log.d(TAG, "ms3:" + ms);
     }
 
     private void convertTime(long ms) {
