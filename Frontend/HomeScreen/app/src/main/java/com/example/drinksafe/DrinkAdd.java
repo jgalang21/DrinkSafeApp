@@ -35,7 +35,6 @@ public class DrinkAdd extends AppCompatActivity {
     private Button rDouble;
     private Button beer16;
     private Button beer32;
-    private String tempURL = URL_DRINK_INFO;
 
 
 
@@ -52,6 +51,7 @@ public class DrinkAdd extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
+                    String tempURL = URL_DRINK_INFO;
                     tempURL += "/new/Seagrams_Gin/40/2/"+cur_user_name;
                     JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tempURL, null, null, null);
                     AppController.getInstance().addToRequestQueue(req);
@@ -67,6 +67,7 @@ public class DrinkAdd extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
+                    String tempURL = URL_DRINK_INFO;
                     tempURL += "/new/Seagrams_Gin/40/4/"+cur_user_name;
                     JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tempURL, null, null, null);
                     AppController.getInstance().addToRequestQueue(req);
@@ -82,6 +83,7 @@ public class DrinkAdd extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
+                    String tempURL = URL_DRINK_INFO;
                     tempURL += "/new/Jack_Daniels/40/2/"+cur_user_name;
                     JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tempURL, null, null, null);
                     AppController.getInstance().addToRequestQueue(req);
@@ -97,6 +99,7 @@ public class DrinkAdd extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
+                    String tempURL = URL_DRINK_INFO;
                     tempURL += "/new/Jack_Daniels/40/4/"+cur_user_name;
                     JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tempURL, null, null, null);
                     AppController.getInstance().addToRequestQueue(req);
@@ -111,6 +114,7 @@ public class DrinkAdd extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
+                    String tempURL = URL_DRINK_INFO;
                     tempURL += "/new/vodka/35/2/"+cur_user_name;
                     JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tempURL, null, null, null);
                     AppController.getInstance().addToRequestQueue(req);
@@ -126,6 +130,7 @@ public class DrinkAdd extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
+                    String tempURL = URL_DRINK_INFO;
                     tempURL += "/new/vodka/35/4/"+cur_user_name;
                     JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tempURL, null, null, null);
                     AppController.getInstance().addToRequestQueue(req);
@@ -141,6 +146,7 @@ public class DrinkAdd extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
+                    String tempURL = URL_DRINK_INFO;
                     tempURL += "/new/Crown_Royal/35/2/"+cur_user_name;
                     JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tempURL, null, null, null);
                     AppController.getInstance().addToRequestQueue(req);
@@ -156,6 +162,7 @@ public class DrinkAdd extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
+                    String tempURL = URL_DRINK_INFO;
                     tempURL += "/new/Crown_Royal/35/4/"+cur_user_name;
                     JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tempURL, null, null, null);
                     AppController.getInstance().addToRequestQueue(req);
@@ -171,6 +178,7 @@ public class DrinkAdd extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
+                    String tempURL = URL_DRINK_INFO;
                     tempURL += "/new/Captain_Morgan/35/2/"+cur_user_name;
                     JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tempURL, null, null, null);
                     AppController.getInstance().addToRequestQueue(req);
@@ -186,6 +194,7 @@ public class DrinkAdd extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
+                    String tempURL = URL_DRINK_INFO;
                     tempURL += "/new/Captain_Morgan/35/4/"+cur_user_name;
                     JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tempURL, null, null, null);
                     AppController.getInstance().addToRequestQueue(req);
@@ -202,6 +211,11 @@ public class DrinkAdd extends AppCompatActivity {
             public void onClick(View v) {
                 int radioId = radioGroup.getCheckedRadioButtonId();
                 radioButton16 = findViewById(radioId);
+                String tempURL = URL_DRINK_INFO;
+                tempURL += "/new/16ozBeer/"+radioButton16.getText()+"/16/"+cur_user_name;
+                JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tempURL, null, null, null);
+                AppController.getInstance().addToRequestQueue(req);
+                Toast.makeText(getApplicationContext(), "Added 16oz of Beer", Toast.LENGTH_LONG).show();
 
             }
         });
@@ -211,7 +225,11 @@ public class DrinkAdd extends AppCompatActivity {
             public void onClick(View v) {
                 int radioId = radioGroup.getCheckedRadioButtonId();
                 radioButton32 = findViewById(radioId);
-
+                String tempURL = URL_DRINK_INFO;
+                tempURL += "/new/32ozBeer/"+radioButton32.getText()+"/32/"+cur_user_name;
+                JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tempURL, null, null, null);
+                AppController.getInstance().addToRequestQueue(req);
+                Toast.makeText(getApplicationContext(), "Added 32oz of Beer", Toast.LENGTH_LONG).show();
             }
         });
     }
