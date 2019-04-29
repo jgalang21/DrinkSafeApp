@@ -32,14 +32,17 @@ import java.util.Vector;
 public class DrinkSummary extends AppCompatActivity {
 
     private TextView ds_hours,ds_mins, ds_sec;
-    private long hours,mins,sec;
+    private long hours,mins,sec, ms;
     private Vector<JSONObject> drinks;
     private String time;
     private RecyclerView drink_view;
     private RecyclerView.Adapter drink_adapter;
     private RecyclerView.LayoutManager layoutManager;
-
+    CountDownTimer timer;
     private static String TAG = DrinkSummary.class.getSimpleName();
+
+    private String time_f,time_s;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,21 +53,8 @@ public class DrinkSummary extends AppCompatActivity {
         ds_mins = findViewById(R.id.ds_min);
         ds_sec = findViewById(R.id.ds_sec);
         getTime();
-        new CountDownTimer(4500000, 1000) {
 
-            public void onTick(long millisUntilFinished) {
-                String h = Long.toString(hours);
-                String m = Long.toString(mins);
-                String s = Long.toString(sec);
-                ds_hours.setText(h);
-                ds_mins.setText(m);
-                ds_sec.setText(s);
-            }
 
-            public void onFinish() {
-
-            }
-        }.start();
 
         try {
             drinks = new Vector<JSONObject>(getDrinks());
@@ -75,7 +65,7 @@ public class DrinkSummary extends AppCompatActivity {
                     e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
-        drink_view = findViewById(R.id.drink_history);
+        /*drink_view = findViewById(R.id.drink_history);
 
         drink_view.setHasFixedSize(true);
 
@@ -83,29 +73,67 @@ public class DrinkSummary extends AppCompatActivity {
         drink_view.setLayoutManager(layoutManager);
 
         drink_adapter = new MyAdapter(drinks);
-        drink_view.setAdapter(drink_adapter);
+        drink_view.setAdapter(drink_adapter);*/
+    }
+
+    private JSONObject findTime(JSONArray response) throws JSONException {
+        JSONObject ti = null;
+        for (int i = 0; i < response.length(); i++) {
+            ti = (JSONObject) response.get(i);
+            String tmp = ti.getString("user");
+            if (tmp.equals(Const.cur_user_name)) {
+                break;
+            }
+        }
+        if(ti == null) {
+            throw new JSONException("Could not find time");
+        } else {
+            return ti;
+        }
     }
 
     private void getTime() {
-        String tmpURL = Const.URL_USER_INFO + "/find/id/" + Const.cur_user_name;
+        String tmpURL = "http://cs309-bs-7.misc.iastate.edu:8080/time";
 
-        JsonObjectRequest req = new JsonObjectRequest
-                (Request.Method.GET, tmpURL, null, new Response.Listener<JSONObject>() {
+        JsonArrayRequest req = new JsonArrayRequest
+                (tmpURL, new Response.Listener<JSONArray>() {
 
                     @Override
-                    public void onResponse(JSONObject response) {
-                        Log.d(TAG, response.toString());
+                    public void onResponse(JSONArray response) {
+                        //Log.d(TAG, response.toString());
 
                         try {
-                            time = response.getString("drink_time");
-                            if(time != null) {
-                                long tmp = Long.parseLong(time);
-                                convertTime(tmp);
+                            JSONObject tmp_time = findTime(response);
+                            time_f = tmp_time.getString("time_finish");
+                            time_s = tmp_time.getString("time_start");
+                            //Log.d(TAG, time_f);
+                            //Log.d(TAG, time_s);
+                            if(!time_f.equals("") && !time_s.equals("")) {
+                                long tmp_s = Long.parseLong(time_s);
+                                long tmp_f = Long.parseLong(time_f);
+                                ms = tmp_f - tmp_s;
+                                timer = new CountDownTimer(ms, 1000) {
+
+                                    public void onTick(long millisUntilFinished) {
+                                        convertTime(millisUntilFinished);
+                                        String h = Long.toString(hours);
+                                        String m = Long.toString(mins);
+                                        String s = Long.toString(sec);
+                                        ds_hours.setText(h);
+                                        ds_mins.setText(m);
+                                        ds_sec.setText(s);
+                                    }
+
+                                    public void onFinish() {
+
+                                    }
+                                }.start();
                             } else {
-                                convertTime(0);
+                                ms = 0;
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            VolleyLog.d(TAG, "Error: " + e.getMessage());
                             Toast.makeText(getApplicationContext(),
                                     "Error: " + e.getMessage(),
                                     Toast.LENGTH_LONG).show();
@@ -117,7 +145,7 @@ public class DrinkSummary extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         VolleyLog.d(TAG, "Error: " + error.getMessage());
                         Toast.makeText(getApplicationContext(),
-                                error.getMessage(), Toast.LENGTH_SHORT).show();
+                                error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });        // Adding request to request queue
         AppController.getInstance().addToRequestQueue(req);
