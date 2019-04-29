@@ -44,11 +44,10 @@ public class timeController {
 	 * 
 	 * @return - all the user's times
 	 */
-	@RequestMapping(method = RequestMethod.GET, path ="/time")
-	public List<time> listAllTime(){
-		logger.info("listing user times");
-		List<time> r = (List<time>) timeRepo.findAll();
-		return r;
+	@RequestMapping(method = RequestMethod.GET, path ="/time/{userId}")
+	public time listAllTime(@PathVariable("userId") String user){
+		User u = userRepo.findByUsername(user);
+		return u.getUser_time();
 	}
 	
 	/**

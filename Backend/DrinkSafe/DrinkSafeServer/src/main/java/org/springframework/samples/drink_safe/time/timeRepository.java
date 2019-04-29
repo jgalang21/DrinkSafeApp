@@ -17,13 +17,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface timeRepository extends CrudRepository<time, Long> {
 
-	time findByTid(int k);
+
 	
 	
 	  @Modifying
 	  @Transactional
 	  @Query("delete from time t where t.tid = ?1")
 	  void deleteByTid(int tid);
+
+	time findByTid(int tid);
 
 
 }
