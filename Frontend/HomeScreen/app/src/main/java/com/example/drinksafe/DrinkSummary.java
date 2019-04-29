@@ -1,11 +1,15 @@
 package com.example.drinksafe;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +48,7 @@ public class DrinkSummary extends AppCompatActivity {
     private String time_f,time_s;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,10 +59,19 @@ public class DrinkSummary extends AppCompatActivity {
         ds_sec = findViewById(R.id.ds_sec);
         getTime();
 
-
+        ImageButton b_back = findViewById(R.id.ds_back);
+        b_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(DrinkSummary.this, Home.class);
+                //Log.d(TAG, i.getAction());
+                //Log.d(TAG, i.getDataString());
+                startActivity(i);
+            }
+        });
 
         try {
-            drinks = new Vector<JSONObject>(getDrinks());
+            getDrinks();
         } catch (JSONException e) {
             e.printStackTrace();
             VolleyLog.d(TAG, "Error: " + e.getMessage());
@@ -65,15 +79,7 @@ public class DrinkSummary extends AppCompatActivity {
                     e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
-        /*drink_view = findViewById(R.id.drink_history);
 
-        drink_view.setHasFixedSize(true);
-
-        layoutManager = new LinearLayoutManager(this);
-        drink_view.setLayoutManager(layoutManager);
-
-        drink_adapter = new MyAdapter(drinks);
-        drink_view.setAdapter(drink_adapter);*/
     }
 
     private JSONObject findTime(JSONArray response) throws JSONException {
@@ -93,26 +99,25 @@ public class DrinkSummary extends AppCompatActivity {
     }
 
     private void getTime() {
-        String tmpURL = "http://cs309-bs-7.misc.iastate.edu:8080/time";
+        String tmpURL = "http://cs309-bs-7.misc.iastate.edu:8080/time/" + Const.cur_user_name;
 
-        JsonArrayRequest req = new JsonArrayRequest
-                (tmpURL, new Response.Listener<JSONArray>() {
+        JsonObjectRequest req = new JsonObjectRequest
+                (Request.Method.GET, tmpURL, null, new Response.Listener<JSONObject>() {
 
                     @Override
-                    public void onResponse(JSONArray response) {
-                        //Log.d(TAG, response.toString());
+                    public void onResponse(JSONObject response) {
+                        Log.d(TAG, response.toString());
 
                         try {
-                            JSONObject tmp_time = findTime(response);
-                            time_f = tmp_time.getString("time_finish");
-                            time_s = tmp_time.getString("time_start");
-                            //Log.d(TAG, time_f);
-                            //Log.d(TAG, time_s);
+                            time_f = response.getString("time_finish");
+                            time_s = response.getString("time_start");
+                            Log.d(TAG, time_f);
+                            Log.d(TAG, time_s);
                             if(!time_f.equals("") && !time_s.equals("")) {
                                 long tmp_s = Long.parseLong(time_s);
                                 long tmp_f = Long.parseLong(time_f);
                                 ms = tmp_f - tmp_s;
-                                timer = new CountDownTimer(ms, 1000) {
+                                timer  = new CountDownTimer(ms, 1000) {
 
                                     public void onTick(long millisUntilFinished) {
                                         convertTime(millisUntilFinished);
@@ -128,12 +133,12 @@ public class DrinkSummary extends AppCompatActivity {
 
                                     }
                                 }.start();
+                                //Log.d(TAG, "ms:" + ms);
                             } else {
                                 ms = 0;
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            VolleyLog.d(TAG, "Error: " + e.getMessage());
                             Toast.makeText(getApplicationContext(),
                                     "Error: " + e.getMessage(),
                                     Toast.LENGTH_LONG).show();
@@ -145,15 +150,13 @@ public class DrinkSummary extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         VolleyLog.d(TAG, "Error: " + error.getMessage());
                         Toast.makeText(getApplicationContext(),
-                                error.getMessage(), Toast.LENGTH_LONG).show();
+                                error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });        // Adding request to request queue
         AppController.getInstance().addToRequestQueue(req);
     }
 
-    private Vector<JSONObject> getDrinks() throws JSONException {
-        final Vector<JSONObject> drinkList = new Vector<JSONObject>() {
-        };
+    private void getDrinks() throws JSONException {
         String tmpURL = Const.URL_USER_INFO + "/list/drink/" + Const.cur_user_name;
 
         JsonArrayRequest req = new JsonArrayRequest
@@ -165,8 +168,21 @@ public class DrinkSummary extends AppCompatActivity {
 
                         try {
                             for (int i = 0; i < response.length(); i++) {
-                                drinkList.add((JSONObject) response.get(i));
+                                drinks.add((JSONObject) response.get(i));
 
+                            }
+                            if(drinks.isEmpty()) {
+                                throw new JSONException("Could not find drinks");
+                            } else {
+                                drink_view = findViewById(R.id.drink_history);
+
+                                drink_view.setHasFixedSize(true);
+
+                                layoutManager = new LinearLayoutManager(DrinkSummary.this);
+                                drink_view.setLayoutManager(layoutManager);
+
+                                drink_adapter = new MyAdapter(drinks);
+                                drink_view.setAdapter(drink_adapter);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -186,11 +202,7 @@ public class DrinkSummary extends AppCompatActivity {
                 });        // Adding request to request queue
         AppController.getInstance().addToRequestQueue(req);
 
-        if(drinkList.isEmpty()) {
-            throw new JSONException("Could not find drinks");
-        } else {
-            return drinkList;
-        }
+
     }
 
     private void convertTime(long ms) {

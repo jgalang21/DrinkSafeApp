@@ -15,11 +15,13 @@ import android.content.Intent;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.drinksafe.net_utils.Const;
 import com.example.drinksafe.app.AppController;
@@ -178,9 +180,62 @@ public class Home extends AppCompatActivity {
     }
 
     private void getDrinkInfo() {
-        String tmpURL = "http://cs309-bs-7.misc.iastate.edu:8080/time";
+        String tmpURL = "http://cs309-bs-7.misc.iastate.edu:8080/time/" + Const.cur_user_name;
 
-        JsonArrayRequest req = new JsonArrayRequest
+        JsonObjectRequest req = new JsonObjectRequest
+                (Request.Method.GET, tmpURL, null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d(TAG, response.toString());
+
+                        try {
+                            time_f = response.getString("time_finish");
+                            time_s = response.getString("time_start");
+                            Log.d(TAG, time_f);
+                            Log.d(TAG, time_s);
+                            if(!time_f.equals("") && !time_s.equals("")) {
+                                long tmp_s = Long.parseLong(time_s);
+                                long tmp_f = Long.parseLong(time_f);
+                                ms = tmp_f - tmp_s;
+                                timer  = new CountDownTimer(ms, 1000) {
+
+                                    public void onTick(long millisUntilFinished) {
+                                        convertTime(millisUntilFinished);
+                                        String h = Long.toString(hours);
+                                        String m = Long.toString(mins);
+                                        //Log.d(TAG, "h:" + h + "m:"+ m);
+                                        home_hours.setText(h);
+                                        home_mins.setText(m);
+                                    }
+
+                                    public void onFinish() {
+
+                                    }
+                                }.start();
+                                //Log.d(TAG, "ms:" + ms);
+                            } else {
+                                ms = 0;
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(),
+                                    "Error: " + e.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        VolleyLog.d(TAG, "Error: " + error.getMessage());
+                        Toast.makeText(getApplicationContext(),
+                                error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(req);
+
+        /*JsonArrayRequest req = new JsonArrayRequest
                 (tmpURL, new Response.Listener<JSONArray>() {
 
                     @Override
@@ -191,8 +246,8 @@ public class Home extends AppCompatActivity {
                             JSONObject tmp_time = findTime(response);
                             time_f = tmp_time.getString("time_finish");
                             time_s = tmp_time.getString("time_start");
-                            //Log.d(TAG, time_f);
-                            //Log.d(TAG, time_s);
+                            Log.d(TAG, time_f);
+                            Log.d(TAG, time_s);
                             if(!time_f.equals("") && !time_s.equals("")) {
                                 long tmp_s = Long.parseLong(time_s);
                                 long tmp_f = Long.parseLong(time_f);
@@ -234,7 +289,7 @@ public class Home extends AppCompatActivity {
                     }
                 });        // Adding request to request queue
         AppController.getInstance().addToRequestQueue(req);
-        //Log.d(TAG, "ms3:" + ms);
+        //Log.d(TAG, "ms3:" + ms);*/
     }
 
     private void convertTime(long ms) {

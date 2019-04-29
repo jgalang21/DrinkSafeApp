@@ -110,6 +110,8 @@ public class ProfileScreen extends AppCompatActivity {
         changes.put("height", false);
         Log.d(TAG, changes.toString());
 
+        getInfo();
+
         final Button b = findViewById(R.id.save_edit_button);
         b.setTag(1);
         b.setText(R.string.edit_t);
@@ -142,7 +144,7 @@ public class ProfileScreen extends AppCompatActivity {
             }
         });
 
-        getInfo();
+
 
     }
 
@@ -206,7 +208,7 @@ public class ProfileScreen extends AppCompatActivity {
             int temp = 0;
             temp += h_arr[0] * 12;
             temp += h_arr[1];
-            h = temp;
+            height = temp;
         }
     }
 
@@ -303,9 +305,12 @@ public class ProfileScreen extends AppCompatActivity {
         }
         if(feet_s.getSelectedItemPosition() != height_arr[0] || inches_s.getSelectedItemPosition() != height_arr[1]) {
             c.put("height", true);
+            //Log.d(TAG, "f" + feet_s.getSelectedItemPosition());
+            //Log.d(TAG, "i" + inches_s.getSelectedItemPosition());
             height_arr[0] = feet_s.getSelectedItemPosition();
             height_arr[1] = inches_s.getSelectedItemPosition();
             heightConv(height, height_arr, false);
+            //Log.d(TAG, "h" + height);
         } else {
             c.put("height", false);
         }
@@ -330,7 +335,7 @@ public class ProfileScreen extends AppCompatActivity {
             tmpURL += "/height/" + Const.cur_user_name + "/" + height;
             JsonObjectRequest req_h = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
             // Adding request to request queue
-            AppController.getInstance().addToRequestQueue(req_h);
+            AppController.getInstance().addToRequestQueue(req_h,TAG);
         }
         tmpURL = Const.URL_USER_INFO + "/edit";
         if(c.get("weight").equals(true)) {
@@ -338,7 +343,7 @@ public class ProfileScreen extends AppCompatActivity {
             tmpURL += "/weight/" + Const.cur_user_name + "/" + weight;
             JsonObjectRequest req_w = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
             // Adding request to request queue
-            AppController.getInstance().addToRequestQueue(req_w);
+            AppController.getInstance().addToRequestQueue(req_w,TAG);
         }
         tmpURL = Const.URL_USER_INFO + "/edit";
         if(c.get("name").equals(true)) {
@@ -346,7 +351,7 @@ public class ProfileScreen extends AppCompatActivity {
             tmpURL += "/name/" + Const.cur_user_name + "/" + name;
             JsonObjectRequest req_n = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
             // Adding request to request queue
-            AppController.getInstance().addToRequestQueue(req_n);
+            AppController.getInstance().addToRequestQueue(req_n,TAG);
         }
         tmpURL = Const.URL_USER_INFO + "/edit";
         /*if(c.get("email").equals(true)) {
@@ -362,7 +367,7 @@ public class ProfileScreen extends AppCompatActivity {
             tmpURL += "/gender/" + Const.cur_user_name + "/" + gender;
             JsonObjectRequest req_g = new JsonObjectRequest(Request.Method.GET, tmpURL, null, null, null);
             // Adding request to request queue
-            AppController.getInstance().addToRequestQueue(req_g);
+            AppController.getInstance().addToRequestQueue(req_g,TAG);
         }
         //tmpURL = Const.URL_USER_INFO + "/edit";
         return true;

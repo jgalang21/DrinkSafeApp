@@ -7,7 +7,7 @@
     tools:context=".DrinkSummary">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar3"
+        android:id="@+id/ds_toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -18,14 +18,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/ds_back"
         android:layout_width="45dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar3"
-        app:layout_constraintStart_toStartOf="@+id/toolbar3"
-        app:layout_constraintTop_toTopOf="@+id/toolbar3"
+        app:layout_constraintBottom_toBottomOf="@+id/ds_toolbar"
+        app:layout_constraintStart_toStartOf="@+id/ds_toolbar"
+        app:layout_constraintTop_toTopOf="@+id/ds_toolbar"
         app:srcCompat="@drawable/ic_arrow_back" />
 
     <TextView
