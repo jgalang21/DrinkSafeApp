@@ -2,6 +2,7 @@ package com.example.drinksafe.app;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -14,7 +15,7 @@ import org.json.JSONObject;
 import java.util.Vector;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-    private JSONArray mDataset;
+    private Vector<JSONObject> mDataset;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -23,17 +24,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         // each data item is just a string in this case
         public TextView drink_name;
         public TextView drink_percent;
-        public MyViewHolder(TextView v) {
+        public MyViewHolder(View v) {
             super(v);
-            drink_name = (TextView)v.findViewById(R.id.ds_list_name);
-            drink_percent = (TextView)v.findViewById(R.id.ds_list_alc);
+            drink_name = v.findViewById(R.id.ds_list_name);
+            drink_percent = v.findViewById(R.id.ds_list_alc);
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public MyAdapter(Vector<JSONObject> myDataset) {
+        mDataset = new Vector<>();
         for(int i = 0; i < myDataset.size(); i++) {
-            myDataset.add(myDataset.get(i));
+            mDataset.add(myDataset.get(i));
         }
     }
 
@@ -42,7 +44,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                      int viewType) {
         // create a new view
-        TextView v = (TextView) LayoutInflater.from(parent.getContext())
+        View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.drink_info, parent, false);
         MyViewHolder vh = new MyViewHolder(v);
         return vh;
@@ -54,7 +56,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         try {
-            JSONObject drink = mDataset.getJSONObject(position);
+            JSONObject drink = mDataset.get(position);
             holder.drink_name.setText(drink.getString("drinkid"));
             holder.drink_percent.setText(drink.getString("alcpercent"));
         } catch (JSONException e) {
@@ -67,6 +69,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mDataset.length();
+        return mDataset.size();
     }
 }

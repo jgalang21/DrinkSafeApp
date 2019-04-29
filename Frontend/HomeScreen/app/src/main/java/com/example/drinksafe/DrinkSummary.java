@@ -69,7 +69,7 @@ public class DrinkSummary extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
+        drinks = new Vector<>();
         try {
             getDrinks();
         } catch (JSONException e) {
@@ -167,8 +167,10 @@ public class DrinkSummary extends AppCompatActivity {
                         Log.d(TAG, response.toString());
 
                         try {
+                            JSONObject d;
                             for (int i = 0; i < response.length(); i++) {
-                                drinks.add((JSONObject) response.get(i));
+                                d = response.getJSONObject(i);
+                                drinks.add(d);
 
                             }
                             if(drinks.isEmpty()) {
@@ -212,8 +214,5 @@ public class DrinkSummary extends AppCompatActivity {
         mins = tmp / 60000;
         tmp -= mins * 60000;
         sec = tmp / 1000;
-        if(tmp != 0) {
-
-        }
     }
 }
