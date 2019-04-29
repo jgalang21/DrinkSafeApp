@@ -100,7 +100,7 @@ public class WebSocketServer {
 			else if (message.equals("!help")) {
 				broadcast("List of commands: \n" + "---------------\n" + "GROUP COMMANDS\n" + "---------------\n"
 						+ "Create group: !group\n" + "List members: !get_members\n" + "Leave group: !leave\n"
-						+ "Add member: !add [username]\n" + "Check if members are sober: !check\n" 
+						+ "Add member: !add [username]\n" + "Check if members are sober: !check\n"
 						+ "Check your current time: !time\n");
 
 			} else if (message.equals("!time")) { // check what time the user is able to drive
@@ -183,7 +183,9 @@ public class WebSocketServer {
 				broadcast(u.getUsername() + ": " + message);
 
 			}
-		} else {
+		}
+
+		else {
 
 			if (message.equals("!group")) {
 				broadcast(u.getUsername() + " has started a group");
@@ -194,7 +196,9 @@ public class WebSocketServer {
 
 			}
 
-			broadcast(u.getUsername() + ": " + message);
+			else{
+				broadcast(u.getUsername() + ": " + message);
+			}
 
 		}
 
