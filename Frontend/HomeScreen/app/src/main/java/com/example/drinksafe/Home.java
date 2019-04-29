@@ -20,11 +20,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.drinksafe.net_utils.Const;
 import com.example.drinksafe.app.AppController;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,7 +43,7 @@ public class Home extends AppCompatActivity {
     private TextView home_hours,home_mins;
     private long hours,mins;
 
-    private String time;
+    private String time_f,time_s;
 
     private static String TAG = Home.class.getSimpleName();
     /**
@@ -120,6 +122,10 @@ public class Home extends AppCompatActivity {
                                 i = new Intent(Home.this, DrinkAdd.class);
                                 startActivity(i);
                                 break;
+                            case R.id.nav_disclaimer:
+                                i = new Intent(Home.this, Disclaimer.class);
+                                startActivity(i);
+                                break;
                             default:
                                 return true;
                         }
@@ -171,22 +177,49 @@ public class Home extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void getDrinkInfo() {
-        String tmpURL = Const.URL_USER_INFO + "/find/id/" + Const.cur_user_name;
+    private JSONObject findTime(JSONArray response) throws JSONException {
+        JSONObject ti = null;
+        for (int i = 0; i < response.length(); i++) {
+            ti = (JSONObject) response.get(i);
+            String tmp = ti.getString("user");
+            if (tmp.equals(Const.cur_user_name)) {
+                break;
+            }
+        }
+        if(ti == null) {
+            throw new JSONException("Could not find time");
+        } else {
+            return ti;
+        }
+    }
 
-        JsonObjectRequest req = new JsonObjectRequest
-                (Request.Method.GET, tmpURL, null, new Response.Listener<JSONObject>() {
+    private void getDrinkInfo() {
+        String tmpURL = "http://cs309-bs-7.misc.iastate.edu:8080/time";
+
+        JsonArrayRequest req = new JsonArrayRequest
+                (tmpURL, new Response.Listener<JSONArray>() {
 
                     @Override
-                    public void onResponse(JSONObject response) {
+                    public void onResponse(JSONArray response) {
                         Log.d(TAG, response.toString());
 
                         try {
-                            time = response.getString("user_time");
-                            long tmp = Long.parseLong(time);
-                            convertTime(tmp);
+                            JSONObject tmp_time = findTime(response);
+                            time_f = tmp_time.getString("time_finish");
+                            time_s = tmp_time.getString("time_start");
+                            Log.d(TAG, time_f);
+                            Log.d(TAG, time_s);
+                            if(!time_f.equals("") && !time_s.equals("")) {
+                                long tmp_s = Long.parseLong(time_s);
+                                long tmp_f = Long.parseLong(time_f);
+                                long tmp = tmp_f - tmp_s;
+                                convertTime(tmp);
+                            } else {
+                                convertTime(0);
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            VolleyLog.d(TAG, "Error: " + e.getMessage());
                             Toast.makeText(getApplicationContext(),
                                     "Error: " + e.getMessage(),
                                     Toast.LENGTH_LONG).show();
@@ -198,12 +231,10 @@ public class Home extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         VolleyLog.d(TAG, "Error: " + error.getMessage());
                         Toast.makeText(getApplicationContext(),
-                                error.getMessage(), Toast.LENGTH_SHORT).show();
+                                error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });        // Adding request to request queue
         AppController.getInstance().addToRequestQueue(req);
-
-
     }
 
     private void convertTime(long ms) {

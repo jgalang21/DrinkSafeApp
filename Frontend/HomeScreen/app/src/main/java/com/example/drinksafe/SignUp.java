@@ -39,7 +39,8 @@ public class SignUp extends AppCompatActivity {
     private Button signUp;
     private ProgressDialog pDialog;
     private String TAG = SignIn.class.getSimpleName();
-    private int height, sex;
+    private int height;
+    private String heightString, sexString;
     private String tempURL;
     private boolean switchStatus, mayProceed = true;
 
@@ -68,15 +69,16 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    height = (Integer.parseInt(heightFt.getText().toString()) * 12) + Integer.parseInt(heightIn.getText().toString());
+                    height = ((Integer.parseInt(heightFt.getText().toString()) * 12) + Integer.parseInt(heightIn.getText().toString()));
+                    heightString += height;
                     Boolean maleStatus = sexM.isChecked();
                     Boolean femaleStatus = sexF.isChecked();
                     if (maleStatus == false && femaleStatus == true){
-                        sex = 1;
+                        sexString = "1";
                         mayProceed = true;
                     }
                     else if (maleStatus == true && femaleStatus == false){
-                        sex = 0;
+                        sexString = "0";
                         mayProceed = true;
                     }
                     else if (maleStatus == false&&femaleStatus == false) {
@@ -88,8 +90,10 @@ public class SignUp extends AppCompatActivity {
                         mayProceed = false;
                     }
                     if(mayProceed&&email.getText() != null&&name.getText()!=null&&password.getText()!=null&&weight!= null&&heightFt.getText()!=null&&heightIn.getText()!=null) {
+                        System.err.println("got there");
+                        System.err.println(height);
                         tempURL = URL_USER_INFO;
-                        tempURL += "/new/" + email + "/"+name+"/"+password+"/"+height+"/"+weight+"/"+sex+"/"+0+"/";
+                        tempURL += "/new/" + email.getText() + "/" + name.getText()+"/"+password.getText()+"/"+heightString+"/"+weight.getText()+"/"+sexString+"/0";
                         JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, tempURL, null, null, null);
                         AppController.getInstance().addToRequestQueue(req);
                         Intent intent = new Intent(SignUp.this, SignIn.class);

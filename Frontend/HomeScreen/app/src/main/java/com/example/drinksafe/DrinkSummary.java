@@ -3,6 +3,7 @@ package com.example.drinksafe;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.drinksafe.app.AppController;
+import com.example.drinksafe.app.MyAdapter;
 import com.example.drinksafe.net_utils.Const;
 
 import org.json.JSONArray;
@@ -74,6 +76,14 @@ public class DrinkSummary extends AppCompatActivity {
         }
 
         drink_view = findViewById(R.id.drink_history);
+
+        drink_view.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(this);
+        drink_view.setLayoutManager(layoutManager);
+
+        drink_adapter = new MyAdapter(drinks);
+        drink_view.setAdapter(drink_adapter);
     }
 
     private void getTime() {
@@ -87,9 +97,13 @@ public class DrinkSummary extends AppCompatActivity {
                         Log.d(TAG, response.toString());
 
                         try {
-                            time = response.getString("user_time");
-                            long tmp = Long.parseLong(time);
-                            convertTime(tmp);
+                            time = response.getString("drink_time");
+                            if(time != null) {
+                                long tmp = Long.parseLong(time);
+                                convertTime(tmp);
+                            } else {
+                                convertTime(0);
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(),

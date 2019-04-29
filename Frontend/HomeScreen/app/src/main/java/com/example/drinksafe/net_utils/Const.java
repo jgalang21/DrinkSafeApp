@@ -21,4 +21,9 @@ public class Const {
      * A string which stores the username of the current user.  Updated upon a successful sign in.
      */
     public static String cur_user_name = "";
+
+    /**
+     * url will be used to add drinks and access them
+     */
+    public static String URL_DRINK_INFO = "http://cs309-bs-7.misc.iastate.edu:8080/drink";
 }
