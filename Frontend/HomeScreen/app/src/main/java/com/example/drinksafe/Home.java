@@ -7,11 +7,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.content.Intent;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
+import com.example.drinksafe.app.MyAdapter;
 import com.example.drinksafe.net_utils.Const;
 import com.example.drinksafe.app.AppController;
 
@@ -38,7 +41,7 @@ import org.json.JSONObject;
 public class Home extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
-    private TextView home_hours,home_mins;
+    private TextView home_hours,home_mins,drink_name,drink_vol,drink_amount;
     private long hours,mins, ms;
 
     private String time_f,time_s;
@@ -54,6 +57,8 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
@@ -104,10 +109,15 @@ public class Home extends AppCompatActivity {
                                 i = new Intent(Home.this, DrinkSummary.class);
                                 startActivity(i);
                                 break;
-                            case R.id.nav_party:
+                            /*case R.id.nav_party:
                                 i = new Intent(Home.this, Party.class);
                                 startActivity(i);
                                 break;
+
+                                 <item
+            android:id="@+id/nav_party"
+            android:icon="@drawable/ic_group"
+            android:title="Party" />*/
                             case R.id.nav_chat:
                                 i = new Intent(Home.this, Messaging.class);
                                 startActivity(i);
@@ -148,7 +158,24 @@ public class Home extends AppCompatActivity {
         home_mins = findViewById(R.id.timer_mins_home);
         getDrinkInfo();
         //Log.d(TAG, "ms2:" + ms);
-
+        drink_amount = findViewById(R.id.drink_amount);
+        drink_name = findViewById(R.id.drink_name_home);
+        drink_vol = findViewById(R.id.drink_size_home);
+        try {
+            getDrinks();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Button b_qa = findViewById(R.id.qa_button);
+        b_qa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Home.this, DrinkAdd.class);
+                //Log.d(TAG, i.getAction());
+                //Log.d(TAG, i.getDataString());
+                startActivity(i);
+            }
+        });
 
     }
 
@@ -290,6 +317,47 @@ public class Home extends AppCompatActivity {
                 });        // Adding request to request queue
         AppController.getInstance().addToRequestQueue(req);
         //Log.d(TAG, "ms3:" + ms);*/
+    }
+
+    private void getDrinks() throws JSONException {
+        String tmpURL = Const.URL_USER_INFO + "/list/drink/" + Const.cur_user_name;
+
+        JsonArrayRequest req = new JsonArrayRequest
+                (tmpURL, new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d(TAG, response.toString());
+
+                        try {
+                            JSONObject d;
+                            d = response.getJSONObject(0);
+                            if(d == null) {
+                                throw new JSONException("Could not find drinks");
+                            } else {
+                                drink_amount.setText("" + response.length());
+                                drink_name.setText(d.getString("drinkid"));
+                                drink_vol.setText(d.getString("volume"));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(),
+                                    "Error: " + e.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        VolleyLog.d(TAG, "Error: " + error.getMessage());
+                        Toast.makeText(getApplicationContext(),
+                                error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(req);
+
+
     }
 
     private void convertTime(long ms) {

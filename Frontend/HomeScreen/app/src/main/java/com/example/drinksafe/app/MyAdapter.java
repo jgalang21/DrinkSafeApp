@@ -24,10 +24,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         // each data item is just a string in this case
         public TextView drink_name;
         public TextView drink_percent;
+        public TextView drink_vol;
         public MyViewHolder(View v) {
             super(v);
             drink_name = v.findViewById(R.id.ds_list_name);
             drink_percent = v.findViewById(R.id.ds_list_alc);
+            drink_vol = v.findViewById(R.id.ds_vol);
         }
     }
 
@@ -59,6 +61,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             JSONObject drink = mDataset.get(position);
             holder.drink_name.setText(drink.getString("drinkid"));
             holder.drink_percent.setText(drink.getString("alcpercent"));
+            holder.drink_vol.setText(drink.getString("volume"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
