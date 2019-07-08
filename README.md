@@ -29,4 +29,4 @@ This app only gives an estimate of when a person is sober enough to drive, it ma
 # Other Project Features
 * CI/CD - This helped us push live updates to our server without having to manually go into our server's file system and changing the .jar file everytime we want to make a change.
 * WebSockets - This is the main component of our application. We used websockets as a chat between users along with how
-we are checking who is available to drive and other features. 
+we are checking who is available to drive and other features. It uses a list of commands available to the users to perform actions such as checking who is able to drive, list of people in the party, etc.
