@@ -6,12 +6,14 @@ It takes in the User's height, weight, and gender, and calculates a time when th
 this code from our Gitlab repository to my personal Github. I was responsible for the Spring side of our project. I 
 had worked on figuring out how to add/manage drinks with our database along with getting our WebSockets to work. On top of 
 that, we were learning how to use git with our project. We developed this app in an Agile environment. We had sprints that
-lasted about 2-3 weeks with different requirements we had to meet. These requirements ranged from git stuff to implementing
-certain features such as CI/CD.
+lasted about 2-3 weeks with different requirements we had to meet. These requirements ranged from showing our understanding of git to implementing certain features such as CI/CD.
+
 
 
 # DISCLAIMER 
 This app only gives an estimate of when a person is sober enough to drive, it may not be fully accurate for everyone. 
+
+
 
 # Technologies
 * Android Studio - For our client side development
@@ -21,6 +23,7 @@ This app only gives an estimate of when a person is sober enough to drive, it ma
 * GitLab - Private repository we used for version control 
 * Maven - Build automation tool 
 * Trello (https://trello.com/en) - Served as our SCRUM board 
+
 
 
 # Project Features
