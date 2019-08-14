@@ -10,7 +10,8 @@ lasted about 2-3 weeks with different requirements we had to meet. These require
 
 
 # DISCLAIMER 
-This app only gives an estimate of when a person is sober enough to drive, it may not be fully accurate for everyone. 
+This app only gives an estimate of when a person is sober enough to drive, it may not be fully accurate for everyone. We do not recommend you use this application, as there may still be bugs with the calculations. This app was built simply for learning purposes. 
+
 Credit to this site for helping us with our calculations: https://www.teamdui.com/bac-widmarks-formula/
 
 
