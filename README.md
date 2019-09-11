@@ -17,13 +17,14 @@ Credit to this site for helping us with our calculations: https://www.teamdui.co
 
 
 # Technologies
-* Android Studio - For our client side development
-* Spring Tools Suite 4 - Creating our backend logic
-* MySQL Workbench - Database 
+* Android Studio - Client side development
+* Spring Tools Suite 4 - Server side development
+* MySQL Workbench - Database development
 * Mockito - For testing frontend and backend
-* GitLab - Private repository we used for version control 
+* GitLab - Private repository for version control 
 * Maven - Build automation tool 
-* Trello (https://trello.com/en) - Served as our SCRUM board 
+* XAMPP - Open-source cross-platform web server
+* Trello (https://trello.com/en) - SCRUM board 
 
 
 
