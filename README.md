@@ -3,7 +3,7 @@ This an application that my group and I have created for our software developmen
 
 The app help prevents drunk driving by using a buddy system to help everyone keep track of who's able to drive. 
 It takes in the User's height, weight, and gender, and calculates a time when they are able to drive. I had pushed 
-this code from our Gitlab repository to my personal Github (which explains why my number of commits isn't very high). I was responsible for the Spring side of our project. I had worked on figuring out how to add/manage drinks with our database along with getting our WebSockets to work. On top of 
+this code from our Gitlab repository to my personal Github. I was responsible for the Spring side of our project. I had worked on figuring out how to add/manage drinks with our database along with getting our WebSockets to work. On top of 
 that, we were learning how to use git with our project. We developed this app in an Agile environment. We had sprints that
 lasted about 2-3 weeks with different requirements we had to meet. These requirements ranged from showing our understanding of git to implementing certain features such as CI/CD.
 
